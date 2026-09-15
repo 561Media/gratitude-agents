@@ -36,14 +36,24 @@ async function compositeBrandLogo(bytes: Buffer): Promise<Buffer> {
     .toBuffer();
 }
 
-// Gemini Imagen image generation for the design agents.
+// OpenAI gpt-image-2 image generation for the design agents (561 Media account,
+// switched from Gemini Imagen 9/15/26 after the Gemini prepay credits ran out).
 // The PNG is stored in Vercel Blob; a `resources` row records metadata so chat
 // responses can embed it via /api/resources/{id}/download?inline=1 (which
 // permission-gates then redirects to the blob CDN URL).
 
-const IMAGE_MODEL = process.env.IMAGE_MODEL || "imagen-4.0-generate-001";
+const IMAGE_MODEL = process.env.IMAGE_MODEL || "gpt-image-2";
 
 export type ImageAspectRatio = "1:1" | "16:9" | "9:16" | "4:3" | "3:4";
+
+// gpt-image models take fixed sizes, not aspect ratios: map to the closest.
+const OPENAI_SIZE: Record<ImageAspectRatio, string> = {
+  "1:1": "1024x1024",
+  "16:9": "1536x1024",
+  "4:3": "1536x1024",
+  "9:16": "1024x1536",
+  "3:4": "1024x1536",
+};
 
 export interface GeneratedImage {
   resourceId: string;
@@ -58,28 +68,25 @@ export async function generateImage(options: {
   title?: string;
   includeLogo?: boolean;
 }): Promise<GeneratedImage> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    throw new Error("Image generation is not configured (missing GEMINI_API_KEY)");
+    throw new Error("Image generation is not configured (missing OPENAI_API_KEY)");
   }
 
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${IMAGE_MODEL}:predict`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": apiKey,
-      },
-      body: JSON.stringify({
-        instances: [{ prompt: options.prompt }],
-        parameters: {
-          sampleCount: 1,
-          aspectRatio: options.aspectRatio || "1:1",
-        },
-      }),
-    }
-  );
+  const res = await fetch("https://api.openai.com/v1/images/generations", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: IMAGE_MODEL,
+      prompt: options.prompt,
+      size: OPENAI_SIZE[options.aspectRatio || "1:1"],
+      quality: process.env.IMAGE_QUALITY || "high",
+      n: 1,
+    }),
+  });
 
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
@@ -87,19 +94,20 @@ export async function generateImage(options: {
   }
 
   const data = (await res.json()) as {
-    predictions?: { bytesBase64Encoded?: string; mimeType?: string }[];
+    data?: { b64_json?: string }[];
+    output_format?: string;
   };
 
-  const prediction = data.predictions?.[0];
-  if (!prediction?.bytesBase64Encoded) {
+  const b64 = data.data?.[0]?.b64_json;
+  if (!b64) {
     throw new Error("Image generation returned no image (possibly blocked by safety filters)");
   }
 
   const title =
     options.title || options.prompt.slice(0, 80).trim() || "Generated image";
-  let mimeType = prediction.mimeType || "image/png";
+  let mimeType = data.output_format === "jpeg" ? "image/jpeg" : "image/png";
 
-  let bytes = Buffer.from(prediction.bytesBase64Encoded, "base64");
+  let bytes = Buffer.from(b64, "base64");
 
   // Stamp the real brand wordmark unless explicitly opted out. If compositing
   // fails for any reason, ship the un-stamped image rather than failing the
