@@ -62,7 +62,7 @@ messaging-framework.md, terminology.yaml, voice-core.md, constraints-messaging.y
 ## Current Source Documents (Files, 9/15/26)
 - System Story v3 (locked copy) and System Story v3 deck
 - MVP UX Story (first draft copy) and MVP UX Story deck
-- Investor Deck (9/8/26, MVP aligned); slide 14 reserve language pending attorney review
+- Investor Deck (9/15/26); Jo approved slides 3 and 5; funding and reserve language pending attorney review
 - Content Inventory (9/15/26)
 
 ## Campaign Learnings (Update after each campaign)
