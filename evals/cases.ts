@@ -525,7 +525,7 @@ export const CASES: EvalCase[] = [
     kind: "specialist",
     title: "Five-slide funder carousel",
     turns: [u("Create a 5-slide Instagram carousel for funders on how funding creates capacity. Give the slide copy and type specs, and generate the cover background.")],
-    expect: { domain: "social-creative", image: true },
+    expect: { domain: "social-creative", presentation: false, image: true },
     rubric: "Table of 5 slides (hook cover, one point each, gradient CTA final), type specs per skill, one generated 1:1 cover background with no text, Activate + Fund language.",
   },
   {

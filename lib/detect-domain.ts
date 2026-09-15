@@ -82,9 +82,45 @@ const DOMAIN_KEYWORDS: Record<string, string[]> = {
   ],
 };
 
-// Any deck-shaped artifact goes to deliverable-design with presentation context
-const PRESENTATION_RE =
-  /\b(decks?|slides?|slideshow|slide ?deck|presentations?|pitch ?deck|keynote|powerpoint|pptx|one[- ]?pagers?)\b/i;
+// Any deck-shaped artifact goes to deliverable-design with presentation context.
+// STRONG words always mean a deck; a bare "slide(s)" means a deck unless the
+// request is a social carousel ("a 5-slide Instagram carousel").
+const STRONG_PRESENTATION_RE =
+  /\b(decks?|slideshow|slide ?deck|presentations?|pitch ?deck|keynote|powerpoint|pptx|one[- ]?pagers?|investor slides?|board slides?)\b/i;
+const SLIDES_RE = /\bslides?\b/i;
+
+/**
+ * Asset-type precedence (owner decision 2026-09-15: route by what is being
+ * made). When the message names the ASSET, that wins over generic writing
+ * words like "copy", "headline", or "email".
+ */
+// Social formats: carousels, stories, reel covers, platform posts and graphics
+const SOCIAL_ASSET_RE =
+  /\b(carousels?|reel covers?|story (design|graphic|post)s?|social (post|graphic|visual|media design)s?|post graphics?|(instagram|insta|ig|linkedin|tiktok|facebook|fb)( \w+)? (posts?|stor(y|ies)|reels?|graphics?|visuals?|carousels?|stat callouts?))\b/i;
+// Repurposing a source into posts stays with the content atomizer
+const ATOMIZE_RE = /\b(repurpose|atomi[sz]e|turn (this |these |it )?into posts|break (this |it )?down|social posts from|posts from (this|the|our) )/i;
+// Lead magnet assets: opt-in pages, freebies, downloads, and their delivery email
+const LEAD_MAGNET_ASSET_RE =
+  /\b(lead magnets?|opt-?in (page|form)s?|freebies?|free (resource|download)s?|gated (content|guide|download)s?|downloadable|(checklist|guide|ebook|e-book|whitepaper|workbook|template|toolkit)s? (download|pdf)s?|delivery emails? for (the|our|a|this) (lead magnet|guide|checklist|download|freebie))\b/i;
+// A mockup of an opt-in page is web design (web-mockup), not the lead magnet itself
+const MOCKUP_RE = /\b(mock ?-?ups?|wireframes?)\b/i;
+// Brand assets: email headers and banners, logo lockups, OG images, brand graphics
+const BRAND_ASSET_RE =
+  /\b(email headers?|email banners?|header images?|banners?|logo lockups?|lockups?|brand graphics?|og images?|open graph( images?)?|infographics?)\b/i;
+
+/** The asset named in one message, or null. Social is checked first so a
+ * "LinkedIn carousel for our checklist download" is still a carousel. */
+function assetDomain(text: string): string | null {
+  if (SOCIAL_ASSET_RE.test(text) && !ATOMIZE_RE.test(text)) return "social-creative";
+  if (BRAND_ASSET_RE.test(text) && !SOCIAL_ASSET_RE.test(text)) return "brand-asset-design";
+  if (LEAD_MAGNET_ASSET_RE.test(text)) return MOCKUP_RE.test(text) ? "web-mockup" : "lead-magnet";
+  return null;
+}
+
+function isPresentation(text: string): boolean {
+  if (STRONG_PRESENTATION_RE.test(text)) return true;
+  return SLIDES_RE.test(text) && !/\bcarousels?\b/i.test(text);
+}
 
 const INVESTOR_RE =
   /\b(investors?|investment memo|fundrais(e|ing)|venture capital|vcs?\b|angel investors?|pre-?seed|seed round|series [ab]\b|cap table|valuation|safe note|the raise|our raise|raising (capital|money|a round)|data room)\b/i;
@@ -123,16 +159,37 @@ export function detectRequestContext(msgs: { role: string; content: string }[]):
 
   const investor = INVESTOR_RE.test(current) || INVESTOR_RE.test(earlier);
 
-  // Presentation intent in the current message always wins. In a revision
-  // ("make slide 3 shorter", "tighten the closing") the artifact type persists
-  // from earlier turns unless the current message clearly asks for something else.
-  const currentPresentation = PRESENTATION_RE.test(current);
+  const currentAsset = assetDomain(current);
+  let lastEarlierAsset: string | null = null;
+  for (let i = userMsgs.length - 2; i >= 0 && !lastEarlierAsset; i--) lastEarlierAsset = assetDomain(userMsgs[i]);
+
+  // Presentation intent in the current message always wins over writing
+  // specialists. In a revision ("make slide 3 shorter", "tighten the closing")
+  // the artifact type persists from earlier turns unless the current message
+  // clearly asks for something else. A named social carousel is not a deck,
+  // and a bare "slide 3" while revising a carousel stays with the carousel.
+  const weakSlideInCarouselRevision =
+    !STRONG_PRESENTATION_RE.test(current) && !currentAsset && lastEarlierAsset === "social-creative";
+  const currentPresentation =
+    isPresentation(current) && currentAsset !== "social-creative" && !weakSlideInCarouselRevision;
   const currentBest = [...currentScores.entries()].sort((a, b) => b[1] - a[1])[0];
-  const currentIsOtherArtifact = !!currentBest && currentBest[1] >= 2 && currentBest[0] !== "deliverable-design";
-  const presentation = currentPresentation || (PRESENTATION_RE.test(earlier) && !currentIsOtherArtifact);
+  const currentIsOtherArtifact =
+    !!currentAsset || (!!currentBest && currentBest[1] >= 2 && currentBest[0] !== "deliverable-design");
+  const presentation = currentPresentation || (isPresentation(earlier) && !currentIsOtherArtifact);
 
   if (presentation) {
     return { domain: "deliverable-design", presentation: true, investor };
+  }
+
+  // The asset being made wins over generic words like "copy" or "email"
+  if (currentAsset) {
+    return { domain: currentAsset, presentation: false, investor };
+  }
+
+  // A revision with no domain signal of its own ("make it shorter") keeps the
+  // asset named in the most recent earlier message that named one
+  if (lastEarlierAsset && (!currentBest || currentBest[1] < 2)) {
+    return { domain: lastEarlierAsset, presentation: false, investor };
   }
 
   const combined = new Map<string, number>();
