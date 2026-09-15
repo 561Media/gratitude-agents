@@ -8,6 +8,8 @@ import {
   pgEnum,
   integer,
   vector,
+  primaryKey,
+  index,
 } from "drizzle-orm/pg-core";
 
 export const userRoleEnum = pgEnum("user_role", [
@@ -141,8 +143,59 @@ export const resources = pgTable("resources", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
+// Server-owned upload intents. The server picks the object key
+// (uploads/<userId>/<intentId>/<name>), the Blob client token is bound to the
+// intent, and a resource row may only be created from an intent the same user
+// owns. One intent = one file = one resource.
+export const blobUploadStatusEnum = pgEnum("blob_upload_status", [
+  "pending",
+  "uploaded",
+  "linked",
+  "rejected",
+]);
+
+export const blobUploads = pgTable(
+  "blob_uploads",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .references(() => users.id, { onDelete: "cascade" })
+      .notNull(),
+    purpose: text("purpose", { enum: ["resource", "chat"] }).notNull(),
+    pathname: text("pathname").notNull(),
+    fileName: text("file_name").notNull(),
+    mimeType: text("mime_type").notNull(),
+    maxBytes: integer("max_bytes").notNull(),
+    status: blobUploadStatusEnum("status").default("pending").notNull(),
+    blobUrl: text("blob_url"),
+    resourceId: uuid("resource_id").references(() => resources.id, {
+      onDelete: "set null",
+    }),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    completedAt: timestamp("completed_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [index("blob_uploads_user_idx").on(t.userId, t.createdAt)]
+);
+
+// Fixed-window per-user counters for abuse budgets (lib/rate-limit.ts)
+export const usageCounters = pgTable(
+  "usage_counters",
+  {
+    userId: uuid("user_id")
+      .references(() => users.id, { onDelete: "cascade" })
+      .notNull(),
+    bucket: text("bucket").notNull(),
+    windowStart: timestamp("window_start", { withTimezone: true }).notNull(),
+    count: integer("count").default(0).notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.bucket, t.windowStart] })]
+);
+
 export type User = typeof users.$inferSelect;
 export type Conversation = typeof conversations.$inferSelect;
 export type Message = typeof messages.$inferSelect;
 export type KnowledgebaseEntry = typeof knowledgebaseEntries.$inferSelect;
 export type Resource = typeof resources.$inferSelect;
+export type BlobUpload = typeof blobUploads.$inferSelect;

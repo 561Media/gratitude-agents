@@ -15,6 +15,30 @@ import {
 } from "@/lib/permissions";
 import { detectSpecialistDomain } from "@/lib/detect-domain";
 import { generateImage, type ImageAspectRatio } from "@/lib/image-gen";
+import { readBlobBytes } from "@/lib/blob-store";
+import { matchesSignature, sniffImageType } from "@/lib/upload-policy";
+import {
+  CHAT_MAX_IMAGES_PER_RUN,
+  CHAT_MAX_MESSAGE_CHARS,
+  consumeBudgets,
+  rateLimitResponse,
+} from "@/lib/rate-limit";
+
+// Attachment bytes sent to the model (provider base64 limits)
+const ATTACHMENT_IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+const ATTACHMENT_PDF_MAX_BYTES = 20 * 1024 * 1024;
+const ATTACHMENT_TEXT_MAX_BYTES = 1024 * 1024;
+
+// Private blobs are read through the SDK from our own store only (never a
+// fetch of a stored URL), with a byte cap and a timeout
+async function readAttachmentBytes(blobUrl: string, maxBytes: number) {
+  try {
+    return await readBlobBytes(blobUrl, { maxBytes, timeoutMs: 10000 });
+  } catch (e) {
+    console.error("Attachment read failed:", e instanceof Error ? e.name : e);
+    return null;
+  }
+}
 
 // Image generation adds ~15s per image on top of model turns. Keep within
 // the plan's function limit (60s) - raise only after moving to a plan tier
@@ -78,12 +102,27 @@ export async function POST(request: Request) {
     // Accept agentId for backward compat but default to "gratitude"
     const agentId = body.agentId || "gratitude";
 
-    if (!message) {
+    if (!message || typeof message !== "string") {
       return new Response(JSON.stringify({ error: "Missing message" }), {
         status: 400,
         headers: { "Content-Type": "application/json" },
       });
     }
+
+    const maxChars = CHAT_MAX_MESSAGE_CHARS();
+    if (message.length > maxChars) {
+      return new Response(
+        JSON.stringify({
+          error: `Message is too long. Please keep it under ${maxChars.toLocaleString()} characters.`,
+          code: "message_too_long",
+        }),
+        { status: 413, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    // Per-user budget, enforced before any model call
+    const chatLimited = await consumeBudgets(session.userId, ["chat_hour", "chat_day"]);
+    if (chatLimited) return rateLimitResponse(chatLimited);
 
     // For the unified "gratitude" agent, use orchestrator as the base
     const resolvedAgentId = agentId === "gratitude" ? "orchestrator" : agentId;
@@ -171,29 +210,48 @@ export async function POST(request: Request) {
     }));
 
     // Attachments become native model input for THIS turn: images and PDFs as
-    // URL blocks (the model reads them directly from the blob CDN), small text
-    // files inlined. Earlier turns keep markdown links only.
+    // base64 blocks read from private storage (bytes must match the type),
+    // small text files inlined. Earlier turns keep markdown links only.
     if (attachments.length > 0 && apiMessages.length > 0) {
       const last = apiMessages[apiMessages.length - 1];
       const blocks: Anthropic.Messages.ContentBlockParam[] = [
         { type: "text", text: typeof last.content === "string" ? last.content : message },
       ];
+      const unreadable = (fileName: string): Anthropic.Messages.ContentBlockParam => ({
+        type: "text",
+        text: `\n\n[The user attached "${fileName}" but its contents could not be read.]`,
+      });
       for (const a of attachments) {
-        if (a.mimeType.startsWith("image/") && a.blobUrl) {
-          blocks.push({ type: "image", source: { type: "url", url: a.blobUrl } });
+        if (a.mimeType.startsWith("image/") && a.mimeType !== "image/svg+xml" && a.blobUrl) {
+          const bytes = await readAttachmentBytes(a.blobUrl, ATTACHMENT_IMAGE_MAX_BYTES);
+          const mediaType = bytes ? sniffImageType(bytes) : null;
+          blocks.push(
+            bytes && mediaType
+              ? {
+                  type: "image",
+                  source: { type: "base64", media_type: mediaType, data: Buffer.from(bytes).toString("base64") },
+                }
+              : unreadable(a.fileName)
+          );
         } else if (a.mimeType === "application/pdf" && a.blobUrl) {
-          blocks.push({ type: "document", source: { type: "url", url: a.blobUrl } });
+          const bytes = await readAttachmentBytes(a.blobUrl, ATTACHMENT_PDF_MAX_BYTES);
+          blocks.push(
+            bytes && matchesSignature("pdf", bytes)
+              ? {
+                  type: "document",
+                  source: { type: "base64", media_type: "application/pdf", data: Buffer.from(bytes).toString("base64") },
+                }
+              : unreadable(a.fileName)
+          );
         } else if (
           a.mimeType.startsWith("text/") ||
           /\.(md|csv|txt)$/i.test(a.fileName)
         ) {
           let text = a.textContent;
           if (!text && a.blobUrl) {
-            try {
-              const r = await fetch(a.blobUrl);
-              if (r.ok) text = await r.text();
-            } catch {
-              // fall through to the unreadable note below
+            const bytes = await readAttachmentBytes(a.blobUrl, ATTACHMENT_TEXT_MAX_BYTES);
+            if (bytes && matchesSignature("text", bytes.subarray(0, 512))) {
+              text = new TextDecoder().decode(bytes);
             }
           }
           blocks.push({
@@ -358,6 +416,8 @@ export async function POST(request: Request) {
     let fullResponse = "";
     const citations: { url: string; title: string }[] = [];
     const MAX_TOOL_TURNS = 4;
+    const maxImagesThisRun = CHAT_MAX_IMAGES_PER_RUN();
+    let imagesThisRun = 0;
 
     const readableStream = new ReadableStream({
       async start(controller) {
@@ -448,6 +508,30 @@ export async function POST(request: Request) {
                   include_logo?: boolean;
                 };
                 const validRatios = ["1:1", "16:9", "9:16", "4:3", "3:4"];
+
+                // Budgets: a per-reply cap, then the user's daily allowance,
+                // both checked before the paid image call
+                if (imagesThisRun >= maxImagesThisRun) {
+                  toolResults.push({
+                    type: "tool_result",
+                    tool_use_id: toolUse.id,
+                    is_error: true,
+                    content: `The image limit for a single reply (${maxImagesThisRun}) has been reached. Do not call generate_image again in this reply. Tell the user they can ask for more images in their next message.`,
+                  });
+                  continue;
+                }
+                const imageLimited = await consumeBudgets(session.userId, ["image_day"]);
+                if (imageLimited) {
+                  toolResults.push({
+                    type: "tool_result",
+                    tool_use_id: toolUse.id,
+                    is_error: true,
+                    content: "This user has reached today's image generation limit. Tell them plainly that they can generate more images tomorrow, and continue helping with the rest of the request.",
+                  });
+                  continue;
+                }
+                imagesThisRun++;
+
                 send({ generatingImage: true });
                 try {
                   const image = await generateImage({

@@ -116,8 +116,9 @@ export async function generateImage(options: {
 
   const extension = mimeType.includes("jpeg") ? "jpg" : "png";
   const fileName = `${title.replace(/[^\w\- ]/g, "").replace(/\s+/g, "-").toLowerCase() || "image"}.${extension}`;
+  // Private store: served only through the authorized download route
   const blob = await put(`generated/${fileName}`, bytes, {
-    access: "public",
+    access: "private",
     addRandomSuffix: true,
     contentType: mimeType,
   });

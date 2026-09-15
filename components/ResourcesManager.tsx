@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { upload } from "@vercel/blob/client";
+import { PortalUploadError, uploadFileToPortal } from "@/lib/client-upload";
 import { toast } from "./Toaster";
 import ConfirmDialog from "./ConfirmDialog";
 
@@ -113,39 +113,23 @@ export default function ResourcesManager() {
         let failed = 0;
         for (const f of files) {
           try {
-            // Upload straight to Vercel Blob (bypasses the serverless body
-            // limit), then record metadata + blob URL as a resource row
-            const blob = await upload(f.name, f, {
-              access: "public",
-              handleUploadUrl: "/api/blob/upload",
+            // Upload straight to private Vercel Blob (bypasses the serverless
+            // body limit); the server verifies the object, then records it
+            await uploadFileToPortal(f, "resource", {
+              // Multi-file: title applies to a single file, otherwise use filenames
+              title:
+                files.length === 1
+                  ? title || f.name
+                  : title
+                    ? `${title} - ${f.name}`
+                    : f.name,
+              description,
+              visibility,
+              tags: tagString.split(",").map((t) => t.trim()).filter(Boolean),
             });
-
-            const res = await fetch("/api/resources", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                // Multi-file: title applies to a single file, otherwise use filenames
-                title:
-                  files.length === 1
-                    ? title || f.name
-                    : title
-                      ? `${title} - ${f.name}`
-                      : f.name,
-                description,
-                visibility,
-                type: "upload",
-                fileName: f.name,
-                mimeType: f.type || "application/octet-stream",
-                extension: f.name.split(".").pop() || null,
-                sizeBytes: f.size,
-                blobUrl: blob.url,
-                tags: tagString.split(",").map((t) => t.trim()).filter(Boolean),
-              }),
-            });
-            if (!res.ok) throw new Error("metadata save failed");
-          } catch {
+          } catch (err) {
             failed++;
-            toast(`Upload failed for "${f.name}".`);
+            toast(err instanceof PortalUploadError ? err.message : `Upload failed for "${f.name}".`);
           }
         }
         if (failed === 0) {

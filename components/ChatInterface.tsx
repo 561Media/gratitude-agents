@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { upload } from "@vercel/blob/client";
+import { PortalUploadError, uploadFileToPortal } from "@/lib/client-upload";
 import ChatMessage from "./ChatMessage";
 import GratitudeMark from "./GratitudeMark";
 import { toast } from "./Toaster";
@@ -166,7 +166,8 @@ async function downloadConversation(
   });
 
   if (!res.ok) {
-    toast(`${format.toUpperCase()} export failed. Please try again.`);
+    const errBody = (await res.json().catch(() => null)) as { error?: string } | null;
+    toast(res.status === 429 && errBody?.error ? errBody.error : `${format.toUpperCase()} export failed. Please try again.`);
     return;
   }
 
@@ -374,40 +375,24 @@ export default function ChatInterface({
     setUploadingAttachment(true);
     try {
       for (const f of incoming) {
-        const blob = await upload(f.name, f, {
-          access: "public",
-          handleUploadUrl: "/api/blob/upload",
-        });
-        const res = await fetch("/api/resources", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            title: f.name,
-            type: "upload",
-            visibility: "private",
-            fileName: f.name,
-            mimeType: f.type || "application/octet-stream",
-            extension: f.name.split(".").pop() || null,
-            sizeBytes: f.size,
-            blobUrl: blob.url,
-            tags: ["chat-upload"],
-          }),
-        });
-        if (!res.ok) throw new Error("metadata save failed");
-        const resource = await res.json();
+        const resource = await uploadFileToPortal<{ id: string; mimeType: string | null }>(
+          f,
+          "chat",
+          { title: f.name, visibility: "private", tags: ["chat-upload"] }
+        );
         setAttachments((prev) => [
           ...prev,
           {
             resourceId: resource.id,
             fileName: f.name,
-            mimeType: f.type || "application/octet-stream",
+            mimeType: resource.mimeType || f.type || "application/octet-stream",
             sizeBytes: f.size,
           },
         ]);
       }
     } catch (e) {
       console.error("Attachment upload failed:", e);
-      toast("Attachment upload failed. Please try again.");
+      toast(e instanceof PortalUploadError ? e.message : "Attachment upload failed. Please try again.");
     } finally {
       setUploadingAttachment(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -444,7 +429,12 @@ export default function ChatInterface({
         }),
       });
 
-      if (!res.ok) throw new Error("Chat failed");
+      if (!res.ok) {
+        // Limits (429) and validation errors carry a readable message
+        const errBody = (await res.json().catch(() => null)) as { error?: string } | null;
+        if (errBody?.error) toast(errBody.error);
+        throw new Error("Chat failed");
+      }
 
       const reader = res.body?.getReader();
       const decoder = new TextDecoder();

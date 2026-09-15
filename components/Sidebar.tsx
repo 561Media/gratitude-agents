@@ -335,7 +335,7 @@ export default function Sidebar({
             }}
           >
             <p className="text-[14px] text-white/80 font-medium mb-1">Delete conversation?</p>
-            <p className="text-[12px] text-white/40 mb-5">This can't be undone.</p>
+            <p className="text-[12px] text-white/40 mb-5">This can&apos;t be undone.</p>
             <div className="flex gap-2">
               <button
                 onClick={() => setConfirmDeleteId(null)}
