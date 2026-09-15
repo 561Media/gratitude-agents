@@ -66,7 +66,8 @@ function DownloadButton({
     });
 
     if (!res.ok) {
-      toast(`${format.toUpperCase()} export failed. Please try again.`);
+      const errBody = (await res.json().catch(() => null)) as { error?: string } | null;
+      toast(res.status === 429 && errBody?.error ? errBody.error : `${format.toUpperCase()} export failed. Please try again.`);
       return;
     }
 

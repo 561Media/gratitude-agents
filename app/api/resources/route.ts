@@ -1,81 +1,128 @@
 import { NextResponse } from "next/server";
-import { and, desc, eq, or } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { put } from "@vercel/blob";
+import { randomUUID } from "node:crypto";
 import { db } from "@/lib/db";
-import { resources } from "@/db/schema";
-import { getSession } from "@/lib/auth";
+import { blobUploads, conversations, resources } from "@/db/schema";
+import { getSession, type SessionUser } from "@/lib/auth";
 import {
   canPublishResource,
+  canWriteConversation,
   defaultVisibilityForRole,
-  isPrivilegedUser,
 } from "@/lib/permissions";
+import {
+  SIGNATURE_BYTES,
+  fileExtension,
+  matchesSignature,
+  normalizeMime,
+  uploadPathname,
+  validateUploadRequest,
+} from "@/lib/upload-policy";
+import { claimUploadIntent, isUuid, verifyUploadIntent } from "@/lib/resource-uploads";
+import { consumeBudgets, rateLimitResponse } from "@/lib/rate-limit";
 
-async function createResourceFromFormData(formData: FormData, userId: string) {
-  const file = formData.get("file");
-  const title = String(formData.get("title") || "");
-  const description = String(formData.get("description") || "");
-  const visibility = String(formData.get("visibility") || "internal");
-  const tags = String(formData.get("tags") || "")
-    .split(",")
-    .map((tag) => tag.trim())
-    .filter(Boolean);
-  const externalUrl = String(formData.get("externalUrl") || "");
-  const conversationId = String(formData.get("conversationId") || "") || null;
+const VISIBILITIES = ["private", "internal", "partner"] as const;
+type Visibility = (typeof VISIBILITIES)[number];
 
-  if (file instanceof File) {
-    const bytes = Buffer.from(await file.arrayBuffer());
+const TEXT_MIMES = new Set(["text/markdown", "text/plain", "text/csv"]);
+const MAX_TEXT_CONTENT_CHARS = 1_000_000;
+const MAX_TITLE_CHARS = 300;
+const MAX_DESCRIPTION_CHARS = 5000;
+const MAX_TAGS = 20;
 
-    // Store the file in Vercel Blob, not Postgres. Keep small text files
-    // inline too so agents can read them without a fetch.
-    const blob = await put(`uploads/${file.name}`, bytes, {
-      access: "public",
-      addRandomSuffix: true,
-      contentType: file.type || "application/octet-stream",
-    });
+function bad(error: string, status = 400) {
+  return NextResponse.json({ error }, { status });
+}
 
-    const [resource] = await db
-      .insert(resources)
-      .values({
-        ownerId: userId,
-        conversationId,
-        title: title || file.name,
-        description: description || null,
-        type: "upload",
-        visibility: visibility as "private" | "internal" | "partner",
-        status: "draft",
-        fileName: file.name,
-        mimeType: file.type || "application/octet-stream",
-        extension: file.name.split(".").pop() || null,
-        sizeBytes: bytes.byteLength,
-        textContent: file.type.startsWith("text/") ? bytes.toString("utf-8") : null,
-        blobUrl: blob.url,
-        tags,
-      })
-      .returning();
+function str(value: unknown, max: number): string {
+  return typeof value === "string" ? value.slice(0, max) : "";
+}
 
-    return resource;
+function resolveVisibility(session: SessionUser, requested: unknown): Visibility {
+  if (!canPublishResource(session)) return "private";
+  return VISIBILITIES.includes(requested as Visibility)
+    ? (requested as Visibility)
+    : (defaultVisibilityForRole(session) as Visibility);
+}
+
+function resolveStatus(session: SessionUser, requested: unknown): "draft" | "published" {
+  return requested === "published" && canPublishResource(session) ? "published" : "draft";
+}
+
+function cleanTags(raw: unknown): string[] {
+  const list = Array.isArray(raw)
+    ? raw
+    : typeof raw === "string"
+      ? raw.split(",")
+      : [];
+  return list
+    .filter((t): t is string => typeof t === "string")
+    .map((t) => t.trim().slice(0, 60))
+    .filter(Boolean)
+    .slice(0, MAX_TAGS);
+}
+
+// Linking a resource to a conversation requires write access to it
+async function resolveConversation(
+  session: SessionUser,
+  raw: unknown
+): Promise<{ id: string | null } | { error: NextResponse }> {
+  if (raw === undefined || raw === null || raw === "") return { id: null };
+  if (!isUuid(raw)) return { error: bad("Invalid conversation.") };
+  const [conv] = await db.select().from(conversations).where(eq(conversations.id, raw)).limit(1);
+  if (!conv) return { error: bad("Conversation not found.", 404) };
+  if (!canWriteConversation(session, conv)) return { error: bad("Forbidden", 403) };
+  return { id: conv.id };
+}
+
+// Generated text outputs and links (no file bytes)
+async function createTextResource(
+  session: SessionUser,
+  fields: Record<string, unknown>,
+  conversationId: string | null
+) {
+  const title = str(fields.title, MAX_TITLE_CHARS).trim();
+  if (!title) return bad("A title is required.");
+
+  const textContent = typeof fields.textContent === "string" ? fields.textContent : "";
+  if (textContent.length > MAX_TEXT_CONTENT_CHARS) return bad("Content is too long.");
+
+  const externalUrl = str(fields.externalUrl, 2048).trim();
+  if (externalUrl) {
+    let parsed: URL | null = null;
+    try {
+      parsed = new URL(externalUrl);
+    } catch {
+      parsed = null;
+    }
+    if (!parsed || (parsed.protocol !== "https:" && parsed.protocol !== "http:")) {
+      return bad("Links must start with http:// or https://.");
+    }
   }
+
+  const mime = normalizeMime(str(fields.mimeType, 100));
+  const mimeType = TEXT_MIMES.has(mime) ? `${mime}; charset=utf-8` : "text/markdown; charset=utf-8";
 
   const [resource] = await db
     .insert(resources)
     .values({
-      ownerId: userId,
+      ownerId: session.userId,
       conversationId,
       title,
-      description: description || null,
+      description: str(fields.description, MAX_DESCRIPTION_CHARS) || null,
       type: externalUrl ? "link" : "generated",
-      visibility: visibility as "private" | "internal" | "partner",
-      status: "draft",
+      visibility: resolveVisibility(session, fields.visibility),
+      status: resolveStatus(session, fields.status),
       externalUrl: externalUrl || null,
-      textContent: String(formData.get("textContent") || "") || null,
-      fileName: String(formData.get("fileName") || "") || null,
-      mimeType: String(formData.get("mimeType") || "") || null,
-      extension: String(formData.get("extension") || "") || null,
-      tags,
+      textContent: textContent || null,
+      fileName: str(fields.fileName, 255) || null,
+      mimeType,
+      extension: str(fields.extension, 20) || null,
+      tags: cleanTags(fields.tags),
     })
     .returning();
 
-  return resource;
+  return NextResponse.json(resource);
 }
 
 export async function GET() {
@@ -127,41 +174,120 @@ export async function POST(request: Request) {
   try {
     if (contentType.includes("multipart/form-data")) {
       const formData = await request.formData();
-      if (!canPublishResource(session)) {
-        formData.set("visibility", "private");
+      const conv = await resolveConversation(session, formData.get("conversationId"));
+      if ("error" in conv) return conv.error;
+
+      const file = formData.get("file");
+      if (!(file instanceof File)) {
+        const fields = Object.fromEntries(
+          Array.from(formData.entries()).filter(([, v]) => typeof v === "string")
+        );
+        return createTextResource(session, fields, conv.id);
       }
-      const resource = await createResourceFromFormData(formData, session.userId);
+
+      // Small server-side upload path: same type, size and signature rules
+      // as the browser flow, stored privately under the owner's prefix
+      const validation = validateUploadRequest({
+        fileName: file.name,
+        mimeType: file.type,
+        sizeBytes: file.size,
+        purpose: "resource",
+      });
+      if (!validation.ok) return bad(validation.error);
+
+      const limited = await consumeBudgets(session.userId, ["upload_hour"]);
+      if (limited) return rateLimitResponse(limited);
+
+      const bytes = Buffer.from(await file.arrayBuffer());
+      if (!matchesSignature(validation.rule.signature, bytes.subarray(0, SIGNATURE_BYTES))) {
+        return bad("File contents do not match its type.");
+      }
+
+      const blob = await put(uploadPathname(session.userId, randomUUID(), file.name), bytes, {
+        access: "private",
+        addRandomSuffix: true,
+        contentType: validation.mimeType,
+      });
+
+      const [resource] = await db
+        .insert(resources)
+        .values({
+          ownerId: session.userId,
+          conversationId: conv.id,
+          title: str(formData.get("title"), MAX_TITLE_CHARS) || file.name.slice(0, MAX_TITLE_CHARS),
+          description: str(formData.get("description"), MAX_DESCRIPTION_CHARS) || null,
+          type: "upload",
+          visibility: resolveVisibility(session, formData.get("visibility")),
+          status: "draft",
+          fileName: file.name.slice(0, 255),
+          mimeType: validation.mimeType,
+          extension: fileExtension(file.name) || null,
+          sizeBytes: bytes.byteLength,
+          textContent:
+            validation.rule.signature === "text" && bytes.byteLength <= MAX_TEXT_CONTENT_CHARS
+              ? bytes.toString("utf-8")
+              : null,
+          blobUrl: blob.url,
+          tags: cleanTags(formData.get("tags")),
+        })
+        .returning();
+
       return NextResponse.json(resource);
     }
 
-    const body = await request.json();
-    const [resource] = await db
-      .insert(resources)
-      .values({
-        ownerId: session.userId,
-        conversationId: body.conversationId || null,
-        title: body.title,
-        description: body.description || null,
-        type: body.type || "generated",
-        visibility: canPublishResource(session)
-          ? body.visibility || defaultVisibilityForRole(session)
-          : "private",
-        status:
-          body.status && canPublishResource(session) ? body.status : "draft",
-        fileName: body.fileName || null,
-        mimeType: body.mimeType || "text/markdown; charset=utf-8",
-        extension: body.extension || null,
-        externalUrl: body.externalUrl || null,
-        textContent: body.textContent || null,
-        binaryContentBase64: body.binaryContentBase64 || null,
-        // Client-side blob uploads pass the resulting URL here
-        blobUrl: body.blobUrl || null,
-        sizeBytes: body.sizeBytes || null,
-        tags: body.tags || [],
-      })
-      .returning();
+    const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
+    if (!body || typeof body !== "object") return bad("Invalid request.");
 
-    return NextResponse.json(resource);
+    if (body.binaryContentBase64) {
+      return bad("Inline file content is not accepted. Upload the file instead.");
+    }
+
+    // File registration: only objects produced by our own upload flow
+    if (body.intentId !== undefined || body.blobUrl !== undefined) {
+      if (!body.intentId) {
+        return bad("File location was not produced by this portal's upload flow.");
+      }
+
+      const conv = await resolveConversation(session, body.conversationId);
+      if ("error" in conv) return conv.error;
+
+      const verified = await verifyUploadIntent(session.userId, body.intentId, body.blobUrl);
+      if (!verified.ok) return bad(verified.error, verified.status);
+
+      const claimed = await claimUploadIntent(verified.intent.id, session.userId, verified.blobUrl);
+      if (!claimed) return bad("This upload has already been used.", 409);
+
+      const intent = verified.intent;
+      const [resource] = await db
+        .insert(resources)
+        .values({
+          ownerId: session.userId,
+          conversationId: conv.id,
+          title: str(body.title, MAX_TITLE_CHARS).trim() || intent.fileName.slice(0, MAX_TITLE_CHARS),
+          description: str(body.description, MAX_DESCRIPTION_CHARS) || null,
+          type: "upload",
+          visibility: resolveVisibility(session, body.visibility),
+          status: resolveStatus(session, body.status),
+          fileName: intent.fileName,
+          mimeType: intent.mimeType,
+          extension: fileExtension(intent.fileName) || null,
+          sizeBytes: verified.sizeBytes,
+          blobUrl: verified.blobUrl,
+          tags: cleanTags(body.tags),
+        })
+        .returning();
+
+      await db
+        .update(blobUploads)
+        .set({ resourceId: resource.id })
+        .where(eq(blobUploads.id, intent.id));
+
+      return NextResponse.json(resource);
+    }
+
+    const conv = await resolveConversation(session, body.conversationId);
+    if ("error" in conv) return conv.error;
+    return createTextResource(session, body, conv.id);
   } catch (error) {
     console.error("Failed to create resource", error);
     return NextResponse.json(

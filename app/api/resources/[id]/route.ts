@@ -9,6 +9,7 @@ import {
   canViewResource,
   defaultVisibilityForRole,
 } from "@/lib/permissions";
+import { deleteStoredBlob } from "@/lib/blob-store";
 
 export async function GET(
   _request: Request,
@@ -103,5 +104,12 @@ export async function DELETE(
   }
 
   await db.delete(resources).where(eq(resources.id, id));
+
+  // Remove the stored object too. Row first: a leftover private object is
+  // unreachable, while a row pointing at a deleted object is a broken file.
+  if (resource.blobUrl) {
+    await deleteStoredBlob(resource.blobUrl);
+  }
+
   return NextResponse.json({ success: true });
 }
