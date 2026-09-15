@@ -1,7 +1,7 @@
 ---
 name: lead-magnet
-description: Generate lead magnet concepts and content that build email lists and convert subscribers into sponsors or activators
-argument-hint: "[target stakeholder + awareness level + goal]"
+description: Generate lead magnet concepts and content that build email lists and turn subscribers into participants, funders, or partners
+argument-hint: "[target audience + awareness level + goal]"
 ---
 
 # Lead Magnet Skill
@@ -10,57 +10,64 @@ argument-hint: "[target stakeholder + awareness level + goal]"
 Build an opt-in offer so valuable that the right person would pay for it.
 Then give it away to start the relationship.
 
-## Load Context
-Read `.claude/brand-memory.md`, `brand-kit/positioning-core.yaml`,
-`brand-kit/voice-core.md`.
+## Context
+Brand memory, positioning, voice, messaging framework, and terminology are
+already loaded above.
+
+## Locked Language (Activate + Fund)
+- Activate: a person chooses an available pre-funded act. It costs them nothing at the moment. Activate is the dominant action.
+- Fund: creates capacity for future acts, once or recurring. Keep it clearly distinct from Activate.
+- Never "donate" or "donation".
+- Sponsors appear only as optional attribution ("Made possible by [Sponsor]") or as one funding type.
+- Express is NEXT and Facilitate is FUTURE. Never present them as available now.
+- Never invent numbers, results, ROI, or partner names. Use supplied facts or [NEEDS INPUT].
+- No em dashes.
 
 ## Step 1: Diagnose the Gap
-Ask:
-1. Who is this for? (sponsors, activators, nonprofit partners, general audience)
+Ask only for what is missing:
+1. Who is this for? (participants, funders, sponsoring organizations, nonprofit partners, general audience)
 2. What is the #1 problem or desire they have?
-3. What do they think the solution is? (this may differ from the real answer)
-4. What do we want them to do after consuming the lead magnet?
+3. What do they think the solution is?
+4. What should they do after consuming the lead magnet?
 5. What format works best for this audience?
 
 ## Step 2: Generate 5 Concepts
 For each concept, provide:
-- Format (checklist, guide, calculator, audit, template, mini-course, swipe file, playbook)
+- Format (checklist, guide, template, mini-course, playbook, worksheet)
 - Title (clear benefit, specific promise)
-- What they get in 1 sentence
+- What they get, in 1 sentence
 - Why this earns an email address
 - Conversion path: lead magnet → next step
 
-**Formats that work well for Gratitude.com's stakeholders:**
+**Starting points by audience**
 
-For sponsors:
-- "The Corporate Impact Activation Playbook: Turn CSR Budget into Documented Results"
-- "Impact Metrics That Matter: 12 KPIs Your Board Actually Wants to See"
-- "The Sponsorship ROI Calculator: See What Activated Impact Looks Like at Scale"
+For participants:
+- "Good Is Ready: A Guide to Your First Activation"
+- "From Intention to Action: 7 Ways to Put Gratitude into Motion"
 
-For activators:
-- "The Gratitude Activation Guide: 7 Ways to Turn Your Gratitude into Real Impact"
-- "Impact Journal: Track Your Activations and See Your Real-World Difference"
+For funders:
+- "What Your Funding Makes Possible: A Guide to Funding Real-World Acts"
+- "The Funder Result Loop: How to See What Happened After You Fund"
+
+For sponsoring organizations:
+- "Create Funded Capacity Your People Can Activate: A Planning Worksheet"
 
 For nonprofit partners:
-- "The Partner Funding Playbook: How Activation-Based Sponsorship Works"
-- "Scaling Impact: A Guide to Corporate Sponsorship Through Activation Platforms"
+- "Delivering Verified Acts: A Partner Guide to Pre-Funded Capacity"
 
 ## Step 3: Build the Chosen Lead Magnet
 Once a concept is selected:
-- Write the full content (optimized for the format)
-- Include a cover page title and subhead
+- Write the full content as Markdown with a `#` title and `##` sections (it downloads as a branded PDF or Word document)
+- Include a subtitle under the title
 - Write the opt-in page headline and 3 bullet points
 - Write the delivery email (Email 1 of the welcome sequence)
 
-## Step 4: Chain to Next Skill
-Recommend running `/email-sequences` to build the welcome sequence
-and `/direct-response-copy` for the opt-in landing page.
-
-For designed PDF output, recommend: "Run /deliverable-design with the
-lead magnet content to create a branded PDF."
+## Step 4: Next Step
+Offer one clear next step in this conversation: the welcome sequence, the opt-in
+landing page copy, or a designed version of the document.
 
 ## Output Format
 Section 1: 5 concept options
-Section 2: Full lead magnet content for selected concept
+Section 2: Full lead magnet content for the selected concept
 Section 3: Opt-in page copy
 Section 4: Delivery email

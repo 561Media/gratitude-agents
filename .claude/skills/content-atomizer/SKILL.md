@@ -10,16 +10,25 @@ argument-hint: "[paste content or describe the source piece]"
 Get maximum distribution from one piece of pillar content without writing
 from scratch for every platform.
 
-## Load Context
-Read `.claude/brand-memory.md` and `brand-kit/voice-core.md`.
-Apply voice before writing anything.
+## Context
+Brand memory, voice, positioning, and terminology are already loaded above.
+Apply the voice before writing anything.
+
+## Locked Language (Activate + Fund)
+- Activate: a person chooses an available pre-funded act. It costs them nothing at the moment. Activate is the dominant action.
+- Fund: creates capacity for future acts, once or recurring. "Fund" is an approved verb. Keep it clearly distinct from Activate.
+- Never "donate" or "donation" for either action.
+- Sponsors appear only as optional attribution ("Made possible by [Sponsor]") or as one funding type. Never "Companies sponsor, people activate."
+- Express is NEXT and Facilitate is FUTURE. Never present them as available now.
+- Never invent numbers, results, or partner names. Use supplied facts or [NEEDS INPUT].
+- No em dashes.
 
 ## Input Options
 - Blog post or article
 - Newsletter issue
 - Impact report
 - Activation story or case study
-- Sponsor testimonial
+- Funder, partner, or participant testimonial
 - Event recap
 - Video transcript
 
@@ -27,8 +36,8 @@ Apply voice before writing anything.
 From the source content, identify:
 - The single most useful insight (this becomes the hook)
 - 3 to 5 supporting points
-- Any data, results, or specific numbers worth preserving
-- A CTA or takeaway
+- Any data, results, or specific numbers worth preserving (only if they are in the source)
+- A CTA or takeaway (Activate first, Fund second)
 
 ## Step 2: Atomize by Platform
 
@@ -39,32 +48,34 @@ From the source content, identify:
   Slide 7 = CTA or summary.
 
 **X (Twitter)**
-- Thread: 8 to 12 tweets. Tweet 1 = hook with promise of value.
-  Tweets 2 to 10 = one point each, self-contained. Final tweet = CTA + link.
-- Standalone tweet: Under 280 characters. Punchy. Shareable.
+- Thread: 8 to 12 posts. Post 1 = hook with a promise of value.
+  Posts 2 to 10 = one point each, self-contained. Final post = CTA + link.
+- Standalone post: under 280 characters. Punchy. Shareable.
 
 **Instagram**
-- Caption: 100 to 150 words. Conversational. 3 to 5 hashtags (relevant, not trending).
-- Reel script: 60 to 90 seconds. Hook in first 3 seconds. Educational middle.
-  CTA in final 5 seconds.
+- Caption: 100 to 150 words. Conversational. 3 to 5 relevant hashtags.
+- Reel script: 60 to 90 seconds. Hook in the first 3 seconds. Educational middle.
+  CTA in the final 5 seconds.
 
 **TikTok**
 - Script: 30 to 60 seconds. Pattern interrupt hook. Teach one thing well. Soft CTA.
 
 **YouTube**
-- Short script: 60 seconds. Same structure as TikTok but slightly more depth.
+- Short script: 60 seconds. Same structure as TikTok with slightly more depth.
 - Video title (under 60 characters, keyword-forward)
-- Description (150 to 200 words, CTA in first 2 lines)
+- Description (150 to 200 words, CTA in the first 2 lines)
 
 ## Step 3: Quality Check
 - Does every piece match the Gratitude.com voice?
 - Is the hook specific and not generic?
 - Does each platform version feel native, not copy-pasted?
-- Are we using "activate" not "donate," "sponsor" not "fund"?
+- Is the language locked: "activate" never "donate", "fund" only for creating capacity, sponsors only as attribution or a funding type?
+- Is every number traceable to the source, or marked [NEEDS INPUT]?
 
-## Step 4: Chain to Design
-If visuals are needed, recommend: "Run /social-creative with the carousel
-script or caption to generate platform-ready graphics."
+## Step 4: Visuals
+If visuals are needed, offer to create them next in this conversation: carousel
+slides can be delivered as slide JSON (downloadable as PowerPoint or PDF) and
+platform images can be generated at exact sizes with the logo applied.
 
 ## Output Format
-One markdown document organized by platform. All assets in one file.
+One Markdown response organized by platform, with a heading per platform.

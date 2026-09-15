@@ -1,6 +1,6 @@
 ---
 name: social-creative
-description: Create platform-specific social media graphics with Gratitude.com's dark glow aesthetic — Instagram posts, stories, LinkedIn banners, carousels, ad creatives
+description: Create platform-specific social media graphics with Gratitude.com's dark glow aesthetic: Instagram posts, stories, LinkedIn images, carousels, ad creatives
 argument-hint: "[platform + post type + content/copy to visualize]"
 ---
 
@@ -8,90 +8,77 @@ argument-hint: "[platform + post type + content/copy to visualize]"
 
 ## Purpose
 Create production-ready social media graphics that are on-brand, platform-native,
-and optimized for engagement. Every output must use Gratitude.com's exact brand system.
+and optimized for engagement.
 
-## Load Context
-Read ALL of the following before creating any visual:
-- `.claude/brand-memory.md`
-- `brand-kit/visual-system.json` (colors, gradients, shadows, radii, hover system)
-- `design-kit/platform-specs.yaml` (exact dimensions and safe zones)
-- `design-kit/typography-guide.md` (font rules and scale)
-- `design-kit/illustration-style.md` (art direction)
-- `design-kit/template-registry.yaml` (deliverable templates)
+## Context
+Brand memory, the visual system, voice, positioning, platform specs, and the
+typography guide are already loaded above.
+
+## How This Portal Produces Graphics
+You cannot save files, set type on an image, or look at rendered output.
+- Generate each graphic with the image tool at the exact canvas for the placement. Images are center-cropped to that canvas.
+- The official white Gratitude logo is composited automatically, bottom-right, inside the format's safe zone (above the bottom UI area on stories). Never ask the user to add it.
+- The image model cannot render text reliably. Keep words out of the image. Deliver the headline, supporting text, and CTA separately with type specs so they can be set in Anton and Inter.
+- Carousels can also be delivered as slide JSON, which downloads as a branded PDF or PowerPoint.
 
 ## Process
 
 ### Step 1: Identify the Deliverable
-Determine from the user's input:
-1. **Platform**: Instagram, LinkedIn, Facebook, X, YouTube
-2. **Format**: Post (square/portrait), story, carousel, banner, ad creative
-3. **Content type**: Stat callout, impact story, activation highlight, CTA, infographic
-4. **Copy/text**: The headline, body, and CTA to include
+1. **Platform:** Instagram, LinkedIn, Facebook, X, YouTube
+2. **Format:** post (square or portrait), story, carousel, landscape image, ad creative
+3. **Content type:** stat callout, impact story, available act, CTA, infographic
+4. **Copy:** headline, body, CTA
 
-If the user ran `/content-atomizer` first, use the atomized platform content
-as the text source.
+If atomized content was written earlier in the conversation, use it.
 
-### Step 2: Select Dimensions and Template
-Look up the exact specs from `design-kit/platform-specs.yaml`:
+### Step 2: Choose the Canvas
 
-| Platform + Type | Dimensions | Key Notes |
-|----------------|------------|-----------|
-| Instagram post (square) | 1080x1080 | Default. Logo bottom-right. |
-| Instagram post (portrait) | 1080x1350 | Better engagement. Extra bottom space. |
-| Instagram story | 1080x1920 | Top 200px and bottom 280px are UI zones. |
-| Instagram carousel | 1080x1080 per slide | Slide 1 = hook. Last = CTA. |
-| LinkedIn landscape | 1200x627 | Professional, data-forward. |
-| LinkedIn square | 1080x1080 | Also works on LinkedIn. |
-| Facebook post | 1200x630 | Similar to LinkedIn landscape. |
-| X/Twitter post | 1200x675 | 16:9 ratio. |
-| YouTube thumbnail | 1280x720 | Bottom-right has timestamp. High contrast. |
+| Placement | Aspect ratio | Delivered size | Notes |
+|-----------|--------------|----------------|-------|
+| Instagram or LinkedIn square | 1:1 | 1080x1080 | Default. 60px safe zone. |
+| Instagram portrait post | 4:5 | 1080x1350 | Bottom 120px can sit under the caption. |
+| Instagram or Facebook story, reel cover | 9:16 | 1080x1920 | Top 200px and bottom 280px are UI zones. |
+| Carousel slide | 1:1 | 1080x1080 per slide | Slide 1 = hook. Last = CTA. |
+| LinkedIn, Facebook, X landscape | 16:9 | 1920x1080 | Crop to 1200x627 or 1200x675 if needed; keep the subject centered. |
+| YouTube thumbnail | 16:9 | 1920x1080 | Bottom-right carries the timestamp: keep key detail away from it. |
 
-### Step 3: Design the Graphic
+### Step 3: Art Direction
 
-**BRAND RULES (non-negotiable):**
-- Colors: ONLY from `brand-kit/visual-system.json`. Pink (#FE3184), Coral (#FF6B35), Orange (#ec7211). Backgrounds: #000000 to #2a2a2a. NOT navy.
-- Fonts: Anton for headlines (ALWAYS uppercase, weight 400 only), Inter for body/labels. From `canvas-fonts/`.
-- Logo: Include Gratitude logo from `logos/`. Use `gratitude-logo-white.png` for social. Position bottom-right with 40px margin, max 120px wide.
-- Corners: 0px for social media (platforms crop to their own shapes).
-- Gradient: 3-stop pink→coral→orange for CTAs and accent elements.
+**Brand rules (non-negotiable)**
+- Colors: pink #FE3184, coral #FF6B35, orange #ec7211. Backgrounds #000000 to #2a2a2a. Not navy.
+- Fonts for the copy you deliver: Anton for headlines (UPPERCASE, weight 400 only), Inter for body and labels.
+- Corners: 0px (platforms crop to their own shapes).
+- Gradient: three stops, pink to coral to orange, for CTAs and accents.
 
-**COMPOSITION RULES:**
-- All text within safe zones per platform spec.
-- No text touching edges. Minimum margins per safe zone definition.
-- No text overlapping other text. Clear visual separation.
-- One hero element per graphic (what the viewer sees first).
-- Maximum 3 levels of visual hierarchy: headline → supporting text → CTA/logo.
-- Black backgrounds (#000000) for most posts. Add pink/orange glow orbs for depth.
+**Composition**
+- Keep all important detail inside the safe zone and centered enough to survive the crop.
+- One hero element per graphic.
+- Leave clear space where the headline will be set, and keep the bottom-right clear for the logo.
+- Black backgrounds with pink and orange glow for depth.
 
-**TYPOGRAPHY ON CANVAS:**
-- Headlines: Anton Regular (400), 36-64px depending on text length. ALWAYS UPPERCASE.
-- Supporting text: Inter Regular, 16-24px.
-- Stats/numbers: Anton Regular, 72-120px. ALWAYS UPPERCASE if text included.
-- CTA text: Inter SemiBold (600), 16-20px.
-- Labels: Inter SemiBold, 12px, uppercase, 0.1em letter-spacing, pink color.
+**Type specs to deliver with each graphic**
+- Headline: Anton 400, 36-64px, UPPERCASE
+- Supporting text: Inter Regular, 16-24px
+- Stats: Anton 400, 72-120px
+- CTA: Inter SemiBold, 16-20px
+- Labels: Inter SemiBold, 12px, uppercase, 0.1em tracking, pink
 
-### Step 4: Carousel-Specific Rules
-If creating a carousel:
-- **Slide 1 (Cover):** Black background. Bold white Anton headline (hook/question). Pink→orange gradient accent bar. Logo top-right.
-- **Slides 2-N (Content):** Black background. Pink slide number (top-left): "01", "02". Main point in Anton, large. Supporting detail in Inter, smaller.
-- **Final Slide (CTA):** Full gradient background (pink→coral→orange). White centered CTA text. Logo centered bottom.
+### Step 4: Carousels
+- **Slide 1 (cover):** black background, hook headline, gradient accent bar.
+- **Slides 2-N:** black background, pink slide number ("01", "02"), one point each.
+- **Final slide:** full three-stop gradient background, centered CTA.
+Deliver a table of slide copy plus one generated background per distinct look,
+or deliver the carousel as slide JSON when the user wants a downloadable file.
 
-### Step 5: Output
-- Save to `output/` directory.
-- File format: .png for individual images, .pdf for LinkedIn carousel documents.
-- Name files descriptively: `ig-post-activation-stats.png`, `li-carousel-impact-report.pdf`
-- For carousels, output each slide as a separate numbered PNG.
-
-### Step 6: Quality Check
+### Step 5: Quality Check
 Before delivering, verify:
-- [ ] Dimensions match platform spec exactly
-- [ ] All text within safe zones
-- [ ] Brand colors only (pink/coral/orange accents, black backgrounds — NO navy)
-- [ ] Logo present and correctly positioned
-- [ ] Fonts are Anton (headlines, UPPERCASE) + Inter (body) only
-- [ ] No text overlapping
-- [ ] Professional, not cluttered
-- [ ] Would stop someone's scroll
+- [ ] Canvas matches the placement
+- [ ] Prompt keeps words and logos out of the generated image
+- [ ] Composition leaves the safe zones and the logo corner clear
+- [ ] Copy and type specs delivered for every graphic
+- [ ] Brand colors only, no navy
+- [ ] Copy uses Activate + Fund language and no em dashes
 
 ## Chain From
-This skill works best when fed content from `/content-atomizer` or `/direct-response-copy`.
+Works best when fed content from content-atomizer or direct-response-copy work
+earlier in the conversation.

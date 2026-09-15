@@ -1,6 +1,6 @@
 ---
 name: newsletter
-description: Create newsletters that people actually want to read and that drive sponsor, activator, and partner engagement
+description: Create newsletters people actually want to read that drive participant, funder, and partner engagement
 argument-hint: "[topic or content theme + audience]"
 ---
 
@@ -8,10 +8,20 @@ argument-hint: "[topic or content theme + audience]"
 
 ## Purpose
 Build a newsletter issue that delivers genuine value, reflects Gratitude.com's
-mission, and keeps subscribers engaged between conversion moments.
+mission, and keeps subscribers engaged between moments of action.
 
-## Load Context
-Read `.claude/brand-memory.md`, `brand-kit/voice-core.md`.
+## Context
+Brand memory, voice, positioning, messaging framework, and terminology are
+already loaded above.
+
+## Locked Language (Activate + Fund)
+- Activate: a person chooses an available pre-funded act. It costs them nothing at the moment. Activate is the dominant action.
+- Fund: creates capacity for future acts, once or recurring.
+- Never "donate" or "donation".
+- Sponsors appear only as optional attribution ("Made possible by [Sponsor]") or as one funding type.
+- Express is NEXT and Facilitate is FUTURE. Never present them as available now.
+- Never invent numbers, stories, or partner names. Use supplied facts or [NEEDS INPUT].
+- No em dashes.
 
 ## Newsletter Philosophy
 - One big idea per issue. Not a roundup of links.
@@ -22,44 +32,45 @@ Read `.claude/brand-memory.md`, `brand-kit/voice-core.md`.
 ## Structure (Standard Issue)
 
 **Subject Line**
-- Primary: Specific, benefit-forward, no clickbait
-- A/B variant: More curiosity-driven
+- Primary: specific, benefit-forward, no clickbait
+- A/B variant: more curiosity-driven
 
 **Preview Text**
 - Expand on the subject. Reward the open.
 
 **Opening Hook (2 to 3 sentences)**
-- Start with an impact story, a counterintuitive statement, or a specific scenario.
+- Start with a verified impact story, a counterintuitive statement, or a specific scenario.
 - Never start with "In today's newsletter..."
 
 **The Main Idea (300 to 500 words)**
-- Teach one thing well. Or tell one impact story deeply.
-- Use short paragraphs. No walls of text.
-- Include 1 specific example, activation result, or data point.
+- Teach one thing well, or tell one impact story deeply.
+- Short paragraphs. No walls of text.
+- Include 1 specific example, activation result, or data point (supplied only).
 
 **Practical Takeaway**
 - What can the reader do with this today?
-- 3 to 5 bullet points max. Actionable.
+- 3 to 5 bullet points max.
 
-**The Soft Sell (optional, 1 in 3 issues)**
+**The Soft Ask (1 in 3 issues)**
 - One sentence transition.
-- Brief description of how Gratitude.com connects to the topic.
-- One CTA: "Reply to this email" or "Activate today."
+- How Gratitude.com connects to the topic.
+- One CTA: "Choose an act" (Activate) or "Fund an act" (Fund).
 
 **Sign-off**
 - First name only.
 - One human sentence. Not "Hope this was helpful."
 
 ## Audience Variants
-- **Sponsor newsletter**: Focus on impact ROI, CSR trends, activation metrics
-- **Activator newsletter**: Focus on impact stories, community highlights, new activations
-- **Partner newsletter**: Focus on platform updates, funding trends, partnership wins
+- **Participant newsletter:** verified impact stories, newly available acts, what happened after activation
+- **Funder newsletter:** what funding made possible, verified results, refill moments
+- **Sponsoring organization newsletter:** participation by their people, verified outcomes, subtle attribution
+- **Partner newsletter:** platform updates, delivery and verification, partnership wins
 
 ## Cadence Options
-- Weekly: Authority-building content
-- Bi-weekly: Nurture + impact stories
-- Monthly: Digest format for broader audience
+- Weekly: authority-building content
+- Bi-weekly: nurture + impact stories
+- Monthly: digest format for a broader audience
 
 ## Output Format
-Complete newsletter issue ready to paste into email platform.
-Subject line, preview text, and full body included.
+A complete newsletter issue ready to paste into an email platform:
+subject line, preview text, and full body.

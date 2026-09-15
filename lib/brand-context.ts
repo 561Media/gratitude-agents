@@ -28,17 +28,19 @@ const AGENT_TO_PROFILE: Record<string, string> = {
 const PROFILE_FILES: Record<string, { always: string[]; design?: string[] }> = {
   // investor-core.yaml is loaded directly so raise facts reach agents even when
   // KB retrieval is degraded (embeddings unavailable).
-  sponsor_materials: { always: ["positioning-core.yaml", "voice-core.md", "messaging-framework.md", "investor-core.yaml"] },
-  website_copy: { always: ["voice-core.md", "positioning-core.yaml", "messaging-framework.md", "investor-core.yaml"] },
-  social_media: { always: ["voice-core.md", "positioning-core.yaml"] },
-  email_campaign: { always: ["voice-core.md", "messaging-framework.md", "positioning-core.yaml"] },
+  // terminology.yaml is in every profile that writes copy: it carries the
+  // locked Activate + Fund vocabulary and the retired sponsor-led lines.
+  sponsor_materials: { always: ["positioning-core.yaml", "voice-core.md", "messaging-framework.md", "terminology.yaml", "investor-core.yaml"] },
+  website_copy: { always: ["voice-core.md", "positioning-core.yaml", "messaging-framework.md", "terminology.yaml", "investor-core.yaml"] },
+  social_media: { always: ["voice-core.md", "positioning-core.yaml", "terminology.yaml"] },
+  email_campaign: { always: ["voice-core.md", "messaging-framework.md", "positioning-core.yaml", "terminology.yaml"] },
   ad_copy: { always: ["voice-core.md", "positioning-core.yaml", "terminology.yaml"] },
   social_graphic: {
     always: ["voice-core.md", "positioning-core.yaml"],
     design: ["platform-specs.yaml", "typography-guide.md"],
   },
   deliverable_design: {
-    always: ["voice-core.md", "positioning-core.yaml", "messaging-framework.md"],
+    always: ["voice-core.md", "positioning-core.yaml", "messaging-framework.md", "terminology.yaml"],
     design: ["template-registry.yaml", "typography-guide.md"],
   },
   web_mockup: {
@@ -78,9 +80,19 @@ function loadBrandFile(filename: string): string {
   return "";
 }
 
-export function getBrandContext(agentId: string): string {
-  const profile = AGENT_TO_PROFILE[agentId] || "website_copy";
-  const config = PROFILE_FILES[profile] || PROFILE_FILES.website_copy;
+export interface BrandContextOptions {
+  /** Deck / slides / one-pager: always include presentation design context */
+  presentation?: boolean;
+  /** Investor or fundraising intent: always include investor-core.yaml */
+  investor?: boolean;
+}
+
+export function getBrandContext(agentId: string, options: BrandContextOptions = {}): string {
+  const profile = options.presentation ? "deliverable_design" : AGENT_TO_PROFILE[agentId] || "website_copy";
+  const base = PROFILE_FILES[profile] || PROFILE_FILES.website_copy;
+  const always = [...base.always];
+  if (options.investor && !always.includes("investor-core.yaml")) always.push("investor-core.yaml");
+  const config = { ...base, always };
 
   const sections: string[] = [];
 

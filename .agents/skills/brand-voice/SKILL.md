@@ -8,26 +8,27 @@ argument-hint: "[partner name] or 'us' for Gratitude.com"
 
 ## Purpose
 Extract, define, and codify a brand voice. Output a reusable voice profile
-that every other skill can reference.
+that every other piece of work can reference.
 
-## Load Context
-Read `.Codex/brand-memory.md` and `brand-kit/voice-core.md` before starting.
+## Context
+Brand memory and the Gratitude.com voice core are already loaded above. For
+Gratitude.com itself, build on them rather than replacing them. No em dashes.
 
 ## Process
 
 ### Step 1: Source Collection
 Ask for 3 to 5 examples of existing content: emails, website copy, social posts,
-impact reports, anything written in their voice. If nothing exists, run the diagnostic:
+impact reports, anything written in their voice. If nothing exists, run the diagnostic.
 
 Ask these 10 questions:
 1. Describe your brand in 3 words.
 2. Who is your primary audience? Be specific.
-3. What do your best sponsors/partners say about working with you?
+3. What do your best funders, partners, or participants say about working with you?
 4. Name a brand outside your industry whose voice you admire.
-5. What do similar platforms say that you would never say?
+5. What do similar organizations say that you would never say?
 6. Formal or casual? Expert or peer?
 7. Do you use humor? If so, what kind?
-8. What's the one thing you want every reader to feel after consuming your content?
+8. What is the one thing you want every reader to feel after reading your content?
 9. What topics or phrases are completely off-limits?
 10. If your brand were a person at a dinner party, how would they show up?
 
@@ -56,17 +57,17 @@ Deliver a structured voice profile with:
 - 10 words or phrases that do not
 
 **Tone Guide by Channel**
-- Website, email (sponsor), email (activator), social, impact reports, ads
+- Website, email (funder), email (participant), email (partner), social, impact reports, ads
 
 **3 Before / After Rewrites**
-Show the same copy in generic AI voice vs. brand voice
+Show the same copy in a generic AI voice vs. the brand voice.
 
 **Voice Summary (one paragraph)**
-Paste-ready for any brief or prompt
+Paste-ready for any brief or prompt.
 
-### Step 4: Save to Memory
-Append the completed voice profile to `.Codex/brand-memory.md` under
-the partner name or "Gratitude.com Voice."
+### Step 4: Hand-off
+Deliver the profile as one paste-ready document. The portal cannot save to
+brand memory, so tell the user the team can add the approved profile there.
 
 ## Output Format
-One markdown document: "[Name] Voice Profile"
+One Markdown document: "[Name] Voice Profile"

@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "tsx --test checks/*.test.ts",
+    "smoke:exports": "tsx checks/smoke-exports.ts",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"
   },
@@ -15,9 +17,11 @@
     "@anthropic-ai/sdk": "^0.82.0",
     "@napi-rs/canvas": "^0.1.94",
     "@neondatabase/serverless": "^0.10.4",
+    "@pdf-lib/fontkit": "^1.1.1",
     "@tailwindcss/postcss": "^4.2.1",
     "@vercel/blob": "^2.6.1",
     "bcryptjs": "^2.4.3",
+    "docx": "^9.7.1",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.38.3",
     "exceljs": "^4.4.0",
@@ -30,7 +34,9 @@
     "react-dom": "^19.1.0",
     "react-markdown": "^9.0.3",
     "remark-gfm": "^4.0.0",
-    "sharp": "^0.34.5"
+    "remark-parse": "^11.0.0",
+    "sharp": "^0.34.5",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -41,6 +47,7 @@
     "eslint": "^9.25.1",
     "eslint-config-next": "^15.3.2",
     "tailwindcss": "^4.1.4",
+    "tsx": "^4.23.13",
     "typescript": "^5.8.3"
   }
 }

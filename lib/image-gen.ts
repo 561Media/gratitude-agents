@@ -1,40 +1,12 @@
 import { put } from "@vercel/blob";
 import { db } from "@/lib/db";
 import { resources } from "@/db/schema";
-import { GRATITUDE_LOGO_WHITE_SVG } from "@/lib/brand-logo";
-
-// Composite the real Gratitude wordmark onto a generated image, following the
-// brand standard in design-kit/platform-specs.yaml: bottom-right, 40px margin,
-// 120px max width (scaled proportionally to canvas size), white on dark.
-// This is what lets the image tool deliver FINISHED graphics instead of
-// backgrounds with a "reserved space" for manual compositing.
-async function compositeBrandLogo(bytes: Buffer): Promise<Buffer> {
-  const sharp = (await import("sharp")).default;
-  const meta = await sharp(bytes).metadata();
-  const W = meta.width || 1024;
-  const H = meta.height || 1024;
-
-  // Scale the 1080-reference spec (40px margin, 120px logo) to this canvas
-  const margin = Math.max(24, Math.round((W * 40) / 1080));
-  const logoW = Math.max(96, Math.round((W * 120) / 1080));
-  const logoH = Math.round(logoW * (287.89 / 1449)); // wordmark aspect ratio
-
-  const logo = await sharp(Buffer.from(GRATITUDE_LOGO_WHITE_SVG), { density: 300 })
-    .resize({ width: logoW })
-    .png()
-    .toBuffer();
-
-  return sharp(bytes)
-    .composite([
-      {
-        input: logo,
-        left: W - logoW - margin,
-        top: H - logoH - margin,
-      },
-    ])
-    .png()
-    .toBuffer();
-}
+import {
+  CANVAS,
+  compositeBrandLogo,
+  fitToCanvas,
+  type ImageAspectRatio,
+} from "@/lib/image-canvas";
 
 // OpenAI gpt-image-2 image generation for the design agents (561 Media account,
 // switched from Gemini Imagen 9/15/26 after the Gemini prepay credits ran out).
@@ -43,21 +15,30 @@ async function compositeBrandLogo(bytes: Buffer): Promise<Buffer> {
 // permission-gates then redirects to the blob CDN URL).
 
 const IMAGE_MODEL = process.env.IMAGE_MODEL || "gpt-image-2";
+// Same request as production (quality "high" unless IMAGE_QUALITY is set); the
+// call is bounded by IMAGE_TIMEOUT_MS so it cannot outlive the chat budget.
+const IMAGE_QUALITY = process.env.IMAGE_QUALITY || "high";
+const IMAGE_TIMEOUT_MS = Number(process.env.IMAGE_TIMEOUT_MS) || 90_000;
 
-export type ImageAspectRatio = "1:1" | "16:9" | "9:16" | "4:3" | "3:4";
+export { IMAGE_ASPECT_RATIOS, CANVAS } from "@/lib/image-canvas";
+export type { ImageAspectRatio } from "@/lib/image-canvas";
 
-// gpt-image models take fixed sizes, not aspect ratios: map to the closest.
+// gpt-image models take fixed sizes: generate at the closest, then crop to the
+// exact delivery canvas (lib/image-canvas.ts)
 const OPENAI_SIZE: Record<ImageAspectRatio, string> = {
   "1:1": "1024x1024",
   "16:9": "1536x1024",
   "4:3": "1536x1024",
   "9:16": "1024x1536",
   "3:4": "1024x1536",
+  "4:5": "1024x1536",
 };
 
 export interface GeneratedImage {
   resourceId: string;
   title: string;
+  /** Set when the image shipped without the logo because compositing failed */
+  logoError?: string;
 }
 
 export async function generateImage(options: {
@@ -67,26 +48,38 @@ export async function generateImage(options: {
   conversationId?: string | null;
   title?: string;
   includeLogo?: boolean;
+  /** Hard ceiling for the API call; defaults to IMAGE_TIMEOUT_MS */
+  timeoutMs?: number;
 }): Promise<GeneratedImage> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("Image generation is not configured (missing OPENAI_API_KEY)");
   }
+  const aspect = options.aspectRatio || "1:1";
 
-  const res = await fetch("https://api.openai.com/v1/images/generations", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: IMAGE_MODEL,
-      prompt: options.prompt,
-      size: OPENAI_SIZE[options.aspectRatio || "1:1"],
-      quality: process.env.IMAGE_QUALITY || "high",
-      n: 1,
-    }),
-  });
+  let res: Response;
+  try {
+    res = await fetch("https://api.openai.com/v1/images/generations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: IMAGE_MODEL,
+        prompt: options.prompt,
+        size: OPENAI_SIZE[aspect],
+        quality: IMAGE_QUALITY,
+        n: 1,
+      }),
+      signal: AbortSignal.timeout(options.timeoutMs ?? IMAGE_TIMEOUT_MS),
+    });
+  } catch (err) {
+    if (err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError")) {
+      throw new Error("Image generation timed out");
+    }
+    throw err;
+  }
 
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
@@ -103,51 +96,48 @@ export async function generateImage(options: {
     throw new Error("Image generation returned no image (possibly blocked by safety filters)");
   }
 
-  const title =
-    options.title || options.prompt.slice(0, 80).trim() || "Generated image";
-  let mimeType = data.output_format === "jpeg" ? "image/jpeg" : "image/png";
+  const title = options.title || options.prompt.slice(0, 80).trim() || "Generated image";
 
-  let bytes = Buffer.from(b64, "base64");
+  // Exact delivery size first (1920x1080, 1080x1920, 1080x1350...), then logo
+  let bytes = await fitToCanvas(Buffer.from(b64, "base64"), aspect);
+  const mimeType = "image/png";
+  let logoError: string | undefined;
 
-  // Stamp the real brand wordmark unless explicitly opted out. If compositing
-  // fails for any reason, ship the un-stamped image rather than failing the
-  // whole generation.
   if (options.includeLogo !== false) {
     try {
-      // Buffer.from normalizes sharp's Buffer<ArrayBufferLike> generic
-      bytes = Buffer.from(await compositeBrandLogo(bytes));
-      mimeType = "image/png"; // compositor always outputs PNG
+      bytes = await compositeBrandLogo(bytes, aspect);
     } catch (e) {
       console.error("Logo compositing failed, delivering un-stamped image:", e);
+      logoError = "The official logo could not be applied to this image.";
     }
   }
 
-  const extension = mimeType.includes("jpeg") ? "jpg" : "png";
-  const fileName = `${title.replace(/[^\w\- ]/g, "").replace(/\s+/g, "-").toLowerCase() || "image"}.${extension}`;
+  const fileName = `${title.replace(/[^\w\- ]/g, "").replace(/\s+/g, "-").toLowerCase() || "image"}.png`;
   const blob = await put(`generated/${fileName}`, bytes, {
     access: "public",
     addRandomSuffix: true,
     contentType: mimeType,
   });
 
+  const { width, height } = CANVAS[aspect];
   const [resource] = await db
     .insert(resources)
     .values({
       ownerId: options.ownerId,
       conversationId: options.conversationId || null,
       title,
-      description: `AI-generated image. Prompt: ${options.prompt.slice(0, 500)}`,
+      description: `AI-generated image (${width}x${height}). Prompt: ${options.prompt.slice(0, 500)}`,
       type: "generated",
       visibility: "private",
       status: "draft",
       fileName,
       mimeType,
-      extension,
+      extension: "png",
       sizeBytes: bytes.byteLength,
       blobUrl: blob.url,
       tags: ["generated-image"],
     })
     .returning({ id: resources.id });
 
-  return { resourceId: resource.id, title };
+  return { resourceId: resource.id, title, logoError };
 }

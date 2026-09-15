@@ -4,6 +4,7 @@ import type {
   Resource,
 } from "@/db/schema";
 import type { SessionUser } from "@/lib/auth";
+import { sql, type SQL } from "drizzle-orm";
 
 export function isPrivilegedUser(user: SessionUser) {
   return user.role === "admin" || user.role === "employee";
@@ -71,6 +72,18 @@ export function canViewResource(user: SessionUser, resource: Resource) {
   }
 
   return resource.visibility === "partner" && resource.status === "published";
+}
+
+/**
+ * SQL form of canViewResource, for queries against the `resources` table.
+ * Keep the two in lockstep: anything a prompt may mention (titles,
+ * descriptions, links) must be downloadable by the same user.
+ */
+export function resourceAccessSql(user: SessionUser): SQL {
+  if (isPrivilegedUser(user)) {
+    return sql`TRUE`;
+  }
+  return sql`(owner_id = ${user.userId} OR (visibility = 'partner' AND status = 'published'))`;
 }
 
 export function canEditResource(user: SessionUser, resource: Resource) {
