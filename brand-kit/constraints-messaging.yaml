@@ -1,24 +1,62 @@
+# Updated 2026-09-15 from System Story v3 (locked) and investor terms settled 8/3/26.
+# Loaded for EVERY agent by lib/brand-context.ts. Never violate these.
+
 chunk_id: "constraints-messaging"
 domain: "guardrails"
+version: "2.0"
+last_updated: "2026-09-15"
 status: "active"
 
+mvp_scope:
+  now: "Activate + Fund. Activate is dominant; Fund is secondary but fully functional."
+  next: "Express"
+  future: "Facilitate"
+  never_introduce_in_mvp_content:
+    - "Tell Them as the flagship, or any message-first flow"
+    - "A mandatory pledge or the Commitment as an onboarding gate"
+    - "Ripple mechanics"
+    - "Streaks, badges, leaderboards, points, or specific rewards"
+    - "One-activation-per-day rules"
+    - "Any other gamification"
+    - "Express shown as required before Activate"
+
 never_claim:
-  - "We solve world hunger" or any grandiose impact claim without data
-  - "Guaranteed ROI" on social impact
-  - Specific impact numbers we cannot verify
-  - That we replace traditional philanthropy entirely
+  - "Grandiose impact claims without data (e.g. 'we solve world hunger')"
+  - "Guaranteed ROI on social impact"
+  - "Specific impact, traction, partner, or activation numbers that are not verified; use [NEEDS INPUT]"
+  - "That ActivateGratitude.org's 501(c)(3) determination is granted; status is [NEEDS INPUT]"
+  - "That Gratitude.com is B Corp certified; it is B Corp PENDING"
+  - "That Gratitude.com is a Public Benefit Corporation; it is Gratitude.com, Inc., a Delaware C-Corp"
+  - "That Fund contributions or investor gifts are tax deductible; receipt and legal language is to be confirmed"
+  - "Final reserve, replenishment, or flow-of-funds mechanics; that language is pending attorney review"
+  - "A one-to-one mapping of dollars to acts unless operationally true"
+  - "That demo content is real: Harbor Table Network, Brightwell Technologies, and the UX Story's locations, times, and receipt numbers are fictional"
+  - "A founder $1M commitment (removed)"
+  - "That we replace traditional philanthropy entirely"
 
 never_sound_like:
-  - A charity asking for donations
-  - A tech startup overhyping an unproven model
-  - A corporate CSR press release with no substance
-  - A wellness brand being vague about "gratitude"
+  - "A charity asking for donations"
+  - "A crowdfunding site, donation marketplace, or charity campaign"
+  - "A directory of nonprofits with causes competing for attention"
+  - "A tech startup overhyping an unproven model"
+  - "A corporate CSR press release with no substance"
+  - "A wellness brand being vague about 'gratitude'"
+  - "Package tracking or enterprise software (in status and impact updates)"
+  - "Someone performing their own goodness"
 
 tone_guardrails:
-  - Never be sycophantic in sponsor communications
-  - Never send a deliverable without a clear next step
-  - Never use passive voice in CTAs
-  - No filler openers in emails ("Hope this finds you well")
-  - Never diminish gratitude as a concept — treat it with genuine respect
-  - Avoid "charity" framing — this is activation, not charity
-  - Never make activators feel guilted into action — inspire, don't guilt
+  - "No em dashes in any output, ever"
+  - "Plain language over system language"
+  - "One meaningful action per screen or message; avoid three equally loud CTAs"
+  - "Act first, account second: never frame registration as the price of doing good"
+  - "Never guilt participants or funders into action; no donation thermometers"
+  - "No pity-based storytelling, exploitative recipient imagery or copy, implied personal rescue, or asking the reader to decide who deserves help"
+  - "Verification protects privacy and dignity; do not promise recipient photos"
+  - "Sponsor attribution is optional and subtle ('Made possible by [Sponsor]'); sponsor and nonprofit branding never overpower the act"
+  - "Share the impact, not the ego"
+  - "Never be sycophantic in sponsor or funder communications"
+  - "Never send a deliverable without a clear next step"
+  - "Never use passive voice in CTAs"
+  - "No filler openers in emails ('Hope this finds you well')"
+  - "Never diminish gratitude as a concept; treat it with genuine respect"
+  - "When a fact is not in the brand kit, write [NEEDS INPUT] rather than guess"

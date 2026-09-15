@@ -1,77 +1,142 @@
 # Gratitude.com - Investor Core (single source of truth)
-# Extracted 2026-07-20 from the founder-approved investor deck
-# ("GRATITUDE INVESTOR DECK", 2026 Friends & Family round).
+# Updated 2026-09-15 from System Story v3 (locked) and investor terms settled 8/3/26
+# (confirmed through 9/8/26), cross-checked against the MVP-aligned investor deck
+# (gratitude-investor-deck-staging/slides.body.html, 9/8/26).
+# Supersedes the 2026-07-20 version (PBC entity, "Tell Them." flagship, Express-first,
+# "every message" flywheel, cap not recorded).
 # RULE: agents may use ONLY the facts below in investor-facing materials.
 # Any number or claim not listed here is [NEEDS INPUT] - never invented.
+# NOTE: deck slides 3 and 5 still carry old "message" language pending client approval.
+# Do not import that language.
 
 chunk_id: "investor-core"
 domain: "investor_relations"
 status: "active"
-version: "1.0"
-source: "2026 Friends & Family investor deck (Michael Hilf approved)"
+version: "2.0"
+last_updated: "2026-09-15"
+source: "Investor terms settled 2026-08-03 (Michael Hilf), confirmed through 2026-09-08; System Story v3 LOCKED; investor deck aligned to MVP 2026-09-08"
 
 round:
-  type: "SAFE"
+  type: "SAFE (Simple Agreement for Future Equity)"
   stage: "Friends & Family"
   year: 2026
   amount: "$3-5M"
-  status: "ACTIVE - in market as of 2026-07-20; approximately 5 investors interested (per founder); investment documents being assembled. Do not state committed amounts."
+  valuation_cap: "$20M post-money"
+  discount: "None (no discount rate)"
+  investment_amount: "Investor's choice; allocated to the SAFE, converts at the cap at a future priced round"
+  gift_amount: "Optional, investor's choice; a direct, unconditional gift to ActivateGratitude.org, separate from the SAFE with no equity attached"
+  split_note: "Investment and gift amounts are each the investor's choice. There is no fixed split. Never describe one."
+  returns_language: "A SAFE earns no return until it converts. No projected returns or IRR."
+  tax_treatment: "[NEEDS INPUT] Deductibility of the gift depends on ActivateGratitude.org's 501(c)(3) status (unconfirmed) and attorney review. Do not state the gift is deductible. If referenced at all: the gift must be genuinely unconditional; no equity, discount, or SAFE term may attach."
+  status: "ACTIVE - in market. Do not state committed amounts. (7/20/26 founder note: approximately 5 investors interested; internal context only, do not publish.)"
   use_of_funds:
-    - { category: "Product & Engineering", pct: 60 }
-    - { category: "Growth & Partnerships", pct: 20 }
-    - { category: "Operations", pct: 10 }
-    - { category: "Partner Network", pct: 10 }
+    confirm: "Confirm against current deck. Percentages carried from the 7/20 deck."
+    split:
+      - { category: "Product & Engineering", pct: 60 }
+      - { category: "Growth & Partnerships", pct: 20 }
+      - { category: "Operations", pct: 10 }
+      - { category: "Partner Network", pct: 10 }
+    separation: "SAFE capital funds product build and launch operations; gifts fund nonprofit seeding separately."
+  founder_commitment: "REMOVED. No $1M founder commitment (out on attorney advice). Never reference it."
 
 structure:
   commercial_entity:
-    name: "Gratitude.com"
-    form: "Public Benefit Corporation"
-    role: "Builds the platform: technology, enterprise customers, consumer experience, revenue, scale"
-  philanthropic_entity:
+    name: "Gratitude.com, Inc."
+    form: "Delaware C-Corp"
+    b_corp: "B Corp PENDING (never 'certified')"
+    role: "Makes participation possible. Builds the platform: technology, enterprise customers, consumer experience, revenue, scale."
+  charitable_entity:
     name: "ActivateGratitude.org"
-    form: "501(c)(3) Public Charity"
-    role: "Activates the impact: receives donations, funds nonprofit partners, delivers verified acts, expands community impact"
-  framing: "One creates enterprise value. The other creates public trust. Enterprise funds growth; philanthropy funds impact."
+    form: "The charitable entity [NEEDS INPUT: 501(c)(3) determination unconfirmed; do not state as granted]"
+    role: "Makes the impact possible. The charitable infrastructure behind real-world delivery: charitable funding, trusted nonprofit partners, delivery capacity, verification."
+    deck_conflict: "Deck slides 8 and 9 still say '501(c)(3)' / '501(c)(3) Public Charity'. Do not repeat that until status is confirmed."
+  framing:
+    - "One creates enterprise value. The other creates public trust."
+    - "Enterprise funds growth. Philanthropy funds impact."
+    - "One makes it easy to act. The other makes sure the action becomes real."
+  pending_attorney_review: "Reserve / replenish and flow-of-funds language (e.g. deck slide 14 'Impact Reserve', draw-downs, what refills the reserve, which entity receives funds) is PENDING ATTORNEY REVIEW. Flag any use as pending; do not present as final."
 
 founder:
   name: "Michael Hilf"
   title: "Founder & CEO"
   email: "mhilf@gratitude.com"
+  footer: "Michael Hilf, Founder & CEO, mhilf@gratitude.com, GRATITUDE.COM"
 
 positioning:
-  category: "Human Acknowledgment"
-  one_liner: "A shared behavioral infrastructure that turns human gratitude into real-world impact."
-  category_claim: "First platform turning gratitude into measurable impact. Not competing in an existing market - defining a new one."
-  ai_angle: "Gratitude.com is the behavioral infrastructure for the age of AI. AI will reshape how we work. Gratitude.com will reshape how we connect."
-  flywheel: "Every message builds the network: a message is sent, impact is activated, people multiply, the network grows."
+  category: "The Infrastructure for Human Acknowledgment"
+  signature: "Gratitude, delivered."
+  one_liner: "Turning everyday gratitude into funded, real-world impact."
+  cover_line: "One action. Real-world impact. A system that compounds."
+  category_claim: "First platform turning gratitude into measurable impact. We're not competing in an existing market. We're defining a new one."
+  ai_angle: "Gratitude.com is the infrastructure for human acknowledgment in the age of AI. AI will reshape how we work. Gratitude.com will reshape how we connect."
+  flywheel:
+    headline: "Every action builds the network."
+    steps:
+      - "Capital enters: sponsors, companies, and individuals fund real-world impact."
+      - "People activate: participants turn available capacity into real-world good."
+      - "Impact is verified: trusted partners deliver and Gratitude closes the loop."
+      - "The network grows: more trust, more funders, more participants, more partners, more impact."
+    locked_loop: "One action becomes impact. Impact builds trust. Trust inspires another action."
+    retired: "'Every message builds the network' / 'Every message creates...' (message-first, do not use)."
+  systems_line: "Products compete. Systems compound."
 
-flagship_mechanic:
-  name: "Tell Them."
+core_mechanic:
+  name: "Fund first. Act instantly."
+  sequence: "Pre-fund -> Activate -> Deliver -> Verify -> Show Impact -> Refill"
   steps:
-    - "Express: send a message to someone who changed your life"
-    - "Activate: a pre-funded act of real-world impact triggers instantly through trusted nonprofit partners"
-    - "Multiply: the recipient experiences both and is inspired to Tell Them"
-  tagline: "Every message changes two lives."
+    - "Pre-fund: capital is committed before the moment of action; available acts represent real, pre-funded delivery capacity agreed with trusted nonprofit partners."
+    - "Activate: a person chooses an available act; they pay nothing at the moment of activation because the capacity already exists."
+    - "Deliver: a trusted nonprofit partner turns the activation into real-world good."
+    - "Verify: delivery is confirmed rather than assumed."
+    - "Show Impact: the participant sees what happened."
+    - "Refill: new funding replenishes available capacity (precise reserve language pending attorney review)."
+  line: "Funding makes good possible. Activation makes it personal."
+  retired: "'Tell Them.' flagship (Express, Activate, Multiply) and 'Every message changes two lives.' Do not use."
 
 participation_modes:
-  - "Express - tell someone (the behavior that starts everything)"
-  - "Activate - trigger today's act (no message required)"
-  - "Fund - sponsor additional acts for individuals, organizations, or communities"
-  - "Facilitate (next generation) - deliver acts yourself"
+  now_mvp:
+    - "Activate - trigger good: choose an available pre-funded act of real-world impact (starting behavior; no message required)"
+    - "Fund - make more possible: create capacity for future acts, once or recurring"
+  next:
+    - "Express - acknowledge someone and connect that human moment to real-world impact"
+  future:
+    - "Facilitate - personally participate in delivering verified acts of impact"
+  rule: "No single behavior is required. Express is never presented as the starting behavior."
 
 market_frames:
-  wellbeing_employee_engagement: "$600B+ (budgets already exist)"
-  social_impact_philanthropy: "$500B+ (connecting existing capital, not creating a new market)"
+  wellbeing_employee_engagement: "$100B+ (2026), growing to $240B by 2035. Source: Grand View Research / Precedence Research, Corporate Wellness Market."
+  social_impact_philanthropy: "$2.3 trillion+ global, annual. Source: State of Global Charitable Giving report (individual + corporate combined)."
+  combined: "$2.4 trillion+ combined addressable market: $100B+ in corporate wellbeing and engagement spend, plus a share of $2.3T+ in annual global charitable giving Gratitude.com can help activate and direct."
+  framing: "Connecting existing capital, not creating a new market. The budgets already exist."
   expansion_path: "Individuals -> Organizations -> Communities -> Institutions (schools, healthcare, cities, governments)"
+  retired: "$600B+ and $500B+ frames from the 7/20 deck. Do not use."
 
 problem_stats:
-  - "53% of people have never fully told the most important person in their life how they feel"
-  - "82% of employees say recognition matters, yet most go years without one meaningful acknowledgment"
+  stats:
+  - "60% of people never or rarely express gratitude to their coworkers, and 74% never or rarely express gratitude to their boss. Source: John Templeton Foundation Gratitude Survey (Penn Schoen Berland)."
+  - "82% of employees say recognition matters, yet most go years without one meaningful acknowledgment. Source: SurveyMonkey."
+  retired_stat_note: "The '53% have never fully told the most important person' stat is not in the current deck. Do not use without re-approval."
+
+competitive_landscape:
+  categories:
+    recognition: ["Workhuman", "Achievers", "Microsoft Viva Glint"]
+    giving: ["Benevity", "Blackbaud (YourCause)", "Deed"]
+    wellbeing: ["Modern Health", "Lyra Health", "Headspace Health"]
+  claim: "The market is fragmented. Gratitude.com builds the layer that connects recognition, giving, and wellbeing."
+  moat_flag: "The deck's dual-entity moat line cites '501(c)(3)'. Describe the moat as the commercial + charitable entity structure until 501(c)(3) status is confirmed [NEEDS INPUT]."
+
+exit_comps:
+  framing: "Strategic acquisition, not a bet on an IPO. These are comps, not projections. No projected IRR."
+  comps:
+    - "2018 SAP acquires Qualtrics, $8B"
+    - "2020 HG Capital acquires Benevity, $1.1B"
+    - "2021 Clearlake takes Cornerstone private, $5.2B"
+    - "2023 Silver Lake / CPP take Qualtrics private, $12.5B"
 
 roadmap_24_months:
   launch:
     window: "60-90 days"
-    milestones: ["MVP live", "First enterprise customers", "First nonprofit partners"]
+    milestones: ["Activate + Fund MVP live", "First enterprise customers", "First nonprofit partners"]
   validate:
     window: "Months 1-6"
     milestones: ["Thousands of verified activations", "Demonstrated enterprise value", "Proven repeatable model"]
@@ -81,12 +146,28 @@ roadmap_24_months:
   framing: "This round proves the model. The next scales it."
 
 voice_for_investors:
-  tone: "Credibility and numbers. Confident, declarative, zero hype-qualifiers. Distinct from activation-energy marketing voice."
+  tone: "Credibility and numbers. Confident, declarative, zero hype-qualifiers. Distinct from consumer activation copy. Straight terms. Straight math."
   spelling: "US English - 'acknowledgment'"
-  banned: ["em dashes", "invented metrics", "valuation claims", "revenue projections not listed here"]
+  banned:
+    - "em dashes"
+    - "invented metrics or traction"
+    - "valuation claims other than the $20M post-money SAFE cap"
+    - "revenue projections, projected returns, or IRR"
+    - "'Public Benefit Corporation' / 'PBC'"
+    - "'B Corp certified'"
+    - "stating ActivateGratitude.org's 501(c)(3) status as granted"
+    - "stating the gift is tax deductible"
+    - "a fixed investment/gift split"
+    - "the founder $1M commitment"
+    - "'Tell Them.' as flagship, 'Every message changes two lives', 'every message builds the network'"
+    - "Express as the starting behavior"
+    - "final reserve or flow-of-funds mechanics (pending attorney review)"
 
 not_yet_available:  # [NEEDS INPUT] from Michael Hilf before use
-  - "Valuation / SAFE cap and discount"
-  - "Current traction numbers (users, activations, pilots)"
+  - "ActivateGratitude.org 501(c)(3) determination status"
+  - "Attorney-approved reserve / replenish and flow-of-funds language"
+  - "Gift tax-treatment language"
+  - "Use-of-funds percentages confirmed against the current deck"
+  - "Current traction numbers (users, activations, pilots, partners)"
   - "Team beyond founder"
   - "Committed capital to date"

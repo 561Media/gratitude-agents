@@ -1,51 +1,127 @@
+# Updated 2026-09-15 from System Story v3 (locked) and investor terms settled 8/3/26.
+# Terms follow the locked copy's own usage. Supersedes the 2026-02-20 list that banned
+# "fund", "nonprofit", and "participant" (all now used in locked copy).
+
 chunk_id: "terminology"
 domain: "voice"
 category: "vocabulary"
+version: "2.0"
+last_updated: "2026-09-15"
 status: "active"
-
-# Gratitude.com Terminology Guide
-# Canonical terms and their incorrect alternatives
 
 preferred_terms:
   - term: "Gratitude.com"
-    never: ["gratitude.com", "Gratitude", "gratitude"]
-    note: "Always include .com in formal references. Capitalize G."
+    never: ["gratitude.com", "Gratitude Inc"]
+    note: "Include .com in formal references. Capitalize G. Short form 'Gratitude' is acceptable in running copy where the locked copy uses it (e.g. 'Gratitude ends with a result'). Legal entity name is 'Gratitude.com, Inc.' (investor and legal contexts only)."
+
+  - term: "ActivateGratitude.org"
+    never: ["Activate Gratitude Foundation", "the Gratitude charity"]
+    note: "The charitable entity; 'the charitable infrastructure behind real-world delivery.' Never call it a 501(c)(3) as fact: status [NEEDS INPUT]."
+
+  - term: "The Infrastructure for Human Acknowledgment"
+    never: ["impact technology platform", "donation platform", "giving app"]
+    note: "The category. US spelling: acknowledgment (no 'e' after g)."
 
   - term: "activate"
-    never: ["donate", "give", "contribute"]
-    note: "People activate gratitude, they don't donate through it."
+    never: ["donate", "give money", "contribute (for Activate)"]
+    note: "People activate pre-funded acts. Activating costs the participant nothing."
 
-  - term: "sponsor"
-    never: ["donate", "fund", "pay for"]
-    note: "Companies sponsor impact. Sponsorship, not donation."
+  - term: "fund"
+    never: ["donate", "make a donation", "chip in"]
+    note: "Fund is an MVP core action (verb allowed). Funding creates capacity for future acts, once or recurring. Keep Activate and Fund unmistakably distinct."
 
-  - term: "activator"
-    never: ["donor", "user", "participant"]
-    note: "People who activate gratitude are activators."
+  - term: "act / real-world act / act of real-world impact"
+    never: ["cause", "campaign", "charity project", "listing"]
+    note: "Gratitude presents acts, not nonprofit organizations. Acts feel available and ready, not like causes competing for attention."
 
-  - term: "impact"
-    never: ["charity", "giving", "philanthropy"]
-    note: "We deliver impact, not charity."
-
-  - term: "delivered"
-    never: ["distributed", "allocated", "dispersed"]
-    note: "Impact is delivered. Gratitude is delivered. Active verb."
+  - term: "pre-funded / funded and ready"
+    never: ["free", "paid for by us"]
+    note: "'Already funded. No payment required.' Avoid 'free', which implies no one paid."
 
   - term: "activation"
-    never: ["transaction", "donation", "contribution"]
-    note: "Each act of gratitude is an activation."
+    never: ["transaction", "donation", "purchase", "checkout"]
+    note: "Each chosen act is an activation."
 
-  - term: "impact partner"
-    never: ["charity", "nonprofit recipient", "beneficiary"]
-    note: "Nonprofits are impact partners, not passive recipients."
+  - term: "participant / activator"
+    never: ["donor", "user (in copy)", "customer (consumer side)"]
+    note: "Both appear in locked copy. 'Participant' in explanatory copy; 'activator' when contrasting with funders."
 
-  - term: "sponsor kit"
-    never: ["media kit", "pitch deck"]
-    note: "Materials for potential sponsors."
+  - term: "funder"
+    never: ["donor", "backer"]
+    note: "Individuals, companies, and foundations that fund acts. Funders get a result loop too."
 
-  - term: "impact report"
-    never: ["annual report", "donation receipt"]
-    note: "Reporting on delivered impact."
+  - term: "trusted nonprofit partner / nonprofit partner"
+    never: ["charity", "beneficiary", "recipient organization", "vendor"]
+    note: "Locked copy uses 'trusted nonprofit partner(s)'. 'Impact partner' is legacy; prefer the locked term. Partner names are delivery and trust information, never the browsing structure."
+
+  - term: "deliver / delivered"
+    never: ["distributed", "allocated", "dispersed"]
+    note: "A trusted nonprofit partner delivers the act. 'Gratitude, delivered.'"
+
+  - term: "verified / verify"
+    never: ["guaranteed", "certified impact"]
+    note: "Delivery is confirmed rather than assumed. Verification protects privacy and dignity and does not depend on recipient photos."
+
+  - term: "show impact / impact update / follow the good"
+    never: ["donation receipt", "tracking number"]
+    note: "Most giving ends with a receipt. Gratitude ends with a result. Keep status human, not package tracking."
+
+  - term: "capacity / funded capacity"
+    never: ["inventory of charity", "pool balance (in consumer copy)"]
+    note: "Consumer copy should not require understanding funding pools. Reserve and flow-of-funds terms are pending attorney review."
+
+  - term: "Refill"
+    never: ["top up", "recharge"]
+    note: "Final mechanism step: new funding replenishes available capacity. Precise reserve/replenish language pending attorney review."
+
+  - term: "sponsor (attribution only)"
+    never: ["Companies sponsor, people activate", "sponsor model", "brands fund impact, not individuals"]
+    note: "Use only as the locked copy does: optional subtle 'Made possible by [Sponsor]', and 'Sponsored' as one funding type ('Organizations can create funded capacity for their employees, customers, or communities to activate'). Sponsors never overpower the act."
+
+  - term: "The Commitment"
+    never: ["pledge", "oath", "sign-up promise", "Gratitude Standard gate"]
+    note: "Notice. Acknowledge. Choose consciously. Take responsibility. Contribute where possible. A philosophical foundation, never a mandatory onboarding step."
+
+  - term: "Express"
+    never: ["Tell Them (as flagship)", "send a message to activate"]
+    note: "NEXT-stage participation. Not in MVP flows. Never required before Activate."
+
+  - term: "Facilitate"
+    never: ["volunteer marketplace"]
+    note: "FUTURE-stage participation."
+
+# Terms banned in MVP-era content (NOW). Legacy or de-scoped mechanics.
+banned_in_mvp_content:
+  - term: "Tell Them / Tell Them."
+    reason: "Not the flagship. No message-first flows."
+  - term: "Every message changes two lives"
+    reason: "Retired message-first tagline."
+  - term: "streak / streaks"
+    reason: "No gamification. Return comes from impact itself."
+  - term: "badge / badges"
+    reason: "No gamification."
+  - term: "leaderboard / ranking"
+    reason: "No gamification."
+  - term: "points / rewards"
+    reason: "No gamification or specific rewards."
+  - term: "Ripple (as a product mechanic)"
+    reason: "No Ripple mechanics in MVP. 'Continue the ripple' may appear only as NEXT-stage Express storytelling."
+  - term: "one activation per day / daily limit"
+    reason: "Explicitly excluded from MVP."
+  - term: "pledge / take the pledge / mandatory commitment"
+    reason: "The Commitment is not an onboarding gate."
+  - term: "donation / donate (consumer copy)"
+    reason: "Activation is not a donation. Fund legal/receipt language is still to be confirmed."
+  - term: "charity marketplace / crowdfunding / donation thermometer"
+    reason: "Gratitude must not feel like a nonprofit, crowdfunding site, donation marketplace, or charity campaign."
+  - term: "Companies sponsor. People activate. Impact is delivered."
+    reason: "Retired pre-MVP model line."
+  - term: "Gratitude isn't just felt. It's delivered."
+    reason: "Retired tagline. Use 'Gratitude, delivered.'"
+  - term: "Public Benefit Corporation / PBC"
+    reason: "Wrong entity. Gratitude.com, Inc. is a Delaware C-Corp, B Corp pending."
+  - term: "B Corp certified"
+    reason: "B Corp is PENDING."
 
 word_replacements:
   leverage: "use"
@@ -58,8 +134,6 @@ word_replacements:
   innovative: "new"
   robust: "strong"
   seamless: "smooth"
-  scalable: "built to grow"
-  ecosystem: "platform"
   paradigm: "approach"
   disruptive: "different"
   granular: "detailed"
@@ -73,17 +147,22 @@ word_replacements:
   move the needle: "make a difference"
   thought leadership: "expert content"
   value-add: "benefit"
-  give back: "activate impact"
-  do good: "deliver impact"
-  make a donation: "activate gratitude"
+  make a donation: "fund an act"
+  donate now: "make this happen"
+  track your donation: "follow the good"
 
 platform_terms:
-  - "activation"
-  - "sponsor"
-  - "activator"
-  - "impact partner"
-  - "delivered impact"
-  - "impact report"
-  - "sponsor kit"
-  - "activation campaign"
-  note: "These terms define the Gratitude.com platform model. Use them consistently."
+  terms:
+    - "The Infrastructure for Human Acknowledgment"
+    - "Gratitude, delivered."
+    - "activate / activation"
+    - "fund / funder"
+    - "pre-funded act"
+    - "trusted nonprofit partner"
+    - "deliver / verify / show impact / refill"
+    - "funded capacity"
+    - "participant / activator"
+    - "The Commitment"
+    - "Activate, Fund (NOW); Express (NEXT); Facilitate (FUTURE)"
+    - "ActivateGratitude.org"
+  note: "These terms define the Gratitude.com system. Use them consistently."

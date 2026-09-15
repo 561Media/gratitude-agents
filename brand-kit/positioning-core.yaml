@@ -1,3 +1,10 @@
+# Updated 2026-09-15 from System Story v3 (locked) and investor terms settled 8/3/26.
+# Supersedes the 2026-02-20 "companies sponsor, people activate" positioning.
+# Primary source: Gratitude_System_Story_v3_LOCKED (Jo Englesson). MVP constraints:
+# Gratitude_MVP_UX_Story_FINAL. Investor facts live in investor-core.yaml.
+# RULE: quote locked lines as written (em dashes in the source are replaced with
+# periods or commas). Do not invent new taglines, claims, or numbers.
+
 chunk_id: "positioning-core"
 domain: "positioning"
 category: "foundation"
@@ -6,61 +13,150 @@ context_tags:
   - "positioning-statement"
   - "what-gratitude-is"
   - "platform-model"
-token_count: 400
+  - "mvp-scope"
+token_count: 900
 format: "yaml"
-version: "1.0"
-last_updated: "2026-02-20"
+version: "2.0"
+last_updated: "2026-09-15"
 status: "active"
 summary: >-
-  Core positioning and value proposition for Gratitude.com.
-  Technology platform that turns gratitude into real acts of good.
-  Companies sponsor, people activate, Gratitude delivers impact.
+  Gratitude.com is the infrastructure for human acknowledgment: a system that
+  turns human intention into real-world action and makes the impact visible.
+  NOW (MVP) = Activate + Fund. NEXT = Express. FUTURE = Facilitate.
+  Signature: "Gratitude, delivered."
 
 company:
   name: "Gratitude.com"
   url: "gratitude.com"
-  tagline: "Gratitude isn't just felt. It's delivered."
-  category: "Impact technology platform"
+  category: "The Infrastructure for Human Acknowledgment"
+  signature: "Gratitude, delivered."
+  tagline: "Gratitude, delivered."
+  tagline_note: >-
+    "THE INFRASTRUCTURE FOR HUMAN ACKNOWLEDGMENT" is the primary category-defining
+    line. "Gratitude, delivered." is the emotional signature beneath it.
+    RETIRED: "Gratitude isn't just felt. It's delivered." and
+    "Companies sponsor. People activate. Impact is delivered."
+  charitable_entity: "ActivateGratitude.org"
 
 value_proposition: >-
-  Gratitude.com is a technology platform that turns gratitude into real acts of
-  good. Companies sponsor meaningful impact, people activate it, and Gratitude.com
-  delivers it into the world instantly and at scale. We connect corporate
-  sponsorship with individual action to create measurable, documented change.
+  A system that turns human intention into real-world action, and makes the
+  impact visible. Gratitude.com creates a shared system that gives human
+  intention somewhere to go. One infrastructure. Multiple ways in. Real-world
+  impact out.
 
 positioning_statement: >-
-  For companies that want their social impact to be real, measurable, and
-  activated by real people, Gratitude.com is the platform that turns corporate
-  goodwill into delivered outcomes. We're not a donation portal. We're an
-  activation engine.
+  People care. Organizations care. Communities care. The missing piece is
+  infrastructure. Gratitude.com gives good intention somewhere to go: real acts
+  of good are already funded and ready, a person chooses one and puts it into
+  motion, a trusted nonprofit partner delivers it, and Gratitude.com shows what
+  happened. Most giving ends with a receipt. Gratitude ends with a result.
+
+core_product_truth: "It is funded. I choose. It moves. I see what happened."
+
+problem: >-
+  A world full of intention, and no shared way to act on it. Meaningful action
+  is still inconsistent, fragmented, and difficult to sustain. The problem isn't
+  intention. It's the absence of infrastructure.
+
+the_commitment:
+  role: >-
+    Philosophical and behavioral foundation. NOT an MVP onboarding gate and never
+    a mandatory pledge.
+  line: "Turn good intention into conscious action. Not words to repeat. A way to participate."
+  shared_commitment: ["Notice.", "Acknowledge.", "Choose consciously.", "Take responsibility.", "Contribute where possible."]
+  close: "People may participate differently. The commitment is shared. The action is personal."
+
+participation:
+  rule: "Participate in one way or many. No single behavior is required. Express is never required before Activate."
+  now_mvp:
+    - name: "Activate"
+      line: "Trigger good."
+      description: "Choose an available pre-funded act of real-world impact. No payment is required to activate an act."
+      hierarchy: "Dominant"
+    - name: "Fund"
+      line: "Make more possible."
+      description: "Create capacity for future acts, once or recurring."
+      hierarchy: "Secondary but fully functional"
+  next:
+    - name: "Express"
+      line: "Acknowledge someone."
+      description: "Send gratitude to someone who mattered to you and connect that human moment to real-world impact."
+      note: "Not in the MVP flow. Do not position Tell Them or message-first flows as the flagship."
+  future:
+    - name: "Facilitate"
+      line: "Help deliver good."
+      description: "Personally participate in delivering verified acts of impact."
+
+mechanism:
+  sequence: "Pre-fund -> Activate -> Deliver -> Verify -> Show Impact -> Refill"
+  headline: "Fund first. Act instantly. Verify what happened."
+  steps:
+    - { step: "Pre-fund", text: "Capital is committed before the moment of action. Available acts represent real, pre-funded delivery capacity agreed with trusted nonprofit partners." }
+    - { step: "Activate", text: "A participant chooses an available act. The participant pays nothing at the moment of activation because the capacity already exists." }
+    - { step: "Deliver", text: "A trusted nonprofit partner turns the activation into real-world good." }
+    - { step: "Verify", text: "Delivery is confirmed rather than assumed." }
+    - { step: "Show Impact", text: "The participant sees what happened and how their action became something real." }
+    - { step: "Refill", text: "New funding replenishes available capacity so more people can activate." }
+  activate_vs_fund: >-
+    Activate costs nothing at the moment because the act is pre-funded. Fund
+    creates future capacity. "Funding makes good possible. Activation makes it personal."
+  legal_flag: >-
+    Precise flow-of-funds and reserve language is pending attorney review. Describe
+    the mechanism only at the level above; do not specify reserves, draw-downs, or
+    who receives funds as final.
 
 platform_model:
-  description: "Three-sided platform connecting sponsors, activators, and impact recipients"
+  description: "One infrastructure connecting funded capacity, activators, trusted partners, and verified impact."
   sides:
-    - name: "Sponsors"
-      role: "Companies that fund impact through sponsorship"
-      motivation: "CSR outcomes, brand association, measurable social impact"
-    - name: "Activators"
-      role: "People who activate sponsored impact through gratitude actions"
-      motivation: "Personal meaning, easy action, visible results"
-    - name: "Impact Recipients"
-      role: "Nonprofits, communities, and causes that receive delivered impact"
-      motivation: "Funding, visibility, scalable support"
+    - name: "Participants (activators)"
+      role: "Choose an available pre-funded act and give it the go-ahead"
+      motivation: "Agency, a simple way to act, seeing that their good landed"
+    - name: "Funders (individuals, companies, foundations)"
+      role: "Fund real-world acts in advance, one-time or recurring, creating ready-to-activate capacity"
+      motivation: "Seeing what their funding made possible"
+    - name: "Sponsoring organizations"
+      role: "Create funded capacity for their employees, customers, or communities to activate"
+      motivation: "Shared participation around acts that matter to them"
+      attribution: "Optional, subtle 'Made possible by [Sponsor]'. Never overpowers the act."
+    - name: "Trusted nonprofit partners"
+      role: "Deliver the act and support verification"
+      note: "Delivery and trust information, never the primary browsing structure. Gratitude presents acts, not nonprofit organizations."
+
+two_entities:
+  gratitude_com:
+    line: "Makes participation possible."
+    description: "The experience people and organizations interact with. It turns intention into action."
+    scope: "Activate, Fund, Express, Facilitate. Technology, Enterprise, Reporting, Scale."
+  activategratitude_org:
+    line: "Makes the impact possible."
+    description: "The charitable infrastructure behind real-world delivery. It turns funded capacity into verified good."
+    scope: "Charitable funding, trusted nonprofit partners, delivery capacity, verification."
+    status: "501(c)(3) determination [NEEDS INPUT]. Do not state it as granted."
+  close: "One makes it easy to act. The other makes sure the action becomes real."
 
 key_differentiators:
-  - "Real activation, not passive donation — people participate in the impact"
-  - "Instant delivery at scale — technology-driven, not manual"
-  - "Measurable outcomes — every act of gratitude documented and reported"
-  - "Corporate sponsorship model — brands fund impact, not individuals"
-  - "Bridges the gap between corporate CSR and personal meaning"
+  - "Active participation, not passive giving: another human being gets to say 'Yes. Make this happen.'"
+  - "Pre-funded: no payment is required to activate an act; the capacity already exists"
+  - "Verified: delivery is confirmed rather than assumed"
+  - "Closed loop: most giving ends with a receipt, Gratitude ends with a result"
+  - "Acts, not nonprofit organizations: not a charity marketplace or donation portal"
+  - "Funders get a result loop too: they see what their funding made possible"
 
 stakeholders:
-  sponsors:
-    description: "Corporate partners who fund impact"
-    key_concerns: ["ROI on social impact", "brand alignment", "measurable outcomes", "employee engagement"]
-  activators:
-    description: "Individuals who activate gratitude"
-    key_concerns: ["ease of participation", "seeing real impact", "personal meaning", "sharing their contribution"]
-  nonprofits:
-    description: "Organizations that receive and deliver impact"
-    key_concerns: ["reliable funding", "scalable programs", "visibility", "partnership quality"]
+  participants:
+    description: "People who activate pre-funded acts"
+    key_concerns: ["What is this and am I being asked to donate?", "What exactly does my click do?", "Is anything actually happening?", "Did my choice matter?"]
+  funders:
+    description: "Individuals, companies, and foundations who fund acts in advance"
+    key_concerns: ["What did my money just do?", "Seeing funded capacity activated and delivered", "Receipt and legal treatment (language to be confirmed)"]
+  sponsoring_organizations:
+    description: "Organizations creating funded capacity for employees, customers, or communities"
+    key_concerns: ["Participation by their people", "Verified outcomes", "Appropriate, subtle attribution"]
+  nonprofit_partners:
+    description: "Trusted nonprofit partners that deliver acts"
+    key_concerns: ["Agreed delivery capacity", "Verification that protects privacy and dignity", "Partner safeguards"]
+
+north_star: >-
+  Imagine if good intention always had somewhere to go. One action becomes
+  impact. Impact builds trust. Trust inspires another action. A world where good
+  intention doesn't stop at intention.
