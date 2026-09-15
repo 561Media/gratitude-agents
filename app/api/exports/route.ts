@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
-import { buildExportPayload } from "@/lib/exporters";
+import { buildExportPayload, type DocumentFormat } from "@/lib/exporters";
 import { generatePptx, parseSlideContent } from "@/lib/slides";
+import { normalizeSlide, type SlideData } from "@/lib/slide-schema";
 import { generateXlsx } from "@/lib/spreadsheet";
 
-const VALID_FORMATS = ["md", "doc", "pdf", "pptx", "csv", "xlsx"];
+// Exports render fonts and brand graphics server-side
+export const runtime = "nodejs";
+
+const VALID_FORMATS = ["md", "doc", "docx", "pdf", "pptx", "csv", "xlsx"];
 
 export async function POST(request: Request) {
   const session = await getSession();
@@ -48,8 +52,7 @@ export async function POST(request: Request) {
 
       return new NextResponse(new Uint8Array(buffer), {
         headers: {
-          "Content-Type":
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
           "Content-Disposition": `attachment; filename="${safeFileName}.xlsx"`,
         },
       });
@@ -57,29 +60,27 @@ export async function POST(request: Request) {
 
     // PPTX export
     if (format === "pptx") {
-      const presentationData = body.slides
-        ? { title, slides: body.slides }
-        : parseSlideContent(content, title);
+      let presentationData = parseSlideContent(content, title);
+      if (Array.isArray(body.slides)) {
+        const slides = (body.slides as unknown[]).map(normalizeSlide).filter((s): s is SlideData => !!s);
+        if (slides.length > 0) presentationData = { title, slides };
+      }
 
       const buffer = await generatePptx(presentationData);
 
       return new NextResponse(new Uint8Array(buffer), {
         headers: {
-          "Content-Type":
-            "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
           "Content-Disposition": `attachment; filename="${safeFileName}.pptx"`,
         },
       });
     }
 
-    // MD, DOC, PDF
-    const payload = await buildExportPayload(
-      format as "md" | "doc" | "pdf",
-      title,
-      content
-    );
+    // MD, DOCX (doc is an alias), PDF (deck or document)
+    const payload = await buildExportPayload(format as DocumentFormat, title, content);
+    const responseBody = typeof payload.body === "string" ? payload.body : new Uint8Array(payload.body);
 
-    return new NextResponse(payload.body, {
+    return new NextResponse(responseBody, {
       headers: {
         "Content-Type": payload.mimeType,
         "Content-Disposition": `attachment; filename="${payload.fileName}"`,

@@ -1,133 +1,112 @@
 ---
 name: web-mockup
-description: Create static visual mockups of Gratitude.com pages with the full 6-component hover system and dark glow aesthetic
+description: Create Gratitude.com page mockups as self-contained HTML with the dark glow aesthetic and hover system
 argument-hint: "[page type + purpose + key content]"
 ---
 
 # Web Mockup Skill
 
 ## Purpose
-Create high-fidelity static visual mockups of landing pages, hero sections,
-and UI components. These mockups use Gratitude.com's exact design system —
-including the 6-component hover system — and can serve as visual references
-for development or presentations.
+Create high-fidelity mockups of landing pages, hero sections, and UI
+components using Gratitude.com's exact design system, as a reference for
+development or presentations.
 
-## Load Context
-Read ALL of the following before creating any mockup:
-- `.Codex/brand-memory.md`
-- `brand-kit/visual-system.json` (the complete design token system including hover_system)
-- `design-kit/typography-guide.md` (font rules)
-- `design-kit/illustration-style.md` (art direction)
-- `design-kit/template-registry.yaml` (for landing page templates)
+## Context
+Brand memory, the visual system (including the hover system), voice,
+positioning, and the typography guide are already loaded above.
+
+## How This Portal Produces Mockups
+You cannot render or screenshot pages. Deliver:
+1. A short section-by-section outline (layout, exact copy, which tokens apply).
+2. ONE self-contained HTML file in an ```html code block: inline CSS, Anton and Inter from Google Fonts, no external images. The team opens it in a browser to view it.
+3. If background art is wanted, offer to generate it with the image tool (16:9 for a hero).
+
+## Locked Language (Activate + Fund)
+- Activate: a person chooses an available pre-funded act. It costs them nothing at the moment. Activate is the dominant action and the primary CTA.
+- Fund: creates capacity for future acts, once or recurring. Secondary CTA, fully functional.
+- Never "donate" or "donation".
+- Sponsors appear only as optional, subtle attribution ("Made possible by [Sponsor]") on an act. No sponsor logo bars.
+- Express is NEXT and Facilitate is FUTURE. Never present them as available now.
+- Demo names, places, and receipts are fictional; label them as sample content. Never invent real metrics: use [NEEDS INPUT].
+- No em dashes.
 
 ## Process
 
 ### Step 1: Define the Mockup
-Determine from the user's input:
-1. **Page type**: Landing page, hero section, sponsor page, activator page, pricing section, CTA section
-2. **Purpose**: Sponsor acquisition, activator recruitment, partner onboarding, general awareness
-3. **Key content**: Headline, body copy, CTA, features/benefits, social proof
-4. **Target stakeholder**: Sponsors, activators, nonprofits, general
+1. **Page type:** landing page, hero section, act detail, funder page, partner page, CTA section
+2. **Purpose:** first activation, new funders, sponsored capacity, partner onboarding, awareness
+3. **Key content:** headline, body copy, CTAs, proof
+4. **Audience:** participants, funders, sponsoring organizations, nonprofit partners
 
-If the user ran `/direct-response-copy` first, use that copy directly.
+If direct-response copy was written earlier in the conversation, use it.
 
 ### Step 2: Layout Planning
 
-**Landing Page Structure (full page)**
-1. Hero section: Headline, subheadline, CTA button, glow background
-2. Social proof bar: Sponsor logos, activation stats
-3. How it works: 3-step activation model with icon cards
-4. Benefits section: 3-4 benefit cards with full hover system
-5. Impact stats: Large stat callouts with glow effects
-6. Testimonial section: Quote with attribution
-7. CTA section: Final call to action
-8. Footer: Navigation, contact info, Gratitude logo
+**Landing Page Structure (default)**
+1. Hero: headline built on an available act ("Good is ready to happen"), subheadline, dominant Activate CTA, secondary Fund CTA, glow background
+2. Available acts: 3 act cards with status "Funded and ready" and optional subtle "Made possible by [Sponsor]"
+3. How it works: Pre-fund, Activate, Deliver, Verify, Show Impact, Refill
+4. Verified status: what a participant sees after activating (a result, not a receipt)
+5. For funders: what funding makes possible and the funder result loop
+6. Proof: supplied testimonial or stats, otherwise a labeled [NEEDS INPUT] block
+7. Final CTA: Activate first, Fund second
+8. Footer: navigation, contact, Gratitude logo
 
 **Hero Section Only**
 - Full-width, 100vh
-- Headline (Anton, UPPERCASE, display size)
+- Headline (Anton, UPPERCASE, display size, weight 400)
 - Subheadline (Inter, body-lg size, white/60)
-- CTA button (gradient pill, pink→coral→orange)
-- Background: Layered pink/orange glow orbs on black
+- Primary CTA: gradient pill (pink to coral to orange). Secondary CTA: ghost button.
+- Background: layered pink and orange glow orbs on black
 
-### Step 3: Design the Mockup
+### Step 3: Design System (use exactly)
 
-**BRAND DESIGN SYSTEM (use exactly):**
+**Backgrounds**
+- All sections: black (#000000) or near-black (#0a0a0a). No light sections, no navy, no cream.
+- Hero: layered radial glow orbs (pink + orange) on black
+- Optional grid overlay: 60px grid at 3% opacity
 
-**Backgrounds:**
-- All sections: Black (#000000) or near-black (#0a0a0a)
-- NO light sections. NO navy. NO cream. Pure dark theme.
-- Hero section: Layered radial glow orbs (pink + orange) on black
-- Grid overlay: 60px grid at 3% opacity for texture
+**Typography**
+- Hero headline: Anton 400, UPPERCASE, white. Never bold.
+- Section labels: Inter 400, 14px, uppercase, wide tracking, pink (#FE3184)
+- Section titles: Anton 400, UPPERCASE, white
+- Body: Inter 400, 16-18px, line-height 1.65, white/60
 
-**Typography:**
-- Hero headline: Anton 400, display-2xl to display-lg sizes, UPPERCASE, white
-- Section labels: Inter 400, 14px, uppercase, tracking-widest, pink (#FE3184)
-- Section titles: Anton 400, heading to display sizes, UPPERCASE, white
-- Body text: Inter 400, 16-18px, line-height 1.65, white/60
-- No label trailing lines (unlike 561 Media). Section labels are pink text only.
-
-**Cards (with full 6-component hover system):**
+**Cards (6-component hover system)**
 - Background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)
-- Border: 1px solid rgba(255,255,255,0.08)
-- Border-radius: 1rem
-- Padding: 2rem to 2.5rem
-- Hover effects (show in "active" state on one card):
-  1. Glow orb: Gradient blur in corner
-  2. Text brightness: white/60 → white/80
+- Border: 1px solid rgba(255,255,255,0.08); radius 1rem; padding 2rem to 2.5rem
+- Hover (implement with :hover and show one card in its hover state):
+  1. Glow orb: gradient blur in a corner
+  2. Text brightness: white/60 to white/80
   3. Icon scale: 110%
   4. Icon glow: 0 0 30px rgba(254,49,132,0.3)
-  5. Bottom accent: Gradient line, full width
-  6. Border glow: inset 1px pink/30 + outer 40px glow
+  5. Bottom accent: full-width gradient line
+  6. Border glow: inset 1px pink/30 plus outer 40px glow
 
-**Buttons:**
-- Primary: 3-stop gradient (pink→coral→orange), pill shape (radius: 9999px)
-- Font: Inter SemiBold (600)
-- Shadow: 0 10px 40px rgba(254,49,132,0.3)
-- Hover: translateY(-2px), shadow intensifies
-- Secondary: Ghost with 1px white/20 border
+**Buttons**
+- Primary: linear-gradient(135deg, #FE3184 0%, #FF6B35 50%, #ec7211 100%), pill radius, Inter 600, shadow 0 10px 40px rgba(254,49,132,0.3), hover translateY(-2px)
+- Secondary: ghost with 1px white/20 border
 
-**Icon Containers:**
-- Background: rgba(254,49,132,0.1)
-- Border: 1px solid rgba(254,49,132,0.2)
-- Border-radius: 12px
-- Size: 56x56px
-- Icon: Thin line (1.5px), pink (#FE3184), 28x28px
+**Icon Containers**
+- rgba(254,49,132,0.1) background, 1px rgba(254,49,132,0.2) border, 12px radius, 56x56px, 1.5px pink line icon (inline SVG)
 
-**Section Spacing:**
-- Between sections: py-24 lg:py-32 (6rem to 8rem)
-- Container: max-w-[1200px] mx-auto px-5
-- Between components: 2rem to 4rem
+**Spacing**
+- Sections: 6rem to 8rem vertical; container max-width 1200px, 20px side padding
 
-**Glow Elements:**
-- Background glow orbs: Large blurred circles (pink at 10-20% opacity, orange at 8-15%)
-- Icon glow on hover: 0 0 30px rgba(254,49,132,0.3)
-- CTA shadow: 0 10px 40px rgba(254,49,132,0.3)
+### Step 4: Responsive
+Design for 1440px desktop first. Include a 375px mobile layout with CSS media
+queries: single column, no horizontal scroll, tap targets at least 44px.
 
-### Step 4: Responsive Considerations
-Design at 1440px width (desktop) as the primary viewport. If requested,
-also create mobile (375px) and tablet (768px) versions.
-
-Max content width: 1200px, centered.
-
-### Step 5: Output
-- Save to `output/` directory as .png
-- Default: Full-page screenshot style (1440px wide, height varies by content)
-- For hero sections only: 1440x900px
-- Name files descriptively: `landing-page-sponsors.png`, `hero-activator.png`
-
-### Step 6: Quality Check
-Before delivering, verify:
-- [ ] Uses exact brand design tokens (colors, fonts, spacing, shadows, radii)
-- [ ] Black backgrounds throughout (NOT navy, NOT light)
-- [ ] Cards have full 6-component hover system (at least one card in hover state)
-- [ ] Anton headlines are ALWAYS UPPERCASE
-- [ ] Section labels are pink (#FE3184), Inter, uppercase
-- [ ] CTA buttons use 3-stop gradient with pill shape
-- [ ] Glow orbs provide depth in hero/background areas
-- [ ] Content is realistic and on-brand (not lorem ipsum)
-- [ ] Layout would be implementable in CSS
-- [ ] Professional enough for a sponsor presentation
+### Step 5: Quality Check
+Before delivering, verify in the code itself:
+- [ ] Only brand tokens: black backgrounds, pink/coral/orange accents, no navy
+- [ ] Anton is weight 400 and UPPERCASE everywhere it appears
+- [ ] Primary CTA is Activate; Fund is secondary
+- [ ] No sponsor logo bar; attribution only as subtle "Made possible by [Sponsor]"
+- [ ] Hover system implemented on cards
+- [ ] Mobile media query present; nothing wider than the viewport
+- [ ] Sample content labeled as sample; no invented metrics
+- [ ] No em dashes in any copy
 
 ## Chain From
-Works best when fed copy from `/direct-response-copy`.
+Works best when fed copy from direct-response-copy work earlier in the conversation.

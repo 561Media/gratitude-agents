@@ -12,16 +12,35 @@ import { getSession } from "@/lib/auth";
 import {
   canWriteConversation,
   defaultVisibilityForRole,
+  resourceAccessSql,
 } from "@/lib/permissions";
-import { detectSpecialistDomain } from "@/lib/detect-domain";
-import { generateImage, type ImageAspectRatio } from "@/lib/image-gen";
+import { detectRequestContext, type RequestContext } from "@/lib/detect-domain";
+import { generateImage, IMAGE_ASPECT_RATIOS, type ImageAspectRatio } from "@/lib/image-gen";
 
-// Image generation adds ~15s per image on top of model turns. Keep within
-// the plan's function limit (60s) - raise only after moving to a plan tier
-// that allows longer durations.
+// Function ceiling. 60s is safe on every Vercel plan. With Fluid compute
+// enabled (Pro, or Hobby with Fluid) this can be raised to 300; the time budget
+// below derives from this value, so raising it here is the only change needed.
 export const maxDuration = 60;
 
+// Keep headroom for persistence and the final model turn
+const SAFETY_MARGIN_MS = 8_000;
+const FINAL_TURN_RESERVE_MS = 15_000;
+const MIN_IMAGE_WINDOW_MS = 20_000;
+const MAX_TOOL_TURNS = 4;
+
+const INCOMPLETE_NOTES: Record<string, string> = {
+  max_tokens: "This response hit its length limit before it finished. Ask me to continue and I will pick up where it stopped.",
+  refusal: "I could not complete this response.",
+  time: "This response ran out of time before it finished. Ask me to continue and I will pick up where it stopped.",
+  tool_limit: "I ran out of steps before finishing this response. Ask me to continue and I will pick up where it stopped.",
+  error: "Something went wrong before this response finished. Ask me to continue, or try again.",
+};
+
 export async function POST(request: Request) {
+  const startedAt = Date.now();
+  const deadline = startedAt + maxDuration * 1000 - SAFETY_MARGIN_MS;
+  const timeLeft = () => deadline - Date.now();
+
   try {
     const session = await getSession();
 
@@ -190,7 +209,7 @@ export async function POST(request: Request) {
           let text = a.textContent;
           if (!text && a.blobUrl) {
             try {
-              const r = await fetch(a.blobUrl);
+              const r = await fetch(a.blobUrl, { signal: AbortSignal.timeout(5_000) });
               if (r.ok) text = await r.text();
             } catch {
               // fall through to the unreadable note below
@@ -212,18 +231,18 @@ export async function POST(request: Request) {
       last.content = blocks;
     }
 
-    // For the unified agent, detect which specialist domain applies
-    // and inject that specialist's knowledge into the prompt
+    // Classify the request: artifact type (presentation) and audience
+    // (investor) are independent of which writing specialist applies, and
+    // both are honored for every agent, not only the unified one.
+    const plainHistory = history.map((m) => ({ role: m.role, content: m.content }));
+    const requestContext: RequestContext = detectRequestContext(plainHistory);
+
     let specialistBody = "";
     let detectedDomain: string | null = null;
     let brandContextAgentId = agentId;
 
     if (agentId === "gratitude") {
-      // Domain detection reads plain text - use the DB history (attachment
-      // blocks in apiMessages are for the model only)
-      detectedDomain = detectSpecialistDomain(
-        history.map((m) => ({ role: m.role, content: m.content }))
-      );
+      detectedDomain = requestContext.domain;
       if (detectedDomain) {
         const specialist = getAgent(detectedDomain);
         if (specialist) {
@@ -239,7 +258,10 @@ export async function POST(request: Request) {
     }
 
     // Build system prompt
-    const brandContext = getBrandContext(brandContextAgentId);
+    const brandContext = getBrandContext(brandContextAgentId, {
+      presentation: requestContext.presentation,
+      investor: requestContext.investor,
+    });
 
     // Semantic KB retrieval: the most RELEVANT approved learnings for THIS
     // request (ACL + freshness applied inside; falls back to recency if
@@ -262,8 +284,9 @@ export async function POST(request: Request) {
     }
 
     // Team example library: reference material (images, decks, ads) the team
-    // has submitted. Surfaced so agents can model work on real examples and
-    // link them for the user.
+    // has submitted. Uses the SAME access predicate as downloads
+    // (lib/permissions.ts), so a user is never shown an example title,
+    // description, or link they are not allowed to open.
     let examplesSection = "";
     try {
       const exampleRows = await db.execute(sql`
@@ -273,7 +296,7 @@ export async function POST(request: Request) {
             SELECT 1 FROM jsonb_array_elements_text(tags) t
             WHERE t LIKE 'example:%'
           )
-          AND (visibility <> 'private' OR owner_id = ${session.userId})
+          AND ${resourceAccessSql(session)}
         ORDER BY created_at DESC
         LIMIT 12
       `);
@@ -300,26 +323,30 @@ export async function POST(request: Request) {
     }
 
     const endUserBehaviorNote =
-      "\n\n## End-User Experience Rules\nYou are speaking to a non-technical Gratitude user. Be warm, clear, and direct. Do not mention slash commands, skill files, internal routing mechanics, technical implementation details, or tool names unless the user explicitly asks. Present yourself as Gratitude's assistant with the right expertise behind the scenes. Prefer natural language like 'I can help draft that' or 'Here's what I need from you next.' Ask only for the minimum missing information and avoid jargon, menus, and option overload.";
+      "\n\n## End-User Experience Rules\nYou are speaking to a non-technical Gratitude user. Be warm, clear, and direct. Do not mention slash commands, skill files, internal routing mechanics, technical implementation details, or tool names unless the user explicitly asks. Present yourself as Gratitude's assistant with the right expertise behind the scenes. Prefer natural language like 'I can help draft that' or 'Here's what I need from you next.' Ask only for the minimum missing information and avoid jargon, menus, and option overload. Never use em dashes in anything you write.";
 
     const conciergeNote =
       "\n\n## Conversational Routing Rules\nAct like a dedicated Gratitude concierge. Do not tell the user to choose between internal workflows. Decide for them and guide the conversation forward. If a specialist is needed, translate that into plain-language next steps instead of naming internal commands. Do not include optional follow-ups, multiple branches, or extra possibilities unless the user asks for them. If information is missing, ask only for the smallest set of missing details needed to proceed. When you have enough context, do the work directly rather than describing what you would do.";
 
+    const capabilitiesNote =
+      "\n\n## What This Portal Can Produce\nYou work inside a chat portal. You cannot save files, write to folders, edit brand memory, or look at rendered output. What you CAN deliver:\n- Decks, slides, and one-pagers: slide JSON (below). The user downloads it as a branded PowerPoint or a branded PDF with one page per slide.\n- Documents (reports, briefs, kits, one-page documents): clean Markdown with real headings, lists, and tables. The user downloads it as a branded PDF or a Word document.\n- Spreadsheets: a CSV code block, downloadable as Excel or CSV.\n- Images: the generate_image tool.\nWhen a skill mentions saving to a folder or a file format, deliver the content in one of these forms instead.";
+
     const presentationNote =
-      '\n\n## Presentation Output\nWhen a user asks you to create a presentation, deck, or slides, structure your output so it can be converted to a branded PPTX file. Output a JSON code block containing an array of slide objects. Each slide has a `type` and content fields:\n\nSlide types:\n- `title`: Opening slide. Fields: `title`, `subtitle`\n- `content`: Standard slide with heading and bullets or body text. Fields: `title`, `bullets` (array of strings) OR `body` (paragraph text)\n- `two-column`: Side-by-side layout. Fields: `title`, `left` ({heading, bullets}), `right` ({heading, bullets})\n- `quote`: Featured quote. Fields: `quote`, `attribution`\n- `stats`: Key metrics in cards. Fields: `title`, `stats` (array of {value, label})\n- `closing`: Final slide. Fields: `title`, `subtitle`, `body`\n\nAlways include speaker notes in a `notes` field per slide.\n\nExample:\n```json\n[\n  {"type": "title", "title": "Campaign Results Q1", "subtitle": "Gratitude.com Activation Report"},\n  {"type": "stats", "title": "Key Metrics", "stats": [{"value": "2.4M", "label": "Activations"}, {"value": "89%", "label": "Completion Rate"}]},\n  {"type": "content", "title": "What Worked", "bullets": ["Direct sponsor outreach drove 40% of sign-ups", "Email sequences had 3x industry open rates"]},\n  {"type": "closing", "title": "Next Steps", "subtitle": "Q2 Planning", "body": "gratitude.com"}\n]\n```\n\nAfter the JSON block, add a brief plain-language summary of the deck so the user can review the content before downloading. Tell them they can click the PPTX button to download it as a branded PowerPoint file.';
+      '\n\n## Presentation Output\nWhen a user asks for a presentation, deck, slides, or a one-pager deck, output ONE JSON code block containing an array of slide objects. The same JSON renders to both the PowerPoint and the PDF download. Each slide has a `type` and content fields:\n\n- `title`: Opening slide. Fields: `title`, `subtitle`\n- `content`: Heading plus text. Fields: `title`, `body` (short prose), `bullets` (array of strings). You may use body AND bullets together; both are kept.\n- `two-column`: Side by side. Fields: `title`, `left` ({heading, bullets}), `right` ({heading, bullets})\n- `quote`: Featured quote. Fields: `quote`, `attribution` (name only, no dash)\n- `stats`: Metric cards. Fields: `title`, `stats` (array of {value, label}). Up to 4 per slide look best; more continue onto the next slide automatically.\n- `closing`: Final slide. Fields: `title`, `subtitle`, `body`\n\nAlways include speaker notes in a `notes` field. Keep bullets to one idea each. Never invent metrics: use supplied numbers or "[NEEDS INPUT]". No em dashes anywhere.\n\nExample:\n```json\n[\n  {"type": "title", "title": "Gratitude, delivered.", "subtitle": "The infrastructure for human acknowledgment", "notes": "Open with the category line."},\n  {"type": "content", "title": "How it works", "body": "Real acts of good are funded first, so a person can put one into motion instantly.", "bullets": ["Activate: choose an available pre-funded act", "Fund: create capacity for future acts, once or recurring", "A trusted nonprofit partner delivers, and delivery is verified"], "notes": "Keep Activate and Fund distinct."},\n  {"type": "stats", "title": "Pilot results", "stats": [{"value": "[NEEDS INPUT]", "label": "Acts activated"}, {"value": "[NEEDS INPUT]", "label": "Funded capacity"}], "notes": "Replace placeholders with verified numbers."},\n  {"type": "closing", "title": "Make more possible", "subtitle": "gratitude.com", "body": "Fund an act or activate one today.", "notes": "Close on the two MVP actions."}\n]\n```\n\nAfter the JSON block, add a brief plain-language summary of the deck. Tell the user they can download it as a branded PowerPoint (PPTX) or PDF.';
 
     const webSearchNote =
       "\n\n## Web Search\nYou have access to web search. Use it when the user asks about current events, recent data, live information, competitor research, industry stats, or anything that benefits from up-to-date information. Do not tell the user you are searching - just do it and incorporate the results naturally. When you cite information from search results, mention the source naturally in your response (e.g., 'According to Forbes...' or 'A recent report from Nonprofit Quarterly found...').";
 
     const imageGenNote =
-      "\n\n## Image Generation\nYou can generate real images with the generate_image tool. Use it when the user asks for a graphic, social media visual, hero image, background art, illustration, or any other image. Write a detailed, art-directed prompt that follows the Gratitude visual system (dark backgrounds, pink #FE3184 to orange #ec7211 gradient glow accents, premium and modern - never navy). Pick the aspect ratio that fits the use: 1:1 for Instagram posts, 16:9 for banners/YouTube/presentations, 9:16 for stories/reels, 4:3 or 3:4 for general use.\n\nThe OFFICIAL white Gratitude wordmark is composited onto every generated image automatically (bottom-right, brand-standard margin) - this is the real logo file, not AI-rendered. So: never say you cannot place the logo, never design a 'reserved space' for manual compositing, and never ask the user to drop the logo in themselves. Do keep the bottom-right area of your prompt's composition uncluttered so the mark sits cleanly. If the user explicitly wants no logo, pass include_logo: false.\n\nAfter the tool returns, embed the image in your reply using the exact markdown the tool result gives you, then briefly describe what you created. If the user wants changes, call the tool again with a revised prompt. Note: the image model cannot render TEXT reliably - avoid headlines/words inside the generated image itself; offer text overlays as a design-tool step instead.";
+      "\n\n## Image Generation\nYou can generate real images with the generate_image tool. Use it when the user asks for a graphic, social media visual, hero image, background art, illustration, or any other image. Write a detailed, art-directed prompt that follows the Gratitude visual system (black backgrounds, pink #FE3184 to coral #FF6B35 to orange #ec7211 glow accents, premium and modern, never navy). Pick the aspect ratio for the placement. Images are delivered at exact canvas sizes: 1:1 = 1080x1080 (Instagram/LinkedIn square), 4:5 = 1080x1350 (portrait post), 9:16 = 1080x1920 (story/reel), 16:9 = 1920x1080 (presentation, banner, YouTube), 4:3 = 1440x1080, 3:4 = 1080x1440. The image is center-cropped to that canvas, so keep the subject centered with breathing room at the edges.\n\nThe OFFICIAL white Gratitude wordmark is composited onto every generated image automatically, bottom-right, inside the format's safe zone (above the bottom UI area on stories). So: never say you cannot place the logo, never design a 'reserved space' for manual compositing, and never ask the user to drop the logo in themselves. Keep the bottom-right area uncluttered. If the user explicitly wants no logo, pass include_logo: false.\n\nThe image appears in the chat automatically. You may also embed it using the markdown the tool result gives you, then briefly describe what you created. If the user wants changes, call the tool again with a revised prompt. The image model cannot render TEXT reliably, so keep headlines and words out of the generated image. If the user needs headline text on a graphic, give them the headline and supporting copy separately so it can be set in Anton and Inter.";
 
-    const systemPrompt = `${brandContext}${kbSection}${examplesSection}\n\n---\n\n${agent.body}${specialistBody}${endUserBehaviorNote}${conciergeNote}${presentationNote}${webSearchNote}${imageGenNote}`;
+    const systemPrompt = `${brandContext}${kbSection}${examplesSection}\n\n---\n\n${agent.body}${specialistBody}${endUserBehaviorNote}${conciergeNote}${capabilitiesNote}${presentationNote}${webSearchNote}${imageGenNote}`;
 
     // Stream response with web search + image generation enabled.
     // Image generation is a client tool, so the model can stop with
     // stop_reason "tool_use" - we run the tool, feed back the result, and
-    // continue the loop until it produces a final text response.
+    // continue. The LAST turn is always tool-free so tool results never go
+    // unanswered.
     const anthropic = new Anthropic();
     const tools = [
       {
@@ -330,19 +357,19 @@ export async function POST(request: Request) {
       {
         name: "generate_image",
         description:
-          "Generate a real image (PNG) from a detailed art-direction prompt. Returns markdown to embed the image in your reply. Use for social graphics, hero images, backgrounds, illustrations, and campaign art.",
+          "Generate a real image (PNG) at an exact canvas size from a detailed art-direction prompt. The image is shown to the user automatically. Use for social graphics, hero images, backgrounds, illustrations, and campaign art.",
         input_schema: {
           type: "object" as const,
           properties: {
             prompt: {
               type: "string",
               description:
-                "Detailed art-direction prompt: subject, composition, lighting, color palette, style. Follow the Gratitude visual system.",
+                "Detailed art-direction prompt: subject, composition, lighting, color palette, style. Follow the Gratitude visual system. No text in the image.",
             },
             aspect_ratio: {
               type: "string",
-              enum: ["1:1", "16:9", "9:16", "4:3", "3:4"],
-              description: "Aspect ratio for the intended placement",
+              enum: IMAGE_ASPECT_RATIOS,
+              description: "Aspect ratio for the intended placement (1:1, 4:5, 9:16, 16:9, 4:3, 3:4)",
             },
             include_logo: {
               type: "boolean",
@@ -357,7 +384,9 @@ export async function POST(request: Request) {
 
     let fullResponse = "";
     const citations: { url: string; title: string }[] = [];
-    const MAX_TOOL_TURNS = 4;
+    // Generated images are recorded independently of the model's prose so
+    // they render even if the final reply never repeats the markdown
+    const generatedImages: { resourceId: string; title: string }[] = [];
 
     const readableStream = new ReadableStream({
       async start(controller) {
@@ -366,18 +395,30 @@ export async function POST(request: Request) {
           controller.enqueue(
             encoder.encode(`data: ${JSON.stringify({ ...payload, conversationId: convId })}\n\n`)
           );
+        const emitText = (text: string) => {
+          fullResponse += text;
+          send({ text });
+        };
+
+        let incompleteReason: string | null = null;
 
         try {
           let loopMessages: Anthropic.Messages.MessageParam[] = [...apiMessages];
 
           for (let turn = 0; turn < MAX_TOOL_TURNS; turn++) {
-            const stream = anthropic.messages.stream({
-              model: process.env.CHAT_MODEL || "claude-sonnet-5",
-              max_tokens: 8192,
-              system: systemPrompt,
-              messages: loopMessages,
-              tools,
-            });
+            const finalTurn = turn === MAX_TOOL_TURNS - 1 || timeLeft() < FINAL_TURN_RESERVE_MS;
+
+            const stream = anthropic.messages.stream(
+              {
+                model: process.env.CHAT_MODEL || "claude-sonnet-5",
+                max_tokens: 8192,
+                system: systemPrompt,
+                messages: loopMessages,
+                tools,
+                ...(finalTurn ? { tool_choice: { type: "none" as const } } : {}),
+              },
+              { signal: AbortSignal.timeout(Math.max(5_000, timeLeft())) }
+            );
 
             let searchQueryBuffer = "";
             let inServerToolUse = false;
@@ -407,8 +448,7 @@ export async function POST(request: Request) {
                 }
 
                 if (delta.type === "text_delta" && delta.text) {
-                  fullResponse += delta.text;
-                  send({ text: delta.text });
+                  emitText(delta.text);
                 }
               }
             }
@@ -430,7 +470,35 @@ export async function POST(request: Request) {
               }
             }
 
-            if (finalMessage.stop_reason !== "tool_use") {
+            const stopReason = finalMessage.stop_reason;
+
+            if (stopReason === "end_turn" || stopReason === "stop_sequence") {
+              break;
+            }
+            if (stopReason === "max_tokens") {
+              incompleteReason = "max_tokens";
+              break;
+            }
+            if (stopReason === "refusal") {
+              incompleteReason = "refusal";
+              break;
+            }
+            if (stopReason === "pause_turn") {
+              // Server tool (web search) paused a long turn: resume it
+              if (finalTurn) {
+                incompleteReason = "time";
+                break;
+              }
+              loopMessages = [...loopMessages, { role: "assistant", content: finalMessage.content }];
+              continue;
+            }
+            if (stopReason !== "tool_use") {
+              incompleteReason = "error";
+              break;
+            }
+            if (finalTurn) {
+              // Should not happen with tool_choice none, but never report it as done
+              incompleteReason = "tool_limit";
               break;
             }
 
@@ -447,30 +515,47 @@ export async function POST(request: Request) {
                   aspect_ratio?: string;
                   include_logo?: boolean;
                 };
-                const validRatios = ["1:1", "16:9", "9:16", "4:3", "3:4"];
+
+                // Only start an image if it can finish AND leave room for the reply
+                const imageWindow = timeLeft() - FINAL_TURN_RESERVE_MS;
+                if (imageWindow < MIN_IMAGE_WINDOW_MS) {
+                  const reason = "Not enough time left in this request to create the image.";
+                  send({ imageError: reason });
+                  toolResults.push({
+                    type: "tool_result",
+                    tool_use_id: toolUse.id,
+                    is_error: true,
+                    content: `${reason} Tell the user briefly and offer to create it in a new message.`,
+                  });
+                  continue;
+                }
+
                 send({ generatingImage: true });
                 try {
                   const image = await generateImage({
                     prompt: input.prompt || "",
-                    aspectRatio: validRatios.includes(input.aspect_ratio || "")
+                    aspectRatio: IMAGE_ASPECT_RATIOS.includes(input.aspect_ratio as ImageAspectRatio)
                       ? (input.aspect_ratio as ImageAspectRatio)
                       : "1:1",
                     ownerId: session.userId,
                     conversationId: convId,
                     includeLogo: input.include_logo !== false,
+                    timeoutMs: imageWindow,
                   });
+                  generatedImages.push({ resourceId: image.resourceId, title: image.title });
+                  send({ imageReady: { resourceId: image.resourceId, title: image.title } });
+                  if (image.logoError) send({ imageError: image.logoError });
                   toolResults.push({
                     type: "tool_result",
                     tool_use_id: toolUse.id,
-                    content: `Image generated successfully. Embed it in your reply using exactly this markdown: ![${image.title}](/api/resources/${image.resourceId}/download?inline=1)`,
+                    content:
+                      `Image generated successfully and is already shown to the user. You may embed it with exactly this markdown: ![${image.title}](/api/resources/${image.resourceId}/download?inline=1)` +
+                      (image.logoError ? ` Note: ${image.logoError} Tell the user.` : ""),
                   });
                 } catch (imageErr) {
                   console.error("Image generation failed:", imageErr);
                   const reason =
                     imageErr instanceof Error ? imageErr.message.slice(0, 300) : "unknown error";
-                  // Surface the reason in the SSE stream for diagnostics
-                  // (client ignores unknown keys) and give the model enough
-                  // detail to react appropriately (e.g. safety block vs outage)
                   send({ imageError: reason });
                   toolResults.push({
                     type: "tool_result",
@@ -489,14 +574,42 @@ export async function POST(request: Request) {
               }
             }
 
+            const nextIsFinal = turn + 1 === MAX_TOOL_TURNS - 1 || timeLeft() < FINAL_TURN_RESERVE_MS;
+            const userContent: Anthropic.Messages.ContentBlockParam[] = [...toolResults];
+            if (nextIsFinal) {
+              userContent.push({
+                type: "text",
+                text: "No more tool calls are available for this request. Write your complete final response to the user now.",
+              });
+            }
+
             loopMessages = [
               ...loopMessages,
               { role: "assistant", content: finalMessage.content },
-              { role: "user", content: toolResults },
+              { role: "user", content: userContent },
             ];
           }
+        } catch (err) {
+          console.error("Chat stream failed:", err);
+          incompleteReason = incompleteReason || "error";
+          send({ error: "The response was interrupted." });
+        }
 
-          // Send citations if any were collected
+        try {
+          // Images the model did not embed are appended so they always render
+          const missing = generatedImages.filter((img) => !fullResponse.includes(`/api/resources/${img.resourceId}/`));
+          if (missing.length > 0) {
+            emitText(
+              (fullResponse ? "\n\n" : "") +
+                missing.map((img) => `![${img.title}](/api/resources/${img.resourceId}/download?inline=1)`).join("\n\n")
+            );
+          }
+
+          if (incompleteReason) {
+            emitText(`${fullResponse ? "\n\n" : ""}_${INCOMPLETE_NOTES[incompleteReason] || INCOMPLETE_NOTES.error}_`);
+            send({ incomplete: incompleteReason });
+          }
+
           if (citations.length > 0) {
             send({ citations });
             // Append citation links to the saved response
@@ -506,9 +619,8 @@ export async function POST(request: Request) {
           }
 
           controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+        } finally {
           controller.close();
-        } catch (err) {
-          controller.error(err);
         }
       },
     });
