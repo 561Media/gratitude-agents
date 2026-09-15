@@ -248,7 +248,7 @@ export default function KnowledgebaseViewer() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search learnings"
-          className="px-3.5 py-2 bg-white/[0.03] border border-white/[0.06] rounded-lg text-[13px] text-white/80 placeholder:text-white/25 focus:outline-none focus:border-white/[0.14] transition-colors w-64"
+          className="px-3.5 py-2 bg-white/[0.03] border border-white/[0.06] rounded-lg text-[13px] text-white/80 placeholder:text-white/25 focus:outline-none focus:border-white/[0.14] transition-colors w-full sm:w-64"
         />
         <select
           value={statusFilter}

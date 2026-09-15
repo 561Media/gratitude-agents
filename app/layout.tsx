@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Anton } from "next/font/google";
 import "./globals.css";
 import Toaster from "@/components/Toaster";
@@ -19,6 +19,16 @@ const anton = Anton({
 export const metadata: Metadata = {
   title: "Gratitude",
   description: "Your Gratitude workspace assistant",
+};
+
+// viewport-fit=cover exposes the safe-area insets the composer and drawer pad
+// against; resizes-content shrinks dvh when the on-screen keyboard opens
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({

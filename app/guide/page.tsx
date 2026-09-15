@@ -344,12 +344,12 @@ export default function GuidePage() {
       </div>
 
       {/* Section tabs */}
-      <div className="flex gap-1 mb-8 border-b border-white/[0.06] -mx-1">
+      <div className="flex gap-1 mb-8 border-b border-white/[0.06] -mx-1 overflow-x-auto">
         {sections.map((section) => (
           <button
             key={section.id}
             onClick={() => setActiveSection(section.id)}
-            className={`px-4 py-2.5 text-[13px] font-medium transition-colors relative ${
+            className={`shrink-0 whitespace-nowrap px-3 sm:px-4 py-2.5 text-[13px] font-medium transition-colors relative ${
               activeSection === section.id
                 ? "text-white/90"
                 : "text-white/40 hover:text-white/60"

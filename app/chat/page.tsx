@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import ChatInterface from "@/components/ChatInterface";
+import { MenuButton, useMobileNav } from "@/components/MobileNav";
 
 interface Message {
   id?: string;
@@ -13,6 +14,7 @@ interface Message {
 export default function ChatPage() {
   const [conversationId, setConversationId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
+  const nav = useMobileNav();
 
   async function handleSelectConversation(id: string) {
     setConversationId(id);
@@ -43,16 +45,19 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-dvh overflow-hidden">
       <Sidebar
         conversationId={conversationId}
         onSelectConversation={handleSelectConversation}
         onNewChat={handleNewChat}
         onDeleteConversation={handleDeleteConversation}
+        mobileOpen={nav.open}
+        onMobileClose={nav.closeNav}
       />
 
       <ChatInterface
         key={conversationId || "new"}
+        menuButton={<MenuButton nav={nav} />}
         agentId="gratitude"
         conversationId={conversationId}
         onConversationCreated={setConversationId}

@@ -134,6 +134,8 @@ interface ChatInterfaceProps {
   onConversationCreated: (id: string) => void;
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  /** Opens the navigation drawer below md; rendered at the start of the header. */
+  menuButton?: React.ReactNode;
 }
 
 type ExportFormat = "md" | "docx" | "pdf" | "pptx" | "csv" | "xlsx";
@@ -230,7 +232,7 @@ function HeaderExportButton({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] transition-all ${
+      className={`flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg text-[11px] transition-all ${
         accent
           ? "text-brand-pink/50 hover:text-brand-pink hover:bg-brand-pink/[0.06]"
           : "text-white/35 hover:text-white/60 hover:bg-white/[0.04]"
@@ -261,8 +263,8 @@ function HeaderExportButtons({
   );
 
   return (
-    <div className="flex items-center gap-1 shrink-0">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/25 mr-1">
+    <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="hidden sm:block text-white/25 mr-1" aria-hidden="true">
         <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
         <polyline points="7 10 12 15 17 10" />
         <line x1="12" y1="15" x2="12" y2="3" />
@@ -289,6 +291,7 @@ export default function ChatInterface({
   onConversationCreated,
   messages,
   setMessages,
+  menuButton,
 }: ChatInterfaceProps) {
   const [input, setInput] = useState("");
   const [firstName, setFirstName] = useState<string | null>(null);
@@ -554,11 +557,12 @@ export default function ChatInterface({
   const hasMessages = messages.length > 0;
 
   return (
-    <div className="flex-1 flex flex-col h-screen bg-dark-950">
+    <div className="flex-1 flex flex-col h-dvh min-w-0 bg-dark-950">
       {/* Header */}
-      <div className="shrink-0 h-[52px] px-6 border-b border-white/[0.06] bg-dark-900/50 flex items-center justify-between">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-7 h-7 rounded-md flex items-center justify-center shrink-0 bg-white/[0.03] border border-white/[0.08]">
+      <div className="shrink-0 h-[52px] px-3 sm:px-6 gap-2 border-b border-white/[0.06] bg-dark-900/50 flex items-center justify-between">
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+          {menuButton}
+          <div className="w-7 h-7 rounded-md hidden sm:flex items-center justify-center shrink-0 bg-white/[0.03] border border-white/[0.08]">
             <GratitudeMark size={13} className="text-white/80" />
           </div>
           <h2 className="text-[13px] font-medium text-white/85">Gratitude</h2>
@@ -572,9 +576,9 @@ export default function ChatInterface({
       {/* Messages */}
       <div
         ref={scrollContainerRef}
-        className="flex-1 overflow-y-auto"
+        className="flex-1 overflow-y-auto overflow-x-hidden"
       >
-        <div className="max-w-3xl mx-auto px-6 py-6 space-y-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
           {!hasMessages && (
             <div className="pt-8 sm:pt-12 pb-8">
               <h3 className="font-display uppercase text-[26px] sm:text-[30px] leading-[1.05] tracking-[-0.01em] text-white">
@@ -686,7 +690,7 @@ export default function ChatInterface({
 
       {/* Input */}
       <div className="shrink-0 border-t border-white/[0.06] bg-dark-900/30">
-        <div className="max-w-3xl mx-auto px-6 py-4">
+        <div className="max-w-3xl mx-auto px-3 sm:px-6 pt-3 sm:pt-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-[max(1rem,env(safe-area-inset-bottom))]">
           {attachments.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-2">
               {attachments.map((a) => (
@@ -719,7 +723,7 @@ export default function ChatInterface({
               )}
             </div>
           )}
-          <div className="flex items-end gap-3 rounded-2xl px-4 py-3 bg-white/[0.03] border border-white/[0.07] transition-colors focus-within:border-white/[0.16] focus-within:bg-white/[0.04]">
+          <div className="flex items-end gap-2 sm:gap-3 rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 bg-white/[0.03] border border-white/[0.07] transition-colors focus-within:border-white/[0.16] focus-within:bg-white/[0.04]">
             <input
               ref={fileInputRef}
               type="file"
@@ -731,8 +735,9 @@ export default function ChatInterface({
             <button
               onClick={() => fileInputRef.current?.click()}
               disabled={streaming || uploadingAttachment}
-              className="shrink-0 pb-1 text-white/30 hover:text-white/70 disabled:opacity-30 transition-colors"
+              className="shrink-0 pb-2 sm:pb-1 text-white/30 hover:text-white/70 disabled:opacity-30 transition-colors"
               title="Attach files (images, PDFs, text)"
+              aria-label="Attach files"
             >
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
@@ -748,7 +753,8 @@ export default function ChatInterface({
               onKeyDown={handleKeyDown}
               placeholder="Tell Gratitude what you need..."
               rows={1}
-              className="flex-1 resize-none bg-transparent text-white/85 text-[15px] leading-relaxed placeholder:text-white/25 focus:outline-none"
+              aria-label="Message Gratitude"
+              className="flex-1 min-w-0 resize-none bg-transparent text-white/85 text-base sm:text-[15px] leading-relaxed placeholder:text-white/25 focus:outline-none"
               style={{ maxHeight: "200px" }}
               disabled={streaming}
             />
@@ -758,6 +764,7 @@ export default function ChatInterface({
               </span>
               <button
                 onClick={() => handleSend()}
+                aria-label="Send message"
                 disabled={(!input.trim() && attachments.length === 0) || streaming || uploadingAttachment}
                 className="w-9 h-9 rounded-xl flex items-center justify-center text-white transition-all duration-200 disabled:opacity-20 hover:-translate-y-0.5 active:translate-y-0"
                 style={{
