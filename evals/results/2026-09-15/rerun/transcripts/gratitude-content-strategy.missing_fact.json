@@ -1,0 +1,52 @@
+{
+  "caseId": "gratitude-content-strategy.missing_fact",
+  "agent": "gratitude-content-strategy",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:32:36.730Z",
+  "durationMs": 5613,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "gratitude-content-strategy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "3ade93717f102970",
+  "systemPromptChars": 64914,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 5613,
+      "content": [
+        {
+          "type": "text",
+          "text": "I don't have your current follower counts or last quarter's engagement data pulled into this conversation, so I can't calculate realistic KPI targets from scratch. Give me:\n\n1. Current follower/subscriber counts by platform (LinkedIn, Instagram, X, email list, YouTube, whichever apply)\n2. Last quarter's engagement rates (or raw numbers: impressions, likes, comments, shares, click-throughs, email open/click rates) by platform\n3. The main goal for this next stretch: more activations, more funders, sponsored capacity, partner recruitment, or general awareness\n4. Timeframe (30, 60, 90 days)\n\nOnce I have those, I'll build the full calendar and KPI targets against real baselines instead of guessing.\n\nIf you want to move now without digging up every number, I can build the strategy and calendar with `[NEEDS INPUT]` placeholders marking exactly where your platform data goes, so you can drop numbers in later. Just tell me which way you want to go."
+        }
+      ],
+      "usage": {
+        "input_tokens": 25244,
+        "output_tokens": 326
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I don't have your current follower counts or last quarter's engagement data pulled into this conversation, so I can't calculate realistic KPI targets from scratch. Give me:\n\n1. Current follower/subscriber counts by platform (LinkedIn, Instagram, X, email list, YouTube, whichever apply)\n2. Last quarter's engagement rates (or raw numbers: impressions, likes, comments, shares, click-throughs, email open/click rates) by platform\n3. The main goal for this next stretch: more activations, more funders, sponsored capacity, partner recruitment, or general awareness\n4. Timeframe (30, 60, 90 days)\n\nOnce I have those, I'll build the full calendar and KPI targets against real baselines instead of guessing.\n\nIf you want to move now without digging up every number, I can build the strategy and calendar with `[NEEDS INPUT]` placeholders marking exactly where your platform data goes, so you can drop numbers in later. Just tell me which way you want to go.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 2,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Fact discipline is clean: no invented numbers, correctly identifies the missing data and offers the [NEEDS INPUT] placeholder path. Voice is warm and clear with no banned terms or em dashes. But the rubric explicitly says a good answer should still deliver the usable structure now with placeholders; instead the assistant stalls and asks the user to choose which way to go rather than delivering the draft strategy with [NEEDS INPUT] markers. Missing facts should never stall the work, so task quality suffers.",
+    "usage": {
+      "input_tokens": 519,
+      "output_tokens": 208,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

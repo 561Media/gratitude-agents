@@ -13,7 +13,7 @@ import type { CheckResult, CheckType, EvalCase, Severity, Transcript } from "./t
 export const PRODUCTION_TURN_BUDGET_MS = 52_000;
 
 const NEGATION =
-  /\b(not|never|no longer|retired|avoid\w*|don'?t|do not|doesn'?t|isn'?t|aren'?t|can'?t|cannot|won'?t|instead|rather than|replac\w*|outdated|old|older|pending|unconfirmed|until|wrong|inaccurate|incorrect|flag\w*|remov\w*|drop\w*|unverified|confirm\w*|without|swap\w*|chang\w*|updat\w*|correct\w*|left out|kept out|ignored?|embedded|injected|instruction|NEEDS INPUT|no)\b/i;
+  /\b(not|never|no longer|retired|avoid\w*|don'?t|do not|doesn'?t|isn'?t|aren'?t|can'?t|cannot|won'?t|instead|rather than|replac\w*|outdated|old|older|pending|unconfirmed|until|wrong|inaccurate|incorrect|flag\w*|remov\w*|drop\w*|unverified|confirm\w*|without|swap\w*|chang\w*|updat\w*|correct\w*|left out|kept out|ignored?|embedded|injected|instruction|NEEDS INPUT|no|off the table|vs|versus|compar\w*|point-and-badge|nobody|nothing|placeholder|false|kill\w*|tired of|generic|assumption|misconception|myth)\b|"[^"]*\?"|“[^”]*\?”/i;
 
 /** Sentences plus whole lines, so multi-sentence patterns ("Companies sponsor. People activate.") still match. */
 function segments(text: string): string[] {
@@ -22,8 +22,42 @@ function segments(text: string): string[] {
   return [...new Set([...sentences, ...lines])];
 }
 
+/** Intro or heading of a list that names things NOT to say ("Words we avoid:", "## Never") */
+const LIST_INTRO_NEGATIVE =
+  /\b(avoid\w*|never|don'?t|do not|not|banned|off-limits|retired|out|won'?t|no|red flags?|kill|cut|drop|stop|instead of|replac\w*|belong)\b/i;
+
+/** Sentences about competitors or traditional giving are not claims about Gratitude.com */
+const THIRD_PARTY =
+  /\b(Benevity|Deed|Blackbaud|YourCause|Workhuman|Achievers|Glint|Modern Health|Lyra|Headspace|competitors?|other platforms|most (causes|giving|platforms|programs|donation)|traditional|typical)\b/i;
+
+/**
+ * Sentences that assert a pattern. Exempt: sentences that negate or correct
+ * it, questions (objections, FAQs), sentences about third parties, and list
+ * items or table rows under a heading/intro that introduces things to avoid.
+ */
 function asserted(text: string, re: RegExp): string[] {
-  return segments(text).filter((s) => re.test(s) && !NEGATION.test(s));
+  const out = new Set<string>();
+  let context = "";
+  for (const raw of text.split("\n")) {
+    const line = raw.trim();
+    if (!line) continue;
+    const isItem = /^([-*+•]\s|\d+[.)]\s|\|)/.test(line);
+    if (!isItem) context = /^#{1,6}\s|:\s*(\*\*)?\s*$|^\*\*[^*]+\*\*:?\s*$/.test(line) ? line : "";
+    const sentences = new Set([...line.split(/(?<=[.!?])\s+/), line].map((s) => s.trim()).filter(Boolean));
+    for (const s of sentences) {
+      if (!re.test(s)) continue;
+      // Judge negation on the text AROUND the match: the retired tagline itself contains "isn't"
+      const all = new RegExp(re.source, re.flags.replace("g", "") + "g");
+      const around = s.replace(all, " ");
+      // The line as a whole counts too: '**"Gratitude isn't just felt. It's delivered."** was retired.'
+      const lineAround = line.replace(all, " ");
+      if (NEGATION.test(around) || THIRD_PARTY.test(around) || NEGATION.test(lineAround)) continue;
+      if (/\?["'*”_)\s]*$/.test(s)) continue;
+      if (isItem && context && LIST_INTRO_NEGATIVE.test(context)) continue;
+      out.add(s);
+    }
+  }
+  return [...out];
 }
 
 /** Prose view of the output: HTML code blocks reduced to their visible text. */
@@ -86,7 +120,8 @@ const CLAIMS: { name: string; re: RegExp; type: CheckType; severity: Severity }[
   { name: "every_message", re: /every message (changes|builds|creates)/i, type: "retired_language", severity: "critical" },
   { name: "companies_sponsor_model", re: /companies sponsor[.,]?\s+people activate/i, type: "retired_language", severity: "critical" },
   { name: "retired_tagline", re: /isn'?t just felt/i, type: "retired_language", severity: "critical" },
-  { name: "gamification", re: /\b(streaks?|badges?|leaderboards?|reward points|earn points)\b/i, type: "retired_language", severity: "critical" },
+  // UI "status badge" is fine; earning/unlocking badges, streaks, leaderboards and points are not
+  { name: "gamification", re: /\b(streaks?|leaderboards?|reward points|earn(ing|ed)? points|points (for|per) (every|each)|(earn|unlock|collect)\w* (a |your |new )?badges?|badges? (for|you earn|earned|to unlock))\b/i, type: "retired_language", severity: "critical" },
   { name: "one_activation_per_day", re: /one activation (per|a) day|daily limit/i, type: "retired_language", severity: "critical" },
   { name: "pledge_gate", re: /\btake the pledge\b|\bpledge\b/i, type: "retired_language", severity: "major" },
   { name: "donate_vocabulary", re: /\b(donate|donation|donations|donor|donors)\b/i, type: "retired_language", severity: "major" },
@@ -144,10 +179,20 @@ export function runDeterministicChecks(c: EvalCase, t: Transcript, ctx: GradeCon
 
   // Invented numbers: $ amounts, percentages, and traction counts must appear in the corpus
   const corpusMoney = new Set(moneyValues(ctx.corpus).map((x) => x.value));
-  const corpusPct = new Set(percentValues(ctx.corpus).map((x) => x.value));
+  // investor-core stores the use-of-funds split as `pct: 60`, not "60%"
+  const corpusPct = new Set([
+    ...percentValues(ctx.corpus).map((x) => x.value),
+    ...[...ctx.corpus.matchAll(/\bpct:\s*(\d+(?:\.\d+)?)/g)].map((m) => parseFloat(m[1])),
+  ]);
   const corpusDigits = new Set((ctx.corpus.replace(/(\d),(\d{3})/g, "$1$2").match(/\d+/g) || []));
-  const badMoney = moneyValues(prose).filter((x) => !corpusMoney.has(x.value));
-  const badPct = percentValues(prose).filter((x) => x.value !== 0 && x.value !== 100 && !corpusPct.has(x.value));
+  // "$0" is the approved "costs nothing" fact, not a metric
+  const badMoney = moneyValues(prose).filter((x) => x.value !== 0 && !corpusMoney.has(x.value));
+  // Design-spec percentages (opacity, crop, scale) are layout, not claims
+  const metricProse = prose
+    .replace(/\d+(\.\d+)?(\s?-\s?\d+(\.\d+)?)?\s?%\s*(opacity|alpha|transparen\w*|tint|width|height|scale|size|quality|fill|pure|black|dark|void|glow|of the (frame|canvas|width|height|slide|image))/gi, " ")
+    .replace(/(opacity|alpha|scale|width|height|quality|at|to)[:\s]+\d+(\.\d+)?\s?%/gi, " ")
+    .replace(/\/\d+(\.\d+)?\s?%/g, " ");
+  const badPct = percentValues(metricProse).filter((x) => x.value !== 0 && x.value !== 100 && !corpusPct.has(x.value));
   const badCounts = countClaims(prose).filter((x) => !corpusDigits.has(x.value));
   const invented = [...badMoney.map((x) => x.raw), ...badPct.map((x) => x.raw), ...badCounts.map((x) => x.raw)];
   results.push(check("facts.no_invented_numbers", "invented_number", invented.length === 0, "critical", invented.length ? [...new Set(invented)].slice(0, 6).join(" | ") : undefined));

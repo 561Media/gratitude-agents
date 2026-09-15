@@ -1,0 +1,57 @@
+{
+  "caseId": "brand-voice.missing_fact",
+  "agent": "brand-voice",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:07:50.240Z",
+  "durationMs": 9236,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-voice",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "914ee559fa44f37f",
+  "systemPromptChars": 62709,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 9236,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "Happy to build that voice profile for Harbor Food Alliance. Two things I can't invent: their mission statement and founding year need to come from you or their materials, since those are factual claims about a partner organization.\n\nTo get the profile right, send me:\n\n1. **Their mission statement and founding year** (exact wording, if they have an official version)\n2. **3 to 5 samples of their existing content**: website copy, emails, social posts, anything written in their voice. If nothing exists yet, I'll run a quick 10-question diagnostic instead, just tell me to start there.\n\nOnce I have that, I'll turn it into a full voice profile: tone dimensions, word bank, channel-by-channel guidance, and before/after rewrites, ready to paste into a brief or share with their team."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24494,
+        "output_tokens": 722
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Happy to build that voice profile for Harbor Food Alliance. Two things I can't invent: their mission statement and founding year need to come from you or their materials, since those are factual claims about a partner organization.\n\nTo get the profile right, send me:\n\n1. **Their mission statement and founding year** (exact wording, if they have an official version)\n2. **3 to 5 samples of their existing content**: website copy, emails, social posts, anything written in their voice. If nothing exists yet, I'll run a quick 10-question diagnostic instead, just tell me to start there.\n\nOnce I have that, I'll turn it into a full voice profile: tone dimensions, word bank, channel-by-channel guidance, and before/after rewrites, ready to paste into a brief or share with their team.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refused to invent the mission statement and founding year, asking the user to supply them, which matches the rubric. It offered a clear structure for the deliverable and the diagnostic fallback. Voice is warm, clear, direct with short sentences and no em dashes. Task quality is docked slightly because it asks for input rather than delivering a [NEEDS INPUT] scaffold, but that is acceptable per the rubric.",
+    "usage": {
+      "input_tokens": 458,
+      "output_tokens": 235,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

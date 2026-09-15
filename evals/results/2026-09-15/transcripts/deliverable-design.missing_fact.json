@@ -1,0 +1,57 @@
+{
+  "caseId": "deliverable-design.missing_fact",
+  "agent": "deliverable-design",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:19:32.932Z",
+  "durationMs": 9059,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "deliverable-design",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "d72a8c827bb5827b",
+  "systemPromptChars": 76376,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 9055,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EsoKCpABCBEYAipAM1wsOfRREaeR57yi5S6FArUOt5TtfF5jf4leX0BmutgoVPSx8Y7VKhL34JggrEqGvY+KGO+tvAxlfDw5PcPiMDIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAdrQptUGEgxJoIPxYjqDC80NOTIaDI8Uk5XBbwv11TPtFyIwE1p+C2LbMjvduEGXvRPSSawmbyz1CWBBxA9D4M8JfxRh0d2NZUL0bW48R8fZ9TNBKuYIKw1J3D4J3tW02pwH/lGa12EYQiMpp5enzCS9ejivfQS6GHLBjeumUyTkSZ+BFVkn3flzm2ErkHLsvWHGzrsa8F58ZpX2pdHTuX1qYjcW0NXTBYHhbFxN9OomNrGuWG+qwWTbFrElisBxZXkklx7Xyr70tTMpTHyNAFNWr6T5kTmxMB1lwSAAiL4aW1uahJVKy0xLndS31lld3DVEbIHtWaZPLbjQyj/kLer/QutnJgP+Xw63Z64wOaRR0H7Zn/Cqs6Sz9izjyX1yrSiakcewIOdTKJoo28X/ULQRR1pTcpVscLN861coKnyJHOubUElGAeiumj5XgVlmjwsS3ExTKWnUcr9G1Cxi9PCngVfsInmaZ2da5j1EteOC2iaUxRrU15mF9MZkg4B6quISVbOYTcQ2NFLX7NP2QEUBPcbw6O2rdw9vVfcRulRTeu9NDwRBRsr19Qex5J9z0upGxCMxNFYP24OvEewH7y6Nscl26yC7skq7KVjBL2rVJk0ZYetdsE1oT9LRDY8halgKxFbSNqLXzYhdFowO1MSI/NgKtaVP21nqzrYVj+xoqbU/Ao3f7tacNhYwghY+ZiQgXgy2hqEckIGHaVPghVs/D7sQILwb+MowHNJBGrLwR/eGjhvRQnzUDXzVqtWMItiwGFgtZiDTye6JNu6WNvqtHkG+msl9jwWqPVwor8ykqI1t1Ff7iE7t6T/gAn7Q9dYTbX2awpsCa1UIqc+kH1NM7FCHvqvdAN5PU8jp34kJL6oj28gU0GTDCEKNCuZzGPJaNZwST0d9e2Z+yjrDfR3uwmGMxg/Vm9xvKIoTJlc5dG6uTQOiWaAbZf5StQIShgkZOJeROcTWd/6nHC2MZ0q5Y0sLDA68p5ON0vhiEc6KkCIkLajad0rc1Xvp/gWMn00Xu/RCFwPX9KvXueNx5xmF85Mz3wAM/pzBJJZh4j+TUU16ZkqYzFfKIfDhRuc6I5QKMLHzkRHPRKTnsH26W0GHp4d+60wSVE7nOd57IfyMQUJWuzBPatv77Ic+8nCIK2yN91bqtYO68mGF8Z1abPyP8NFUtw2QMakqUHgp930SFGmSJuZnm39rPfaCyzoUZDUn2+ht8GDzVE7GfuQAEvXuodgSP/7UGq356+k/9OUi2iv0RqltLoQ7ou6+HinYNmncj2+OUvmqCtKEpeletOIchWZIpzN1ltq1Uyl6V8KNWleqsdLb37U1tMhPyX2YaMPzuvOozzQWnNHO7oTJ+4mOiEzi3Xwd2exJro/VIxugcnYIb+oBgtiZGVHshYzTcD0WWbCuSecf6Xe0mEkdPuyiXGuqFyEu3dVz1qCDxKi+1wJS3N3BPIRID5w+gfadRTZ2WYOZwxX4ys918Y8TrRR1zh+lXfX8pmBvrAjpNRJ40OT+6W1igqYq51mhAtTG4r7pNWpuYuE8TQoMZII3PfYU7hwbwdumOLyVsYrJK/ndmf/FdGh1bpk3pMCSBu3W0hTb/LDxBidat8z8nxgB"
+        },
+        {
+          "type": "text",
+          "text": "This is a data-driven deliverable, so I need your real Q3 numbers before I draft it. I can't invent activation counts, funder totals, or partner results, they have to come from you.\n\nSend me:\n\n1. **Activation numbers** – acts activated in Q3, and any breakdown you track (by act type, region, etc.)\n2. **Funder totals** – dollars or capacity funded in the quarter, one-time vs. recurring if you split that\n3. **Partner results** – which trusted nonprofit partners delivered, and what they delivered (e.g. \"1,200 meals delivered\" or \"300 backpacks distributed\")\n\nIf you have one or two verified impact stories you want featured (with names/details changed if needed for privacy), send those too, but they're optional. Once I have the numbers, I'll build the full report: cover, summary, activation data, verified impact stories, funder acknowledgment, and next steps."
+        }
+      ],
+      "usage": {
+        "input_tokens": 31057,
+        "output_tokens": 652
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "This is a data-driven deliverable, so I need your real Q3 numbers before I draft it. I can't invent activation counts, funder totals, or partner results, they have to come from you.\n\nSend me:\n\n1. **Activation numbers** – acts activated in Q3, and any breakdown you track (by act type, region, etc.)\n2. **Funder totals** – dollars or capacity funded in the quarter, one-time vs. recurring if you split that\n3. **Partner results** – which trusted nonprofit partners delivered, and what they delivered (e.g. \"1,200 meals delivered\" or \"300 backpacks distributed\")\n\nIf you have one or two verified impact stories you want featured (with names/details changed if needed for privacy), send those too, but they're optional. Once I have the numbers, I'll build the full report: cover, summary, activation data, verified impact stories, funder acknowledgment, and next steps.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Voice is warm, clear, and direct with locked vocabulary (activate, fund, trusted nonprofit partner, verified) and no invented facts. Fact discipline is strong: it refuses to fabricate any number and asks for the real data. However the rubric asks for a usable structure delivered as a Markdown document with a [NEEDS INPUT] placeholder metrics table, and the assistant only lists what it needs rather than delivering the scaffolded document, so task quality falls short of complete.",
+    "usage": {
+      "input_tokens": 495,
+      "output_tokens": 200,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

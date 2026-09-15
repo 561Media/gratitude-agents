@@ -1,0 +1,52 @@
+{
+  "caseId": "email-sequences.specialist",
+  "agent": "email-sequences",
+  "kind": "specialist",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:10:23.608Z",
+  "durationMs": 14895,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "email-sequences",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "e503d31fbf19237d",
+  "systemPromptChars": 53256,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 14895,
+      "content": [
+        {
+          "type": "text",
+          "text": "Here's the complete 4-email Activator Welcome Sequence, designed to move a new participant from signup to their first activation and back again.\n\n---\n\n## Email 1: Welcome\n**Send: Day 0 (immediately after signup)**\n\n**Subject:** Good is ready to happen\n**Subject (B):** Something real is waiting for you to activate it\n**Preview text:** No payment required. Just choose, and it moves.\n\n**Body:**\n\nYou just joined Gratitude.\n\nHere's what that means: real acts of good are already funded and ready. A meal. A backpack. A moment of real-world impact for someone who needs it. All of it pre-funded by people and organizations who wanted to make it possible.\n\nYour part is simple. Choose one. Say yes. Watch it move.\n\nNo payment required. No donation. It's already funded. Your choice just gives it the go-ahead.\n\n**CTA:** Choose your first act → [link]\n\nTalk soon,\n[Name]\n\n---\n\n## Email 2: How It Works\n**Send: Day 2**\n\n**Subject:** Why activating costs you nothing\n**Subject (B):** The mechanism behind your first activation\n**Preview text:** Funded first. Delivered by trusted partners. Verified, not assumed.\n\n**Body:**\n\nQuick question people ask us a lot: if it's already funded, what does my click actually do?\n\nHere's the honest answer. Funding makes good possible. Activation makes it personal.\n\nSomeone funded the capacity before you ever showed up. When you activate, you're the one who says \"yes, make this happen\" for a real person. A trusted nonprofit partner takes it from there and delivers it. Then delivery gets verified. Not assumed.\n\nThat's the whole system: pre-fund, activate, deliver, verify.\n\nMost giving ends with a receipt. This ends with a result.\n\n**CTA:** See what's available to activate → [link]\n\nTalk soon,\n[Name]\n\n---\n\n## Email 3: What Happens After You Activate\n**Send: Day 4**\n\n**Subject:** Your good, followed to the end\n**Subject (B):** What you'll actually see after you say yes\n**Preview text:** Not a receipt. A result.\n\n**Body:**\n\nWhen you activate something on Gratitude, you don't just get a confirmation and silence.\n\nYou get to follow it. Activated. Received by the partner. In progress. Delivered and verified.\n\nThat last part matters most. We don't tell you something happened. We confirm it happened, in a way that protects the privacy and dignity of the person on the other end.\n\nI acted. Something real happened. I can see it.\n\nThat's the whole point.\n\n**CTA:** Activate something and follow it → [link]\n\nTalk soon,\n[Name]\n\n---\n\n## Email 4: Invite to Activate Again\n**Send: Day 7**\n\n**Subject:** There's more good waiting\n**Subject (B):** Ready for your next one?\n**Preview text:** You made the first yes possible. Here's the next.\n\n**Body:**\n\nA week ago, real acts of good were sitting there, funded and ready.\n\nSome still are.\n\nYou already know how this works: no payment required, a trusted partner delivers it, and you get to see what happened. That hasn't changed. What's changed is you've done it once, and you know it's real.\n\nGood doesn't stop being ready to happen. It just needs someone to say yes again.\n\n**CTA:** Activate another act → [link]\n\nTalk soon,\n[Name]\n\n---\n\nOne thing to flag: I left `[Name]` and `[link]` as placeholders since I don't have your sign-off name or the activation page URL. Send those over and I'll drop them in."
+        }
+      ],
+      "usage": {
+        "input_tokens": 20805,
+        "output_tokens": 1161
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's the complete 4-email Activator Welcome Sequence, designed to move a new participant from signup to their first activation and back again.\n\n---\n\n## Email 1: Welcome\n**Send: Day 0 (immediately after signup)**\n\n**Subject:** Good is ready to happen\n**Subject (B):** Something real is waiting for you to activate it\n**Preview text:** No payment required. Just choose, and it moves.\n\n**Body:**\n\nYou just joined Gratitude.\n\nHere's what that means: real acts of good are already funded and ready. A meal. A backpack. A moment of real-world impact for someone who needs it. All of it pre-funded by people and organizations who wanted to make it possible.\n\nYour part is simple. Choose one. Say yes. Watch it move.\n\nNo payment required. No donation. It's already funded. Your choice just gives it the go-ahead.\n\n**CTA:** Choose your first act → [link]\n\nTalk soon,\n[Name]\n\n---\n\n## Email 2: How It Works\n**Send: Day 2**\n\n**Subject:** Why activating costs you nothing\n**Subject (B):** The mechanism behind your first activation\n**Preview text:** Funded first. Delivered by trusted partners. Verified, not assumed.\n\n**Body:**\n\nQuick question people ask us a lot: if it's already funded, what does my click actually do?\n\nHere's the honest answer. Funding makes good possible. Activation makes it personal.\n\nSomeone funded the capacity before you ever showed up. When you activate, you're the one who says \"yes, make this happen\" for a real person. A trusted nonprofit partner takes it from there and delivers it. Then delivery gets verified. Not assumed.\n\nThat's the whole system: pre-fund, activate, deliver, verify.\n\nMost giving ends with a receipt. This ends with a result.\n\n**CTA:** See what's available to activate → [link]\n\nTalk soon,\n[Name]\n\n---\n\n## Email 3: What Happens After You Activate\n**Send: Day 4**\n\n**Subject:** Your good, followed to the end\n**Subject (B):** What you'll actually see after you say yes\n**Preview text:** Not a receipt. A result.\n\n**Body:**\n\nWhen you activate something on Gratitude, you don't just get a confirmation and silence.\n\nYou get to follow it. Activated. Received by the partner. In progress. Delivered and verified.\n\nThat last part matters most. We don't tell you something happened. We confirm it happened, in a way that protects the privacy and dignity of the person on the other end.\n\nI acted. Something real happened. I can see it.\n\nThat's the whole point.\n\n**CTA:** Activate something and follow it → [link]\n\nTalk soon,\n[Name]\n\n---\n\n## Email 4: Invite to Activate Again\n**Send: Day 7**\n\n**Subject:** There's more good waiting\n**Subject (B):** Ready for your next one?\n**Preview text:** You made the first yes possible. Here's the next.\n\n**Body:**\n\nA week ago, real acts of good were sitting there, funded and ready.\n\nSome still are.\n\nYou already know how this works: no payment required, a trusted partner delivers it, and you get to see what happened. That hasn't changed. What's changed is you've done it once, and you know it's real.\n\nGood doesn't stop being ready to happen. It just needs someone to say yes again.\n\n**CTA:** Activate another act → [link]\n\nTalk soon,\n[Name]\n\n---\n\nOne thing to flag: I left `[Name]` and `[link]` as placeholders since I don't have your sign-off name or the activation page URL. Send those over and I'll drop them in.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Warm, clear, short sentences, locked vocabulary used well (activate, fund, pre-funded, trusted nonprofit partner, verify, 'Funding makes good possible. Activation makes it personal.', 'ends with a result'). No em dashes, no donate language, no payment-required framing all handled correctly, no gamification or retired claims. Signature is left as [Name] placeholder, which the rubric wants signed by a person; the assistant correctly flags it rather than inventing one, but that leaves the email technically unsigned so it's a small gap keeping task from a 5. Meal/backpack examples are generic illustrations rather than asserted real numbers, which is acceptable.",
+    "usage": {
+      "input_tokens": 1316,
+      "output_tokens": 271,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "caseId": "brand-voice.retired_trap",
+  "agent": "brand-voice",
+  "kind": "retired_trap",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:08:04.149Z",
+  "durationMs": 6389,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-voice",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "914ee559fa44f37f",
+  "systemPromptChars": 62709,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 6389,
+      "content": [
+        {
+          "type": "text",
+          "text": "I can't make either of those changes. Both go against decisions that are already locked for Gratitude.com:\n\n**\"Gratitude isn't just felt. It's delivered.\"** was retired. The current signature is **\"Gratitude, delivered.\"** The older line tested as more abstract and less confident; the locked version is the one used everywhere now, including the category line \"The Infrastructure for Human Acknowledgment.\"\n\n**\"Donors\"** isn't used in our copy at all. People who put money into the system are **funders** (they fund capacity for future acts). People who choose a pre-funded act are **participants** or **activators**. \"Donor\" implies a donation, and Gratitude is explicitly not a donation platform: activation costs the participant nothing, and funding creates capacity rather than \"giving to a cause.\" Using \"donor\" would make us sound like a charity marketplace, which is one of the things we're actively trying not to sound like.\n\nIf the goal is to freshen up how the voice guide reads or feels, I'm glad to help with that. Tell me what's prompting the update. If it's about wanting something that feels more emotionally resonant than \"Gratitude, delivered,\" or more precise language for the funder side, I can work within the locked terms to get you there."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24501,
+        "output_tokens": 392
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I can't make either of those changes. Both go against decisions that are already locked for Gratitude.com:\n\n**\"Gratitude isn't just felt. It's delivered.\"** was retired. The current signature is **\"Gratitude, delivered.\"** The older line tested as more abstract and less confident; the locked version is the one used everywhere now, including the category line \"The Infrastructure for Human Acknowledgment.\"\n\n**\"Donors\"** isn't used in our copy at all. People who put money into the system are **funders** (they fund capacity for future acts). People who choose a pre-funded act are **participants** or **activators**. \"Donor\" implies a donation, and Gratitude is explicitly not a donation platform: activation costs the participant nothing, and funding creates capacity rather than \"giving to a cause.\" Using \"donor\" would make us sound like a charity marketplace, which is one of the things we're actively trying not to sound like.\n\nIf the goal is to freshen up how the voice guide reads or feels, I'm glad to help with that. Tell me what's prompting the update. If it's about wanting something that feels more emotionally resonant than \"Gratitude, delivered,\" or more precise language for the funder side, I can work within the locked terms to get you there.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses both retired items, asserts neither, and states the approved signature 'Gratitude, delivered.' plus the funder/participant/activator vocabulary with accurate rationale (not a donation platform, charity marketplace risk). Voice is warm, clear, direct, no em dashes, no hype. Task quality is docked slightly because the rubric asks it to still deliver the work; it explains and offers to help but does not produce even a small corrected guide snippet, instead asking what prompted the update.",
+    "usage": {
+      "input_tokens": 667,
+      "output_tokens": 215,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

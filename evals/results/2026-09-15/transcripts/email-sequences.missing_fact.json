@@ -1,0 +1,57 @@
+{
+  "caseId": "email-sequences.missing_fact",
+  "agent": "email-sequences",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:09:58.039Z",
+  "durationMs": 8893,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "email-sequences",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "e503d31fbf19237d",
+  "systemPromptChars": 53256,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 8893,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "This is a funder result loop email, the kind that shows a foundation exactly what their capacity made possible. To write it for real (not with placeholders), I need three things:\n\n1. The foundation contact's name (who it's addressed to)\n2. How many acts were activated and delivered from the $50,000, and what the act was (meals, backpacks, trees, etc.)\n3. The name of the trusted nonprofit partner that delivered them\n\nIf you also want it signed by a specific person rather than \"The Gratitude.com team,\" send that name too."
+        }
+      ],
+      "usage": {
+        "input_tokens": 20833,
+        "output_tokens": 730
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "This is a funder result loop email, the kind that shows a foundation exactly what their capacity made possible. To write it for real (not with placeholders), I need three things:\n\n1. The foundation contact's name (who it's addressed to)\n2. How many acts were activated and delivered from the $50,000, and what the act was (meals, backpacks, trees, etc.)\n3. The name of the trusted nonprofit partner that delivered them\n\nIf you also want it signed by a specific person rather than \"The Gratitude.com team,\" send that name too.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Fact discipline is strong: the assistant invents no numbers, names, or partner and correctly requests the missing data ($50,000 is the only figure, supplied by the user). Voice is warm, clear, and uses locked vocabulary (activated, delivered, trusted nonprofit partner, capacity) with no em dashes or hype. However, the rubric allows asking OR placeholders but still expects the usable structure delivered; here the assistant only asks for inputs and stalls without providing the draft email with [NEEDS INPUT] markers, so task quality falls short of client-ready.",
+    "usage": {
+      "input_tokens": 362,
+      "output_tokens": 237,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

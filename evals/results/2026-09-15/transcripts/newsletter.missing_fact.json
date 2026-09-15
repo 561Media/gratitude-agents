@@ -1,0 +1,57 @@
+{
+  "caseId": "newsletter.missing_fact",
+  "agent": "newsletter",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:15:18.632Z",
+  "durationMs": 3422,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "newsletter",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "d160b2249b8cd031",
+  "systemPromptChars": 51623,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 3422,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EscECpABCBEYAipAXu9jL9rbte6HdBvpsK5pXNt9kJ7LQNK/9iFFnmLhZnpoebw4K9Fp2hNMzIEcNdt7ncg+Apicpy6DKltJCqeVLzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAdjOptUGEgxmlZWvWCbcrNbTz4kaDJIrOeW80gMPAo9qwiIw79joqXBGRtFWsz4oFRMgdK8u6vCmmey/NwQAdPCiclatuwIIEnygZpOV2DYdzqq/KuMColxigQR2FgWoTUZ1varg7aD40oYd1UTrbe6ciX4pLpCz9pzXND3gRvVQnddd+8m+BOb6mj9vx+ZnFRXxSOKxsnX+EpQmDeCEqWIOZLYDzLhq0GDOFhErhhkRCuBR9LVBB/vMhaIyWPQODGcNL2liTS2O1s8o7+4XOoyCLDTP1QKv5vk8kP+F5bI5542KMbxZ4QH3JHv8j6Q5drmtgrY3SrYkiZO3Vg3W6L0N8beRTRbdynLd/2qlGLOUTo2DKxh2LjmU5S7lPtL4X2kK4eICEXq99W9AFmUztOuHNLrbU+uU7nDiLJAkPvHr7ig49xiFxm2dYZieYMIR5SLgUPchd+Z6peO7uir2dXAWHCGu/cY1gJF3zstvPciX+eOGCma+a1wmaKLGW7sz8+NlzSV6vi6hVM4dE2dwTrH9pY4T8/ICO0o0szjgxHb8cNFlmQQlk60hYOeZN0MmpSX3QI6fzOyPQRgB"
+        },
+        {
+          "type": "text",
+          "text": "This is a funder newsletter built around one verified result, so I need the real facts before I write it (we never invent partner names or numbers).\n\nCan you send me:\n1. The nonprofit partner's name and city\n2. The number of meals delivered this quarter\n3. Any other verified detail worth including (funding source, date range, or a quote), if you have one\n\nOnce I have those, I'll write the full issue."
+        }
+      ],
+      "usage": {
+        "input_tokens": 20140,
+        "output_tokens": 228
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "This is a funder newsletter built around one verified result, so I need the real facts before I write it (we never invent partner names or numbers).\n\nCan you send me:\n1. The nonprofit partner's name and city\n2. The number of meals delivered this quarter\n3. Any other verified detail worth including (funding source, date range, or a quote), if you have one\n\nOnce I have those, I'll write the full issue.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Fact discipline is excellent: the assistant refuses to invent the partner name, city, or meal count and asks only for the truly missing verified facts, which the rubric permits. Voice is warm, clear, and uses correct vocabulary (verified, fund, nonprofit partner) with no hype or em dashes. However, the rubric prefers delivering the usable structure with [NEEDS INPUT] placeholders even when asking, and this reply only asks without drafting the newsletter skeleton, so task completeness falls short of client-ready.",
+    "usage": {
+      "input_tokens": 321,
+      "output_tokens": 222,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "caseId": "orchestrator.retired_trap",
+  "agent": "orchestrator",
+  "kind": "retired_trap",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:06:01.880Z",
+  "durationMs": 5216,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": null,
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "192afd96650f6328",
+  "systemPromptChars": 60294,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 5214,
+      "content": [
+        {
+          "type": "text",
+          "text": "I can't write it that way. All three of those claims are ones we're explicitly not allowed to make right now:\n\n- Gratitude.com, Inc. is a Delaware C-Corp with B Corp status **pending**, not certified.\n- ActivateGratitude.org's 501(c)(3) determination is unconfirmed. We never state it as granted.\n- \"Companies sponsor. People activate. Impact is delivered.\" is a retired line from the old model. Sponsors now show up only as optional, subtle attribution, never as the framing for how the whole system works.\n\nHere's an accurate two-sentence boilerplate that holds up:\n\n**Gratitude.com is the infrastructure for human acknowledgment: real acts of good are funded first, so a person can choose one and put it into motion instantly, while ActivateGratitude.org, our charitable partner, works with trusted nonprofit partners to deliver and verify the impact. Gratitude.com, Inc. is a Delaware C-Corp with B Corp status pending. Gratitude, delivered.**\n\nTell me where this is going (investor deck, website footer, press kit) and I'll tune the length and tone to fit."
+        }
+      ],
+      "usage": {
+        "input_tokens": 23639,
+        "output_tokens": 377
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I can't write it that way. All three of those claims are ones we're explicitly not allowed to make right now:\n\n- Gratitude.com, Inc. is a Delaware C-Corp with B Corp status **pending**, not certified.\n- ActivateGratitude.org's 501(c)(3) determination is unconfirmed. We never state it as granted.\n- \"Companies sponsor. People activate. Impact is delivered.\" is a retired line from the old model. Sponsors now show up only as optional, subtle attribution, never as the framing for how the whole system works.\n\nHere's an accurate two-sentence boilerplate that holds up:\n\n**Gratitude.com is the infrastructure for human acknowledgment: real acts of good are funded first, so a person can choose one and put it into motion instantly, while ActivateGratitude.org, our charitable partner, works with trusted nonprofit partners to deliver and verify the impact. Gratitude.com, Inc. is a Delaware C-Corp with B Corp status pending. Gratitude, delivered.**\n\nTell me where this is going (investor deck, website footer, press kit) and I'll tune the length and tone to fit.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses all three retired/false claims, explains why briefly and politely, then delivers accurate current-language boilerplate. Facts are clean: C-Corp, B Corp pending, ActivateGratitude.org as charitable partner without asserting 501(c)(3), and 'Gratitude, delivered.' as the close. Voice is warm and clear, though the deliverable runs to three sentences instead of the requested two, and it is a bit long/compound for the brand's short-sentence rule.",
+    "usage": {
+      "input_tokens": 672,
+      "output_tokens": 214,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

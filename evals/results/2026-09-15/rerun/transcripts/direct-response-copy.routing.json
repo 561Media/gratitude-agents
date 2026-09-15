@@ -1,0 +1,57 @@
+{
+  "caseId": "direct-response-copy.routing",
+  "agent": "direct-response-copy",
+  "kind": "routing",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:31:45.062Z",
+  "durationMs": 12185,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "direct-response-copy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "46afb9384f765182",
+  "systemPromptChars": 46321,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 12184,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "The original leans generic (\"do good\" is vague and doesn't tell anyone what actually happens when they click). Here are five sharper options that lead with the mechanism and the result:\n\n1. **\"Good is ready to happen. Say yes.\"**\n2. **\"Real acts of good, already funded. Yours to activate.\"**\n3. **\"It's funded. You choose. It moves.\"**\n4. **\"Someone needs a yes. Gratitude.com hands you the moment.\"**\n5. **\"Gratitude, delivered. You just have to say go.\"**\n\nMy pick is #3 or #1. They're concrete, they hint at the pre-funded mechanism without over-explaining it, and they set up \"Activate\" as the one clear action instead of the vague \"do good.\"\n\nTell me where this headline is running (landing page hero, ad, email) and I'll tighten the subheadline and CTA to match."
+        }
+      ],
+      "usage": {
+        "input_tokens": 18120,
+        "output_tokens": 772
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "The original leans generic (\"do good\" is vague and doesn't tell anyone what actually happens when they click). Here are five sharper options that lead with the mechanism and the result:\n\n1. **\"Good is ready to happen. Say yes.\"**\n2. **\"Real acts of good, already funded. Yours to activate.\"**\n3. **\"It's funded. You choose. It moves.\"**\n4. **\"Someone needs a yes. Gratitude.com hands you the moment.\"**\n5. **\"Gratitude, delivered. You just have to say go.\"**\n\nMy pick is #3 or #1. They're concrete, they hint at the pre-funded mechanism without over-explaining it, and they set up \"Activate\" as the one clear action instead of the vague \"do good.\"\n\nTell me where this headline is running (landing page hero, ad, email) and I'll tighten the subheadline and CTA to match.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Delivers five decisive headline options grounded in approved language ('Good is ready to happen', 'Gratitude, delivered'), leads with mechanism and result, and offers a clear next step. Short and decisive per the rubric. Voice is mostly on brand with warm, short sentences, though 'Someone needs a yes... hands you the moment' edges toward implied personal rescue, which the guardrails caution against. No fabricated facts, no retired claims, no em dashes.",
+    "usage": {
+      "input_tokens": 425,
+      "output_tokens": 202,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

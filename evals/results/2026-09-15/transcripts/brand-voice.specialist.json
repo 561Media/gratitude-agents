@@ -1,0 +1,52 @@
+{
+  "caseId": "brand-voice.specialist",
+  "agent": "brand-voice",
+  "kind": "specialist",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:08:14.910Z",
+  "durationMs": 15752,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-voice",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "914ee559fa44f37f",
+  "systemPromptChars": 62709,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 15752,
+      "content": [
+        {
+          "type": "text",
+          "text": "# Gratitude.com Voice Profile\n\n## Voice Dimensions\n\n| Dimension | Rating | Notes |\n|---|---|---|\n| Formal ↔ Casual | 3/5 | Plain-spoken, not stiff. Never slangy. |\n| Expert ↔ Peer | 3/5 | Confident about the system, human about the outcome. Talks with people, not down to them. |\n| Serious ↔ Playful | 2/5 | Respectful subject matter. Warmth over jokes. Never cute about gratitude. |\n| Brief ↔ Expansive | 2/5 | Short sentences. Say the thing, then stop. |\n| Assertive ↔ Exploratory | 4/5 | Declarative. States what happened and what happens next, doesn't hedge. |\n\n## Word Bank\n\n**Words that belong**\n- Activate\n- Fund\n- Delivered\n- Verified\n- Real-world\n- Ready\n- In motion\n- Landed\n- Result\n- Capacity\n\n**Words that don't**\n- Donate / donation\n- Charity\n- Campaign\n- Cause\n- Free\n- Streak / badge / points\n- Transaction\n- Beneficiary\n- Impactful\n- Leverage\n\n## Tone Guide by Channel\n\n**Website**: One brand promise, one explanation, one action. Confident, plain, human. Lead with an available act, not the mechanics behind it.\n\n**Email (funder)**: Generous and concrete. Show what their funding made possible before asking for more. No guilt, no thermometers.\n\n**Email (participant)**: Warm, clear, agency-first. \"It's funded. You choose. It moves.\" Always end with a next act to activate.\n\n**Email (partner)**: Respectful, collaborative, dignity-first. Talk about agreed capacity and verification, never about \"vendors\" or \"beneficiaries.\"\n\n**Social**: Human, visual-first. Show a tangible act landing. Share the impact, not the ego. No hashtag-chasing energy.\n\n**Impact reports**: Data-forward, credibility-first. Only verified numbers. Where a number isn't confirmed, say so plainly instead of rounding up.\n\n**Ads**: Punchy, plain. \"Good is ready to happen\" energy. One CTA, never three.\n\n## Before / After Rewrites\n\n**1. Homepage hero**\n- *Generic AI voice:* \"Join thousands of changemakers leveraging our innovative platform to make a meaningful impact on communities worldwide!\"\n- *Gratitude voice:* \"Good is ready to happen. Choose an act that's already funded. Put it into motion.\"\n\n**2. Funder email**\n- *Generic AI voice:* \"We're thrilled to inform you that your generous donation has made a tremendous difference in the lives of those we serve!\"\n- *Gratitude voice:* \"Your funding just became capacity. Someone will choose it, a trusted partner will deliver it, and you'll see what happened.\"\n\n**3. Participant confirmation**\n- *Generic AI voice:* \"Thank you for your donation! Your transaction has been processed and a receipt has been sent to your email.\"\n- *Gratitude voice:* \"It's in motion. A trusted nonprofit partner is delivering it now. Follow the good until it lands.\"\n\n## Voice Summary (paste-ready)\n\nGratitude.com speaks in plain, warm, confident language that makes real-world good feel close enough to act on right now. It never sounds like a charity asking for donations, a crowdfunding site, or a tech startup overhyping an unproven model. Sentences are short. Claims are earned, never invented. The voice leads with what was delivered and follows with how the system made it possible: funded first, activated instantly, delivered by a trusted partner, verified rather than assumed. Activate is the dominant action, Fund is secondary, and neither is ever framed as a donation. No em dashes, no guilt, no gamification, no pity. When Gratitude.com talks, it sounds like good that's already funded and waiting for one person to say yes.\n\nYour team can drop this into brand memory once it's approved. Want me to build the same profile out into a one-page branded PDF for internal distribution?"
+        }
+      ],
+      "usage": {
+        "input_tokens": 24506,
+        "output_tokens": 1368
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "# Gratitude.com Voice Profile\n\n## Voice Dimensions\n\n| Dimension | Rating | Notes |\n|---|---|---|\n| Formal ↔ Casual | 3/5 | Plain-spoken, not stiff. Never slangy. |\n| Expert ↔ Peer | 3/5 | Confident about the system, human about the outcome. Talks with people, not down to them. |\n| Serious ↔ Playful | 2/5 | Respectful subject matter. Warmth over jokes. Never cute about gratitude. |\n| Brief ↔ Expansive | 2/5 | Short sentences. Say the thing, then stop. |\n| Assertive ↔ Exploratory | 4/5 | Declarative. States what happened and what happens next, doesn't hedge. |\n\n## Word Bank\n\n**Words that belong**\n- Activate\n- Fund\n- Delivered\n- Verified\n- Real-world\n- Ready\n- In motion\n- Landed\n- Result\n- Capacity\n\n**Words that don't**\n- Donate / donation\n- Charity\n- Campaign\n- Cause\n- Free\n- Streak / badge / points\n- Transaction\n- Beneficiary\n- Impactful\n- Leverage\n\n## Tone Guide by Channel\n\n**Website**: One brand promise, one explanation, one action. Confident, plain, human. Lead with an available act, not the mechanics behind it.\n\n**Email (funder)**: Generous and concrete. Show what their funding made possible before asking for more. No guilt, no thermometers.\n\n**Email (participant)**: Warm, clear, agency-first. \"It's funded. You choose. It moves.\" Always end with a next act to activate.\n\n**Email (partner)**: Respectful, collaborative, dignity-first. Talk about agreed capacity and verification, never about \"vendors\" or \"beneficiaries.\"\n\n**Social**: Human, visual-first. Show a tangible act landing. Share the impact, not the ego. No hashtag-chasing energy.\n\n**Impact reports**: Data-forward, credibility-first. Only verified numbers. Where a number isn't confirmed, say so plainly instead of rounding up.\n\n**Ads**: Punchy, plain. \"Good is ready to happen\" energy. One CTA, never three.\n\n## Before / After Rewrites\n\n**1. Homepage hero**\n- *Generic AI voice:* \"Join thousands of changemakers leveraging our innovative platform to make a meaningful impact on communities worldwide!\"\n- *Gratitude voice:* \"Good is ready to happen. Choose an act that's already funded. Put it into motion.\"\n\n**2. Funder email**\n- *Generic AI voice:* \"We're thrilled to inform you that your generous donation has made a tremendous difference in the lives of those we serve!\"\n- *Gratitude voice:* \"Your funding just became capacity. Someone will choose it, a trusted partner will deliver it, and you'll see what happened.\"\n\n**3. Participant confirmation**\n- *Generic AI voice:* \"Thank you for your donation! Your transaction has been processed and a receipt has been sent to your email.\"\n- *Gratitude voice:* \"It's in motion. A trusted nonprofit partner is delivering it now. Follow the good until it lands.\"\n\n## Voice Summary (paste-ready)\n\nGratitude.com speaks in plain, warm, confident language that makes real-world good feel close enough to act on right now. It never sounds like a charity asking for donations, a crowdfunding site, or a tech startup overhyping an unproven model. Sentences are short. Claims are earned, never invented. The voice leads with what was delivered and follows with how the system made it possible: funded first, activated instantly, delivered by a trusted partner, verified rather than assumed. Activate is the dominant action, Fund is secondary, and neither is ever framed as a donation. No em dashes, no guilt, no gamification, no pity. When Gratitude.com talks, it sounds like good that's already funded and waiting for one person to say yes.\n\nYour team can drop this into brand memory once it's approved. Want me to build the same profile out into a one-page branded PDF for internal distribution?",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Voice is warm, plain, declarative with short sentences and locked vocabulary (activate/fund, deliver, verify, trusted nonprofit partner, capacity). No em dashes, no hype, no retired claims, and the word bank correctly excludes donate, charity, streak, badge, points, and impactful. Rubric asked for word bank 10 in / 10 out (met), tone by 7 channels (met), 3 before/after rewrites (met), voice dimensions and summary (met), so the task is complete. Minor gap: the voice dimensions section uses a formality scale rather than the loaded voice-core framing, but nothing is fabricated or off-brand.",
+    "usage": {
+      "input_tokens": 1580,
+      "output_tokens": 265,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

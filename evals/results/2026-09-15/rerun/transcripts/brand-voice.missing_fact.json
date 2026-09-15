@@ -1,0 +1,57 @@
+{
+  "caseId": "brand-voice.missing_fact",
+  "agent": "brand-voice",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:32:42.815Z",
+  "durationMs": 17311,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-voice",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "3a0a0cc0fef1a7ec",
+  "systemPromptChars": 63525,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 17310,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "To build a voice profile that's actually theirs and not something I invent, I need a starting point from Harbor Food Alliance itself. Two quick options, whichever is faster for you:\n\n**Option A:** Send 3 to 5 samples of their existing writing (website copy, emails, social posts, anything).\n\n**Option B:** If nothing exists yet, just answer these three:\n1. Describe Harbor Food Alliance in three words.\n2. Who is their primary audience, specifically?\n3. Formal or casual? Expert voice or peer voice?\n\nAlso send their mission statement and the year they were founded so the profile is grounded in real facts rather than placeholders.\n\nOnce I have that, I'll turn around a full voice profile: dimensions, word bank, tone by channel, and before/after rewrites, ready to paste into a brief."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24788,
+        "output_tokens": 1515
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "To build a voice profile that's actually theirs and not something I invent, I need a starting point from Harbor Food Alliance itself. Two quick options, whichever is faster for you:\n\n**Option A:** Send 3 to 5 samples of their existing writing (website copy, emails, social posts, anything).\n\n**Option B:** If nothing exists yet, just answer these three:\n1. Describe Harbor Food Alliance in three words.\n2. Who is their primary audience, specifically?\n3. Formal or casual? Expert voice or peer voice?\n\nAlso send their mission statement and the year they were founded so the profile is grounded in real facts rather than placeholders.\n\nOnce I have that, I'll turn around a full voice profile: dimensions, word bank, tone by channel, and before/after rewrites, ready to paste into a brief.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses to invent the mission statement or founding year and asks for the missing data, which satisfies fact discipline. Voice is warm, clear, and uses short sentences with no em dashes or banned terms. However, the rubric says a good answer still delivers the usable structure now with [NEEDS INPUT] placeholders; this reply asks for inputs but stalls on delivering the actual profile skeleton, so it is usable only after a round trip.",
+    "usage": {
+      "input_tokens": 478,
+      "output_tokens": 197,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "caseId": "email-sequences.routing",
+  "agent": "email-sequences",
+  "kind": "routing",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:32:01.034Z",
+  "durationMs": 16031,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "email-sequences",
+    "presentation": false,
+    "investor": true,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "ab73a98a77a9694b",
+  "systemPromptChars": 65604,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 16031,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EsMKCpABCBEYAipAuyE44cTmHi5rS0DNj7X9b1Q+nAMRiRBHKWUW3nDVXm0zfIFIPpshDpcrRb4DHMRMIZfVLAEiynFtwc7yYLmFojIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAcfWptUGEgwh39l3yO/KAe6vjlQaDPXuuFon+5LuR7we1iIw8cE7E2hiAHjtdmcFbq8yJOWu6Xj82NVaLf2kvbqU3Tt7ER6Y4LfzK14xNRf9FX18Kt8IJvhNmG85ovdbLjwkiXPOEELvfNPT7eAvGC9jKXdIroO/IslKy+0uueAFHTy/dUX5oC83F35BdoV9pqfmDBJ6MRXKh8v3ZKQNh3WyQFc/DrhP5pUU8sCxSFDWnICaKdP3QBrx1jz3t5qJWwFWKB7FzdA+iFixYX4MB8ruWclMdiR16kYUDtrrk96xRKFl7AlRbHmLn73bKiV8Ky3kBzzJQyS8/fP//Igq5VCCm4tOnq3Xsca8CBhMnBlxFeF0q3COJZJKoUXdBwC1eoijABVrB7zKbWtWgn9WAKPfd11BKBJDt/XcuZmjcoOmfY7FOC+pBpHkHJuMgIRVDykHURW5XbSGLm143b10a3mG0hS0SmLpT7iZHc44QJzp7lkBCFFcIQFs85M2mYFnmq9m5NLDhhrAZWEIvsvb3H5uHRMlfZYeZ8myQPPTgS6BhS73OxDKxvgt75uyV+chYQXKbWd0lkLa/bUMhiqpamGpgwIx9PjDO8/SqRSLpbYaWLnsEN8pCVKvhQsLfquNbYWot7gkO4ni9NoqAmBcp0PVs1FFZwdIiDzm2QdRKCez9RoZb3iBvY+qMc7/JesxLr8ZuCZ6ESWKyvTW2N1XYLmp7r5DWgUVESMqDPwQ+7cs/I55vdnE3t1TmHo5JprFO1XGAtWdDDt2qnf1OteiEjuP9Gxx7IAhsobPshiZJ1i3V6GmD+Hj3URstfgxrbgVqSUL/NqtB4r/U+BTbiSd7JSBYmIAoQ9og9ACbvWLJ78MbSIYOkz134HJcJ1AUk7JNKji+JW0wHSlNQGm1qDCk4rgkyDq6Q4VbhEvxjFe74/p8XO9N9u2Dbfhe9ClAz72WQ4Z+KW59zlFadYfDkJlHn0RSC80dpLQxfkUAhqGwc9uOOILEus4loVFHgt2SnEEPUlyc5LRewrvxHca+vL+HDUPiiOv2urVKjg5L4j+bletpvGWl9kMVWnTPFH9GseIxXH7i8QCq4c7F38ydGFxPEE41jTHZ5s/Kcxwf+qh4MGvLfcid8l9heCGz+M9YFgcjbxY7kgViyMKOMWoMivFh33ycp032Ha7Sbvh7r+0oNO7+dWi+OMZPfhxHXaBZXFzptfTqqBEIsrcbioz47C/oc2kVZze8S1R2IbSg7JAUF8m6+2l/djwydWvd8t6vj7K137fIK80YDWF3Wp0nPNmD0cSnteojw12rm9vfIXQH4m5Vl0aUTtNuhlJ7sc76aCU24467no4hhRljictK38pY1R/AYoSNHSGLyhP8+RkF2z7K4TjHQSAEJPB/6JqKWQ6gRqNMVhOjQHBwHLCPlwQdQ6hCFs/OhvZP2VoIXjKLSru6y2u0bzGVkzdcPM8obhqYrFvpG3DqqBZROiSrJYWSUwBXoqYmHLBniJRsbtaHq/mO5JuKu62RamuoXVqzlY0BxbulMFWh6YPkPNdG4Ut4Mt5KeBfDXi3ImcrCbI29hziNni/OoUmygGiX00t4poO7fshJ59MGAE="
+        },
+        {
+          "type": "text",
+          "text": "Here's a draft investor update on the raise. I've flagged the few facts only you or Michael can confirm.\n\n**Subject line:** Where the raise stands, and what's next\n**Subject line (A/B variant):** An update on the Gratitude.com SAFE\n\n**Preview text:** Progress on the round, the entity structure, and what your capital builds.\n\n---\n\n**Email body:**\n\nHi [First Name],\n\nQuick update on where things stand with the Gratitude.com round.\n\nWe're raising a Friends & Family SAFE, $3-5M, with a $20M post-money valuation cap and no discount. Your investment converts at the cap in a future priced round. As with any SAFE, there's no return until conversion, so we're not presenting projected returns or IRR here, just the terms as they stand.\n\n[NEEDS INPUT: current status update, e.g. amount committed to date, number of investors closed, or \"we're actively in conversations and expect to close by [date]\"]\n\nA reminder on structure, since it matters for how your capital works: Gratitude.com, Inc. is the Delaware C-Corp (B Corp pending) that makes participation possible. It builds the platform, technology, and enterprise relationships. ActivateGratitude.org is the separate charitable entity that makes the impact possible: it manages delivery capacity and trusted nonprofit partnerships. Your SAFE investment funds the company. If you'd also like to make an optional, unconditional gift to ActivateGratitude.org, that's entirely your choice and separate from the SAFE, with no equity attached.\n\nOn the product: [NEEDS INPUT: brief line on build progress, e.g. \"Activate and Fund are in active development\" or \"we're on track for the 60-90 day launch window\"].\n\nHere's what your capital is building toward: real acts of good, funded before anyone clicks, activated by a person for free, delivered by a trusted nonprofit partner, and verified so everyone can see the result. Most giving ends with a receipt. Gratitude ends with a result. That's the system we're building infrastructure for.\n\nI'll send the next update when [NEEDS INPUT: next milestone, e.g. \"we close the round\" or \"we hit our first verified activations\"]. If you want to talk before then, I'm glad to jump on a call.\n\n[Sign-off name]\n[Title]\n\n**CTA:** Reply to this email or [schedule a call link]\n\n---\n\n**What I need from you to finalize this:**\n- Current raise status (amount committed, number of investors, or expected close date)\n- A line on product/build progress\n- The next milestone you want to flag for the follow-up email\n- Who this should be signed by (Michael, or someone else on the team)\n\nSend those over and I'll drop them in."
+        }
+      ],
+      "usage": {
+        "input_tokens": 25604,
+        "output_tokens": 1245
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's a draft investor update on the raise. I've flagged the few facts only you or Michael can confirm.\n\n**Subject line:** Where the raise stands, and what's next\n**Subject line (A/B variant):** An update on the Gratitude.com SAFE\n\n**Preview text:** Progress on the round, the entity structure, and what your capital builds.\n\n---\n\n**Email body:**\n\nHi [First Name],\n\nQuick update on where things stand with the Gratitude.com round.\n\nWe're raising a Friends & Family SAFE, $3-5M, with a $20M post-money valuation cap and no discount. Your investment converts at the cap in a future priced round. As with any SAFE, there's no return until conversion, so we're not presenting projected returns or IRR here, just the terms as they stand.\n\n[NEEDS INPUT: current status update, e.g. amount committed to date, number of investors closed, or \"we're actively in conversations and expect to close by [date]\"]\n\nA reminder on structure, since it matters for how your capital works: Gratitude.com, Inc. is the Delaware C-Corp (B Corp pending) that makes participation possible. It builds the platform, technology, and enterprise relationships. ActivateGratitude.org is the separate charitable entity that makes the impact possible: it manages delivery capacity and trusted nonprofit partnerships. Your SAFE investment funds the company. If you'd also like to make an optional, unconditional gift to ActivateGratitude.org, that's entirely your choice and separate from the SAFE, with no equity attached.\n\nOn the product: [NEEDS INPUT: brief line on build progress, e.g. \"Activate and Fund are in active development\" or \"we're on track for the 60-90 day launch window\"].\n\nHere's what your capital is building toward: real acts of good, funded before anyone clicks, activated by a person for free, delivered by a trusted nonprofit partner, and verified so everyone can see the result. Most giving ends with a receipt. Gratitude ends with a result. That's the system we're building infrastructure for.\n\nI'll send the next update when [NEEDS INPUT: next milestone, e.g. \"we close the round\" or \"we hit our first verified activations\"]. If you want to talk before then, I'm glad to jump on a call.\n\n[Sign-off name]\n[Title]\n\n**CTA:** Reply to this email or [schedule a call link]\n\n---\n\n**What I need from you to finalize this:**\n- Current raise status (amount committed, number of investors, or expected close date)\n- A line on product/build progress\n- The next milestone you want to flag for the follow-up email\n- Who this should be signed by (Michael, or someone else on the team)\n\nSend those over and I'll drop them in.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Only approved round facts used: F&F SAFE, $3-5M, $20M post-money cap, no discount, no return until conversion. No committed amounts, traction, or projected returns are asserted; all unknowns are marked [NEEDS INPUT]. Entity structure is correct (Delaware C-Corp, B Corp pending, ActivateGratitude.org as separate charitable entity without stating 501(c)(3) as granted), and the optional gift is framed as unconditional with no equity. Voice is clear and direct, no em dashes, uses locked vocabulary and the 'ends with a result' line correctly.",
+    "usage": {
+      "input_tokens": 1034,
+      "output_tokens": 250,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

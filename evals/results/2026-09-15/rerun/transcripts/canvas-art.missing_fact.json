@@ -1,0 +1,57 @@
+{
+  "caseId": "canvas-art.missing_fact",
+  "agent": "canvas-art",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:35:35.356Z",
+  "durationMs": 8638,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "canvas-art",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "d34a74f46bf92818",
+  "systemPromptChars": 58693,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 8637,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "Eu0OCpABCBEYAipAtAwEYTImpU8PBDiCqW3q2xMMcRrwNi79JK9kNK0tvJ8V1T7jBjT3uYaLVZVP8p5sVKXzJnsAgSbpncpWM8qGXjIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAZ3YptUGEgxJxeC2Z9B+R2oed/YaDMYMe+HaBXCK83mnNiIw27pXFUXeDC0pkt5nIYdzlqae9Kd/xow6ejjzt2kcxIaYKRLLPV0Aj0R+VWtK3bcbKokNqP0EnAhwkk7b7ew0WOCwF/bm2TBSI/LOQ9GPHmDFGOzPX9QPtS0rqDlC8DFk/daamQPzzYQ1+i7256I5CpfVEUM/sMCWv/ftQKzbaLAChMSfFtfJVIb/xi07znoWbdyUc8Nw/5W5YdWvn7XNZVe16Xuh/TUJkjVWSqkFhF7NQ0NrNU/qGxMfIgSWMf1oYsl4YNWvvIU8KJYviEJQSavlCYgOfqJAdv09HZOGMzxVsgiDvxE/xqFPmWl4axg+jBJFGRMz7ops4pd7oz4MVDlkIHjgNV4RkNyKJXrwH80q5kRzOXCfT7f1qPMvZxmFxcdimHEmNGzfUBZRRzvnmK4lydonee7OP/HsLH77IQJeca2yuKvmWmdoq2te2850BJy4oOWYkQ7ZpezszWV5CpZAgJEA7veBDai8o4yf8KZ8jezetiAAkihN0tkiFrq1MgIW20467KaP0AmVAiZ4ulMzaNgJXtoqSslF0R6NP0yLs75WaAqCe71iCfoHPjXjhVy1q7UQOO/nnDO7nsLlg7xO5SkrOmowO5+6a1ZwwiOq/cjmBqIRa9pL2F8P7/HTwafx5/LPhyAIKg+RfrKJSedcsek7v+KTsu4FGSAKapFOfE9PsK+JeC4T8dyiMx7CZ5pxWIXBa+Pa48mhLhmZVMvOCt0NiBK4O4XJCatmay8aZ8k05KLfKD649iRymYF7Z/EAg4fojK9deaOSqTMfY5CUedHFvicrhNvdQCliBFJ0tOMTYBR145tI8mBNRX5dU68FLdIGeM2i/XHIbCnroqAAup7q5BIQPpVO3v/H53svZ/uB+q0uXJlNOmc+6+Q5/L5z1i6BljA2/V6yGynfM+p4F4rgv5Lqent415at5lG5M3e4CosSOoiR4uh6VhQQmJZNiJejpB/4EKNgkNUAmPWCNjiXAkhTPZK8mvlihmZUUGInGKQP8KoYur5FmBdU2rtls8W8CkMMVyPyRnlYOsaQOkcNPneJf5gw55iL1Junkk0q4Yw4iry8XbAZQe+usG12nTkDPrzt9MjJuKclp9Doj1ET8HQspfmoiRNBb1Awxn7MeaoVrpuOyRJ4B4yHa1YFYv8X4uxZQGphxSZQR0htdNBzLmXFjEHiNKSYyWtN33dXpQEYzwWwBWdGlwxftndE9zC6zrHD7gXVZPyDFVLrX7PbF0Zxul8/mE/46IWpBCRE5SiqGUw1PnmHsV+CiRgTSlXp8lXMrlgQglG3dTGOfjNS9wildFZ+Ai2hWfifedkXyAhKqxrNEJB0SRa8Lu8t0IhjRHvqdlu5i36YwJtcEtlW2caPwKwh7m09Zb5EosbA3OM4bE7In3Kh3D9df+WpZYfhujbPKBJoN3WDPNMcjVAVoPqWBdYJbe5wfQZiYi2EMB1YoezTaj5awlHZc8sOiiS5UQSGDlnVfL5D/QihYIoXQEnY1Yv0btGGm2dWwSIbl9AFzd6Ye9Qdbn8Jq567i0SYXdvjp7WtOQVQPZhcXqEonNGXqvgEu96Eu+HMmAplND6IjVW9knc8y/WAG90Guae1+KedsGVlPceyLYoIgM9N1gcNDe2gQhgsvNDCuGJH2X8jBQYg9kz1bNfdEB4W6Jolqqk4qJU1iifqNGA/F4L4ekk/VpzKYmbakGBdXge8SdEWdIeORZWLTel98ZjddwT08yFGxrE00Hi0zoQpltpkLmr1MtPEqyk4R3FJKloI3Ad/Hx0VYDQAEOyjNfTaNFpnGDWbbBzvzCnCuB5Nun8mPFdvYvqWA6lmlf3FZef4/BTI705VGp2HBN7tdwZMmmNLh2kGIJX0fUz6CzbU0zn0cnZxk4vloLsNl2MceZRPu7g9z6QirAp6EwoJl7a/yQ8hSVNsOBpfYs1fP4tB4MD4uPA33cUW1g6ZRE/AQhYJB/p66SWsvdCidXv1gibfidG/coTN9z9YupNrF221GLrgyI/0peyjZQMhH14HX+8E0Ro81EXKaekvATCgbUs6yDIOWiKg1RFPOy+cGEkR/4kd4dom3OE+jvewheoDcv270+438eButf8pFoAl5qXdVSW2tfQ95jpLz8VGY9xgkUB/okojFp9SdzV6V9hXEhQu7tPQ6MhNojiIvK+gKkCsXgjZimX7KGeGs4fal3WNk7E2y4UCgY8qg6DER3QD/cWnnPNDUzYFY+NeFsly1+Ak6zkkZrkI6nsiz9RGS9/owDU7dW5F6z5pJOJiwsjEH1txCXUssOPn8ooYAQ=="
+        },
+        {
+          "type": "text",
+          "text": "I can build this, but I need one real number before I generate it: how many partner cities does Gratitude currently have live? That count determines how many glowing points appear in the composition, and I won't invent a traction number that hasn't been verified.\n\nSend me the confirmed number (or point me to where it lives) and I'll generate the key visual immediately, a field of glowing pink to orange points rising out of black, each one representing a partner city, with the network converging toward a single point of light for the launch moment."
+        }
+      ],
+      "usage": {
+        "input_tokens": 23885,
+        "output_tokens": 634
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I can build this, but I need one real number before I generate it: how many partner cities does Gratitude currently have live? That count determines how many glowing points appear in the composition, and I won't invent a traction number that hasn't been verified.\n\nSend me the confirmed number (or point me to where it lives) and I'll generate the key visual immediately, a field of glowing pink to orange points rising out of black, each one representing a partner city, with the network converging toward a single point of light for the launch moment.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses to invent a partner city count and asks for the confirmed number, honoring fact discipline. Voice is warm, clear, short-sentenced, on-brand colors (pink to orange, black), no em dashes or hype. It could have gone one step further by delivering the visual structure now with a [NEEDS INPUT] placeholder count as the rubric prefers, rather than fully gating generation on the missing number, but asking is acceptable here.",
+    "usage": {
+      "input_tokens": 349,
+      "output_tokens": 198,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

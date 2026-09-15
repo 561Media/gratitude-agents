@@ -1,0 +1,52 @@
+{
+  "caseId": "newsletter.approved_fact",
+  "agent": "newsletter",
+  "kind": "approved_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:14:58.353Z",
+  "durationMs": 15078,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "newsletter",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "d160b2249b8cd031",
+  "systemPromptChars": 51623,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 15078,
+      "content": [
+        {
+          "type": "text",
+          "text": "Here's this month's participant issue. I'm teaching the Activate vs. Fund distinction as the main idea, since that's the most common point of confusion for people new to the platform.\n\n**Subject Line:** You don't need to pay to do good. Here's why.\n\n**A/B Variant:** Two ways to move good into the world (they're not the same thing)\n\n**Preview Text:** One costs you nothing right now. The other makes the next person's \"yes\" possible. Here's how they work together.\n\n---\n\n**Opening Hook**\n\nSomeone chooses an act. A meal, a set of school supplies, a delivery to a family that needs it. They tap \"yes.\" They pay nothing. And it moves anyway.\n\nThat's not a trick. That's the whole point.\n\n**The Main Idea**\n\nMost platforms ask you to give money and hope it turns into something real. Gratitude.com works in reverse. The money comes first. The act comes second. By the time you see it, it's already funded and ready.\n\nThat's Activate. You choose an available act, one that's already been paid for by someone or something upstream. You give it the go-ahead. A trusted nonprofit partner delivers it. You see what happened. You never touch a wallet.\n\nFund is the other side of that same system. When you fund, you're not activating anything for yourself. You're creating capacity for the *next* act to exist, once or on a recurring basis. Someone else will come along, see it sitting there ready, and get to say yes.\n\nHere's the distinction in one line: **funding makes good possible, and activation makes it personal.**\n\nNeither one is \"more real\" than the other. They're two different moments in the same chain. Fund puts something into motion before anyone clicks. Activate is the click that sends it out into the world. Without funding, there's nothing to activate. Without activation, funded capacity just sits there.\n\nMost giving ends with a receipt. Here, it ends with a result: you can see the act move from activated, to received by our partner, to in progress, to delivered and verified.\n\n**Practical Takeaway**\n\n- If you want to act right now, at no cost to you: look for an available act and activate it.\n- If you want to make sure more acts exist for other people to activate: fund, once or on a recurring basis.\n- You can do both. Neither is required to do the other.\n- Watch the status on anything you activate. That's not tracking for tracking's sake, it's you following the good until it lands.\n- If an act shows \"Made possible by [Sponsor],\" that's just where the funding came from. It doesn't change what activating it does.\n\n**The Soft Ask**\n\nOnce you understand the difference, the next step is easy: there's an act ready for you right now.\n\n**Choose an act →**\n\n---\n\nMaya\n\nThere's always more good waiting to happen. This month, go see what's ready.\n\n---\n\nTell me the audience size or send list you're using this on and I'll tighten subject lines for that platform's character limits, or if you want a Funder version next explaining the same split from their side, I can turn that around fast."
+        }
+      ],
+      "usage": {
+        "input_tokens": 20125,
+        "output_tokens": 946
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's this month's participant issue. I'm teaching the Activate vs. Fund distinction as the main idea, since that's the most common point of confusion for people new to the platform.\n\n**Subject Line:** You don't need to pay to do good. Here's why.\n\n**A/B Variant:** Two ways to move good into the world (they're not the same thing)\n\n**Preview Text:** One costs you nothing right now. The other makes the next person's \"yes\" possible. Here's how they work together.\n\n---\n\n**Opening Hook**\n\nSomeone chooses an act. A meal, a set of school supplies, a delivery to a family that needs it. They tap \"yes.\" They pay nothing. And it moves anyway.\n\nThat's not a trick. That's the whole point.\n\n**The Main Idea**\n\nMost platforms ask you to give money and hope it turns into something real. Gratitude.com works in reverse. The money comes first. The act comes second. By the time you see it, it's already funded and ready.\n\nThat's Activate. You choose an available act, one that's already been paid for by someone or something upstream. You give it the go-ahead. A trusted nonprofit partner delivers it. You see what happened. You never touch a wallet.\n\nFund is the other side of that same system. When you fund, you're not activating anything for yourself. You're creating capacity for the *next* act to exist, once or on a recurring basis. Someone else will come along, see it sitting there ready, and get to say yes.\n\nHere's the distinction in one line: **funding makes good possible, and activation makes it personal.**\n\nNeither one is \"more real\" than the other. They're two different moments in the same chain. Fund puts something into motion before anyone clicks. Activate is the click that sends it out into the world. Without funding, there's nothing to activate. Without activation, funded capacity just sits there.\n\nMost giving ends with a receipt. Here, it ends with a result: you can see the act move from activated, to received by our partner, to in progress, to delivered and verified.\n\n**Practical Takeaway**\n\n- If you want to act right now, at no cost to you: look for an available act and activate it.\n- If you want to make sure more acts exist for other people to activate: fund, once or on a recurring basis.\n- You can do both. Neither is required to do the other.\n- Watch the status on anything you activate. That's not tracking for tracking's sake, it's you following the good until it lands.\n- If an act shows \"Made possible by [Sponsor],\" that's just where the funding came from. It doesn't change what activating it does.\n\n**The Soft Ask**\n\nOnce you understand the difference, the next step is easy: there's an act ready for you right now.\n\n**Choose an act →**\n\n---\n\nMaya\n\nThere's always more good waiting to happen. This month, go see what's ready.\n\n---\n\nTell me the audience size or send list you're using this on and I'll tighten subject lines for that platform's character limits, or if you want a Funder version next explaining the same split from their side, I can turn that around fast.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Nails the Activate vs Fund distinction using locked lines ('funding makes good possible, and activation makes it personal', 'most giving ends with a receipt... ends with a result') with warm, short sentences, no em dashes, no hype, and correct vocabulary (activate/fund, trusted nonprofit partner, pre-funded, follow the good). Hits every rubric element: subject A/B, preview, hook, main idea teaching both actions, takeaway, one CTA, first-name sign-off (Maya). No fabricated facts or numbers, correctly handles sponsor attribution as optional ('Made possible by [Sponsor]'), and ends with a clear next step and sensible offers. Minor 'paid for by someone or something upstream' slightly rubs against the 'avoid free/paid for by us' note but stays defensible.",
+    "usage": {
+      "input_tokens": 1130,
+      "output_tokens": 321,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}
