@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useClerk } from "@clerk/nextjs";
 import { toast } from "./Toaster";
+import { SIDEBAR_ID, useIsDesktop } from "./MobileNav";
 
 interface Conversation {
   id: string;
@@ -22,7 +23,14 @@ interface SidebarProps {
   /** When false (non-chat pages), the conversation list is hidden and the
       "New conversation" button links to /chat. Chat behavior is unchanged. */
   showConversations?: boolean;
+  /** Below md the sidebar is an off-canvas drawer; this is its open state. */
+  mobileOpen?: boolean;
+  /** Closes the drawer (and returns focus to the menu button). */
+  onMobileClose?: () => void;
 }
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 interface SessionResponse {
   user: {
@@ -37,6 +45,8 @@ export default function Sidebar({
   onNewChat,
   onDeleteConversation,
   showConversations = true,
+  mobileOpen = false,
+  onMobileClose,
 }: SidebarProps) {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [session, setSession] = useState<SessionResponse | null>(null);
@@ -45,6 +55,60 @@ export default function Sidebar({
   const router = useRouter();
   const pathname = usePathname();
   const { signOut } = useClerk();
+  const isDesktop = useIsDesktop();
+  const asideRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Below md, an open sidebar is a modal drawer
+  const drawerModal = mobileOpen && !isDesktop;
+
+  function closeIfDrawer() {
+    if (mobileOpen) onMobileClose?.();
+  }
+
+  // Move focus into the drawer when it opens
+  useEffect(() => {
+    if (!drawerModal) return;
+    // Next frame: the drawer must be visible (not visibility:hidden) to take focus
+    const id = requestAnimationFrame(() => closeButtonRef.current?.focus({ preventScroll: true }));
+    return () => cancelAnimationFrame(id);
+  }, [drawerModal]);
+
+  // Escape closes (the delete confirmation first, if it is showing); Tab and
+  // Shift+Tab wrap inside the drawer so focus cannot reach the page behind it
+  useEffect(() => {
+    if (!drawerModal) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        if (confirmDeleteId) setConfirmDeleteId(null);
+        else onMobileClose?.();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const root = asideRef.current;
+      if (!root) return;
+      const focusable = Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        (el) => el.getClientRects().length > 0
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (!root.contains(active)) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [drawerModal, confirmDeleteId, onMobileClose]);
 
   const loadConversations = () =>
     fetch("/api/conversations")
@@ -130,26 +194,65 @@ export default function Sidebar({
   const isAdmin = session?.user.role === "admin";
 
   return (
-    <div className="w-64 h-screen bg-dark-900 border-r border-white/[0.06] flex flex-col shrink-0">
+    <>
+    {/* Drawer backdrop, below md only */}
+    <div
+      aria-hidden="true"
+      onClick={closeIfDrawer}
+      className={`md:hidden fixed inset-0 z-40 bg-black/70 transition-opacity duration-200 motion-reduce:transition-none motion-reduce:duration-0 ${
+        mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+    />
+    <aside
+      ref={asideRef}
+      id={SIDEBAR_ID}
+      aria-label="Navigation and conversations"
+      role={drawerModal ? "dialog" : undefined}
+      aria-modal={drawerModal ? true : undefined}
+      className={`fixed inset-y-0 left-0 z-50 w-[min(18rem,85vw)] bg-dark-900 border-r border-white/[0.06] flex flex-col shrink-0 duration-200 ease-out motion-reduce:transition-none motion-reduce:duration-0 md:static md:z-auto md:w-64 md:h-screen md:translate-x-0 md:visible md:transition-none ${
+        // Opening: visibility flips at once so focus can move in on the next
+        // frame. Closing: visibility waits for the slide-out to finish.
+        mobileOpen
+          ? "transition-[translate] translate-x-0 visible shadow-2xl shadow-black"
+          : "transition-[translate,visibility] -translate-x-full invisible"
+      }`}
+    >
       {/* Header */}
-      <div className="p-4 pb-3">
-        <div className="flex items-center justify-between mb-4">
+      <div className="p-4 pb-3 pt-[max(1rem,env(safe-area-inset-top))] md:pt-4">
+        <div className="flex items-center justify-between gap-2 mb-4">
           <Image
             src="/gratitude-white.svg"
             alt="Gratitude"
             width={110}
             height={22}
           />
-          {session && (
-            <span className="text-[10px] text-white/30 uppercase tracking-wider">
-              {session.user.role}
-            </span>
-          )}
+          <div className="flex items-center gap-1">
+            {session && (
+              <span className="text-[10px] text-white/30 uppercase tracking-wider">
+                {session.user.role}
+              </span>
+            )}
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={closeIfDrawer}
+              aria-label="Close menu"
+              className="md:hidden -mr-2 w-10 h-10 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink/70 transition-colors"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {onNewChat ? (
           <button
-            onClick={onNewChat}
+            onClick={() => {
+              onNewChat();
+              closeIfDrawer();
+            }}
             className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg text-[13px] font-medium text-white/80 bg-white/[0.04] border border-white/[0.08] transition-colors hover:bg-white/[0.07] hover:border-white/[0.14] hover:text-white active:scale-[0.99]"
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -215,6 +318,8 @@ export default function Sidebar({
             <Link
               key={nav.href}
               href={nav.href}
+              onClick={closeIfDrawer}
+              aria-current={active ? "page" : undefined}
               className={`flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[13px] transition-colors ${
                 active
                   ? "text-white bg-white/[0.06]"
@@ -249,7 +354,7 @@ export default function Sidebar({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search conversations"
-            className="w-full rounded-md bg-white/[0.03] border border-white/[0.06] px-3 py-1.5 text-[12px] text-white/70 placeholder:text-white/25 focus:outline-none focus:border-white/[0.14] transition-colors"
+            className="w-full rounded-md bg-white/[0.03] border border-white/[0.06] px-3 py-1.5 text-[16px] md:text-[12px] text-white/70 placeholder:text-white/25 focus:outline-none focus:border-white/[0.14] transition-colors"
           />
         </div>
       )}
@@ -281,7 +386,10 @@ export default function Sidebar({
               {group.items.map((conv) => (
                 <div key={conv.id} className="group/conv relative">
                   <button
-                    onClick={() => onSelectConversation?.(conv.id)}
+                    onClick={() => {
+                      onSelectConversation?.(conv.id);
+                      closeIfDrawer();
+                    }}
                     className={`w-full text-left px-3 py-2 pr-8 rounded-lg text-[13px] transition-all ${
                       conversationId === conv.id
                         ? "bg-white/[0.08] text-white/90"
@@ -295,8 +403,9 @@ export default function Sidebar({
                       e.stopPropagation();
                       handleDelete(conv.id);
                     }}
-                    className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1 rounded-md opacity-0 group-hover/conv:opacity-100 text-white/20 hover:text-red-400 hover:bg-red-400/10 transition-all"
+                    className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1 rounded-md opacity-100 md:opacity-0 md:group-hover/conv:opacity-100 focus-visible:opacity-100 text-white/30 md:text-white/20 hover:text-red-400 hover:bg-red-400/10 transition-all"
                     title="Delete conversation"
+                    aria-label={`Delete conversation: ${conv.title || "Untitled"}`}
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="3 6 5 6 21 6" />
@@ -312,7 +421,7 @@ export default function Sidebar({
       )}
 
       {/* Footer */}
-      <div className="p-3 border-t border-white/[0.06]">
+      <div className="p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:pb-3 border-t border-white/[0.06]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 min-w-0">
             <div className="w-7 h-7 rounded-full bg-white/[0.06] flex items-center justify-center shrink-0">
@@ -362,6 +471,7 @@ export default function Sidebar({
           </div>
         </div>
       )}
-    </div>
+    </aside>
+    </>
   );
 }

@@ -302,6 +302,15 @@
   max-width: 100%;
 }
 
+/* Narrow screens: wide markdown tables scroll inside the message instead of
+   pushing the page sideways */
+@media (max-width: 767px) {
+  .prose-chat table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
 /* Numbered list styling for workflows */
 .prose-chat ol > li::marker {
   color: rgba(254, 49, 132, 0.6);

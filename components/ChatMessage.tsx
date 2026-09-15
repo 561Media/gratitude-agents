@@ -338,7 +338,7 @@ export default function ChatMessage({
   if (role === "user") {
     return (
       <div className="flex justify-end group/msg">
-        <div className="max-w-[75%] px-4 py-3 rounded-2xl rounded-br-md text-white/90 text-[15px] leading-relaxed bg-white/[0.06] border border-white/[0.07]">
+        <div className="max-w-[85%] sm:max-w-[75%] min-w-0 break-words px-4 py-3 rounded-2xl rounded-br-md text-white/90 text-[15px] leading-relaxed bg-white/[0.06] border border-white/[0.07]">
           <div className="whitespace-pre-wrap">{content}</div>
         </div>
       </div>
@@ -387,7 +387,7 @@ export default function ChatMessage({
 
   return (
     <div className="flex justify-start group/msg">
-      <div className="max-w-[85%] min-w-0">
+      <div className="w-full sm:w-auto sm:max-w-[85%] min-w-0">
         <div className="prose-chat text-[15px]">
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
             {content}
@@ -396,7 +396,7 @@ export default function ChatMessage({
 
         {/* Action bar — context-aware formats; visible by default on touch devices, hover-reveal on desktop */}
         {content && !isStreaming && (
-          <div className="flex items-center gap-1 mt-2 opacity-100 md:opacity-0 md:group-hover/msg:opacity-100 transition-opacity duration-200">
+          <div className="flex flex-wrap items-center gap-1 mt-2 -ml-2 sm:ml-0 opacity-100 md:opacity-0 md:group-hover/msg:opacity-100 transition-opacity duration-200">
             <CopyButton text={content} label="Copy" />
             <MessageExportButtons content={content} agentName={agentName} conversationId={conversationId} />
           </div>
