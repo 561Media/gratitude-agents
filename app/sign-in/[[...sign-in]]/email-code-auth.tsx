@@ -1,6 +1,6 @@
 "use client";
 
-import { useSignIn, useSignUp } from "@clerk/nextjs";
+import { useAuth, useSignIn, useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -74,6 +74,7 @@ export function EmailCodeAuth() {
   const { signIn } = useSignIn();
   const { signUp } = useSignUp();
   const ready = !!signIn && !!signUp;
+  const { isLoaded: authLoaded, isSignedIn } = useAuth();
 
   const [step, setStep] = useState<Step>("email");
   const [email, setEmail] = useState("");
@@ -131,6 +132,17 @@ export function EmailCodeAuth() {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signIn, signUp]);
+
+  // Returning visitors whose short-lived session token expired land here from
+  // middleware even though Clerk still has a live session. Once clerk-js has
+  // refreshed it, send them on instead of showing an email form they do not
+  // need. Invitation links are handled by the ticket effect above.
+  useEffect(() => {
+    if (!authLoaded || !isSignedIn) return;
+    if (new URLSearchParams(window.location.search).get("__clerk_ticket")) return;
+    router.replace(resolveDestination());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authLoaded, isSignedIn]);
 
   function resetMessages() {
     setError(null);
