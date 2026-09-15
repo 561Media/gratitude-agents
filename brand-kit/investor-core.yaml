@@ -70,12 +70,18 @@ positioning:
   category_claim: "First platform turning gratitude into measurable impact. We're not competing in an existing market. We're defining a new one."
   ai_angle: "Gratitude.com is the infrastructure for human acknowledgment in the age of AI. AI will reshape how we work. Gratitude.com will reshape how we connect."
   flywheel:
-    headline: "Every action builds the network."
+    # Jo Englesson approved 2026-09-15 (investor deck slide 5).
+    headline: "Every action strengthens the network."
+    supporting_line: "Millions of actions create the infrastructure for human acknowledgment."
+    loop: "Funding -> Capacity -> Activation -> Delivery -> Verification -> Trust -> More Participation"
     steps:
-      - "Capital enters: sponsors, companies, and individuals fund real-world impact."
-      - "People activate: participants turn available capacity into real-world good."
-      - "Impact is verified: trusted partners deliver and Gratitude closes the loop."
-      - "The network grows: more trust, more funders, more participants, more partners, more impact."
+      - "Funding: individuals, companies and foundations fund real-world good."
+      - "Capacity: funding creates pre-funded, ready-to-activate acts."
+      - "Activation: a person chooses an available act and puts it in motion."
+      - "Delivery: a trusted nonprofit partner delivers it."
+      - "Verification: delivery is confirmed rather than assumed."
+      - "Trust: people see what their action made happen."
+      - "More Participation: trust brings more funders, activators and partners."
     locked_loop: "One action becomes impact. Impact builds trust. Trust inspires another action."
     retired: "'Every message builds the network' / 'Every message creates...' (message-first, do not use)."
   systems_line: "Products compete. Systems compound."
@@ -94,6 +100,12 @@ core_mechanic:
   retired: "'Tell Them.' flagship (Express, Activate, Multiply) and 'Every message changes two lives.' Do not use."
 
 participation_modes:
+  # Deck slide 3 copy, Jo Englesson approved 2026-09-15, in this order:
+  deck_copy:
+    - "01 Activate (NOW): Trigger a funded act of good."
+    - "02 Fund (NOW): Create capacity for more good to happen."
+    - "03 Express (NEXT): Acknowledge someone who made a difference."
+    - "04 Facilitate (FUTURE): Help deliver good in the real world."
   now_mvp:
     - "Activate - trigger good: choose an available pre-funded act of real-world impact (starting behavior; no message required)"
     - "Fund - make more possible: create capacity for future acts, once or recurring"
