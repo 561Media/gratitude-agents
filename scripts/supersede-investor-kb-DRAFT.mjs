@@ -49,7 +49,7 @@ const TITLES = {
   voice_for_investors: "Investor voice rules",
   not_yet_available: "Investor facts not yet available ([NEEDS INPUT])",
 };
-const META_KEYS = new Set(["chunk_id", "domain", "status", "version", "source"]);
+const META_KEYS = new Set(["chunk_id", "domain", "status", "version", "source", "last_updated"]);
 
 function flatten(value, prefix = "") {
   if (value === null || value === undefined) return [];
@@ -76,12 +76,18 @@ function buildReplacements(doc) {
     }));
 }
 
-async function embed(text) {
+async function embed(text, attempt = 0) {
   const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:embedContent", {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": process.env.GEMINI_API_KEY },
     body: JSON.stringify({ content: { parts: [{ text: text.slice(0, 8000) }] }, outputDimensionality: 768 }),
   });
+  if (res.status === 429 && attempt < 6) {
+    const wait = 5000 * 2 ** attempt;
+    console.log(`    embedding 429, retrying in ${wait / 1000}s`);
+    await new Promise((r) => setTimeout(r, wait));
+    return embed(text, attempt + 1);
+  }
   if (!res.ok) throw new Error(`embedding ${res.status}`);
   const v = (await res.json()).embedding.values;
   const n = Math.sqrt(v.reduce((a, x) => a + x * x, 0)) || 1;
@@ -114,7 +120,9 @@ for (const r of replacements) {
     and tags @> ${JSON.stringify(["investor-core-2026-09-15"])}::jsonb limit 1`;
   console.log(`${dup ? "SKIP (exists)" : "INSERT"} "${r.title}"\n    ${r.content.slice(0, 300)}`);
   if (APPLY && !dup) {
-    const vec = await embed(`${r.title}\n${r.content}`);
+    // --no-embed: insert with NULL embedding (served by the recency fallback in
+    // lib/kb.ts); run scripts/backfill-embeddings.mjs once Gemini credits return.
+    const vec = process.argv.includes("--no-embed") ? null : await embed(`${r.title}\n${r.content}`);
     const [row] = await sql`insert into knowledgebase_entries
       (owner_id, agent_id, category, status, visibility, title, content, tags, source_type, embedding)
       values (${owner.id}, 'orchestrator', 'strategy_learning', 'approved', 'internal',

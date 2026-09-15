@@ -26,8 +26,10 @@ const AGENT_TO_PROFILE: Record<string, string> = {
 
 // Hardcoded from _retrieval-rules.yaml to avoid YAML parsing dep
 const PROFILE_FILES: Record<string, { always: string[]; design?: string[] }> = {
-  sponsor_materials: { always: ["positioning-core.yaml", "voice-core.md", "messaging-framework.md"] },
-  website_copy: { always: ["voice-core.md", "positioning-core.yaml", "messaging-framework.md"] },
+  // investor-core.yaml is loaded directly so raise facts reach agents even when
+  // KB retrieval is degraded (embeddings unavailable).
+  sponsor_materials: { always: ["positioning-core.yaml", "voice-core.md", "messaging-framework.md", "investor-core.yaml"] },
+  website_copy: { always: ["voice-core.md", "positioning-core.yaml", "messaging-framework.md", "investor-core.yaml"] },
   social_media: { always: ["voice-core.md", "positioning-core.yaml"] },
   email_campaign: { always: ["voice-core.md", "messaging-framework.md", "positioning-core.yaml"] },
   ad_copy: { always: ["voice-core.md", "positioning-core.yaml", "terminology.yaml"] },
