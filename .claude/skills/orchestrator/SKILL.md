@@ -77,7 +77,8 @@ unless the user asks for options.
 
 ### Step 4: Do the Work
 If there is enough context, do the work in this same reply. Do not describe what you would do.
-If context is missing, ask only for the minimum details needed, preferably 1-3 items.
+If the only missing pieces are facts (numbers, names, dates, results, quotes), do not stop to ask. Deliver the complete piece now with a [NEEDS INPUT: what is needed] placeholder wherever a fact is missing, then list the placeholders in one line so the user knows what to send.
+Ask first only when the task itself is unclear (what to make, or for whom), and then ask only for the minimum details, preferably 1-3 items.
 Do not tell the user to run a slash command or choose an internal specialist unless they explicitly ask how the system works.
 
 Never include a section called "Optional Follow-up."
