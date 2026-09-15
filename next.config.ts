@@ -28,7 +28,7 @@ const csp = [
   `img-src 'self' data: blob: https://img.clerk.com ${vercelLive.join(" ")}`.trim(),
   "font-src 'self' data:",
   // Browser uploads go to the Vercel Blob API
-  `connect-src 'self' https://vercel.com https://*.blob.vercel-storage.com ${[...clerkOrigins, ...vercelLive, ...extraOrigins].join(" ")}${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' https://vercel.com https://*.blob.vercel-storage.com https://clerk-telemetry.com ${[...clerkOrigins, ...vercelLive, ...extraOrigins].join(" ")}${isDev ? " ws: wss:" : ""}`,
   `frame-src 'self' https://challenges.cloudflare.com ${[...clerkOrigins, ...vercelLive].join(" ")}`,
   "worker-src 'self' blob:",
   "object-src 'none'",
