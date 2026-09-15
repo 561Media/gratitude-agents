@@ -37,9 +37,12 @@ messaging-framework.md, terminology.yaml, voice-core.md, constraints-messaging.y
 - "Tell Them." as the flagship, "Every message changes two lives", "Every message builds the network"
 - Streaks, badges, leaderboards, points, Ripple mechanics, mandatory pledge, one activation per day
 - "Public Benefit Corporation", "B Corp certified", any $1M founder commitment
+- "Gratitude isn't just felt. It's delivered." and any riff on it ("Not just felt"). Use "Gratitude, delivered."
+- "Donate" or "donation" in a headline, CTA, or option list, even as one variation
 
 ## Voice Rules (Quick Reference)
-- No em dashes
+- No em dashes anywhere, including outlines, labels, headings, and lists (use a colon, comma, or period)
+- Missing facts never stall the work: deliver the draft with [NEEDS INPUT] placeholders and say what to send
 - Short sentences over long compound ones
 - No vague qualifiers
 - Lead with what was delivered, back with how
