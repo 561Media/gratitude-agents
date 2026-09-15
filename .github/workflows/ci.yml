@@ -35,5 +35,9 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm test
+      # Replays saved agent transcripts (evals/results/) through the current
+      # router, prompt assembly and deterministic graders. No API calls.
+      - name: Eval graders (mock replay)
+        run: npm run eval:mock
       - name: Build
         run: npm run build

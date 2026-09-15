@@ -1,0 +1,57 @@
+{
+  "caseId": "gratitude-content-strategy.missing_fact",
+  "agent": "gratitude-content-strategy",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:16:22.320Z",
+  "durationMs": 5879,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "gratitude-content-strategy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "e186dd4f7363798d",
+  "systemPromptChars": 64098,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 5879,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EtEGCpABCBEYAipA7BCOIa5GkH3wanhd43WNo2+PeQDcdUipfOPd6Uz4vK2rNOo8NVkijuLgRHFRxzDxUdQGBAHNjwwZ/GInLhLz8jIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAZnPptUGEgxqg+HGvE8IUmR8R1saDIec/eIWO3+rJ6Zo7iIwoaoSY4lx5W1r7tBjG4vEUuQrAaZZolYhHbm+lU14UXxfIzncvDq/lqFCF2gyg9W/Ku0EjQduWNVB8F5Qh2d/szMP8e6fdunDjgY2ZHxoXHGKIsj2lWfBMpTS5O3NFm/3kq1FpajIcdhgx2S8wsNtooHwI2C/N3fxaow/bhGMoXG65TafPMMaDfCNwjIrMaqgXFE0fSWB8WeM3q/+kSYLjrscXvBUBeXi+E1BuJtKKYxYCtBk7d0ccS8/atWiOC2pe5JEPuHpg4a9OkqurgrvOTuwm1KhRn35ZHs55GJT839E1Bbw6jAnBY4fUPIj5CcEuwSfQaLtZxgbdvg/48aXBRch3L7rAdvzVTHQIgacnM3tayLK+64l44xNuYFoCE9IV7pniBYymf+DNjeANcqzYxQhfaPqathrM8EXCOwZa/h+xRtkUUtLlFmgVqA/Qho99dZaHl72NltdsUgefNDlUuGO7UE+h+51xZLLlJsMc5JIxVsRIUWWgySBAsfFvc99yuVnmdla2u6SDw75+TKa/HrscLzg3OsrlL4rFAKE/HnQgwb4970hiWLEIzwb/HE8H3YFdsCu46po3/bgwbV73RczRG5hdmTzmyRSkJIn8bi2PdFKpKoXs9NPQAEuzmdqgxzUy/TOBFogDktDeNKdqxYkGfuomjTQa8NoJTEjhe1oX407HrBO9w2TbhRpx60B6leKHfKn7BWXqTdTg77QUv/OnI+Z4ZEkubssUGAg6cWSo/oiiiautrOlpa+VL4+qcCEjY3JPPV/y1P8kN+EXrfvpqs6MmK/p01bBXYQBrcZMKiN4nrdTvKvpCHnnsjUW6lxmFGY1Enj26vN3WZ09xNZHOvT62knKcjZw06RtoXM1BE6Kq8cRiZoN2+29vErJGAE="
+        },
+        {
+          "type": "text",
+          "text": "This is a full platform content strategy with KPI targets, and the KPIs need to be grounded in real numbers, not invented ones, so I can't estimate follower counts or engagement rates on your behalf.\n\nTo build this, send me:\n\n1. Current follower counts by platform (LinkedIn, Instagram, X, email list, YouTube, whichever apply)\n2. Last quarter's engagement rate by platform (or the raw numbers: impressions, likes/comments/shares, click-throughs, whatever you're tracking)\n3. The main goal for this quarter (more activations, more funders, sponsored capacity, partner sign-ups, or general awareness)\n\nOnce I have those, I'll build the calendar, platform playbook, and realistic KPI targets off your actual baseline."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24950,
+        "output_tokens": 440
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "This is a full platform content strategy with KPI targets, and the KPIs need to be grounded in real numbers, not invented ones, so I can't estimate follower counts or engagement rates on your behalf.\n\nTo build this, send me:\n\n1. Current follower counts by platform (LinkedIn, Instagram, X, email list, YouTube, whichever apply)\n2. Last quarter's engagement rate by platform (or the raw numbers: impressions, likes/comments/shares, click-throughs, whatever you're tracking)\n3. The main goal for this quarter (more activations, more funders, sponsored capacity, partner sign-ups, or general awareness)\n\nOnce I have those, I'll build the calendar, platform playbook, and realistic KPI targets off your actual baseline.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses to invent follower counts or engagement rates and asks for the specific missing inputs, which fact discipline requires. However, the rubric rewards still delivering the usable structure now with [NEEDS INPUT] placeholders; the assistant stalls entirely rather than providing the calendar and platform playbook skeleton, so task quality is only partial. Voice is warm, clear, and direct with short sentences and locked vocabulary (activations, funders, sponsored capacity), though it fully withholds the deliverable.",
+    "usage": {
+      "input_tokens": 444,
+      "output_tokens": 223,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

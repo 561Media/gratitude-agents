@@ -1,0 +1,52 @@
+{
+  "caseId": "positioning-angles.retired_trap",
+  "agent": "positioning-angles",
+  "kind": "retired_trap",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:06:47.499Z",
+  "durationMs": 7021,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "positioning-angles",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "e9c1f6c5834fcac5",
+  "systemPromptChars": 63310,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 7021,
+      "content": [
+        {
+          "type": "text",
+          "text": "I need to flag something before we go further: \"Tell Them\" and \"every message changes two lives\" are both retired. They're not part of how we position Gratitude anymore, and I can't build an angle around them.\n\nHere's why that matters, quickly:\n\n- **\"Tell Them\" isn't the flagship.** It maps to Express, which is our NEXT-stage feature (acknowledging someone directly). It's not live in the current product and is never positioned as the starting behavior.\n- **\"Every message changes two lives\" is a retired tagline** tied to that old message-first model. It's been replaced by the current flywheel language (\"One action becomes impact. Impact builds trust. Trust inspires another action.\")\n- Right now, our flagship is **Activate + Fund**. Activate is dominant: someone chooses an already-funded act of good and puts it into motion at no cost to them. Fund is secondary: it creates capacity for future acts.\n\nSo if the goal is a strong positioning angle, I'd build it around Activate, not Tell Them. That's where the real differentiation is anyway: pre-funded acts, zero-cost activation, and a verified result instead of a receipt.\n\nTell me who this angle is for (participants, funders, or a sponsoring organization) and what's driving the need, is this for a campaign launch, a partner pitch, something else? I'll build you 3 to 5 sharp angles around what we actually have live."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24693,
+        "output_tokens": 452
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I need to flag something before we go further: \"Tell Them\" and \"every message changes two lives\" are both retired. They're not part of how we position Gratitude anymore, and I can't build an angle around them.\n\nHere's why that matters, quickly:\n\n- **\"Tell Them\" isn't the flagship.** It maps to Express, which is our NEXT-stage feature (acknowledging someone directly). It's not live in the current product and is never positioned as the starting behavior.\n- **\"Every message changes two lives\" is a retired tagline** tied to that old message-first model. It's been replaced by the current flywheel language (\"One action becomes impact. Impact builds trust. Trust inspires another action.\")\n- Right now, our flagship is **Activate + Fund**. Activate is dominant: someone chooses an already-funded act of good and puts it into motion at no cost to them. Fund is secondary: it creates capacity for future acts.\n\nSo if the goal is a strong positioning angle, I'd build it around Activate, not Tell Them. That's where the real differentiation is anyway: pre-funded acts, zero-cost activation, and a verified result instead of a receipt.\n\nTell me who this angle is for (participants, funders, or a sponsoring organization) and what's driving the need, is this for a campaign launch, a partner pitch, something else? I'll build you 3 to 5 sharp angles around what we actually have live.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refused the retired 'Tell Them' flagship and 'every message changes two lives' framing, explained why clearly, and redirected to Activate + Fund with accurate current flywheel language. Voice is warm, direct, short sentences, no em dashes, locked vocabulary used correctly. Fact discipline is clean: nothing fabricated, Express correctly placed as NEXT, no false claims. Task quality drops slightly because it stalls on delivering the actual angles by asking for audience first rather than delivering a set with a [NEEDS INPUT] note, though the rubric permits redirecting and the ask for missing input is reasonable here.",
+    "usage": {
+      "input_tokens": 680,
+      "output_tokens": 264,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

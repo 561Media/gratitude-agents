@@ -1,0 +1,57 @@
+{
+  "caseId": "content-atomizer.missing_fact",
+  "agent": "content-atomizer",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:10:57.912Z",
+  "durationMs": 4714,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "content-atomizer",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "cbf8b4ab2c3861ce",
+  "systemPromptChars": 44835,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 4713,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "Eu8GCpABCBEYAipAGPSZC+QUXyvH3Wiv71F8quQTwElmtq5Ot0bQHBNPR4DLnmpH8zdYTLyHMvixDxx/7Dvp25nAiwtius8Bmmn+FzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAdTMptUGEgz1wyVgZ487YrzgwpkaDBcIamH7ZGOS/deNSyIw0bcs4wFXt9YR/RSWNi6W7KsJ8iwXkxe9FL0+iJhRcsSifLbQ8mAAExK1lCGgFkt/KosFyU0wZyj18ROSX83NSbcZj4dHznMw0SQPe5eKau1QfTC4jevWkKzt1S30lJBg7i3VUETtSvAUlrQAUQxsp+H/jppHS5CJ63MCI9FuGKPRCgvCqmlJkrpzsCx91+RTDNMJOX19lHdyhzRwUte4EZvAhBfgExqziUKgRuEmJqxen1lD9BcimCZpxN4++G2AcYA43yK+NL8QfaXFtZW8+PZZnYBwh6+9she1N8OehEc7sgKZEpoxDLFr5tQJklKyk57l93ZDG9aUmXbqsI80BDbl6sz1WqunZQwFlGNeKSHOETW7wQk+D7qxxg9l1yMtZsKoI3Rd212e5pkjKQreA7SNBlkF4XbOSukyTycwGJQ3F8Z8SIKFXr0ixgohITERCmzmU2rtTzbhX3U6feeyC0LCxR2TCR5HP6xh/jMgWPeuiZ1zoZe7y2hckvCHJnhO3ctOvHvIb25Brbmh7/Pju4g8fU587alDYCYPvX3YfT5YT4iDR4ueFCthK8Lvt0mZbkGb+t8YabMyRnk0dKEdHa/I9y00kPlnxdwrhwuhK7o5C/sfljSG8g73357h6yW+951jnAkHq1fz8UqvM5gdQrYw4hhA2n0ycC/yaJEa8K8JAllDzE7ptfg5XYA6Nt+SeQ3SHZ0ZTevgQ+YCDb2Iql7O+MtLafMj+ebFRffcnIzo7VsiajMxUYe24wGNL0S3TAeNUvEoKLgXVwhQui5cNqE+rMh6SGja0CQxBkhb0WsspV4Vg6rHZDIIwVciGLjL1Y9LLWWbbgPwIUjxx4Y6u76WNtNH3uVFn1FnH+yKnfILdhEvuMlCaqEoU67iVAEMTQweJoylfd0Hp4v6njuV+QPw6DCovnWi+xpxj66DGAE="
+        },
+        {
+          "type": "text",
+          "text": "To lead with real numbers and the partner name, I need the actual facts since I can't invent either. Can you share:\n\n1. The pilot recap itself (or just the key facts: how many people activated, and the nonprofit partner who delivered)\n2. Any other result worth keeping (what was delivered, timeframe, standout detail)\n3. Where the CTA should point (activate page, fund page, or general gratitude.com)\n\nOnce I have those, I'll turn it into LinkedIn and X posts ready to post."
+        }
+      ],
+      "usage": {
+        "input_tokens": 17669,
+        "output_tokens": 359
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "To lead with real numbers and the partner name, I need the actual facts since I can't invent either. Can you share:\n\n1. The pilot recap itself (or just the key facts: how many people activated, and the nonprofit partner who delivered)\n2. Any other result worth keeping (what was delivered, timeframe, standout detail)\n3. Where the CTA should point (activate page, fund page, or general gratitude.com)\n\nOnce I have those, I'll turn it into LinkedIn and X posts ready to post.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses to invent the activation count or partner name and asks for the missing facts, which the rubric explicitly permits. Voice is warm, clear, and uses locked vocabulary (activate/fund, nonprofit partner, activate/fund page). It does not yet deliver a template structure with [NEEDS INPUT] placeholders, so it slightly under-delivers on the usable-scaffold option, and the lowercase 'gratitude.com' misses the .com capitalization convention.",
+    "usage": {
+      "input_tokens": 363,
+      "output_tokens": 211,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

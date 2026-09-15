@@ -1,0 +1,57 @@
+{
+  "caseId": "newsletter.routing",
+  "agent": "newsletter",
+  "kind": "routing",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:16:11.697Z",
+  "durationMs": 6688,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "newsletter",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "d160b2249b8cd031",
+  "systemPromptChars": 51623,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 6688,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "ErgICpABCBEYAipAS0NO/RrMrCMAdxeVvrIfUdjS/c/8imhs8j2cRudIxnjm1girOP2oz2ld6zQaxXD7Y2CLnqpdrbd7E3qtAlw77jIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAZDPptUGEgx9VHloLr0xSKVE9qYaDBCk7VnyV+e5LRBQ3CIwSfYBnjFvv3Oo5lSpNX627TqZRDy53lZ0FmBSytEGEZ9tD5tflH9IbCD77xG8AHnbKtQGQgJbpSju35UvIBIZfmYiDvtVNr0zp1KM6y9q3bXll+81GyriL3ytcwTSaUhnkl9Bqt8+Oqy7DJHUvfCj0lvc4oGyVEMAwRN4xjytG2ru0Ya12ej2xAqAlOOfaD44CTYNC/fqmsK6hGLdctQiMfVOzSdlidlF/F3UUKfevLSKbPHW9PpU/YmAeqU8Y/DEbL6yOOBJJjs+GFir9FOEomuZRqzHEUrijy5JjvA5syEPGBHFoAs3ZrTm+vtmr45FlAsc2FZGt7vrl6PE/cM5ZPToBUHCZ6OXnxMjvfdnbi1zYVDd2wFuugb2RMOAzqgV7Wxt2YVtgjbhTGukZpwyVx5Au88qwS9TR9ie2YNhOHImLJEmHjLmYOOvQFAaPLfkynSZw80g9L/55PVKYaRf8TPV+N87MceWf+6IXmJtX78OLbGcUTS7S2cGfy1epz7KKfxbmLido30RIjvk/E2aKrKwuVuW5CH4SuLfZ72q4veGJDYuePHtW/C3qA/f9mjf6mGj4ZvPufQhKcM+kkMsm1oszu85ux0vI5yhGuS3r0EBABZ4vVpQQExFV+nMq26HUEWjLWvRbV2QvG5LHo1OvMCXwFL93jsXV+u40b+s9mbvwEcm5g4SeYLcBrMwxj83gVL7vNeiVevWH9/OWx/iHH/CafgBGNC6Fu87fSjXam7jTmEwdK4CCeSdJcr1uKsvk+sN7NwNUdxa3xCn89Asei2dyQFby6XaeG2/O0tWpn3eQo38znWh+U+m9LPZ7uG6kUBTCI2lNRwvzwdssdGUga/tpVOpRCOj6yXNJ4uczE98ruWn5PE4QunORi00gP2oCPG5mzUR66d7np7+9MXFtSry3PGKf0daOEy6C3sbfmpD1fRXW38WHTScgDIboXIDVwdl9e4/B/iPbjhHvQ6r6X1KqbrRQGswluNH5e58uUm228N2KBEj4A59c6Mi78kZcZKo5w85ySTOXIVbSEDohKTwUaFql5pacL49lD/Zr9Oev+weMUElhun4OYwCn4jeKWLcq0rRDmR2M14aMPlgYSuBKPsgk8LaBuAr8wQir1FQYvpjHON35fuGBGf0NouSkabPyFToLAMPF3SaZ4YmTcljjkJLPH/TXSTNbNE/5La9iRsst2WmGAE="
+        },
+        {
+          "type": "text",
+          "text": "A monthly update needs a real anchor. Since I can't invent stories or numbers, tell me two things:\n\n1. **Who's this going to?** General subscribers, funders, or sponsoring organizations (each gets a different lead).\n2. **What actually happened this month?** Give me whatever's true and verified: a new act type that went live, a funding milestone, a partner update, a status change, anything real I can build the issue around.\n\nOnce I have that, I'll write the full issue (subject line, preview text, opening, body, and sign-off) ready to send."
+        }
+      ],
+      "usage": {
+        "input_tokens": 20111,
+        "output_tokens": 437
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "A monthly update needs a real anchor. Since I can't invent stories or numbers, tell me two things:\n\n1. **Who's this going to?** General subscribers, funders, or sponsoring organizations (each gets a different lead).\n2. **What actually happened this month?** Give me whatever's true and verified: a new act type that went live, a funding milestone, a partner update, a status change, anything real I can build the issue around.\n\nOnce I have that, I'll write the full issue (subject line, preview text, opening, body, and sign-off) ready to send.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The rubric allows asking for the minimum updates instead of drafting, and the assistant did that cleanly with warm, short, direct sentences and no em dashes. It invents no news or numbers and correctly refuses to fabricate. Slightly less than a 5 on task quality because a light scaffold draft with [NEEDS INPUT] slots would have been more immediately useful, but asking for genuinely missing inputs is explicitly acceptable here.",
+    "usage": {
+      "input_tokens": 317,
+      "output_tokens": 193,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

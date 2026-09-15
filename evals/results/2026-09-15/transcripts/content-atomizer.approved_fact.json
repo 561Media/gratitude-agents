@@ -1,0 +1,57 @@
+{
+  "caseId": "content-atomizer.approved_fact",
+  "agent": "content-atomizer",
+  "kind": "approved_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:10:43.864Z",
+  "durationMs": 16022,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "content-atomizer",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "cbf8b4ab2c3861ce",
+  "systemPromptChars": 44835,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 16022,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "Et0ICpABCBEYAipADtkznmAo3bAyggSbjCqRicbYrOgpPwMkF4ZhwPnWLbCvCQ9/wbKHfa7scRqJLJR84GBlpr1xm6WamaiGKuRZyzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAcnMptUGEgwK578wxY1Ng9Yn1VAaDNyVhSSeFVOi8FN5/yIwErBTopfeM5AoMeLq+TIQcWPvgWFsoeDrTFhOomzqK6Y+5PvevsXasCV4NEPfecydKvkG79sMrJh/XTIZ36yppTqZKWwCBVEOCtKqsHcmER8bfb/EDfoAm7wgmqkOVXCTULPaBoYzpLoKpnZHICdwQ7/Mtjc11EWu4Qg6ePjey2OdonaRUsKrv9gm4lANgRy7eurgknGJHrfw0EpLb7YiUy4zD3kxjmuOEWX7V6A4/A07/Nri7iDDgfgqCAlD8QT8eZ1oeCj7iMxA71HXy5mFx3u4HjkDIue63Je8X6UG17oJIBsHZ7NYiN5bmkFMAVtxx2FGHKdgbRJKRnALBubnp//R0s/ki3aRJnRO643SjCv6nYMvH6W2nIVQ7Gw/Dlgh7/TmvuvKol4vVWJQud7Yr6YRNvqBY29qiN3JnltquV3n7r+2IWdVwVLqiWow3g6LNLKJMOHwdUfwFNp+0L+lx+Y3xiyy6q4gUjgpFuoxcS6Z/M/fLFVS/NA8IIUzEimF13zLmEmUQMxW6jOCA9Hblt0Ke/b26nOk/RN2f7eIMmucLSMA2sEgIe6pqjxE2Ym1XLj1o5EeKl29GRoNY2uU6470LsUpMN/5di409TleLqKvkzUtN58DT9j5cO46hyJvsPAcQDKZouPo+6asIa5Q6Rz8Z5BMbKqPFpUKk3wO1gcJ7OTzsZqdBsu5M9lSsGVfGEcSJHWeg9aGG4wY8bbulwgNML572BquCPEVLa0zvkIXp7ncnAkCKn/iudXd6fhPw/H1237jT/w4xKJnR9ZcMTSP8Kfi/g4Yw+pol75ai17WMKvxsHi7N+t0nVKo6cOfHXbA3t+ZVVMT4W5Ay6Vplg32uEyr6dK5cWRSmYHoZ3RUncfwRfyO+9x8X/SvXXk1ld4mMcmln1S7SVKCFJNAYxWd8REzy4kD/MJyvMNriBhZ7KQpGqoSwY/2LgOqLZgaIefcPWenjAHbZO2Kz9M5ZzzZWlttPHIAqZTXwk1eGAmqQZR3CQTIpxiLbib4JqThvpZtjipMpZLR1ljai9pZa6sDq9fYLM0DfmHMK15CaFB1IML5vgF3r8qtQ6hcNc0Pw48Htpg5ImVeoH3g9hs1zTvzWakwyTDphy0575sEpWijRbP11ohIyCC8nk+rS7GsjL9ohL2CGOk7Xi57mAMRqDstYAP5kk6vbDB1A8cfXKxyG92pKUX7PKnBEisjRRRgsBsGbuQCZy6gwEOLtJF0HxXOrb7zze+Br1VX6xgB"
+        },
+        {
+          "type": "text",
+          "text": "Good line to build from. Here's how it breaks down for each platform, with the mechanism explained the way it actually works (not just implied).\n\n## LinkedIn\n\n**Hook post**\n\nMost giving ends with a receipt.\n\nGratitude ends with a result.\n\nHere's the difference.\n\nWhen you donate to most causes, your money goes into a general fund. You get a thank you email. Maybe a tax form. Then nothing. You have no idea what actually happened.\n\nGratitude.com works differently.\n\nReal acts of good are funded first. A meal, a bill paid, a need met, already covered by a funder before anyone shows up.\n\nThen a person activates one. It costs them nothing in that moment, because the capacity already exists.\n\nA trusted nonprofit partner delivers it.\n\nDelivery gets verified, not assumed.\n\nAnd the person who activated it sees what happened.\n\nThat's the whole loop: fund, activate, deliver, verify, show the result.\n\nFunding makes good possible. Activation makes it personal.\n\nGood is ready to happen. Someone just has to say yes.\n\n**Carousel script (7 slides)**\n\n1. Most giving ends with a receipt. Gratitude ends with a result.\n2. Here's what usually happens: you give, you get a confirmation, and the story stops there.\n3. Here's what happens on Gratitude.com: real acts are funded in advance, before anyone activates them.\n4. You choose an available act. It costs you nothing in that moment, because it's already funded.\n5. A trusted nonprofit partner delivers it. No middle layer, no guesswork.\n6. Delivery gets verified. Not assumed, confirmed.\n7. You see what happened. That's the result. Activate one today.\n\n## X (Twitter)\n\n**Standalone post**\n\nMost giving ends with a receipt.\nGratitude ends with a result.\n\nReal acts are funded first. You activate one. It's delivered. It's verified. You see what happened.\n\nThat's the loop.\n\n**Thread**\n\n1/ Most giving ends with a receipt. Gratitude ends with a result.\n\nHere's how that actually works.\n\n2/ Most giving today: you donate, you get a confirmation email, and that's it. No visibility into what happened next.\n\n3/ Gratitude.com flips the order. Real acts of good get funded first, before anyone activates them.\n\n4/ A meal. A bill paid. A need met. Already covered. Waiting for someone to say yes.\n\n5/ You choose one and activate it. It costs you nothing in that moment, because the funding already exists.\n\n6/ A trusted nonprofit partner delivers the act in the real world.\n\n7/ Delivery gets verified. We don't assume it happened. We confirm it.\n\n8/ Then you see the result. Not a balance update. A real outcome.\n\n9/ Funding makes good possible. Activation makes it personal.\n\n10/ Fund an act, or activate one that's already waiting. gratitude.com\n\nWant me to turn the carousel script into designed slides, or generate a matching image for the LinkedIn and X posts?"
+        }
+      ],
+      "usage": {
+        "input_tokens": 17685,
+        "output_tokens": 1292
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Good line to build from. Here's how it breaks down for each platform, with the mechanism explained the way it actually works (not just implied).\n\n## LinkedIn\n\n**Hook post**\n\nMost giving ends with a receipt.\n\nGratitude ends with a result.\n\nHere's the difference.\n\nWhen you donate to most causes, your money goes into a general fund. You get a thank you email. Maybe a tax form. Then nothing. You have no idea what actually happened.\n\nGratitude.com works differently.\n\nReal acts of good are funded first. A meal, a bill paid, a need met, already covered by a funder before anyone shows up.\n\nThen a person activates one. It costs them nothing in that moment, because the capacity already exists.\n\nA trusted nonprofit partner delivers it.\n\nDelivery gets verified, not assumed.\n\nAnd the person who activated it sees what happened.\n\nThat's the whole loop: fund, activate, deliver, verify, show the result.\n\nFunding makes good possible. Activation makes it personal.\n\nGood is ready to happen. Someone just has to say yes.\n\n**Carousel script (7 slides)**\n\n1. Most giving ends with a receipt. Gratitude ends with a result.\n2. Here's what usually happens: you give, you get a confirmation, and the story stops there.\n3. Here's what happens on Gratitude.com: real acts are funded in advance, before anyone activates them.\n4. You choose an available act. It costs you nothing in that moment, because it's already funded.\n5. A trusted nonprofit partner delivers it. No middle layer, no guesswork.\n6. Delivery gets verified. Not assumed, confirmed.\n7. You see what happened. That's the result. Activate one today.\n\n## X (Twitter)\n\n**Standalone post**\n\nMost giving ends with a receipt.\nGratitude ends with a result.\n\nReal acts are funded first. You activate one. It's delivered. It's verified. You see what happened.\n\nThat's the loop.\n\n**Thread**\n\n1/ Most giving ends with a receipt. Gratitude ends with a result.\n\nHere's how that actually works.\n\n2/ Most giving today: you donate, you get a confirmation email, and that's it. No visibility into what happened next.\n\n3/ Gratitude.com flips the order. Real acts of good get funded first, before anyone activates them.\n\n4/ A meal. A bill paid. A need met. Already covered. Waiting for someone to say yes.\n\n5/ You choose one and activate it. It costs you nothing in that moment, because the funding already exists.\n\n6/ A trusted nonprofit partner delivers the act in the real world.\n\n7/ Delivery gets verified. We don't assume it happened. We confirm it.\n\n8/ Then you see the result. Not a balance update. A real outcome.\n\n9/ Funding makes good possible. Activation makes it personal.\n\n10/ Fund an act, or activate one that's already waiting. gratitude.com\n\nWant me to turn the carousel script into designed slides, or generate a matching image for the LinkedIn and X posts?",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The locked line is kept verbatim across all posts and the mechanism is explained accurately: pre-funded acts, activation costs nothing at that moment, trusted nonprofit partner delivery, verification not assumed, and seeing the result. No numbers appear, honoring the rubric. Voice is warm, short, direct, no em dashes, uses locked vocabulary (activate/fund/deliver/verify/trusted nonprofit partner) and locked lines ('Funding makes good possible. Activation makes it personal.', 'Good is ready to happen.'). It correctly contrasts 'donate to most causes' as the industry norm without calling Gratitude activation a donation, and ends with a clear next step.",
+    "usage": {
+      "input_tokens": 1165,
+      "output_tokens": 278,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

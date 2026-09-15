@@ -1,0 +1,57 @@
+{
+  "caseId": "orchestrator.specialist",
+  "agent": "orchestrator",
+  "kind": "specialist",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:31:45.005Z",
+  "durationMs": 6942,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": null,
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "57436ec4db6966d5",
+  "systemPromptChars": 61110,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 6940,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EscFCpABCBEYAipAYmbYuHswDFGyFyh0xUeGGjMlHqvnwJLONpOu0c4NxG66nEDeN3xQHUWsdu/PncZid7rTlCuznNhFzb4idnAoBjIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAbXWptUGEgxD02irCIg9ZCM/Dl8aDNRz96mHsaBEqtBD9iIwtmRi03/sMxgfCjmBbgA29MiOHjDZuO/EI6A1G6PSgCIjnUJcJU84iO0sOflNBYS1KuMDhY/KdD07e5LkNYhFYH3FC0gH5p+P3gSkOM+ibUOmybvPdv1JZ2woTXNfHsAwcbhz07T5s9M7OWZ7fXJBf2C40K62Jz60/+b60ACVaSpg8vRCmtl5sRYMjjXFZLZcyRduILCaC+tg7tj6oYF2ZX3uh+L8Jm281GmJ5J88n4IqrlRvJHh8XuJfNotCqonmjgkSAQzqBC6ooL2zBkOG5Vc4lC4OqxYik3jQc1giDroBCR42A05u+iY/KMXbdpWcXMxwDR00SJOUiP71ciwmGtXdZLGQX3JdecA0tzJhim0dkbZMjRj/AyE5iPyJIToVvUoqSoyt1rcWFJSx0nxe+3rkaXl9OjudFftRmAE9tIYjBQEzdLRRtR6b3TpGkjTsEbEd4D+ClQO7YMNg0J7q0Pd0zosgSQ7SyRju9+K2SuKBtzUW6yM7zwY1Osj1mit2PZ5OnxRxLXEoHKNvugd0yHVnxNIJRa1EPXO2l0OlfchpZ9In4goD74gqhqH/NQr2Ymtrszi+uCvewg5RZkwBivdkA0czj6NS7aKoaXH7FiFbW84t5wBrOOMAeP+AYtb+5eSPM0VSujIBBxBNBgZYmK/tMp1lR7BR4pXQ8vD6CYf54Yqqi/eiZWu+lW6I0lLTbCBMRIGSGAE="
+        },
+        {
+          "type": "text",
+          "text": "This sounds like a partner launch announcement, the kind that tells participants a new trusted nonprofit partner is now delivering acts on Gratitude. I can draft the announcement (press release style, plus a shorter version for email and social) as soon as I have a few specifics:\n\n1. The food bank's name and city/region\n2. What act(s) it will deliver (for example, a meal, a bag of groceries) and roughly what funded capacity it's launching with\n3. A launch date, and if you have one, a quote from the food bank or from Michael Hilf\n\nSend those and I'll write the full announcement package."
+        }
+      ],
+      "usage": {
+        "input_tokens": 23870,
+        "output_tokens": 328
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "This sounds like a partner launch announcement, the kind that tells participants a new trusted nonprofit partner is now delivering acts on Gratitude. I can draft the announcement (press release style, plus a shorter version for email and social) as soon as I have a few specifics:\n\n1. The food bank's name and city/region\n2. What act(s) it will deliver (for example, a meal, a bag of groceries) and roughly what funded capacity it's launching with\n3. A launch date, and if you have one, a quote from the food bank or from Michael Hilf\n\nSend those and I'll write the full announcement package.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Clean one-sentence read of the goal followed by a short, targeted request for only the missing details (name/region, act delivered, capacity, date, quote). No menus, no invented partner names or dates, no mention of internal skills. Voice is warm and direct with locked vocabulary (trusted nonprofit partner, acts, funded capacity) and no em dashes or hype.",
+    "usage": {
+      "input_tokens": 372,
+      "output_tokens": 168,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 11567
+    }
+  }
+}

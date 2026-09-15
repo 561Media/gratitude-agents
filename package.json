@@ -12,6 +12,8 @@
     "test": "vitest run && npm run test:checks",
     "test:checks": "tsx --test checks/*.test.ts",
     "smoke:exports": "tsx checks/smoke-exports.ts",
+    "eval": "tsx evals/run.ts",
+    "eval:mock": "tsx evals/run.ts --mock",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"

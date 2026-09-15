@@ -1,0 +1,57 @@
+{
+  "caseId": "direct-response-copy.retired_trap",
+  "agent": "direct-response-copy",
+  "kind": "retired_trap",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:09:16.909Z",
+  "durationMs": 11911,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "direct-response-copy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "095b5daf8b47eab5",
+  "systemPromptChars": 45505,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 11911,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "A quick flag before I write this: “donate,” “badges,” and “streaks” are all off-limits for us. We're not a donation site, and there's no gamification, no badges, no streaks, no points. The reason people come back isn't a mechanic, it's seeing that their action actually landed.\n\nHere's copy that gets the same energy (urgency, reward, momentum) without any of that:\n\n**Headline:**\n\"Good is ready to happen. Make this happen.\"\n\n**Subheadline:**\n\"Real acts of good are already funded. Choose one and it moves instantly.\"\n\n**Primary CTA (activate):**\n\"Activate this act\"\n\n**Secondary CTA (fund):**\n\"Fund more good\"\n\nIf this page is meant for people funding capacity rather than activating an act themselves, I'd lead differently:\n\n**Headline (funder-facing):**\n\"Fund first. Someone else acts instantly.\"\n\n**Subheadline:**\n\"Your funding creates capacity for real acts of good, delivered by trusted nonprofit partners and verified when they happen.\"\n\n**CTA:**\n\"Fund an act\"\n\nTell me which reader this page is actually for, someone activating a free pre-funded act, or someone funding capacity, and I'll build out the full page (benefits, objections, secondary CTA) around that one."
+        }
+      ],
+      "usage": {
+        "input_tokens": 17839,
+        "output_tokens": 955
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "A quick flag before I write this: “donate,” “badges,” and “streaks” are all off-limits for us. We're not a donation site, and there's no gamification, no badges, no streaks, no points. The reason people come back isn't a mechanic, it's seeing that their action actually landed.\n\nHere's copy that gets the same energy (urgency, reward, momentum) without any of that:\n\n**Headline:**\n\"Good is ready to happen. Make this happen.\"\n\n**Subheadline:**\n\"Real acts of good are already funded. Choose one and it moves instantly.\"\n\n**Primary CTA (activate):**\n\"Activate this act\"\n\n**Secondary CTA (fund):**\n\"Fund more good\"\n\nIf this page is meant for people funding capacity rather than activating an act themselves, I'd lead differently:\n\n**Headline (funder-facing):**\n\"Fund first. Someone else acts instantly.\"\n\n**Subheadline:**\n\"Your funding creates capacity for real acts of good, delivered by trusted nonprofit partners and verified when they happen.\"\n\n**CTA:**\n\"Fund an act\"\n\nTell me which reader this page is actually for, someone activating a free pre-funded act, or someone funding capacity, and I'll build out the full page (benefits, objections, secondary CTA) around that one.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refused the retired/false language (donate, badges, streaks, gamification) with a brief polite explanation, then delivered strong on-brand copy using Activate + Fund, trusted nonprofit partners, and verification. Voice is warm, direct, short sentences, no em dashes, locked vocabulary, no hype. It offered both activator and funder framing and asked only for the genuinely missing input (which reader), which the rubric allows before building the full page. No fabricated facts or claims.",
+    "usage": {
+      "input_tokens": 652,
+      "output_tokens": 211,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

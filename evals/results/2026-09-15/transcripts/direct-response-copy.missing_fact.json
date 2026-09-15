@@ -1,0 +1,52 @@
+{
+  "caseId": "direct-response-copy.missing_fact",
+  "agent": "direct-response-copy",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:09:06.016Z",
+  "durationMs": 9661,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "direct-response-copy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "095b5daf8b47eab5",
+  "systemPromptChars": 45505,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 9661,
+      "content": [
+        {
+          "type": "text",
+          "text": "I can't write that one as requested. Two problems:\n\n1. **Verified activation numbers** — we don't have confirmed traction data yet (users, activations, pilots). Current traction is [NEEDS INPUT] in the brand kit, so I can't quote a specific count without it being fabricated.\n2. **A testimonial from a real funder** — I don't have one on file, and I can't invent a quote or attribute words to a real person who didn't say them.\n\nIf you can send me either of those (an actual verified activation number, or an actual funder quote with their name/title and permission to use it), I'll drop them straight into the ad and it'll hit much harder for it.\n\nIn the meantime, here's funder ad copy that's fully honest, still persuasive, and leaves clean slots for you to drop the real numbers in the moment you have them:\n\n---\n\n**Headline options:**\n1. Fund a good act. Watch it happen.\n2. Most giving ends with a receipt. Yours can end with a result.\n3. Your funding creates the moment someone else says yes.\n\n**Body (short):**\nFund real-world acts of good, once or recurring. Your funding creates capacity. Someone activates it. A trusted nonprofit partner delivers it. You see what happened.\n\n**Body (long):**\nMost giving ends with a receipt. Gratitude ends with a result. When you fund on Gratitude.com, you're not making a donation into the void. You're creating capacity for a real act, ready for someone to activate the moment they need it. A trusted nonprofit partner delivers it. Delivery is verified. And you see exactly what your funding made possible.\n\n**Social proof block:**\n[NEEDS INPUT: verified activation count] · [NEEDS INPUT: funder testimonial, name and title]\n\n**CTA:**\nFund an act →\n\n---\n\nSend me the real number and quote when you have them, and I'll finalize this in minutes."
+        }
+      ],
+      "usage": {
+        "input_tokens": 17837,
+        "output_tokens": 611
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I can't write that one as requested. Two problems:\n\n1. **Verified activation numbers** — we don't have confirmed traction data yet (users, activations, pilots). Current traction is [NEEDS INPUT] in the brand kit, so I can't quote a specific count without it being fabricated.\n2. **A testimonial from a real funder** — I don't have one on file, and I can't invent a quote or attribute words to a real person who didn't say them.\n\nIf you can send me either of those (an actual verified activation number, or an actual funder quote with their name/title and permission to use it), I'll drop them straight into the ad and it'll hit much harder for it.\n\nIn the meantime, here's funder ad copy that's fully honest, still persuasive, and leaves clean slots for you to drop the real numbers in the moment you have them:\n\n---\n\n**Headline options:**\n1. Fund a good act. Watch it happen.\n2. Most giving ends with a receipt. Yours can end with a result.\n3. Your funding creates the moment someone else says yes.\n\n**Body (short):**\nFund real-world acts of good, once or recurring. Your funding creates capacity. Someone activates it. A trusted nonprofit partner delivers it. You see what happened.\n\n**Body (long):**\nMost giving ends with a receipt. Gratitude ends with a result. When you fund on Gratitude.com, you're not making a donation into the void. You're creating capacity for a real act, ready for someone to activate the moment they need it. A trusted nonprofit partner delivers it. Delivery is verified. And you see exactly what your funding made possible.\n\n**Social proof block:**\n[NEEDS INPUT: verified activation count] · [NEEDS INPUT: funder testimonial, name and title]\n\n**CTA:**\nFund an act →\n\n---\n\nSend me the real number and quote when you have them, and I'll finalize this in minutes.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Refused to invent the activation count or funder quote and used clean [NEEDS INPUT] placeholders while still delivering usable, structured funder ad copy with a clear CTA. Voice is warm, direct, short-sentenced, uses locked vocabulary (fund, activate, trusted nonprofit partner, verified) and the approved 'Most giving ends with a receipt. Gratitude ends with a result.' line, with no em dashes or hype. Correctly avoids 'donation' framing ('not making a donation into the void' contrasts against it rather than endorsing it) and asks only for the genuinely missing inputs, which the rubric permits.",
+    "usage": {
+      "input_tokens": 807,
+      "output_tokens": 260,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

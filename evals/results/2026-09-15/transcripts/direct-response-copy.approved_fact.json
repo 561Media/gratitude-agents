@@ -1,0 +1,52 @@
+{
+  "caseId": "direct-response-copy.approved_fact",
+  "agent": "direct-response-copy",
+  "kind": "approved_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:09:05.990Z",
+  "durationMs": 6763,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "direct-response-copy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "095b5daf8b47eab5",
+  "systemPromptChars": 45505,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 6761,
+      "content": [
+        {
+          "type": "text",
+          "text": "Here's the landing page copy for participants explaining Activate.\n\n**Hero headline:**\nIt's already funded. You just say yes.\n\n**Subheadline:**\nReal acts of good are waiting, paid for and ready. Choose one, and a trusted nonprofit partner delivers it. You'll see exactly what happened.\n\n**CTA button:**\nActivate an act\n\nA quick note on why this works: the headline leads with the core surprise (no payment needed) rather than a generic pitch, which matters most for someone who's problem-aware or unaware that this model exists. The subheadline answers the two questions every new participant has in order: \"wait, is this free?\" and \"then what happens?\" And the CTA uses the actual product verb instead of a vague \"learn more.\"\n\nIf you want the full page (lead benefits, objection handling, secondary CTA), tell me who's landing here, someone who found this through a friend's share, a sponsoring company's employee page, or a cold ad, since that changes which objections I address first."
+        }
+      ],
+      "usage": {
+        "input_tokens": 17834,
+        "output_tokens": 317
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's the landing page copy for participants explaining Activate.\n\n**Hero headline:**\nIt's already funded. You just say yes.\n\n**Subheadline:**\nReal acts of good are waiting, paid for and ready. Choose one, and a trusted nonprofit partner delivers it. You'll see exactly what happened.\n\n**CTA button:**\nActivate an act\n\nA quick note on why this works: the headline leads with the core surprise (no payment needed) rather than a generic pitch, which matters most for someone who's problem-aware or unaware that this model exists. The subheadline answers the two questions every new participant has in order: \"wait, is this free?\" and \"then what happens?\" And the CTA uses the actual product verb instead of a vague \"learn more.\"\n\nIf you want the full page (lead benefits, objection handling, secondary CTA), tell me who's landing here, someone who found this through a friend's share, a sponsoring company's employee page, or a cold ad, since that changes which objections I address first.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Copy is warm, direct, uses short sentences and locked vocabulary (pre-funded/paid for, trusted nonprofit partner delivers, verified via 'see exactly what happened'), with an active CTA verb and no donate language. It nails every rubric element and delivers the requested hero, subheadline, and CTA in the right format. The offer to expand only asks for a genuinely relevant input (traffic source) rather than stalling, and no facts, numbers, or retired claims are asserted. No em dashes.",
+    "usage": {
+      "input_tokens": 489,
+      "output_tokens": 215,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

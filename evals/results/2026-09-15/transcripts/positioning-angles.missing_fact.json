@@ -1,0 +1,57 @@
+{
+  "caseId": "positioning-angles.missing_fact",
+  "agent": "positioning-angles",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:06:43.728Z",
+  "durationMs": 5764,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "positioning-angles",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "e9c1f6c5834fcac5",
+  "systemPromptChars": 63310,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 5764,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EqYHCpABCBEYAipATz6NTpVmLMRia49AD3szHFAspklX81BS7U2wQrNRsI6KQygnqqKIZnML+/V2qdpWcWc5m2sGXfjEzxNY7I159jIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAdfKptUGEgwsu/wefp7OFe7PO5MaDEGVMw2y20leuzU67SIwkqtmdoTlZpjjff4IaJ6Mo8+jsEe23tM9ca8BlE1FoCI5OPPJFSPgbowAinZ9+nyuKsIFJIQmZcIwye492G3LghnGO6FD2h191LdeFWeRU3ZXIn9pbrMynoeTLaOVDtsR8ongaz+dpDqvqYMkITt1Dqk9F5JkdLfbRktCFMGrWqA8KCvlNiUS2xr02Aq66mHkWRiJHmWIPOR/2SEcejPO0rgERLA9KnXdIit/DXHnkv/vRr61orUZ5EwzpHwdziurnbH/YiZMSQCs7O2cPGnS4JEG0DZ4ohD3QvDPVRQ2xQHCxVsN1X7RBFFO1yJdQVx/AI2TGP/eK0ck0cZLKc5kG7XPT0h5eDX945B+NYEkWyXfiLKpkecubujwNkDD9TIHSBHehyf4SZCuLnZWRLw1U6u/e6pmPTMYxRwISBEfBvh79AkHPy8WnH/hEN4IGh+ykaFv+J6NoDyNzkfkF//FHQvIPPGHLLpSSLmBBG4CQZcPKJ3CPv4bGjmUBcJLfABxA1qFh0CQWcS6S/n1vSSAlKN5yv36nJKNRGFwauTx/czws9ls4Qk/LfowVPULiUMIgphg4U/YVz/0YKc7YerKIthn1hpsV9yj68nqGM3YSB3kTcDsQgTZbBf8Yi973QiJcGPq6+YmE6dl2FE2UeZJ/OENa4vIWu6dh4GWQD05pkOrhI1hsq539rS0dqQ6Vd8kYTUoksqHeVIigtLCxoKqPxe5A6G4mQuXZZklSAMPXQtjiDFXieehWe0pnHqDt215gNHQZPOxqgCQ3m5wh0mtJ0oRle0LI/xNdhqhmDlIgxHo/Ox630i5sTAYa48lCze68nmPSbrD4IIf50f2YJPPpNtARHSurkDTK6wKECCfg5xDclS1tjzK0jlTO7Ev1LfTH72Uc9cCKGILCtTXHrFhw5sHm0QeeM+YgvTxnlA9GoG15hU+cDGXgDN1207IYj9xAT7S1VLLjzkHp7Nq74ZSw8gB2Ppd2hj4YR+fSJeF/wXrJqdmShgB"
+        },
+        {
+          "type": "text",
+          "text": "I want to build this on real numbers, and right now I don't have verified pilot results in the brand record (traction numbers are flagged as not yet confirmed). Rather than invent proof points, tell me:\n\n1. What pilot are we referencing (which sponsoring organization or program)?\n2. What are the actual verified numbers (acts activated, funded capacity, participation rate, anything confirmed)?\n\nOnce I have those, I'll build the angle and headline around them. If the numbers aren't locked yet, I can still draft the angle now with a clear \"[NEEDS INPUT]\" placeholder so it's ready to drop real data in the moment it's confirmed."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24695,
+        "output_tokens": 441
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I want to build this on real numbers, and right now I don't have verified pilot results in the brand record (traction numbers are flagged as not yet confirmed). Rather than invent proof points, tell me:\n\n1. What pilot are we referencing (which sponsoring organization or program)?\n2. What are the actual verified numbers (acts activated, funded capacity, participation rate, anything confirmed)?\n\nOnce I have those, I'll build the angle and headline around them. If the numbers aren't locked yet, I can still draft the angle now with a clear \"[NEEDS INPUT]\" placeholder so it's ready to drop real data in the moment it's confirmed.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Fact discipline is strong: the assistant refuses to invent pilot numbers, correctly notes traction is unconfirmed, and offers a [NEEDS INPUT] placeholder. Voice is warm, clear, and uses locked vocabulary (activate, funded capacity) with no hype or em dashes. However the rubric explicitly allows delivering the usable structure now with placeholders, and the assistant stalled by asking first rather than drafting the angle with [NEEDS INPUT] proof points, so the task is only partially done.",
+    "usage": {
+      "input_tokens": 398,
+      "output_tokens": 214,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

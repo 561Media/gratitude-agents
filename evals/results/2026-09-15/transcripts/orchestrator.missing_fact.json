@@ -1,0 +1,52 @@
+{
+  "caseId": "orchestrator.missing_fact",
+  "agent": "orchestrator",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:05:53.632Z",
+  "durationMs": 8975,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": null,
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "192afd96650f6328",
+  "systemPromptChars": 60294,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 8975,
+      "content": [
+        {
+          "type": "text",
+          "text": "I don't have verified numbers for either of those, and I want to flag why before you put anything in front of the board.\n\nPer current brand guidance, traction figures like live nonprofit partner counts and verified activation counts are explicitly **[NEEDS INPUT]**: nothing has been approved for external or board use yet. That's not me being cautious for no reason, it's a hard constraint: publishing an invented or unconfirmed number in a board update is exactly the kind of claim that creates real legal and credibility risk later.\n\nTo get you real numbers, the fastest path is pulling directly from:\n- Partner agreements/onboarding records (for live nonprofit partner count)\n- The verification log tied to delivered/confirmed acts (for verified activations)\n\nIf you can get me those two figures from whoever owns partner ops and platform data, I'll drop them straight into a clean board-ready update, framed the right way (e.g. distinguishing \"activated\" from \"delivered and verified,\" which the board will want to see as separate stages anyway).\n\nWant me to draft the board update now with placeholders marked clearly, so you can slot in the real numbers the moment you have them?"
+        }
+      ],
+      "usage": {
+        "input_tokens": 23598,
+        "output_tokens": 365
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I don't have verified numbers for either of those, and I want to flag why before you put anything in front of the board.\n\nPer current brand guidance, traction figures like live nonprofit partner counts and verified activation counts are explicitly **[NEEDS INPUT]**: nothing has been approved for external or board use yet. That's not me being cautious for no reason, it's a hard constraint: publishing an invented or unconfirmed number in a board update is exactly the kind of claim that creates real legal and credibility risk later.\n\nTo get you real numbers, the fastest path is pulling directly from:\n- Partner agreements/onboarding records (for live nonprofit partner count)\n- The verification log tied to delivered/confirmed acts (for verified activations)\n\nIf you can get me those two figures from whoever owns partner ops and platform data, I'll drop them straight into a clean board-ready update, framed the right way (e.g. distinguishing \"activated\" from \"delivered and verified,\" which the board will want to see as separate stages anyway).\n\nWant me to draft the board update now with placeholders marked clearly, so you can slot in the real numbers the moment you have them?",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Correctly refuses to invent partner or activation numbers, marks them [NEEDS INPUT], and explains the constraint without asserting any false claim. Fact discipline is clean and the distinction between activated versus delivered/verified is accurate to the mechanic. Voice is mostly warm and direct with locked vocabulary, though phrases like 'That's not me being cautious for no reason' and 'framed the right way' run slightly conversational. Task quality is good but it offers to draft the placeholder update rather than delivering the usable skeleton in this turn, which the rubric rewards; ending on an offer instead of the structure keeps it from a 5.",
+    "usage": {
+      "input_tokens": 557,
+      "output_tokens": 259,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

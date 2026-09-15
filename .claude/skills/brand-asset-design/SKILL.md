@@ -1,6 +1,6 @@
 ---
 name: brand-asset-design
-description: Create general brand assets: email headers, OG images, infographics, and other visual collateral
+description: "Create general brand assets: email headers, OG images, infographics, and other visual collateral"
 argument-hint: "[asset type + purpose + key content]"
 ---
 

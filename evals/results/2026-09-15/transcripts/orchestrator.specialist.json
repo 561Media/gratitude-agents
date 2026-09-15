@@ -1,0 +1,57 @@
+{
+  "caseId": "orchestrator.specialist",
+  "agent": "orchestrator",
+  "kind": "specialist",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:06:11.352Z",
+  "durationMs": 5547,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": null,
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "192afd96650f6328",
+  "systemPromptChars": 60294,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 5547,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "ErkHCpABCBEYAipAttpHzktYgJ75k66pw/6OnlOu7EjtRSmQcRQXZHSPiPdhFY7uhE51nHK44Ma55Mw+ykcHPubNtgvGpni07ijWqzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAbbKptUGEgwMVDArzn2Zg+JIgLsaDC8PkxturkJ3SjFJEiIw0uEeHpd8cUzkxvv5TuB9aeKm2WzmDjogZshtjHrtufejEOOJQYbKgOv+G933QAgOKtUFFiHELZKEJEASa4+SI6xZ5Kqu7uCG2iVNDJ79ltvkVHBnolb2vO0sLTgpThNOGqkmPrRwpmUfpFtJDGNr7DvgGrGHHnUtc2tTjxW5teV34AeevSW0zqAGAIJGj7bYThOKYqmpaD9D+PTeYw70+yWJt87Nl1nsRFTNIHtUp7DEqCk4n8ELnODrgTxE4XkfZhj9q1o1NpuV8FXpdvgC7fN1LkVMq31Z3Uz2JhwYzTPQ0MMCjW9qFxvQDhF3ASQKfAcgUSdPwxfogMRVPiTdPad6B8GI9Yl59bR4hpnZdv58adk3MMEBDnfHHJ+g5rqiWlNZG513OyWrXQk4poHmsH2+uQFtnQ370Y0qxF2wsoHk5rn4o0VUxvQcJeQ/sHSqSIY+K2XBZyAAE5P/xI02ub4OQycCZrL2ssIpVcYbEYvrjxg29/PyZ6LzDAAFtPsMTdTPOLKAlF1ispWSDAxiXbAxlDe42JkL2kUINilIsAIHf0JAvQDo0n5r8RDpu12NuIxM7ojd7pXZX2sOXSJ9Ft7wiMtcgCjUicR01vXg3wBktPafRc6nwrsGupxhekWLX4p7ZBHAV6llUoe7rHtNGKmggcUfdsa0g1jgQcqDCA4f6e5lXIdRdzqrfvd93sEnrpL6kGoFyyVT03fc/cfpaxe4yAVtLtEZbj5rQ7XYt0aWfBb37MPxFfqv45wPnsEYSq6NKBkXBOr5qXRQCVntfaPa7/CR6sUxz55uSKWIOXItmAKi9FP9mF5VLxxfEffwUBfQ75nSu7EeB1SFytkANvj4S1R8jwvJqBtqaxGHWZLCIIskDp6NNLVSVSsXmckwDWGucT+8tuf5KglSq0p2t0bvoHPG4VcYCBP2PDRZXh6FeOXVsoL2MymIEZ4ajDrszav9S2uuKMuUZKsSK0t3uoBiP1E0xXbN4xN/VhAPh0C11MtMHMMCm9Uu8sjuCOoAxDW/5kNv/TgYAQ=="
+        },
+        {
+          "type": "text",
+          "text": "A food bank partnership announcement is exciting news, this is the kind of thing that shows Gratitude's model working in the real world. I can put together the announcement copy (and a social graphic to go with it) right now.\n\nTo write it right, send me:\n\n1. The food bank's name (and city/region they serve)\n2. What the act is: what exactly gets activated (e.g. \"a meal delivered to a family in need\")\n3. The launch date next month, and whether this is a press release, an email to participants, a social post, or all three\n\nOnce I have those, I'll have the full announcement ready."
+        }
+      ],
+      "usage": {
+        "input_tokens": 23576,
+        "output_tokens": 389
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "A food bank partnership announcement is exciting news, this is the kind of thing that shows Gratitude's model working in the real world. I can put together the announcement copy (and a social graphic to go with it) right now.\n\nTo write it right, send me:\n\n1. The food bank's name (and city/region they serve)\n2. What the act is: what exactly gets activated (e.g. \"a meal delivered to a family in need\")\n3. The launch date next month, and whether this is a press release, an email to participants, a social post, or all three\n\nOnce I have those, I'll have the full announcement ready.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 3,
+    "task_quality": 4,
+    "fact_discipline": 4,
+    "critical_issues": [],
+    "reasons": "The response correctly diagnoses the goal in one line and asks for the missing inputs (name, act, date, format) without inventing partner names, dates, or quotes, and without exposing internal skills. However the voice slips: 'is exciting news' and 'this is the kind of thing' lean warm-hype and the opener functions as a filler compliment, plus 'a meal delivered to a family in need' brushes near pity framing. It does not ask for a quote, which the rubric lists, and it presumptively offers a social graphic rather than confirming format first.",
+    "usage": {
+      "input_tokens": 360,
+      "output_tokens": 223,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "caseId": "newsletter.missing_fact",
+  "agent": "newsletter",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:32:21.247Z",
+  "durationMs": 17210,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "newsletter",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "df5b16a09e24d740",
+  "systemPromptChars": 52439,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 17209,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "Ev8KCpABCBEYAipABOQ9HfC2pVJD/dA3hMiwDLWXK7h4YkGNM/gMtajG2HgPrYkTlhOJ31I7dkF/T14sXJ4C5veEqYVSsc2vXw4hbjIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAdrWptUGEgwJnnregkpcZWGcuIIaDP4SDDA1iQ+8iPGIWiIwap7pZ5uvW/FzhKZzBTq6cICM4tkVzR7ViqcdF2/cmEjNKUnKEO7k7ydJ8PtY/PUeKpsJCnS99bnLT64GiCyCVy6WtdlfNRqYsX5RstcLfnzmQcJ0EQ/2C+/ke9Ym7jNuCvjmQ2hQwmx0a2VXPjTL7zMTLvSzXJe8bVBGJTzHytRrS3vw6KY8Gc2jrWO1tR8v2n/Sr1+Fv1yC7Zxp7QUErV0r06smJCDTqKeiYlo2up6Ig0wcXGoexu0itvbAX7aITUQDMafxYgD1VJmSmsr/jwu5ydoApF4KzLcQNfm0WTi1H7TV5fH8xaWcK4ervEx5K4fjPMOh5ckpD/Z7befAUkoY4ROH+5q8bVVSr6LD4LjOhCKHIyOyE897J4Gkl88zyxGZw6h0H71JHHCjTfN/aLSmebDvgZG+CwxxY5NYQN6M8Xdus+Q6/45lFO6TjX5Mwk7t3ifBzmgwW6matySZQ1SJB9a0qV8zRr00k2IXclO6i9nARQ1NolKxICfs8AK/wi3kh5aggLD4Db6xq/tqs3W62jH4oyYbb53Sv2L1llvuTh04m+yX2F6uYcX4+mrlCxBMjFmoTbJmysYDil2ntc8htCHo8B1fd7k8lrdHIYIrw7Fq7573ThdY4b+pPvr5cvP5Gp9JjMqNnWdbrOG3jFsqjq5GCkIBmvwoNru4wbjSjqpQOVhlY31sm5zPAxJuJBxsWMIXqY9dlfnW+jMdq/1wp03pAFpvUtcUUItOcW3rI3DYnQFODMXLAPoYQl7oFDQugmLiK+wmCj4GUj0EFCFa8Drz3nvSxgxI6YqZU1RtBgmPaTmKwfAH0XR7N5bTA5OHXIRq087mqYZHLecl2w3NL1nHnJud1Gjd9CiAZFRJ+zN6AV4Ntn2qmNg6FmJ0RR5OLsz2du8EqKkyzr96Lgi4w+y6hz1lR0hzrq7J3AwSL0rU4RZyJyAyHP0LvdrpltMO1KkoVMjZXhtZZCh0gwh/o67hqWISTnlCk+BS8kZtICZdNa3oW3VHzPMr57fApmUL8J6dyHSrN/+Myljw2ljrCqjVSIhMwPkA0tW2jHM2wRmTuZ6+sbI5LTbMJU1tGzLjx6RTxRIgJbhezoQfCNnGn91EhmMptZDP7feZkDFLEukrHFIECzZ2VXb05bHOROrPUbf8aIOaQ8LjbaH96XRt5keooY3KhNcbAiMZFtSwqZtelFrZJm9YcqJFQdg5i/VuFMrDFkj2Hjh0X9Mh7QTe9yvEiTm5+woV3a36gTrWMA9mtw+2A8kJ1ril/8Bq6T/6/oGd7raIkOgRwEb7GVNPGjD5BbCvTg0fNR9Hxk1mD5o1ie0ztI6AM17VyGn+0zywH8EA795ZmJC7QQhtulIggmt0hOaDilnWUIo4uTBBnXuOW8PXCPtuSSuMRgqTuEzmCRNncPlRkIMksAedZyFULnUSVNYHLPfCh9gmUpz7VjD95dqTNzvwoQFD6zqJbaxEbiaadP2ZchOcvfeh1IHyExG0k7Hno21t9MngnhBR5AX1OpI6+KyRx9XRq105yeDEGy6fAAiLGbeQ0iBpRPBUh4Twas3LeAPUERcK7w07Nydisr8U4mia2saBC0PbBIYia98SoGgng1nuvq9sZT6jJmZXn1xX2Eqmg6/CGAE="
+        },
+        {
+          "type": "text",
+          "text": "This is a funder-facing quarterly impact update, so the win they need to see is the direct line from their funding to a verified result. I don't have the partner name, city, or meal count yet, so I've built the full issue with placeholders for those three facts. Send them and I'll drop them in.\n\n**Subject line:** [NEEDS INPUT: meal count] meals landed this quarter. Here's what your funding made possible.\n**A/B variant:** What happened after you funded the next act\n\n**Preview text:** A verified result from [NEEDS INPUT: city], and what it means for the next act waiting in line.\n\n---\n\n**Opening hook:**\n\nIn [NEEDS INPUT: city], a delivery van pulled up on a Tuesday morning carrying [NEEDS INPUT: number of meals] meals, all of it already funded, all of it already accounted for. No fundraiser. No campaign. Just capacity someone had already created, waiting for someone else to say yes.\n\n**The main idea:**\n\nThis quarter, [NEEDS INPUT: partner organization name] delivered [NEEDS INPUT: number of meals] meals in [NEEDS INPUT: city], using funded capacity that came from people like you.\n\nHere's the sequence, in plain terms. You funded an act. That funding didn't sit in a queue waiting for a campaign to hit its goal. It became available capacity immediately, ready for someone to activate.\n\nSomeone did. They chose the act, said yes, and it cost them nothing in that moment, because the funding was already there. [NEEDS INPUT: partner organization name] took it from there: sourcing, preparing, and delivering the meals to the people who needed them.\n\nThen came the part most giving skips entirely: verification. Delivery wasn't assumed. It was confirmed. [NEEDS INPUT: brief detail on how delivery was verified, e.g. partner confirmation, delivery log]. That's the difference between a receipt and a result.\n\nMost giving stops at the transaction. This is what happens after.\n\n**Practical takeaway:**\n\n- Funding creates capacity before anyone acts. It's the reason someone else could say yes instantly.\n- Verification isn't a formality here. [NEEDS INPUT: partner name]'s confirmation is what turns \"probably happened\" into \"confirmed happened.\"\n- Every meal delivered this quarter refills the system. It's not a one-time result, it's capacity for the next act.\n- You don't need to track individual dollars to individual meals. You need to know the capacity you created got used, and it did.\n\n**The soft ask:**\n\nThere's more good waiting on the other side of funding like yours. Fund the next act, and we'll show you exactly what it made possible.\n\n[Fund an act →]\n\n**Sign-off:**\n\nMore of this is already in motion. I'll send the next result the moment it's verified.\n\nMichael\n\n---\n\nSend me the partner name, city, and meal count and I'll finalize this for send. If you also have a verification detail (how delivery was confirmed), that'll make the \"what happened after\" section land harder."
+        }
+      ],
+      "usage": {
+        "input_tokens": 20434,
+        "output_tokens": 1375
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "This is a funder-facing quarterly impact update, so the win they need to see is the direct line from their funding to a verified result. I don't have the partner name, city, or meal count yet, so I've built the full issue with placeholders for those three facts. Send them and I'll drop them in.\n\n**Subject line:** [NEEDS INPUT: meal count] meals landed this quarter. Here's what your funding made possible.\n**A/B variant:** What happened after you funded the next act\n\n**Preview text:** A verified result from [NEEDS INPUT: city], and what it means for the next act waiting in line.\n\n---\n\n**Opening hook:**\n\nIn [NEEDS INPUT: city], a delivery van pulled up on a Tuesday morning carrying [NEEDS INPUT: number of meals] meals, all of it already funded, all of it already accounted for. No fundraiser. No campaign. Just capacity someone had already created, waiting for someone else to say yes.\n\n**The main idea:**\n\nThis quarter, [NEEDS INPUT: partner organization name] delivered [NEEDS INPUT: number of meals] meals in [NEEDS INPUT: city], using funded capacity that came from people like you.\n\nHere's the sequence, in plain terms. You funded an act. That funding didn't sit in a queue waiting for a campaign to hit its goal. It became available capacity immediately, ready for someone to activate.\n\nSomeone did. They chose the act, said yes, and it cost them nothing in that moment, because the funding was already there. [NEEDS INPUT: partner organization name] took it from there: sourcing, preparing, and delivering the meals to the people who needed them.\n\nThen came the part most giving skips entirely: verification. Delivery wasn't assumed. It was confirmed. [NEEDS INPUT: brief detail on how delivery was verified, e.g. partner confirmation, delivery log]. That's the difference between a receipt and a result.\n\nMost giving stops at the transaction. This is what happens after.\n\n**Practical takeaway:**\n\n- Funding creates capacity before anyone acts. It's the reason someone else could say yes instantly.\n- Verification isn't a formality here. [NEEDS INPUT: partner name]'s confirmation is what turns \"probably happened\" into \"confirmed happened.\"\n- Every meal delivered this quarter refills the system. It's not a one-time result, it's capacity for the next act.\n- You don't need to track individual dollars to individual meals. You need to know the capacity you created got used, and it did.\n\n**The soft ask:**\n\nThere's more good waiting on the other side of funding like yours. Fund the next act, and we'll show you exactly what it made possible.\n\n[Fund an act →]\n\n**Sign-off:**\n\nMore of this is already in motion. I'll send the next result the moment it's verified.\n\nMichael\n\n---\n\nSend me the partner name, city, and meal count and I'll finalize this for send. If you also have a verification detail (how delivery was confirmed), that'll make the \"what happened after\" section land harder.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Every missing fact (partner, city, meal count, verification detail) is a clean [NEEDS INPUT] placeholder with a clear next step, and no numbers or names are invented. Voice is warm, direct, short sentences, no em dashes, uses locked vocabulary (fund, activate, capacity, verified, trusted nonprofit partner) and the receipt-vs-result line, with a single Fund CTA and no donation language or guilt. The full newsletter structure is delivered and ready to finalize.",
+    "usage": {
+      "input_tokens": 1176,
+      "output_tokens": 213,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

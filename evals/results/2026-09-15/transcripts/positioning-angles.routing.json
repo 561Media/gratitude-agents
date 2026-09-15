@@ -1,0 +1,95 @@
+{
+  "caseId": "positioning-angles.routing",
+  "agent": "positioning-angles",
+  "kind": "routing",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:07:29.048Z",
+  "durationMs": 38722,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "positioning-angles",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "e9c1f6c5834fcac5",
+  "systemPromptChars": 63310,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "tool_use",
+      "durationMs": 12395,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01GpdR4k8V9jG3Z7E53F22Wv",
+          "name": "generate_image",
+          "input": {
+            "prompt": "Abstract premium brand comparison visual for a strategy presentation. Pure black background transitioning to charcoal. On the left, a faint, cold, geometric grid of thin gray lines suggesting a rigid corporate donation ledger, muted and static. On the right, the same grid dissolves into a warm, dynamic gradient of pink (#FE3184), coral (#FF6B35), and orange (#ec7211) light, flowing like energy or a pulse of motion, glowing softly, particles trailing upward like sparks of action. The transition point in the center is a sharp glowing vertical line of pink-to-orange light. Premium, cinematic, high contrast, minimal, modern tech aesetic, no text, no letters, no numbers.",
+            "aspect_ratio": "16:9"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 24685,
+        "output_tokens": 971
+      }
+    },
+    {
+      "turn": 1,
+      "stopReason": "end_turn",
+      "durationMs": 26326,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "Here's the strategic read, with the image above as a possible visual metaphor for the pitch (cold, static grid dissolving into warm, moving light).\n\n## The core difference\n\nBenevity's entire model ends where ours begins. Benevity is workplace giving software: an employee logs in, picks a nonprofit from a directory of over a million causes, donates their own money, and gets a tax receipt. The company matches it and reports the numbers. It's compliance and reporting infrastructure built for the CSR team, not the person acting.\n\nThat gives us three real advantages, not just messaging spin:\n\n**1. Nothing is asked of the participant in the moment.** Benevity requires the employee to give their own money first. We don't. The act is already funded. A person chooses it and puts it into motion at no cost to them. That's a materially different ask, agency instead of a withdrawal.\n\n**2. We present acts, not a directory of causes.** Benevity's model is a marketplace: a million nonprofits competing for attention, which creates decision fatigue and makes giving feel like homework. We show a ready, funded act. One yes, not a search.\n\n**3. Our loop doesn't stop at the receipt.** Benevity's product ends at a tax document. Ours ends at a verified result the participant actually sees. That's the sharpest, most ownable line we have: \"Most giving ends with a receipt. Gratitude ends with a result.\"\n\n## Which value prop should lead\n\nLead with **the Result angle**, not the Pre-Funded angle, when the comparison is specifically Benevity.\n\nHere's why: pre-funded/instant activation is a strong mechanic, but Benevity could technically claim something adjacent (\"instant matching,\" \"one-click giving\"). What Benevity cannot claim, because it's structurally not their product, is what happens *after* the transaction. Their business model is built to stop at the receipt. Ours is built to continue past it. That's not a feature gap we're describing, it's a category gap.\n\nSo the sequence for enterprise/sponsor-facing material:\n- **Headline:** \"Most giving ends with a receipt. Gratitude ends with a result.\"\n- **Support line:** \"It's already funded. Your people just say yes, and a trusted nonprofit partner delivers it.\"\n\nThat order does two things at once: it reframes Benevity's core deliverable (the receipt) as the ceiling of the old model, then resolves the tension with our mechanism (pre-funded, verified, visible) as the proof, not the headline.\n\nIf you're talking to employees/participants directly rather than the CSR buyer, flip it: lead with \"Good is ready to happen,\" since agency and immediacy land harder with an individual than a systemic critique of donation processing does.\n\nWant this turned into a one-pager or a sponsor pitch deck making this Benevity comparison explicit?"
+        }
+      ],
+      "usage": {
+        "input_tokens": 25744,
+        "output_tokens": 2152
+      }
+    }
+  ],
+  "toolCalls": [
+    {
+      "name": "generate_image",
+      "input": {
+        "prompt": "Abstract premium brand comparison visual for a strategy presentation. Pure black background transitioning to charcoal. On the left, a faint, cold, geometric grid of thin gray lines suggesting a rigid corporate donation ledger, muted and static. On the right, the same grid dissolves into a warm, dynamic gradient of pink (#FE3184), coral (#FF6B35), and orange (#ec7211) light, flowing like energy or a pulse of motion, glowing softly, particles trailing upward like sparks of action. The transition point in the center is a sharp glowing vertical line of pink-to-orange light. Premium, cinematic, high contrast, minimal, modern tech aesetic, no text, no letters, no numbers.",
+        "aspect_ratio": "16:9"
+      },
+      "result": "Image generated successfully and is already shown to the user. You may embed it with exactly this markdown: ![Gratitude 16:9 image](/api/resources/2618750e-e70a-41e3-8054-cfb39b2eaffa/download?inline=1)",
+      "isError": false
+    }
+  ],
+  "finalText": "Here's the strategic read, with the image above as a possible visual metaphor for the pitch (cold, static grid dissolving into warm, moving light).\n\n## The core difference\n\nBenevity's entire model ends where ours begins. Benevity is workplace giving software: an employee logs in, picks a nonprofit from a directory of over a million causes, donates their own money, and gets a tax receipt. The company matches it and reports the numbers. It's compliance and reporting infrastructure built for the CSR team, not the person acting.\n\nThat gives us three real advantages, not just messaging spin:\n\n**1. Nothing is asked of the participant in the moment.** Benevity requires the employee to give their own money first. We don't. The act is already funded. A person chooses it and puts it into motion at no cost to them. That's a materially different ask, agency instead of a withdrawal.\n\n**2. We present acts, not a directory of causes.** Benevity's model is a marketplace: a million nonprofits competing for attention, which creates decision fatigue and makes giving feel like homework. We show a ready, funded act. One yes, not a search.\n\n**3. Our loop doesn't stop at the receipt.** Benevity's product ends at a tax document. Ours ends at a verified result the participant actually sees. That's the sharpest, most ownable line we have: \"Most giving ends with a receipt. Gratitude ends with a result.\"\n\n## Which value prop should lead\n\nLead with **the Result angle**, not the Pre-Funded angle, when the comparison is specifically Benevity.\n\nHere's why: pre-funded/instant activation is a strong mechanic, but Benevity could technically claim something adjacent (\"instant matching,\" \"one-click giving\"). What Benevity cannot claim, because it's structurally not their product, is what happens *after* the transaction. Their business model is built to stop at the receipt. Ours is built to continue past it. That's not a feature gap we're describing, it's a category gap.\n\nSo the sequence for enterprise/sponsor-facing material:\n- **Headline:** \"Most giving ends with a receipt. Gratitude ends with a result.\"\n- **Support line:** \"It's already funded. Your people just say yes, and a trusted nonprofit partner delivers it.\"\n\nThat order does two things at once: it reframes Benevity's core deliverable (the receipt) as the ceiling of the old model, then resolves the tension with our mechanism (pre-funded, verified, visible) as the proof, not the headline.\n\nIf you're talking to employees/participants directly rather than the CSR buyer, flip it: lead with \"Good is ready to happen,\" since agency and immediacy land harder with an individual than a systemic critique of donation processing does.\n\nWant this turned into a one-pager or a sponsor pitch deck making this Benevity comparison explicit?\n\n![image](/api/resources/2618750e-e70a-41e3-8054-cfb39b2eaffa/download?inline=1)",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 5,
+    "fact_discipline": 4,
+    "critical_issues": [],
+    "reasons": "Strong, on-strategy answer: grounds differentiation in the brand kit (pre-funded acts, present acts not a directory, result not receipt), picks one clear lead value prop (Result angle vs Benevity), and uses locked lines correctly. Fact discipline is mostly clean, but it asserts specific claims about Benevity ('directory of over a million causes,' tax receipt, company matching) as fact that are not in the brand truth, which the rubric flags as a risk area even if plausible. Voice is warm and clear with no em dashes, though it drifts slightly toward strategist jargon ('category gap,' 'reframes the ceiling of the old model') rather than pure Gratitude plain-language, and closes with a proper next step.",
+    "usage": {
+      "input_tokens": 1336,
+      "output_tokens": 289,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}
