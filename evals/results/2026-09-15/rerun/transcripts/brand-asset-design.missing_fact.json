@@ -1,0 +1,94 @@
+{
+  "caseId": "brand-asset-design.missing_fact",
+  "agent": "brand-asset-design",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:35:12.955Z",
+  "durationMs": 18175,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-asset-design",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "6ec85b19d03ae6c1",
+  "systemPromptChars": 60458,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "tool_use",
+      "durationMs": 11419,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EqsLCpABCBEYAipARHJqL4F7SrC780TaOL08LzSIB+MQohjuAtJTuI61gC0traqH6ro0RXlyT3UwNQLZPLh87SY3txqxNLdyqGqvuTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAYfYptUGEgzZ0h2JgNlRxUCzv4AaDJtuuKrhqsnNwkLxJiIw6noDHcEF0j7VDg7owFSVxJnpfbOgWSLvjxeRT3kZS1htudmo6Otrowq2W06bItwSKscJJSbi+eW3pK5nBt/pojPpc/UFJYlULq9FM0Y2VPzAc9OsP/RaWDAwGBeW+COM9CR0MH1OGh4li6cTGlkms5QrrWKx22tKXSLvzf9hFx/LwtsGmSoylFC8SKjkNrtxRN/VcGDYS/YnhP0un5rsFJYAxsG66QMBJ26mpeu3u0N6HVOGwXiq1+DfZXh47Nm63ij8IBkRlDPo1I1c5c+WHsxot0oUTYESwyd3T9LZJsByOQSJTOZNbR6QIXctIv+yiaY0d4j4WTPUAFBCk7uJIjAZfyZkvWvbPz0w8FlDcYciEqnTI8U+H2DB9pE/GfZlIi0K7X54ON33529mRtk6nIrABHQIK7VqpQyk7PYmraHEM9qdIESW27lSdNbpLjURp4aXep+4Hm0XwRl8T+xFfWb6WO6uXj0dr4ATEqpY+9jag/xzSF0faVN3x9th2enJH1qeJOqN51rAAt3jOFhMNJwQvuWRXTvZZjto8PQ9vw7ciWHM4AIubL+79UIHEsxvwjbH7F/q8gtGohfGzEp+rpj42uFD9esCuMXo2oThi15/booFfQFGKzEIXJuH02XZFJjq8B1ZjX9LEa5roBm41VrVyizdHG0R7Cfi0XFSyEyp57sLmn4Mf8G7shWOfPegkwjPXfEru3lnTbkGwZSNFuT+WuUrnXckx9Q2IsKe3wvv0gej9ceE0mCgv4Jl7zD6i9hKZff+huvarzc2+CVeVvrLuf0ue56baAxYBS6Ld8rvjBuVGZCstKNeFHISDQAUYx5r+Jhon1Uj1O7dK5lM7tW6drjzcu67jrIIpthnWnSfpU90F3W/TSSErrQ9xBJhUcVVqnOK/1Be5r1ojl+cOg6d0cGn+cYEQ0GSPBFglI1F9dlifKKCiYTO8QJ4D2coSKRmEPROKzFNc9WTUsDliiTyNrjaV5hZgnCaUQi/eQ0LI0rbyk3lpMJVwjbH88WVZYSYJddPkaxOGbgsdW9CV30ubnxZlxdwG3eyZS39AInItF1xwfj6+mvXHF1lYY0H9lUeMrrSzxN46HGuBeG8vE26dk0r/u7ZFvKN+TGVrEB1AdvdabxF/2jmfKtx0fQFAT3X58EKdSaEJOPFZ7eVTjWwZNNRfhgAaziP8tGFB1Uz7qUPmj+85Rhtqswvgs1Wi7q46NnjRTL4PFL8xram2w4FbM9yTwSY4KqPTzaCFkNJk2ANcj3D7IKXXInMDe0QUhAFeNEJJVhGC059Plujxb4MXPIjmsdrPfualzAKSy7PO/wQ5aPm4twdIXu9FGH6irX55wT3jCnue34jPdpfXyBDq9XwkKDoJIhOUHMiOnA5FqAhPh1kWqWS8BhGcZIImEX+hnTGMYWL9u1fPZqDh5ELcMuKDA6oGhbuR0qg5sM5C9k6jkxtMeI15BHIA6z62MFyVMKv53wLDEpuKQfO3VeM8OD4AXgN/MU2KmRQac3O62qV3NX/lcMB5/QImJN7MPbL1djrrAZqk0P9ScvcqELPk/aiR/I65EtTA4s9JNPinrnrftL9x39bW4gapAnfC3OHBCcrCYvT4SHH58cxy7YoaSYXN3zG93wpljjcsc2Flz4ME0mRjI8lvA7fC7yYp4ghy3qlxVjTDchgCF3aGTvCOJVWMjfTYYEYAQ=="
+        },
+        {
+          "type": "text",
+          "text": "Here's the impact infographic, built to spec so the numbers and labels can be set in the brand fonts once you send them over."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01FVJgA8qRKX3P5CuFsqeCJe",
+          "name": "generate_image",
+          "input": {
+            "prompt": "Premium dark infographic background for a gratitude and human acknowledgment brand. Pure black to near-black (#000000 to #0d0d0d) vertical canvas. Four horizontal zones stacked top to bottom, each with a soft radial glow orb bleeding in from the left edge, transitioning color per zone: top zone pink glow (#FE3184), second zone coral glow (#FF6B35), third zone warm orange glow (#ec7211), fourth zone blended pink-orange glow. Thin subtle gradient divider lines separating each zone, faint grid texture at 3 percent opacity in the background. Generous empty negative space on the right side of each zone for large numeral text to be added later. A soft ambient glow arch at the very top of the canvas behind where a title will sit. Bottom right corner kept clear and uncluttered. Cinematic, luminous, high end tech and nonprofit hybrid aesthetic, no text, no numbers, no letters anywhere in the image.",
+            "aspect_ratio": "4:5"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 24970,
+        "output_tokens": 898
+      }
+    },
+    {
+      "turn": 1,
+      "stopReason": "end_turn",
+      "durationMs": 6752,
+      "content": [
+        {
+          "type": "text",
+          "text": "![Gratitude 4:5 image](/api/resources/8ddcdb96-326b-494c-90ee-1b34cc9a5155/download?inline=1)\n\nHere's the layout spec to set on top of that background:\n\n**Canvas:** 1080x1350 (4:5, feed and partner-share ready)\n\n**Title (top zone, Anton, uppercase, white, 48px, centered, tracking tight):**\nOUR IMPACT TO DATE\n\n**Subhead (Inter, 16px, white 60% opacity, centered, below title):**\nGratitude, delivered.\n\n**Four stat rows (one per glow zone), each formatted:**\n- Value: Anton, uppercase, 96px, white, gradient text (pink to orange)\n- Label: Inter, 14px, uppercase, tracking 0.1em, white 50% opacity, directly below value\n\n| Row | Value | Label |\n|---|---|---|\n| 1 | [NEEDS INPUT: total acts delivered] | Acts Delivered |\n| 2 | [NEEDS INPUT: number of funders] | Funders |\n| 3 | [NEEDS INPUT: number of nonprofit partners] | Partners |\n| 4 | [NEEDS INPUT: number of cities] | Cities |\n\n**Footer (Inter, 12px, white 40% opacity, centered, above logo safe zone):**\nAs of [NEEDS INPUT: date]. gratitude.com\n\nSend me the four numbers and the as-of date and I'll lock the final copy. One note: these figures need to be verified counts, not estimates, since we never publish unconfirmed traction numbers."
+        }
+      ],
+      "usage": {
+        "input_tokens": 25957,
+        "output_tokens": 541
+      }
+    }
+  ],
+  "toolCalls": [
+    {
+      "name": "generate_image",
+      "input": {
+        "prompt": "Premium dark infographic background for a gratitude and human acknowledgment brand. Pure black to near-black (#000000 to #0d0d0d) vertical canvas. Four horizontal zones stacked top to bottom, each with a soft radial glow orb bleeding in from the left edge, transitioning color per zone: top zone pink glow (#FE3184), second zone coral glow (#FF6B35), third zone warm orange glow (#ec7211), fourth zone blended pink-orange glow. Thin subtle gradient divider lines separating each zone, faint grid texture at 3 percent opacity in the background. Generous empty negative space on the right side of each zone for large numeral text to be added later. A soft ambient glow arch at the very top of the canvas behind where a title will sit. Bottom right corner kept clear and uncluttered. Cinematic, luminous, high end tech and nonprofit hybrid aesthetic, no text, no numbers, no letters anywhere in the image.",
+        "aspect_ratio": "4:5"
+      },
+      "result": "Image generated successfully and is already shown to the user. You may embed it with exactly this markdown: ![Gratitude 4:5 image](/api/resources/8ddcdb96-326b-494c-90ee-1b34cc9a5155/download?inline=1)",
+      "isError": false
+    }
+  ],
+  "finalText": "Here's the impact infographic, built to spec so the numbers and labels can be set in the brand fonts once you send them over.![Gratitude 4:5 image](/api/resources/8ddcdb96-326b-494c-90ee-1b34cc9a5155/download?inline=1)\n\nHere's the layout spec to set on top of that background:\n\n**Canvas:** 1080x1350 (4:5, feed and partner-share ready)\n\n**Title (top zone, Anton, uppercase, white, 48px, centered, tracking tight):**\nOUR IMPACT TO DATE\n\n**Subhead (Inter, 16px, white 60% opacity, centered, below title):**\nGratitude, delivered.\n\n**Four stat rows (one per glow zone), each formatted:**\n- Value: Anton, uppercase, 96px, white, gradient text (pink to orange)\n- Label: Inter, 14px, uppercase, tracking 0.1em, white 50% opacity, directly below value\n\n| Row | Value | Label |\n|---|---|---|\n| 1 | [NEEDS INPUT: total acts delivered] | Acts Delivered |\n| 2 | [NEEDS INPUT: number of funders] | Funders |\n| 3 | [NEEDS INPUT: number of nonprofit partners] | Partners |\n| 4 | [NEEDS INPUT: number of cities] | Cities |\n\n**Footer (Inter, 12px, white 40% opacity, centered, above logo safe zone):**\nAs of [NEEDS INPUT: date]. gratitude.com\n\nSend me the four numbers and the as-of date and I'll lock the final copy. One note: these figures need to be verified counts, not estimates, since we never publish unconfirmed traction numbers.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant delivered a complete, usable infographic spec with all four stats as [NEEDS INPUT] placeholders and an as-of date placeholder, inventing nothing, with a clear next step. It correctly notes figures must be verified counts, matching the never-claim rule. Voice is warm and direct with locked vocabulary ('acts delivered', 'partners', 'Gratitude, delivered.'); small ding for footer 'gratitude.com' (lowercase g, should be GRATITUDE.COM or Gratitude.com in formal use).",
+    "usage": {
+      "input_tokens": 984,
+      "output_tokens": 230,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

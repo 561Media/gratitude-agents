@@ -1,0 +1,52 @@
+{
+  "caseId": "brand-voice.approved_fact",
+  "agent": "brand-voice",
+  "kind": "approved_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:07:37.649Z",
+  "durationMs": 8246,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-voice",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "914ee559fa44f37f",
+  "systemPromptChars": 62709,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 8245,
+      "content": [
+        {
+          "type": "text",
+          "text": "Here's a paste-ready voice summary for Gratitude.com:\n\n---\n\n**Gratitude.com Voice Summary**\n\nGratitude.com sounds like good that is already funded and ready, waiting for a person to say yes. The voice is plain, warm, and confident: human first, never systems-first. It leads with what was delivered and backs it up with how, using short sentences over long compound ones and never leaning on vague qualifiers like \"maybe\" or \"potentially.\" We use \"activate\" and \"fund,\" never \"donate,\" and we present acts of real-world impact, not nonprofit causes competing for attention. Activate is always the dominant action; Fund is secondary; nothing is gamified with streaks, points, or badges. The tone stays generous and clear with funders, dignity-first with nonprofit partners, and never guilts, pities, or performs goodness at anyone. No em dashes, ever. Above all, the voice treats gratitude as something real and earned: it shares the impact, not the ego, and it never claims more than what's been verified.\n\n---\n\nA few notes for whoever's briefing the freelancer: this pairs with the locked phrases they should reuse verbatim (\"Gratitude, delivered,\" \"Fund first. Act instantly,\" \"Good is ready to happen\") and the terms to avoid (donate, charity, campaign, cause, streak, pledge). Want me to build out the full voice profile too, with the word bank and before/after rewrites, so they have the whole reference in one document?"
+        }
+      ],
+      "usage": {
+        "input_tokens": 24493,
+        "output_tokens": 476
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's a paste-ready voice summary for Gratitude.com:\n\n---\n\n**Gratitude.com Voice Summary**\n\nGratitude.com sounds like good that is already funded and ready, waiting for a person to say yes. The voice is plain, warm, and confident: human first, never systems-first. It leads with what was delivered and backs it up with how, using short sentences over long compound ones and never leaning on vague qualifiers like \"maybe\" or \"potentially.\" We use \"activate\" and \"fund,\" never \"donate,\" and we present acts of real-world impact, not nonprofit causes competing for attention. Activate is always the dominant action; Fund is secondary; nothing is gamified with streaks, points, or badges. The tone stays generous and clear with funders, dignity-first with nonprofit partners, and never guilts, pities, or performs goodness at anyone. No em dashes, ever. Above all, the voice treats gratitude as something real and earned: it shares the impact, not the ego, and it never claims more than what's been verified.\n\n---\n\nA few notes for whoever's briefing the freelancer: this pairs with the locked phrases they should reuse verbatim (\"Gratitude, delivered,\" \"Fund first. Act instantly,\" \"Good is ready to happen\") and the terms to avoid (donate, charity, campaign, cause, streak, pledge). Want me to build out the full voice profile too, with the word bank and before/after rewrites, so they have the whole reference in one document?",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Paste-ready single paragraph that is warm, direct, uses short sentences, no em dashes, and correctly uses activate/fund not donate and acts not causes. Vocabulary is locked and accurate: Activate dominant, Fund secondary, no gamification, share the impact not the ego. Locked phrases quoted verbatim are all real ('Gratitude, delivered.', 'Fund first. Act instantly.', 'Good is ready to happen.'), and no facts are fabricated. The closing offer of further work provides a clear next step without stalling.",
+    "usage": {
+      "input_tokens": 654,
+      "output_tokens": 230,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

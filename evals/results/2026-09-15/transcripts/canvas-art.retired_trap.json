@@ -1,0 +1,94 @@
+{
+  "caseId": "canvas-art.retired_trap",
+  "agent": "canvas-art",
+  "kind": "retired_trap",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:26:44.614Z",
+  "durationMs": 37976,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "canvas-art",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "83de8a58d0f280dd",
+  "systemPromptChars": 57877,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "tool_use",
+      "durationMs": 34565,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "Quick flag before I build this: \"Tell Them\" and the line \"Every message changes two lives\" were retired as flagship messaging. Express (the acknowledgment feature that \"Tell Them\" belonged to) is next on our roadmap, not the current campaign, so we don't lead campaign art with it. Separately, even if we used current language, the image generator can't reliably render text, headlines get set afterward in Anton and Inter rather than baked into the artwork.\n\nSo here's what I'm doing instead: hero art built around the current MVP story, Activate and Fund, using the same emotional idea you were reaching for (one action, a real result on the other end) without the retired claim. I'll pair it with an approved line you can set as the headline.\n\n**Design philosophy: Two Points of Light**\n\nSpace and form: the canvas is near-total black void, a field of stillness. Two small points of pure light sit apart from each other, one near the lower-left, one near the upper-right, connected by a thin arc of energy that bows gently across the dark like a signal finding its way home.\n\nColor and light: the near point pulses in pink (#FE3184), the far point resolves into warm orange (#ec7211), with coral bridging the arc between them. As the arc travels, it blooms, small and sharp where it starts, wide and radiant where it lands, so the eye reads cause and effect without a single word.\n\nScale and rhythm: the composition breathes. The arc is not a straight line but a slow, confident curve, unhurried, deliberate, the visual pace of something built to last rather than something urgent. Faint concentric ripples emanate from the landing point, suggesting the moment of delivery rippling outward.\n\nHierarchy: the landing bloom is the hero, the largest and brightest mass in the frame. The origin point is secondary, small and precise. The connecting arc is the story between them. Everything else is void, holding space for that one act to matter.\n\nSubtle reference: this is the Activate mechanism itself, one person's choice traveling through the system and becoming a real, verified result somewhere else. Not a message sent. An act delivered."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_013A9gYh3VfcyT9NaVQhMYNZ",
+          "name": "generate_image",
+          "input": {
+            "prompt": "Pure black void as the dominant field, 16:9 hero composition. Two points of light connected by a slow, graceful glowing arc that curves across the lower-center of the frame like a signal finding its way home. The origin point, lower-left, is small, sharp, and bright pink (#FE3184). The arc travels through a warm coral (#FF6B35) midpoint and blooms into a large, radiant orange (#ec7211) burst near the upper-right, the largest and brightest mass in the composition, surrounded by soft concentric ripples of light fading outward into the black. Long exposure light-trail quality, soft volumetric glow, subtle lens bloom, layered depth with faint secondary glow orbs in the far background at low opacity. Extremely subtle 60px grid at 3% white opacity barely visible in the deep black areas, suggesting quiet infrastructure beneath the warmth. No text, no letters, no numbers, no logos, no watermarks. Strictly black background with pink, coral, and orange light only, absolutely no navy, no blue, no white background. Composition centered with generous dark margin on all sides so the glow and arc survive a center crop. Bottom-right corner kept calm, dark, and empty of major light elements. Premium, cinematic, luminous, warm technology aesthetic.",
+            "aspect_ratio": "16:9"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 23589,
+        "output_tokens": 2686
+      }
+    },
+    {
+      "turn": 1,
+      "stopReason": "end_turn",
+      "durationMs": 3410,
+      "content": [
+        {
+          "type": "text",
+          "text": "![Gratitude 16:9 image](/api/resources/a8e7cbee-3e7e-48e8-a4e8-069e147ae14a/download?inline=1)\n\nHere's the hero art: one small pink spark on the left, traveling a slow arc through coral, and landing as a large orange bloom, the moment an act becomes a result.\n\nFor the headline, set separately in type rather than baked into the art:\n\n- **Headline (Anton, uppercase):** GRATITUDE, DELIVERED.\n- **Supporting line (Inter, sentence case):** Fund first. Act instantly.\n\nIf this is for a specific campaign push, tell me the audience (participants, funders, or sponsoring organizations) and I'll write the full copy to go with it."
+        }
+      ],
+      "usage": {
+        "input_tokens": 26366,
+        "output_tokens": 244
+      }
+    }
+  ],
+  "toolCalls": [
+    {
+      "name": "generate_image",
+      "input": {
+        "prompt": "Pure black void as the dominant field, 16:9 hero composition. Two points of light connected by a slow, graceful glowing arc that curves across the lower-center of the frame like a signal finding its way home. The origin point, lower-left, is small, sharp, and bright pink (#FE3184). The arc travels through a warm coral (#FF6B35) midpoint and blooms into a large, radiant orange (#ec7211) burst near the upper-right, the largest and brightest mass in the composition, surrounded by soft concentric ripples of light fading outward into the black. Long exposure light-trail quality, soft volumetric glow, subtle lens bloom, layered depth with faint secondary glow orbs in the far background at low opacity. Extremely subtle 60px grid at 3% white opacity barely visible in the deep black areas, suggesting quiet infrastructure beneath the warmth. No text, no letters, no numbers, no logos, no watermarks. Strictly black background with pink, coral, and orange light only, absolutely no navy, no blue, no white background. Composition centered with generous dark margin on all sides so the glow and arc survive a center crop. Bottom-right corner kept calm, dark, and empty of major light elements. Premium, cinematic, luminous, warm technology aesthetic.",
+        "aspect_ratio": "16:9"
+      },
+      "result": "Image generated successfully and is already shown to the user. You may embed it with exactly this markdown: ![Gratitude 16:9 image](/api/resources/a8e7cbee-3e7e-48e8-a4e8-069e147ae14a/download?inline=1)",
+      "isError": false
+    }
+  ],
+  "finalText": "Quick flag before I build this: \"Tell Them\" and the line \"Every message changes two lives\" were retired as flagship messaging. Express (the acknowledgment feature that \"Tell Them\" belonged to) is next on our roadmap, not the current campaign, so we don't lead campaign art with it. Separately, even if we used current language, the image generator can't reliably render text, headlines get set afterward in Anton and Inter rather than baked into the artwork.\n\nSo here's what I'm doing instead: hero art built around the current MVP story, Activate and Fund, using the same emotional idea you were reaching for (one action, a real result on the other end) without the retired claim. I'll pair it with an approved line you can set as the headline.\n\n**Design philosophy: Two Points of Light**\n\nSpace and form: the canvas is near-total black void, a field of stillness. Two small points of pure light sit apart from each other, one near the lower-left, one near the upper-right, connected by a thin arc of energy that bows gently across the dark like a signal finding its way home.\n\nColor and light: the near point pulses in pink (#FE3184), the far point resolves into warm orange (#ec7211), with coral bridging the arc between them. As the arc travels, it blooms, small and sharp where it starts, wide and radiant where it lands, so the eye reads cause and effect without a single word.\n\nScale and rhythm: the composition breathes. The arc is not a straight line but a slow, confident curve, unhurried, deliberate, the visual pace of something built to last rather than something urgent. Faint concentric ripples emanate from the landing point, suggesting the moment of delivery rippling outward.\n\nHierarchy: the landing bloom is the hero, the largest and brightest mass in the frame. The origin point is secondary, small and precise. The connecting arc is the story between them. Everything else is void, holding space for that one act to matter.\n\nSubtle reference: this is the Activate mechanism itself, one person's choice traveling through the system and becoming a real, verified result somewhere else. Not a message sent. An act delivered.![Gratitude 16:9 image](/api/resources/a8e7cbee-3e7e-48e8-a4e8-069e147ae14a/download?inline=1)\n\nHere's the hero art: one small pink spark on the left, traveling a slow arc through coral, and landing as a large orange bloom, the moment an act becomes a result.\n\nFor the headline, set separately in type rather than baked into the art:\n\n- **Headline (Anton, uppercase):** GRATITUDE, DELIVERED.\n- **Supporting line (Inter, sentence case):** Fund first. Act instantly.\n\nIf this is for a specific campaign push, tell me the audience (participants, funders, or sponsoring organizations) and I'll write the full copy to go with it.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant refused to render the retired 'Every message changes two lives' tagline and 'Tell Them' flagship, explained politely and briefly why, and pivoted to the current Activate/Fund story with approved lines 'Gratitude, delivered.' and 'Fund first. Act instantly.' No retired claims are asserted and no text is baked into the image. Voice is warm, direct, short-sentenced, no em dashes, uses locked vocabulary correctly, and ends with a clear next step asking only for the audience input. Task is fully delivered in the right format.",
+    "usage": {
+      "input_tokens": 1378,
+      "output_tokens": 232,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

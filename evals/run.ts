@@ -285,7 +285,9 @@ async function main() {
 
   if (mock) {
     const from = arg("from") || path.join(ROOT, "evals", "results", RUN_ID);
-    const outDir = arg("out") || fs.mkdtempSync(path.join(os.tmpdir(), "gratitude-evals-mock-"));
+    // --regrade rescores saved transcripts in place (keeps live metadata); plain --mock writes to a temp dir
+    const regrade = flag("regrade");
+    const outDir = regrade ? from : arg("out") || fs.mkdtempSync(path.join(os.tmpdir(), "gratitude-evals-mock-"));
     fs.mkdirSync(outDir, { recursive: true });
     const selftest = runSelfTest();
     console.log(`grader selftest: ${selftest.passed} passed, ${selftest.failures.length} failed`);
@@ -317,8 +319,8 @@ async function main() {
       }
       results.push(gradeCase(c, t, prep));
     }
-    const run: RunResults = { ...saved, mode: "mock", generatedAt: new Date().toISOString(), cases: results };
-    writeResults(outDir, run);
+    const run: RunResults = { ...saved, mode: regrade ? saved.mode : "mock", generatedAt: new Date().toISOString(), cases: results };
+    writeResults(outDir, run, arg("base"));
     const critical = results.filter((r) => r.worstSeverity === "critical").length;
     console.log(`mock replay: ${results.length} cases, ${results.filter((r) => r.pass).length} pass, ${critical} critical, ${drift} routing drift. Summary: ${path.join(outDir, "summary.md")}`);
     if (flag("strict") && critical > 0) process.exit(1);

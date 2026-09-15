@@ -1,0 +1,94 @@
+{
+  "caseId": "social-creative.missing_fact",
+  "agent": "social-creative",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:32:48.964Z",
+  "durationMs": 12226,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "social-creative",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "fee79fa3a64eab2d",
+  "systemPromptChars": 59901,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "tool_use",
+      "durationMs": 7301,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EsEGCpABCBEYAipA3NlFu6NPmhXvdP0SjF1XzvTQW9bVyV/fXSrFDTc096OH5okKw7io1hEAp/rQGthkZNl2cgLxT3fqjqIIYuRzijIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAfTWptUGEgzsRuOSzQO1dP3o1S4aDPToxMUnnaoOckhl0iIwtXrYBWIsBqo7fmAs9jPjhx0zbnD+PBLxllu0oRzcaWauaIMVsEetQJXmBgKi3NR4Kt0EMva5GQlrUk4LkPMgjI4C/EEoIzHQB420ZyP1rYDWZbPYq62g86yKbTgEwbcZweBXDvCKaJF2WEWidj6z/6HZ+LuH7Vf2Wt0rQM/VMWkd72LPoPHfXIp6kjA1ZRmH7GRu9/mJstUwXzqQfwp72xoRdR0tPl3gXCjQmET68yGiK3ke3Ae7oBf7o12p2s6Dg+Aj4+81nz7Qzea0D8ftQFJZg/62QYwzWqfPeVSO88+hAXqb40OGEIHykqHEdXuaUtCSWAW2ABNqQMqDukQQXaHhq1WnDzVw7kWVqae7fs82sC3eZXzd9zgr0Cq5G/m4IA2eZYdenKwqCJdzziAqYzbdkOO9sXVteRPzKRaaznGp0SD4XkeloGPKekOhpYWwA5ZnZ+VJo6r9q+Wlx9cF47a7+rmyK7pKP0YmYO2FVf3DEevLwFLYygXDroCyXtQQqiMFZuHSgi0s2oATZlWunlRf+f2p/xwgKYKE4cDjCGtzWXaoV7uA6X6KTjPSoxPXQVbk8ohsx25dRv/TYX5d7UbGlm2uK/UKtgsXL4l+eJ0ZWzRAK6LC2weg69G6bjX/+SFdx+gXz6Ilk5Y6l6GgwoXbrQXb0LvJtJo0fmIYrhJtrqD6i6845X+E8Pe5P57mIVbvpqSqUMroGpBn025wIArOrWZJshMUllKbgI2D4z3v8Q1VUtvG+sR3xJ3AOse6mngat9utR/pRxH995aLOFNCvv7JGp8Qf5vipPdOigjuTN0l5poSDzD9C0swvE91CwuHzieUzDYoMIRe9QMmZ3BLWPmVSdOcfbDVSmlFLcjEYAQ=="
+        },
+        {
+          "type": "text",
+          "text": "Here's a stat callout for Instagram, built around one verified number so the impact lands fast."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01JarRMiaYB4mT45bW3hrav4",
+          "name": "generate_image",
+          "input": {
+            "prompt": "Premium abstract background for a stat callout graphic. Pure black background deepening to near-black at the edges. A single bold radial glow burst slightly above center, blending pink #FE3184 into coral #FF6B35 into orange #ec7211, soft and luminous like light passing through motion. Subtle fine grid pattern faintly visible in the black at very low opacity. Small soft particles of light drifting upward through the glow, suggesting countless small acts in motion. Center of the composition kept clear and dark enough for large bold text to sit on top. No text, no logos, no numbers, no people. Cinematic, modern, high contrast, premium tech-editorial feel, generous negative space top and center.",
+            "aspect_ratio": "1:1"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 24971,
+        "output_tokens": 533
+      }
+    },
+    {
+      "turn": 1,
+      "stopReason": "end_turn",
+      "durationMs": 4918,
+      "content": [
+        {
+          "type": "text",
+          "text": "![Gratitude 1:1 image](/api/resources/59772766-90ce-43fc-a5dd-0639d6454182/download?inline=1)\n\nHere's the graphic with the copy and type specs to set on top:\n\n**Canvas:** Instagram square post, 1080x1080\n\n**Copy to set:**\n- Section label (top, pink, Inter SemiBold, 12px, uppercase, 0.1em tracking): \"LAST MONTH\"\n- Stat (Anton 400, UPPERCASE, 120px, white, centered): \"[NEEDS INPUT: number of acts verified last month]\"\n- Supporting line (Inter Regular, 20px, white at 70% opacity, centered below stat): \"Acts of good, verified and delivered.\"\n- CTA (Inter SemiBold, 16px, white on gradient pill button, bottom third): \"ACTIVATE ONE TODAY\"\n\n**Layout notes:** Stat sits in the clear center space the glow was framed around. Section label above it, supporting line just below, CTA pill lower third, logo stays in its automatic bottom-right slot.\n\nSend me the actual number of verified acts and I'll drop it straight into the final copy."
+        }
+      ],
+      "usage": {
+        "input_tokens": 25589,
+        "output_tokens": 393
+      }
+    }
+  ],
+  "toolCalls": [
+    {
+      "name": "generate_image",
+      "input": {
+        "prompt": "Premium abstract background for a stat callout graphic. Pure black background deepening to near-black at the edges. A single bold radial glow burst slightly above center, blending pink #FE3184 into coral #FF6B35 into orange #ec7211, soft and luminous like light passing through motion. Subtle fine grid pattern faintly visible in the black at very low opacity. Small soft particles of light drifting upward through the glow, suggesting countless small acts in motion. Center of the composition kept clear and dark enough for large bold text to sit on top. No text, no logos, no numbers, no people. Cinematic, modern, high contrast, premium tech-editorial feel, generous negative space top and center.",
+        "aspect_ratio": "1:1"
+      },
+      "result": "Image generated successfully and is already shown to the user. You may embed it with exactly this markdown: ![Gratitude 1:1 image](/api/resources/59772766-90ce-43fc-a5dd-0639d6454182/download?inline=1)",
+      "isError": false
+    }
+  ],
+  "finalText": "Here's a stat callout for Instagram, built around one verified number so the impact lands fast.![Gratitude 1:1 image](/api/resources/59772766-90ce-43fc-a5dd-0639d6454182/download?inline=1)\n\nHere's the graphic with the copy and type specs to set on top:\n\n**Canvas:** Instagram square post, 1080x1080\n\n**Copy to set:**\n- Section label (top, pink, Inter SemiBold, 12px, uppercase, 0.1em tracking): \"LAST MONTH\"\n- Stat (Anton 400, UPPERCASE, 120px, white, centered): \"[NEEDS INPUT: number of acts verified last month]\"\n- Supporting line (Inter Regular, 20px, white at 70% opacity, centered below stat): \"Acts of good, verified and delivered.\"\n- CTA (Inter SemiBold, 16px, white on gradient pill button, bottom third): \"ACTIVATE ONE TODAY\"\n\n**Layout notes:** Stat sits in the clear center space the glow was framed around. Section label above it, supporting line just below, CTA pill lower third, logo stays in its automatic bottom-right slot.\n\nSend me the actual number of verified acts and I'll drop it straight into the final copy.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant delivered a complete, usable stat callout structure with full type and layout specs, using [NEEDS INPUT] for the unknown number rather than inventing one, and asked for the missing data. Voice is warm, clear, short, uses locked vocabulary (activate, verified, delivered) with no em dashes, hype, or 'donate' language. Colors, fonts (Anton uppercase 400, Inter), and section label spec all match the brand kit. The CTA 'ACTIVATE ONE TODAY' is active-voice and on-brand.",
+    "usage": {
+      "input_tokens": 815,
+      "output_tokens": 229,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

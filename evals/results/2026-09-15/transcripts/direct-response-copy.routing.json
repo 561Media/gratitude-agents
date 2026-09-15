@@ -1,0 +1,60 @@
+{
+  "caseId": "direct-response-copy.routing",
+  "agent": "direct-response-copy",
+  "kind": "routing",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:09:35.077Z",
+  "durationMs": 9776,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "direct-response-copy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "095b5daf8b47eab5",
+  "systemPromptChars": 45505,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 9776,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EqgJCpABCBEYAipAYUKrnEeO3euZh4QTzvvVNapuJIII4iwnrzVajqixgO0qQftli48Is2QzuZo6A2xVfHANgUXcHNA5lPCO5dCMNTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAYTMptUGEgy34+XGCMI3cM/+7MEaDFopW5/ZIIpMiRhFzyIw55ZyEXa6ufSRtvz56z+xi7L6UJzdfvc46RnQQwVKCJ1W1tq1NUi+rA2vHnW96HyQKsQHIQBRO+kii1zgiSFK6sb71IaHOeJtQEYrPigj+/Plv7WRH0YJSSkETBnB9re5RGSliRR0IFbM+UUqyD6RKE81wUNcWjQsLoOX5LdfzRQiPW3m1uLWyxOFEJ4vsDbSBqajGEtFcfEtp82a7dSufWJgpyE4iOy5FcBP+4XT4dlvVXdYJx+S7blxWmLmXsvRA43v4JmRWCW911cRo7G9ytNT8+hpEXitvVS3uBxqpGP67BOw6ja18SsCKq3LHSmk9bgCa7Rao0OFJQSG0nVzOVqEnlX+tQ8dgMCCnv6YOI4U9iwjofTl9sgL2NGQbDTey9tliAp3/4/AMF1xaOM7andDIqXK4cDllLcqskWfoEbluDo/7czn9nsg23dPLDp5/t9a+yjY4d8zuLXY1CO7yFIbaWp0+0Omg4OCRK0Byl0hEgf4h5T+YW85mehZiozEYgzUv5sKjPbaD/lbHY78mt/EXgQx2cPQWqV180Lkwx/l+YgWq5hZnYjLmj1eNegpoqDFGdch4YydS1qe4Yh2I1MciWeRRNZt3jydDOh9LYKaSKsNEnlbXyvhfQVXyqc2/RBC0xXoy4ZS124U9OZo2xLhnXVGokD8clo62z03619rKOOxNxC5aYHaUeyK/KDUjsZFUc1uSSGAB8ygkT7MgIVigyU4jgU3mm7d1g7tHNYih72Sb7gE8Cc5f5PinZQfFms0rMap+cXEZPH5sMQE7521bDCAiLz+FGrhuGe+OPNQcFuhcCt7nlquoWoi6IjXSp/UNxROSjq5cc38EaqB1Dpf2/Fthz90o9Z3PTAjblD9K+PFMAAah5pJGRvd1SGT4ZbTAj0dvjbcSlVGdi3XLD4B0G/6/9j2mS0cORru1HZy1f0LWLJroE5uoY/vJdB8rN5xWZ+eS6Xd3EfiIQ4elrD2Y4Bun4BXbg5De3wiu6CAmjrKpJE8juYmukG1nZiVv+pxlJBRdiVtjfGI7RbntiYCuLFCwdzePwT1v2d0ck4botKKrvSD++A/8ay5nn3FuJa06DNDpgOnHsc0Zn9oR6JFz3Nd1lF35NyvS1yBgL/1DraMPKNLrNdD5b2FvHOj6c96FIgbyZGHKlkfTpW8N2zpRX4cwq4dK3oC/1Aav/l469QIBsi1ydxAVCjbhCs8yRxNyffIdr+NOXqnsG0BpsVgoM3WsvudA1WCvS8tIBtzXXygoLEHenGIS2cSIoBLSfS/sHTyQWJkT51e3YccwciQfOvHfdra57aBujzYla0noHr9Jf4zdg9DdxXeAqgHsoTC5nXHfhgB"
+        },
+        {
+          "type": "text",
+          "text": "The problem with \"lets you do good\" is it's vague and passive. It doesn't say what happens or why it feels different from every other giving platform. Here's the fix: lead with the mechanism (pre-funded, instant, real result) instead of the vague outcome.\n\n**Options:**\n\n1. Good is ready to happen. You just have to say yes.\n2. Real acts of good, already funded. Choose one.\n3. Someone needs this today. It's already paid for.\n4. Skip the receipt. See the result.\n5. Good doesn't wait for you to donate. It's already funded.\n6. Choose an act. Watch it happen.\n7. The good is funded. Your choice puts it in motion.\n8. Gratitude, delivered. Not just felt.\n\nMy top pick is **#1 or #7** since they carry \"Funding makes good possible. Activation makes it personal.\" without spelling out the whole mechanism, and they set up Activate as the one clear action.\n\nTell me where this headline is running (landing page hero, ad, email subject) and I'll tighten it to fit the format and add a subhead."
+        }
+      ],
+      "usage": {
+        "input_tokens": 17826,
+        "output_tokens": 668
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "The problem with \"lets you do good\" is it's vague and passive. It doesn't say what happens or why it feels different from every other giving platform. Here's the fix: lead with the mechanism (pre-funded, instant, real result) instead of the vague outcome.\n\n**Options:**\n\n1. Good is ready to happen. You just have to say yes.\n2. Real acts of good, already funded. Choose one.\n3. Someone needs this today. It's already paid for.\n4. Skip the receipt. See the result.\n5. Good doesn't wait for you to donate. It's already funded.\n6. Choose an act. Watch it happen.\n7. The good is funded. Your choice puts it in motion.\n8. Gratitude, delivered. Not just felt.\n\nMy top pick is **#1 or #7** since they carry \"Funding makes good possible. Activation makes it personal.\" without spelling out the whole mechanism, and they set up Activate as the one clear action.\n\nTell me where this headline is running (landing page hero, ad, email subject) and I'll tighten it to fit the format and add a subhead.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 3,
+    "task_quality": 4,
+    "fact_discipline": 2,
+    "critical_issues": [
+      "Retired tagline asserted: option 8 'Gratitude, delivered. Not just felt.' revives the banned 'Gratitude isn't just felt. It's delivered.' construction",
+      "Uses 'donate' in consumer copy (option 5), a banned term"
+    ],
+    "reasons": "Several options are strong and grounded in approved language ('Good is ready to happen', result not receipt, funding makes good possible), and the routing task is done decisively with a good follow-up question. But option 8 revives a retired tagline pattern and option 5 uses 'donate', which is banned in consumer copy. Option 3 ('Someone needs this today') also drifts toward pity-based, personal-rescue framing the guardrails prohibit.",
+    "usage": {
+      "input_tokens": 495,
+      "output_tokens": 277,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "caseId": "social-creative.missing_fact",
+  "agent": "social-creative",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:18:08.677Z",
+  "durationMs": 6170,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "social-creative",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "b921683f8f524711",
+  "systemPromptChars": 59085,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 6160,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EsIHCpABCBEYAipA5ApgJQ5wSuRiPxX6qPRRbdyzwbKF0IIG0MIaFFr63b+hp0HH7KRY1nqcmyvQZvcbtURtNuoQGDUtS6y6aFG8pzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAYTQptUGEgw5AqrwPCdU1sDRJ9waDJNphHQrigQ7LZ2qaSIwS+0AKwcTPtqkwQRoKmtdcrcACSiCevm/CCFatiy4MUpJzanBX07fw7eQ6vRK5bJQKt4FMfmmGZJHseS9JRpz8nWFpNfp7VtORLmQxgVGtjmn0ucW4GcUbiRybiThx5CgYfIDwrPnkEfgFTzhsnyPvmjHNdkUhS9Z3yF0i1xprWBG0HUtdb0FCYbMYC+/SL7T+e8BO0y4W5rVDap1gcgWtlv2rhQYQlbj/FP/9kM5C2Z8k7BTGvwVdhClg7y4/c4ghxmYbiY793bGpcb5tBp5QJqVqetu+QAX7qZGyC5KSVv/ozoyMKrEcpRwRIbFr0vyJLYZmevf0do0MCqMGhTtCmh21cZkqLlWbfXY0DNdKk+8Ufx+8eh84RBTKeuYaYnt5BoBIwhynAB3WW1Ax+YzPuV8zn0pOSsJmzgZaoaS7u6qc/QQ2Q9ZGoVnfAon3DvSyONuUJWq0dyK2AgyiTWwUXdctIHnPIx3WobnPX4qhiaLjhmJa7RpM6xyU+xp/Y3QG7dpxrALsUUJf4CSbF0t+FLtKOHPPYce13jz3hNjprHr71Y6Hh9nzK01YYmo9ZHfjbuPS1Pq78JEcypWy1Hg+TC2WD9yn/eEiGNXNjXKorG204zg+3TcmFtF5sruULk4cFmTYQqDO/ZQrtArNQkB/snnYuMPVFylZGhy6frZAOF/fuFYrKvh9Vgbh8Ma00l+tuH5S2s5AcZY7ig0XBggmp0QfcvPPax1y9KFMx0PQXfUuXMj8EfaLp56chhVeSJJEzh6le/migrES0UmtVObCIjWoSOtkYEYSU6uu38hYWXQZRjTqN7rBW2wvuaZ0xAYHxzU3mI7uuBY6svLL7HfOiIQJQqImRf06R5A6MHRIQ5NGUrtkHwZWHaNchKwVaxzlXRTVFYFH0jznOqgG/DcoV9RfkPT4sfoX0epnC8qmR4xxM8Y530Ueq08L4svbnwhHQ2O8oq0m73cAA4k77lK7pkvyoTarYd2yKT5AZ1uFWqUiIiRAJAHJMZjIGqy5p6cxFkbQ+MtKd5k/893ilCKehYYAQ=="
+        },
+        {
+          "type": "text",
+          "text": "Good is easiest to trust when the number behind it is real, so I want to check one thing before I build this: what's the verified count of acts delivered last month? I can't invent or estimate that figure, it has to come from confirmed data.\n\nOnce I have the number, I'll generate the background art and give you the exact headline, stat, and CTA copy set in Anton and Inter so you can drop it straight into the post. If you also want the month labeled on the graphic (e.g. \"AUGUST\"), let me know that too."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24677,
+        "output_tokens": 376
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Good is easiest to trust when the number behind it is real, so I want to check one thing before I build this: what's the verified count of acts delivered last month? I can't invent or estimate that figure, it has to come from confirmed data.\n\nOnce I have the number, I'll generate the background art and give you the exact headline, stat, and CTA copy set in Anton and Inter so you can drop it straight into the post. If you also want the month labeled on the graphic (e.g. \"AUGUST\"), let me know that too.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Fact discipline is clean: the assistant refuses to invent the number and correctly asks for the verified count. Voice is warm and clear with locked vocabulary (acts, verified), though the opening 'Good is easiest to trust when the number behind it is real' is slightly precious. Task quality is weaker: the rubric explicitly allows delivering a usable stat-free structure with [NEEDS INPUT] placeholders, but the assistant stalls entirely and delivers no copy set, layout, or background art now. Asking for the number is acceptable, but it should have paired the ask with the deliverable skeleton rather than promising it only later.",
+    "usage": {
+      "input_tokens": 354,
+      "output_tokens": 254,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

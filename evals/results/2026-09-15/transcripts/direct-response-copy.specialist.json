@@ -1,0 +1,57 @@
+{
+  "caseId": "direct-response-copy.specialist",
+  "agent": "direct-response-copy",
+  "kind": "specialist",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:09:32.730Z",
+  "durationMs": 21050,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "direct-response-copy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "095b5daf8b47eab5",
+  "systemPromptChars": 45505,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 21050,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "Here's the landing page copy for this audience: a people team lead who already knows pre-funded, verified giving models exist, and needs the case for setting up sponsored capacity at their company.\n\n---\n\n**Hero Headline**\nGive your team something to activate, not another ask.\n\n**Subheadline**\nFund real acts of good in advance, and let your employees choose one and put it into motion. No fundraising emails, no guilt, no wellness perk that sits unused.\n\n**Three Lead Benefits**\n\n1. **Recognition your team actually uses.** Employees choose from acts that are already funded and ready. There's no form to fill out and nothing for them to pay.\n2. **Results you can show leadership.** Every act is delivered by a trusted nonprofit partner and verified. You get a real outcome to report, not a spending line.\n3. **Set it up once, it runs itself.** You create the funded capacity. Your employees activate it whenever they're ready. No ongoing management from your team.\n\n**Social Proof**\n[NEEDS INPUT: pilot company name, size, and result once confirmed]\n\n**CTA Button Copy**\nPrimary: \"Fund capacity for your team\"\nSecondary: \"See an act your team could activate\"\n\n**Objection Handling**\n\n*\"Will employees think we're asking them to donate?\"*\nNo. Activating an act costs your employees nothing. You fund the capacity in advance. They just choose and it moves.\n\n*\"How do we know the acts actually happen?\"*\nDelivery is confirmed, not assumed. A trusted nonprofit partner delivers every act, and you and your employees see what happened.\n\n*\"Does our brand take over the experience?\"*\nNo. Attribution is optional and subtle, a simple \"Made possible by [Your Company].\" The act and your employee's choice stay front and center.\n\n**Secondary CTA**\nTalk to our team about setting up capacity for your company.\n\n---\n\nOne line worth deciding on: do you want the primary CTA to route straight to a self-serve setup flow, or to a conversation with your partnerships team first? That changes whether \"Fund capacity for your team\" should link to a form or book a call."
+        }
+      ],
+      "usage": {
+        "input_tokens": 17849,
+        "output_tokens": 1726
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's the landing page copy for this audience: a people team lead who already knows pre-funded, verified giving models exist, and needs the case for setting up sponsored capacity at their company.\n\n---\n\n**Hero Headline**\nGive your team something to activate, not another ask.\n\n**Subheadline**\nFund real acts of good in advance, and let your employees choose one and put it into motion. No fundraising emails, no guilt, no wellness perk that sits unused.\n\n**Three Lead Benefits**\n\n1. **Recognition your team actually uses.** Employees choose from acts that are already funded and ready. There's no form to fill out and nothing for them to pay.\n2. **Results you can show leadership.** Every act is delivered by a trusted nonprofit partner and verified. You get a real outcome to report, not a spending line.\n3. **Set it up once, it runs itself.** You create the funded capacity. Your employees activate it whenever they're ready. No ongoing management from your team.\n\n**Social Proof**\n[NEEDS INPUT: pilot company name, size, and result once confirmed]\n\n**CTA Button Copy**\nPrimary: \"Fund capacity for your team\"\nSecondary: \"See an act your team could activate\"\n\n**Objection Handling**\n\n*\"Will employees think we're asking them to donate?\"*\nNo. Activating an act costs your employees nothing. You fund the capacity in advance. They just choose and it moves.\n\n*\"How do we know the acts actually happen?\"*\nDelivery is confirmed, not assumed. A trusted nonprofit partner delivers every act, and you and your employees see what happened.\n\n*\"Does our brand take over the experience?\"*\nNo. Attribution is optional and subtle, a simple \"Made possible by [Your Company].\" The act and your employee's choice stay front and center.\n\n**Secondary CTA**\nTalk to our team about setting up capacity for your company.\n\n---\n\nOne line worth deciding on: do you want the primary CTA to route straight to a self-serve setup flow, or to a conversation with your partnerships team first? That changes whether \"Fund capacity for your team\" should link to a form or book a call.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Hero is under 12 words and active, all rubric elements present (subheadline, 3 outcome benefits, [NEEDS INPUT] social proof slot, active CTA, 3 objections with responses, secondary CTA), and sponsorship is framed as funded capacity via subtle 'Made possible by [Your Company]' attribution. Voice is warm, direct, short-sentence, no em dashes, uses locked vocabulary (activate, fund, trusted nonprofit partner, verified) and correctly avoids donate/donation framing. No invented stats or pricing, and the closing next-step question is appropriate rather than a stall.",
+    "usage": {
+      "input_tokens": 911,
+      "output_tokens": 256,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

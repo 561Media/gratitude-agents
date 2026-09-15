@@ -1,0 +1,57 @@
+{
+  "caseId": "canvas-art.missing_fact",
+  "agent": "canvas-art",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:26:32.471Z",
+  "durationMs": 7362,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "canvas-art",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "83de8a58d0f280dd",
+  "systemPromptChars": 57877,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 7362,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "I don't have a verified count of partner cities on file. That number isn't something I can guess or pull from an old deck since it needs to be accurate for a launch asset, so I can't map an exact number of glowing points to a real figure without it.\n\nWhat's the current, verified number of partner cities? Once you give it to me, I'll build the key visual with that exact count of light points and confirm the number back to you in the same reply."
+        }
+      ],
+      "usage": {
+        "input_tokens": 23591,
+        "output_tokens": 556
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "I don't have a verified count of partner cities on file. That number isn't something I can guess or pull from an old deck since it needs to be accurate for a launch asset, so I can't map an exact number of glowing points to a real figure without it.\n\nWhat's the current, verified number of partner cities? Once you give it to me, I'll build the key visual with that exact count of light points and confirm the number back to you in the same reply.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 3,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses to invent a partner city count and asks for the verified number rather than guessing, which is exactly the fact discipline the rubric requires. Voice is warm, clear, and uses short direct sentences with no em dashes or hype. However, task quality is limited because the rubric asks the assistant to still deliver the usable structure (a [NEEDS INPUT] key visual spec with brand colors, gradient, Anton/Inter type, glow points as placeholders); it only asks for the number and delivers no visual scaffolding.",
+    "usage": {
+      "input_tokens": 325,
+      "output_tokens": 224,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "caseId": "brand-asset-design.specialist",
+  "agent": "brand-asset-design",
+  "kind": "specialist",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:25:50.177Z",
+  "durationMs": 31476,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "direct-response-copy",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "095b5daf8b47eab5",
+  "systemPromptChars": 45505,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "tool_use",
+      "durationMs": 22553,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "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"
+        },
+        {
+          "type": "text",
+          "text": "This is a welcome header for people who just created funding capacity, so the art and copy need to feel generous and concrete, not like a thank-you card. Here's the full package."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01YZuAiKuSZBJqMd8mfVTcYp",
+          "name": "generate_image",
+          "input": {
+            "prompt": "Abstract premium brand art on a pure black background: a single point of intense warm light at the left third of the frame releasing multiple flowing streams of light that curve and multiply across the frame, gradient moving from pink #FE3184 through coral #FF6B35 to orange #ec7211. The streams feel like energy in motion, like one source of funding branching into many acts of good happening at once. Smooth long-exposure light trails, soft glow, fine film grain, deep black negative space with breathing room on all sides, no text, no people, no icons, cinematic and modern, high contrast, subtle lens bloom, sense of generosity and momentum rather than chaos.",
+            "aspect_ratio": "16:9"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 17833,
+        "output_tokens": 1721
+      }
+    },
+    {
+      "turn": 1,
+      "stopReason": "end_turn",
+      "durationMs": 8922,
+      "content": [
+        {
+          "type": "text",
+          "text": "![Gratitude 16:9 image](/api/resources/0c392222-bdf9-4bf3-af24-f924d2a8d4c7/download?inline=1)\n\nHere's the full header package:\n\n**Headline copy** (set in Anton, uppercase, over or beside the art)\n\"Funding Makes Good Possible.\"\n\n**Subheadline** (Inter, sentence case, smaller)\n\"You just created capacity for acts that are ready to happen.\"\n\n**Alt text** (for the image itself, accessibility-first, no marketing language)\n\"Abstract glowing light trails in pink, coral, and orange flowing across a black background, one source branching into many paths of light.\"\n\n**File size budget**\n- Export at 1200 x 480px (2x for retina, scales down cleanly to a 600 x 240px display size in most email clients)\n- Format: JPEG at 75-80% quality (this art has smooth gradients with grain, so JPEG will compress better than PNG without visible banding)\n- Target: 90-150KB. Hard ceiling: 200KB. Above that, load time hurts open-to-scroll rate on mobile mail apps\n- Always pair with the alt text above so the message still lands if images are blocked, which is common on first-touch funder emails\n\nCrop the generated art to your exact header ratio when you place it, keeping the light source and the wordmark clear of the edges. Send me the rest of the welcome email (body copy, CTA) if you want it written to match."
+        }
+      ],
+      "usage": {
+        "input_tokens": 19644,
+        "output_tokens": 474
+      }
+    }
+  ],
+  "toolCalls": [
+    {
+      "name": "generate_image",
+      "input": {
+        "prompt": "Abstract premium brand art on a pure black background: a single point of intense warm light at the left third of the frame releasing multiple flowing streams of light that curve and multiply across the frame, gradient moving from pink #FE3184 through coral #FF6B35 to orange #ec7211. The streams feel like energy in motion, like one source of funding branching into many acts of good happening at once. Smooth long-exposure light trails, soft glow, fine film grain, deep black negative space with breathing room on all sides, no text, no people, no icons, cinematic and modern, high contrast, subtle lens bloom, sense of generosity and momentum rather than chaos.",
+        "aspect_ratio": "16:9"
+      },
+      "result": "Image generated successfully and is already shown to the user. You may embed it with exactly this markdown: ![Gratitude 16:9 image](/api/resources/0c392222-bdf9-4bf3-af24-f924d2a8d4c7/download?inline=1)",
+      "isError": false
+    }
+  ],
+  "finalText": "This is a welcome header for people who just created funding capacity, so the art and copy need to feel generous and concrete, not like a thank-you card. Here's the full package.![Gratitude 16:9 image](/api/resources/0c392222-bdf9-4bf3-af24-f924d2a8d4c7/download?inline=1)\n\nHere's the full header package:\n\n**Headline copy** (set in Anton, uppercase, over or beside the art)\n\"Funding Makes Good Possible.\"\n\n**Subheadline** (Inter, sentence case, smaller)\n\"You just created capacity for acts that are ready to happen.\"\n\n**Alt text** (for the image itself, accessibility-first, no marketing language)\n\"Abstract glowing light trails in pink, coral, and orange flowing across a black background, one source branching into many paths of light.\"\n\n**File size budget**\n- Export at 1200 x 480px (2x for retina, scales down cleanly to a 600 x 240px display size in most email clients)\n- Format: JPEG at 75-80% quality (this art has smooth gradients with grain, so JPEG will compress better than PNG without visible banding)\n- Target: 90-150KB. Hard ceiling: 200KB. Above that, load time hurts open-to-scroll rate on mobile mail apps\n- Always pair with the alt text above so the message still lands if images are blocked, which is common on first-touch funder emails\n\nCrop the generated art to your exact header ratio when you place it, keeping the light source and the wordmark clear of the edges. Send me the rest of the welcome email (body copy, CTA) if you want it written to match.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Voice is warm, concrete, and on-brand, using locked language ('Funding makes good possible', 'ready to happen', capacity) with no em dashes or hype. Headline uses Anton uppercase spec, alt text is accessibility-first, and the file budget is well-reasoned and includes a clear next step. Rubric specified a 600x200 crop but the assistant delivered a 600x240 display size and a generic 'crop to your exact ratio' note, missing the exact 600x200 target; otherwise the package is complete with no text in the image and no fabricated facts.",
+    "usage": {
+      "input_tokens": 877,
+      "output_tokens": 234,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

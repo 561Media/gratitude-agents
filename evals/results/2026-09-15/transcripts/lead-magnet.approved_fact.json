@@ -1,0 +1,57 @@
+{
+  "caseId": "lead-magnet.approved_fact",
+  "agent": "lead-magnet",
+  "kind": "approved_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:13:21.614Z",
+  "durationMs": 17970,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "lead-magnet",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": true,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "dd9f2aca9be63f80",
+  "systemPromptChars": 63109,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 17969,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EvwKCpABCBEYAipAMHVkb7xC4eU4PyVnfjLXufJvsckx7c5AmkSEGkdTNUXoALXdF1SQBlDX351KMN+ex9DHZAEChAKIZyeB91GIlTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAebNptUGEgwuccb2G36W5f28uEoaDPTY33tcaz2ZEJ5CciIwUO0ayua3zbCrqaE/+Be7ireN1YC3uLVo+Es/96psePI/FarrBKlxsmvZR48+cJw2KpgJXEcQcBupB0C983/X9GNb2lkErDlfACnOoBa9ZQu7G3wsRlPNgopeobuybxqMmXzrJkImeonmq5RAIXbJVpTHhqNMCX6SeNsSvKxu5sG976hI1WpDagqc72KIk4UETVbUzysSkQqX9HEYPlVfs7f9HSAwD1lCKQEpCuij+Wp1OQ20oUDAN9uw8NLdnI0z3cGJyDqbYPetAoyXz8EiCtuhX5uQzw/fBuNCztJLcAfPXZcoocWpBuaIjGfakhJH4kJqt1qwa+6E4oej4nJ99P8hUP9zFJPexN+4c/4LgG4MT/lkNbP8OgIDif5ZH9DSc2pc2oc8zZIw1t+dGM4ni+egKTbJ8e66S+yN1EpLwxcbaKIgSqKMQjOmuRUFzzdcnNHn8kPnJ1ZI8CKLB97gTT0+roIyNIAF6lFtr9vSRh98k72NAXBR22peqbi7NClY9iGH+X/6pPrI2IAC+WNKqxbtqhrOtjS9Eh49MbUy+3uva87WorUTMrESZrZkx/3fUiBUyt32jP7q6x28aZKsU8Y8L6Lb6MJFTr3DPShiD2LI7u43Dz/9N9g9pfF0pGVsQTN8YmE1RB5AKO32cuK7pP/12bPwNiyvWDI0NEkRJgaVHPlNV17l5GnCbe9aEKugeBVngD/+mLCpl+eFLvraTnY4qaGR0mpmWXOIpJ+CtOVLwexuXDpzPs5fEpCHnZbj8QdfSLF6HwvKwsZ03gffaOGuLgEvgqkihnRbz58mvLVbHY1VAeNUZ+KY8zMqCec3L+hF538IK0coRF11vh3daNStzJCNjDjBx6Ydgt549r3AJu3tx8Pur1Db8tOr6kKpwFKuZ7To8WLWoedn4I+BmIuNwclgLTm+/725wEr4b4oyvawLjLdz840JvsKTh/tGfmExXbOPRhw5eg5/94gY0ytGKu9fTDqGhPiyMRNrOc9o8L3UDJB0VatTPeESVbadQPrEEe2jzwme6UXKaYajKzvgWceJOXQ3/ytYUkHk9o2iqlHAtf9p+WsTsffWBywUeQX7evFDosv5pMjuO5gsFoFL60fxoiICowxC/KqUvgpwcLS8y05Wzo3qk5oC7YiXf1KlSl6Jfo9Q8NmJ+lGyma8AfuZufaItsU+r3AIK2Y49rzMVhZ+07g/RJVgoQBM+fGkDc4J9MTCKyN7IPpsjFaxs16aDX/yUg+gAItoczvI0N8n7SjJl14ru4mX47T5Pn7VlPBvZpsKKQylVo89ey/5jSo/027sE3DbzKYm1sVmhpDlVFPNauVd87k/WnZxjwKErxPjYL8C0bSZJHMF36AVHZ5WdzQ/YqcJS3dmMW+Ktj8slocDPtUO/hYQfI9JmSNAn3de/jrcGfKHbTL/u8QQbVxO2pXUG0j08AY+29ptqqJAIaGy/HwFLxL/Y/GuHnzsMqtYXnV5RUpwz5QcWtSCWFyOglL88h1ia9CzjFnjSTqcvAVKAKfTLbpPK3MbsxYYS0W1d7yIDhFKXVFxEYP3MEECMoejF8ob3IwrDsuJ7Cb4ZBU8Ifwza5eylhxRDAIhaew1pzX0N7Fs1sMSyzoG1lo3+NK/u5LxuGAE="
+        },
+        {
+          "type": "text",
+          "text": "Here's the complete lead magnet, ready to use.\n\n## The lead magnet\n\n```markdown\n# Your First Activation\n### A simple checklist for putting your first act of good into motion\n\nReal acts of good are already funded and ready. When you activate one, you're not donating and you're not starting a fundraiser. You're giving the go-ahead to something that's already been made possible. This checklist walks you through exactly what happens, from the moment you choose an act to the moment you see what your action did.\n\n## Before you activate\n\n- [ ] Understand that the act is already funded. No payment is required from you to activate it.\n- [ ] Know that activating is a choice, not a checkout. You're saying \"yes, make this happen\" to something real.\n- [ ] Pick one act that means something to you. You don't need to activate every day or activate at all to participate in other ways later.\n\n## What happens the moment you activate\n\n- [ ] Your activation is recorded instantly. This is the moment the act moves from \"available\" to \"in motion.\"\n- [ ] A trusted nonprofit partner is notified. They are the ones who carry out the real-world delivery.\n- [ ] You pay nothing. The capacity already existed before you clicked. Your choice is what gives it direction.\n\n## What happens after you activate\n\n- [ ] **Received by partner.** The trusted nonprofit partner responsible for delivery confirms they have it.\n- [ ] **In progress.** The partner is doing the real-world work: preparing, delivering, or completing the act.\n- [ ] **Delivered and verified.** Delivery is confirmed, not assumed. This step only shows complete once it's actually complete.\n- [ ] **Show impact.** You see what happened. What this looks like depends on the act and on protecting the privacy and dignity of the people involved. Gratitude never promises recipient photos.\n\n## What activating is not\n\n- [ ] It is not a donation and there is no receipt to track.\n- [ ] It is not a message you have to write. Nothing is required of you beyond your choice.\n- [ ] It is not a pledge or a commitment to activate again. One activation is complete on its own.\n\n## After you see the result\n\n- [ ] Notice how it feels to see something real move because of your choice.\n- [ ] If you want to make more acts possible for others, funding creates that capacity. It's a separate, optional action, not a requirement.\n- [ ] There's more good waiting to happen whenever you're ready for the next one.\n\n---\n\n*Gratitude, delivered.*\n```\n\n## Opt-in page copy\n\n**Headline:** Know exactly what happens before you activate your first act of good.\n\n- See the real steps between \"yes\" and \"delivered,\" so nothing feels like a black box\n- Understand why activating costs you nothing, and what your choice actually does\n- Get the plain-language checklist to keep next to your first activation\n\n## Delivery email\n\n**Subject:** Your first activation checklist is here\n\nHere's your checklist for your first activation.\n\nIt walks you through what happens the moment you say yes, what \"received,\" \"in progress,\" and \"delivered and verified\" actually mean, and what to expect when you see the result.\n\nThe short version: an act is already funded before you ever see it. Your choice gives it the go-ahead. A trusted nonprofit partner delivers it. We confirm that delivery happened, and then you see what your action did.\n\n[Activate your first act of good]\n\nGratitude, delivered.\n\nWant me to write the next email in the sequence, the one that follows up after their first activation is delivered?"
+        }
+      ],
+      "usage": {
+        "input_tokens": 24657,
+        "output_tokens": 1482
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's the complete lead magnet, ready to use.\n\n## The lead magnet\n\n```markdown\n# Your First Activation\n### A simple checklist for putting your first act of good into motion\n\nReal acts of good are already funded and ready. When you activate one, you're not donating and you're not starting a fundraiser. You're giving the go-ahead to something that's already been made possible. This checklist walks you through exactly what happens, from the moment you choose an act to the moment you see what your action did.\n\n## Before you activate\n\n- [ ] Understand that the act is already funded. No payment is required from you to activate it.\n- [ ] Know that activating is a choice, not a checkout. You're saying \"yes, make this happen\" to something real.\n- [ ] Pick one act that means something to you. You don't need to activate every day or activate at all to participate in other ways later.\n\n## What happens the moment you activate\n\n- [ ] Your activation is recorded instantly. This is the moment the act moves from \"available\" to \"in motion.\"\n- [ ] A trusted nonprofit partner is notified. They are the ones who carry out the real-world delivery.\n- [ ] You pay nothing. The capacity already existed before you clicked. Your choice is what gives it direction.\n\n## What happens after you activate\n\n- [ ] **Received by partner.** The trusted nonprofit partner responsible for delivery confirms they have it.\n- [ ] **In progress.** The partner is doing the real-world work: preparing, delivering, or completing the act.\n- [ ] **Delivered and verified.** Delivery is confirmed, not assumed. This step only shows complete once it's actually complete.\n- [ ] **Show impact.** You see what happened. What this looks like depends on the act and on protecting the privacy and dignity of the people involved. Gratitude never promises recipient photos.\n\n## What activating is not\n\n- [ ] It is not a donation and there is no receipt to track.\n- [ ] It is not a message you have to write. Nothing is required of you beyond your choice.\n- [ ] It is not a pledge or a commitment to activate again. One activation is complete on its own.\n\n## After you see the result\n\n- [ ] Notice how it feels to see something real move because of your choice.\n- [ ] If you want to make more acts possible for others, funding creates that capacity. It's a separate, optional action, not a requirement.\n- [ ] There's more good waiting to happen whenever you're ready for the next one.\n\n---\n\n*Gratitude, delivered.*\n```\n\n## Opt-in page copy\n\n**Headline:** Know exactly what happens before you activate your first act of good.\n\n- See the real steps between \"yes\" and \"delivered,\" so nothing feels like a black box\n- Understand why activating costs you nothing, and what your choice actually does\n- Get the plain-language checklist to keep next to your first activation\n\n## Delivery email\n\n**Subject:** Your first activation checklist is here\n\nHere's your checklist for your first activation.\n\nIt walks you through what happens the moment you say yes, what \"received,\" \"in progress,\" and \"delivered and verified\" actually mean, and what to expect when you see the result.\n\nThe short version: an act is already funded before you ever see it. Your choice gives it the go-ahead. A trusted nonprofit partner delivers it. We confirm that delivery happened, and then you see what your action did.\n\n[Activate your first act of good]\n\nGratitude, delivered.\n\nWant me to write the next email in the sequence, the one that follows up after their first activation is delivered?",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The checklist nails the required flow: activate at no cost, trusted nonprofit partner delivers, delivery is verified, participant sees impact. Voice is warm, plain, short sentences, correct vocabulary (activate/fund, trusted nonprofit partner, no donate), no em dashes, no hype, and it correctly distances from donation/pledge/gamification. No invented stats or facts, and it respects privacy guardrails (no promised recipient photos). Format is Markdown with # title and subtitle, plus useful bonus opt-in and email copy with a clear next step.",
+    "usage": {
+      "input_tokens": 1297,
+      "output_tokens": 236,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "caseId": "brand-asset-design.routing",
+  "agent": "brand-asset-design",
+  "kind": "routing",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:26:22.141Z",
+  "durationMs": 6352,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-asset-design",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "ee42f9319cef09a9",
+  "systemPromptChars": 59642,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 6351,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "Ev8ICpABCBEYAipAF8807hDme9kd2vLEJd2uPao90oaGhMZ94tcFB5PI5vpfT3a3cYMON/v6zWiGMl1/yQrWVDiaotZNIzhHGt86yDIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAfLTptUGEgw9oJ+KV83EcXQrVfgaDHNv0Z1+fQ0tEbVHOiIwf7qWVtgpWG/XjIOp8+gZSiXpF8pmwQ+bLhg2BTOGoUfOOVjsHn/wyBqbVeqBjCULKpsH9RUOtrmz/T80OvSZhmBzaf5J+qpSiYhjz+bQ48gY4uVKsHOI14XWQqoa82UZqplZBvhFQ0qkLh6+1KOyFQEKi0ITTYPt0FCAnbHXGf6rcdVr92DoacFMyCzZ75h53ONqqMA6zq2KvZQvE5RwTNo99jDOzu1BudFUoqF3MZeNXCKyw4ycJ3I4Zh6D3Il9eQzG4/KVFYAM9l6NFhiArZj6Ng1MGsrxY/gqVRfujckfFhA9BZtfA6hzfk3erxv99CB8vrB2xCVh4Vre01ZeGFew/5+CohyJGgs2N6w6TdjIA5APIh3Zos2SrcSpokgw17HQZ+kWbGpzZLj6dyNa+3WYN7fw6E2ik1MiijuJJxiG5Uc8pPGpEIpjhuQxlgkQWFEhP6YFQEBeibCa3FdY9d7jUeex7liQQbE1bnj6je+CyXWS6iHHMZO0RKsP2rxOxlaFsEEbc+0bLsHzIjMrw1h8bXyxJGAqZhY84Ndzsu99YfbXDU6hUaLVjy4/omllMVYiWochEfrj775JJidr25LnWbF/t71fatDUjcYfrmMLX9FuTJn0N9jtz1q9ZR+YEkJjIxLByAxR7TauV7wHJBtPKw7p4On+l5NqDkmcYVWZn6o4SPEkJ6I8m2nvGpsyxyg8TuxIRdX5U87r5JvPzr1GwnlVIWeCc1y5RbbdNcEHsTz/eCwzY/apwGE//VSBdq+jhRODj5LthWAwIayHTtArMjemMJ0oaWgHemhDP4YM9RyI6fanhCN60EfWkjYScmGkGA0T3r9Iuv+1mNpYeWHyxSIPU4Ni6p2nN8WgHLbGCSSC46iTv3T1c2AaHfCFojY68Reqh61/6G7nJPxs0GL38d+H2W+hGHp5Ao6swjlrHPW6X6le1+V7Te+pZ1oHgoThMtIAa2wVr38gyB9RDewVKeqeINCjpo5Tyd6g1Pd9Zk3Z9Cn+Vj9f94HbV6MeP+Uq6MD9hL8G+D9qYbLpwqQb26hM7LQCnMMdaPRT8cpl2JirTUw5XzWLkP4Ib47evXtmZL6AraDEiMBKJztVAD7mouFXhLg+1VNpoYJoBwyA3O6E07GaCk2r3QcbwVJDhXXS7h6qSAJ4hVwFh4McwSsH/VvZQA2dhBkxb5+VR/qji6hugzO2EYChQ0p5TL/FXzN6+NxJlQZ6yZJUB3XLOtUBzGnDI6zX8uH9lD2qZ+zevypQIjbVH6/3cXoGAOaxDJGCM6BAcGXOBIT4QVwYAQ=="
+        },
+        {
+          "type": "text",
+          "text": "Good, that's a two-asset visual push. Before I generate them, I need two quick things:\n\n1. **What's launching** — the Gratitude.com platform itself (Activate + Fund), or a specific campaign/partner tied to it?\n2. **Where does the banner run** — LinkedIn (1200x628ish), a website hero (16:9), or an email header (600x200)?\n\nOnce I know that, I'll generate both at the right dimensions and hand you the headline/subhead copy separately so it can be set in Anton and Inter over the art."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24662,
+        "output_tokens": 486
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Good, that's a two-asset visual push. Before I generate them, I need two quick things:\n\n1. **What's launching** — the Gratitude.com platform itself (Activate + Fund), or a specific campaign/partner tied to it?\n2. **Where does the banner run** — LinkedIn (1200x628ish), a website hero (16:9), or an email header (600x200)?\n\nOnce I know that, I'll generate both at the right dimensions and hand you the headline/subhead copy separately so it can be set in Anton and Inter over the art.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Voice is warm, direct, short sentences, uses locked vocabulary (Activate + Fund) and no em dashes or hype. It correctly declines to invent launch facts and asks only for the two truly missing inputs, matching the rubric's minimum-detail path. Small ding on task_quality: OG image dimensions were not stated (only banner sizes), and both assets await input rather than being delivered, but this is appropriate routing behavior.",
+    "usage": {
+      "input_tokens": 308,
+      "output_tokens": 191,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

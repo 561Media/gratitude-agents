@@ -1,0 +1,52 @@
+{
+  "caseId": "deliverable-design.specialist",
+  "agent": "deliverable-design",
+  "kind": "specialist",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:20:20.439Z",
+  "durationMs": 13374,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "deliverable-design",
+    "presentation": true,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "d72a8c827bb5827b",
+  "systemPromptChars": 76376,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 13364,
+      "content": [
+        {
+          "type": "text",
+          "text": "This is a funder-facing one-pager, so I'll keep it tight: what funding does, how the loop works, and what a foundation sees after they fund. No pricing tiers since none were supplied, so I'll flag those spots clearly.\n\nHere's the draft:\n\n# Fund the Next Act\n\n## Gratitude, delivered.\n\nGratitude.com is the infrastructure for human acknowledgment. We turn intention into real-world action, and we make the impact visible. Foundations fund real acts of good before anyone activates them. Someone else chooses one and makes it happen. You see what your funding made possible.\n\n## The Problem We Solve\n\nPeople care. Organizations care. Communities care. The missing piece is infrastructure. Meaningful action stays inconsistent and hard to sustain, not because intention is missing, but because there is nowhere for it to go. Most giving ends with a receipt. Gratitude ends with a result.\n\n## How Funding Works\n\n1. **Fund** - A foundation commits capital to create funded capacity, once or recurring. This happens before anyone activates anything.\n2. **Activate** - A participant chooses an available pre-funded act. It costs them nothing in the moment, because the capacity already exists.\n3. **Deliver** - A trusted nonprofit partner turns the activation into real-world good.\n4. **Verify** - Delivery is confirmed, not assumed.\n5. **Show Impact** - The foundation sees what its funding made possible.\n6. **Refill** - New funding replenishes capacity so more people can activate.\n\n*Funding makes good possible. Activation makes it personal.*\n\n## What a Foundation Sees\n\n| Stage | What You See |\n|-------|-------------|\n| Funded | Capacity created and ready to activate |\n| Activated | An act chosen and put into motion |\n| Delivered | Confirmed by our trusted nonprofit partner |\n| Verified | Result shown, not just a receipt |\n\nReporting cadence, dashboard access, and specific metrics: [NEEDS INPUT]\n\n## Why Foundations Fund Here\n\n- Every dollar creates real, pre-funded delivery capacity agreed with trusted nonprofit partners.\n- Delivery is confirmed rather than assumed. You get a result, not a promise.\n- Your name can appear with subtle, optional attribution (\"Made possible by [Foundation]\"). It never overshadows the act itself.\n- Verification protects the privacy and dignity of everyone involved.\n\nTax treatment and receipt language for foundation funding: [NEEDS INPUT], pending legal confirmation.\n\n## Next Step\n\nTell us the level of funded capacity your foundation wants to create. We'll show you exactly what that capacity makes possible, and follow the loop with you from fund to verified result.\n\n**Contact:** [NEEDS INPUT]\n\n---\n\nThis is ready to download as a branded PDF or Word doc. Two things would sharpen it: your target funding amount or range to reference, and a contact name or email for the final line. Send those and I'll drop them in."
+        }
+      ],
+      "usage": {
+        "input_tokens": 31050,
+        "output_tokens": 992
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "This is a funder-facing one-pager, so I'll keep it tight: what funding does, how the loop works, and what a foundation sees after they fund. No pricing tiers since none were supplied, so I'll flag those spots clearly.\n\nHere's the draft:\n\n# Fund the Next Act\n\n## Gratitude, delivered.\n\nGratitude.com is the infrastructure for human acknowledgment. We turn intention into real-world action, and we make the impact visible. Foundations fund real acts of good before anyone activates them. Someone else chooses one and makes it happen. You see what your funding made possible.\n\n## The Problem We Solve\n\nPeople care. Organizations care. Communities care. The missing piece is infrastructure. Meaningful action stays inconsistent and hard to sustain, not because intention is missing, but because there is nowhere for it to go. Most giving ends with a receipt. Gratitude ends with a result.\n\n## How Funding Works\n\n1. **Fund** - A foundation commits capital to create funded capacity, once or recurring. This happens before anyone activates anything.\n2. **Activate** - A participant chooses an available pre-funded act. It costs them nothing in the moment, because the capacity already exists.\n3. **Deliver** - A trusted nonprofit partner turns the activation into real-world good.\n4. **Verify** - Delivery is confirmed, not assumed.\n5. **Show Impact** - The foundation sees what its funding made possible.\n6. **Refill** - New funding replenishes capacity so more people can activate.\n\n*Funding makes good possible. Activation makes it personal.*\n\n## What a Foundation Sees\n\n| Stage | What You See |\n|-------|-------------|\n| Funded | Capacity created and ready to activate |\n| Activated | An act chosen and put into motion |\n| Delivered | Confirmed by our trusted nonprofit partner |\n| Verified | Result shown, not just a receipt |\n\nReporting cadence, dashboard access, and specific metrics: [NEEDS INPUT]\n\n## Why Foundations Fund Here\n\n- Every dollar creates real, pre-funded delivery capacity agreed with trusted nonprofit partners.\n- Delivery is confirmed rather than assumed. You get a result, not a promise.\n- Your name can appear with subtle, optional attribution (\"Made possible by [Foundation]\"). It never overshadows the act itself.\n- Verification protects the privacy and dignity of everyone involved.\n\nTax treatment and receipt language for foundation funding: [NEEDS INPUT], pending legal confirmation.\n\n## Next Step\n\nTell us the level of funded capacity your foundation wants to create. We'll show you exactly what that capacity makes possible, and follow the loop with you from fund to verified result.\n\n**Contact:** [NEEDS INPUT]\n\n---\n\nThis is ready to download as a branded PDF or Word doc. Two things would sharpen it: your target funding amount or range to reference, and a contact name or email for the final line. Send those and I'll drop them in.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The one-pager nails the locked mechanic (Fund, Activate, Deliver, Verify, Show Impact, Refill), uses correct vocabulary (fund/activate/trusted nonprofit partner/verified), keeps sentences short with no em dashes and no hype, and includes the locked lines correctly. It has one clear CTA, flags funding levels, reporting cadence, tax treatment, and contact as [NEEDS INPUT], and makes no tax claim. No fabricated numbers, no retired language, and the format is a compliant sub-350-word document.",
+    "usage": {
+      "input_tokens": 1158,
+      "output_tokens": 234,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

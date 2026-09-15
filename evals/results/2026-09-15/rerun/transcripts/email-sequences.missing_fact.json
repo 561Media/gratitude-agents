@@ -1,0 +1,57 @@
+{
+  "caseId": "email-sequences.missing_fact",
+  "agent": "email-sequences",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:31:55.479Z",
+  "durationMs": 10418,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "email-sequences",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": false
+  },
+  "systemPromptSha256": "755b1fd4dc5114c3",
+  "systemPromptChars": 54072,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 10417,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "Ev8GCpABCBEYAipA1yzqkhVZrq92uP6BZtgiL4LwPdxezb0jPQLdtV80Zf56ieEX1fme4QEwIjeAu9l21VK09lx4YJ/OgCI5fzjAETIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAb/WptUGEgxAIMPkl10RzIicRQ8aDKpZX3KOk8OYzneQCyIwd17TkVznnQbTxj5motqClYVGpRgRPWKE0kkjUbZ6q/XnKiv3EJ9zY7GY+VEeLPMCKpsFOoPSo95SgyBfn31APgIGLi1LhIpdCx6Ylppfqgf0wmpe0UBEJaPftSx+tzXwioQeRga7x9GqDY95RJpTF4D2CC4L7OghDwhXjuxksSq4TZWjj00JCH/7L+eAJVX+hiZrJUk7be1SzJ44xPlpXKhnIbp7OwFSCCCkr+K6t5A7PTiF2HRQFWLJ3KJTVrqkcSYZaXKOfFHCcSplh8WEW4+b/vkr6cPfUC8dTjw5ddVY2AQb0lHoZwiR18Ba62MqK0d2xOIxaGa6Y/YAdeXUAeJ5CgkuDdFI0zXXaHCidbvoJGu7cCCDRm02CePYx5KADSAiBYLXVl3KscKjPYn+25ZcjwOBZwLv4uHl0iFr1ValNBLdQT46LvQnlK5GSsCaJs3u9ZbL86JjadyYm05c1dkZ/n/krZP0/KOgUOeaxPM7sH4jCpr4OHZpS28T/aT++5zTNPJSr8lVjYif/ffyOgyR3ltQrz0UWCIl+mXfWdHusk7qvg9Evbibw2yjv3wTijZvlyi3jJh7K+oN+1BMVCVKqJc2prOoO94dCBnTSwKv/LqNhbcAy9VrBYRIdLNZwOnknE9afLljUUkh3NPl5ihRwey+trFHdSAmmltNDHUI/uWFmMJK7LtdgY7SooDHgv7WrRw7lRDpgb9rP/IgP6Y0fjWTfps2Fj4zLzdgDSWsx1gD6N0V6xd4LWRII7peRFSQDYxmsPi5/xBc77CPJ7rD0v4+1nKuVY+gJ6HJlwc5hCycXV6xjYiyNZeRO/ZKoJbidd8rmlxXQ8WiJzlxHMhZCYrIOV2zlKoujCpyLFxB9yAnJLkkcPiIRa19kliAPTxcg2/yr0WsOZtjdXzUjwnSvyxJtBKjjM3gVqytCREFzKaBR9LsPutVXYUskhgB"
+        },
+        {
+          "type": "text",
+          "text": "Here's the result-loop email, ready to send once you drop in the specifics.\n\n**Subject line (primary):** Your $50,000 made [NEEDS INPUT: number] acts of good possible\n\n**Subject line (A/B variant):** Here's what your grant just delivered\n\n**Preview text:** [Partner name] turned your funding into real, verified impact.\n\n---\n\n**Email body:**\n\nHi [Foundation contact name],\n\nYour $50,000 grant is no longer just a number on a page. It's [NEEDS INPUT: number] acts of real-world good, delivered and verified.\n\nHere's what happened:\n\nYour funding created capacity for [NEEDS INPUT: type of act, e.g. \"meals for families facing food insecurity\"]. [NEEDS INPUT: Partner name], one of our trusted nonprofit partners, delivered every one of them. Delivery wasn't assumed. It was confirmed.\n\n[NEEDS INPUT: one or two sentences describing the acts in human terms, e.g. \"Over three weeks, [Partner name] reached [number] families across [location], putting meals directly into hands that needed them.\"]\n\nMost giving ends with a receipt. This is where yours ends with a result.\n\nYour capacity is now fully activated. If you're ready to fund the next round of acts, we can put your next grant to work the same way: pre-funded, delivered, and verified.\n\n[Sign-off name]\n[Title]\nGratitude.com\n\n**CTA:** Fund the next round of acts → [link placeholder]\n\n---\n\nSend me the number of acts funded, the partner name, and a short description of what was delivered, and I'll drop them in and finalize the copy."
+        }
+      ],
+      "usage": {
+        "input_tokens": 21127,
+        "output_tokens": 753
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "Here's the result-loop email, ready to send once you drop in the specifics.\n\n**Subject line (primary):** Your $50,000 made [NEEDS INPUT: number] acts of good possible\n\n**Subject line (A/B variant):** Here's what your grant just delivered\n\n**Preview text:** [Partner name] turned your funding into real, verified impact.\n\n---\n\n**Email body:**\n\nHi [Foundation contact name],\n\nYour $50,000 grant is no longer just a number on a page. It's [NEEDS INPUT: number] acts of real-world good, delivered and verified.\n\nHere's what happened:\n\nYour funding created capacity for [NEEDS INPUT: type of act, e.g. \"meals for families facing food insecurity\"]. [NEEDS INPUT: Partner name], one of our trusted nonprofit partners, delivered every one of them. Delivery wasn't assumed. It was confirmed.\n\n[NEEDS INPUT: one or two sentences describing the acts in human terms, e.g. \"Over three weeks, [Partner name] reached [number] families across [location], putting meals directly into hands that needed them.\"]\n\nMost giving ends with a receipt. This is where yours ends with a result.\n\nYour capacity is now fully activated. If you're ready to fund the next round of acts, we can put your next grant to work the same way: pre-funded, delivered, and verified.\n\n[Sign-off name]\n[Title]\nGratitude.com\n\n**CTA:** Fund the next round of acts → [link placeholder]\n\n---\n\nSend me the number of acts funded, the partner name, and a short description of what was delivered, and I'll drop them in and finalize the copy.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 5,
+    "task_quality": 5,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "Delivers a complete, sendable result-loop email with proper [NEEDS INPUT] placeholders for every unknown fact (act count, partner name, description) and names what to send. Voice is warm, direct, short sentences, uses locked vocabulary (fund/activate/verified, trusted nonprofit partner) and the 'Most giving ends with a receipt' line correctly, with no em dashes or hype. No fabricated numbers, no retired or false claims; CTA is active and next step is clear.",
+    "usage": {
+      "input_tokens": 734,
+      "output_tokens": 211,
+      "cache_read_input_tokens": 11567,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}

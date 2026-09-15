@@ -1,0 +1,57 @@
+{
+  "caseId": "brand-asset-design.missing_fact",
+  "agent": "brand-asset-design",
+  "kind": "missing_fact",
+  "model": "claude-sonnet-5",
+  "startedAt": "2026-09-15T20:25:25.017Z",
+  "durationMs": 7077,
+  "routing": {
+    "agentId": "gratitude",
+    "domain": "brand-asset-design",
+    "presentation": false,
+    "investor": false,
+    "brandContextHasInvestorCore": false,
+    "brandContextHasVisualSystem": true
+  },
+  "systemPromptSha256": "ee42f9319cef09a9",
+  "systemPromptChars": 59642,
+  "turns": [
+    {
+      "turn": 0,
+      "stopReason": "end_turn",
+      "durationMs": 7070,
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "ErULCpABCBEYAipAn2fGFZwziByQVMLn84Bov7pr616yETGOwzkhAVuHoX03fi69iHBlqzlJrqgqygG5ay+/SwARverfTzKjRS8CGTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQyNTMyYzUxZC05ZmVhLTRiYTktYWEyNy1kNjZkYjM3ZDRjNDaoAbrTptUGEgxltMsAi9MU/lH2qZAaDHIC6Cw3aW4phWLSESIwnMi0B2pewK52V4UH/9oz786o/Phl5y4MgR4won1KT8yp/I+xLOO7BURmUdXgj0r1KtEJ2R2dZHKKp+9jFhaDqrQKbxDEEnEICgVenqzFNfUVG1WxCbUdQ7YmO1XJGyJNoc1lCBW8cYx5qw3hkK0z+he0GYOCOTOM/POGf2BooFFI71ktnV2arIRhvNYxH8RTGFWP7b6u/w63IPrga9k4/RfAMcENCea9a5fYb6wd6JlunUWBI6mpfFZ3INhizpkLbdQU3Sa3TRaskR0WjKz1/4KGeZoPuS0xn2fcWSDLty8VOo0qFV0sxKRC/rhUx3rttQax2+5wxC6MvkTAvt5P8RFzYx2LGFPGi3LYx3uBE93Emw8T6iph1dOnJn8smmi3W2SJdW1W/gbsXIul7shy+fSkDD13T/XfvGoMxyY/Jyp4n5qHMR5pQmvOcflz/ata6e2c6v4VDx6v+YvuPmNdzbwdscgQiSd8tSzcOgUKH+AyU1ogQMf23PGl6/Q0Ti/bp/S+6p29ZOgGX+cp/3qZZxY5oRzGtxfekoyzWhO/BB3e+WI3yMCH4g0Cfr8x/33mHkDHElZEs+1wycgwkfNVVcBAcbgigxAvysAR02telryllS5q9S0GRYu+Rmi9VgJTF9/KN9s5Bqvwht3uf8DVeJSMdIDVovR01NLiNwzoll83HNTNpL3/GmhPihgGpYuYXx52Mir5qtvyYlHhN2ucKdime0pCZHiQx+TQnKve4w7Mb2vcE2OsvLhcyDcn2V+a32Shym4Ea/FguIov3f8lf/v1j35rYdv/2KzmZmMTYI3Gnk0mUByvC4XlEHSkPLjPSfnHqFZWuhE73NvPwDgDWNVKNKZUSuToxLnbp0pH5H2NZyC6lAeJ+acVwnraCCPZganNikyH7JgxZM/ZSmptAx0ueNFkp73x6udn+8+akiNEvaMWPlVzXr72JFkq5OzMd9Mo8atjgFBiUUbFsCqqut6WnQbbdzZkimebZEVcWk/fooBjl8+teQt69JaZcbwE8MjNFukG6Q5ueT1NToXULEsFPzOAxd2FfUnUbrGENsoGIIBGVITSz2MqUkyoBnWS7qrlJ4Pv64klIpFrl361Q6NiLf5QTWGpesX9m7xVoY12LH/YNUYati9yo/1c88wFiNG/fYiVvGk6o4wP0kUHnXB5ZIfxCo64aGF00mCP1+jSOZMzoqRvWL9x1PXSyvBNw9cW607ST3chrXpYBzs3YbbHve/QdX/w3WghQCvdhFMqdnYC2902T6lc0vLjLzsml1jEVw6ZkFVPKI2AYQUiQpK7y1yGdo2Dmq7SYcW8B7FDFg/LPDbq1qYs7cYe9bc4H+CB5eHSqqOzuY+bNQRNiVaoLdh4oxnA7VXBe1T4WLBb9KfZOm1JKL9eSZb2XZ0HT368LCsb7DdTHnMkSiZSNNP3azFgQJS+gsGgE8B7ol4ddE2BsKSF6Deqm44ekTPN7Fy/2MRF4a63LUZmiTOAIpK64q5yeur3nCaaK9UgiM3kZSvh5x6/QJauomZvEuNf9Fymyeqkiw3s1jA00LiPU4NSPBHhbRkdOpiLnEVgAkeYLT6mQPr6b0i6+bfymfDyY9arxY6S1bku3PlgPsaIOO2qZAUL9hrwIy2bmn3Vi7rinG+h8+qXV9HS+cM1cFMWHHkjnzA4QonGDRXesB7eSnTlcAg969nZ6saL/sKXRoUtmSrWGAE="
+        },
+        {
+          "type": "text",
+          "text": "An impact infographic needs real, verified numbers, since we never publish traction figures that aren't confirmed. Before I lay this out, send me the actual current totals for:\n\n- Acts delivered\n- Funders\n- Nonprofit partners\n- Cities\n\nOnce I have those, I'll build the full spec (title, stat blocks, layout) and generate the background art so you can drop it straight into a branded 4:5 or 9:16 graphic."
+        }
+      ],
+      "usage": {
+        "input_tokens": 24676,
+        "output_tokens": 516
+      }
+    }
+  ],
+  "toolCalls": [],
+  "finalText": "An impact infographic needs real, verified numbers, since we never publish traction figures that aren't confirmed. Before I lay this out, send me the actual current totals for:\n\n- Acts delivered\n- Funders\n- Nonprofit partners\n- Cities\n\nOnce I have those, I'll build the full spec (title, stat blocks, layout) and generate the background art so you can drop it straight into a branded 4:5 or 9:16 graphic.",
+  "incomplete": null,
+  "grade": {
+    "model": "claude-opus-4-8",
+    "brand_voice": 4,
+    "task_quality": 4,
+    "fact_discipline": 5,
+    "critical_issues": [],
+    "reasons": "The assistant correctly refuses to invent traction numbers and asks for the actual verified totals, which the rubric allows. Fact discipline is clean with no fabricated figures. Voice is warm and clear with locked vocabulary (acts, funders, nonprofit partners) and no em dashes, though 'traction figures' leans slightly toward investor language. Task quality is good but not fully complete: the rubric prefers delivering the usable structure with [NEEDS INPUT] placeholders now rather than stalling entirely for inputs, so a stat-block spec with placeholders would have been stronger.",
+    "usage": {
+      "input_tokens": 324,
+      "output_tokens": 242,
+      "cache_read_input_tokens": 11417,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}
