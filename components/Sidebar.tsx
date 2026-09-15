@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
+import { useClerk } from "@clerk/nextjs";
 import { toast } from "./Toaster";
 
 interface Conversation {
@@ -43,6 +44,7 @@ export default function Sidebar({
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
+  const { signOut } = useClerk();
 
   const loadConversations = () =>
     fetch("/api/conversations")
@@ -60,7 +62,14 @@ export default function Sidebar({
 
   useEffect(() => {
     fetch("/api/session").then(async (res) => {
-      if (res.ok) setSession(await res.json());
+      if (res.ok) {
+        setSession(await res.json());
+      } else if (res.status === 403) {
+        // Signed in to Clerk, but the portal account is disabled or missing.
+        router.replace("/no-access");
+      } else if (res.status === 401) {
+        router.replace("/sign-in");
+      }
     });
     if (showConversations) void loadConversations();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,8 +123,8 @@ export default function Sidebar({
   }
 
   async function handleLogout() {
-    await fetch("/api/auth/logout", { method: "POST" });
-    router.push("/login");
+    // Ends the Clerk session server-side (revoked, not just a cleared cookie).
+    await signOut({ redirectUrl: "/sign-in" });
   }
 
   const isAdmin = session?.user.role === "admin";

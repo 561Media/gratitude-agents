@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Anton } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Toaster from "@/components/Toaster";
 
@@ -29,8 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${anton.variable}`}>
       <body className="bg-dark-950 text-white font-body antialiased">
-        {children}
-        <Toaster />
+        <ClerkProvider signInUrl="/sign-in" signUpUrl="/sign-in">
+          {children}
+          <Toaster />
+        </ClerkProvider>
       </body>
     </html>
   );

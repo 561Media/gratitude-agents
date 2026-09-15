@@ -52,7 +52,13 @@ export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   email: text("email").notNull().unique(),
   name: text("name").notNull(),
-  passwordHash: text("password_hash").notNull(),
+  // Legacy bcrypt hash from the pre-Clerk login. Nullable since the Clerk
+  // migration (0001); nothing reads it. Drop it once production cutover is done.
+  passwordHash: text("password_hash"),
+  // Clerk user id (user_...). Bound on first sign-in by verified email, or by
+  // scripts/migrate-users-to-clerk.mjs. Authorization still comes from `role`
+  // and `active` on this row, never from Clerk claims.
+  clerkUserId: text("clerk_user_id").unique(),
   role: userRoleEnum("role").default("partner").notNull(),
   active: boolean("active").default(true).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
