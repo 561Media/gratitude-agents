@@ -15,10 +15,13 @@ import {
 // permission-gates then redirects to the blob CDN URL).
 
 const IMAGE_MODEL = process.env.IMAGE_MODEL || "gpt-image-2";
-// Same request as production (quality "high" unless IMAGE_QUALITY is set); the
-// call is bounded by IMAGE_TIMEOUT_MS so it cannot outlive the chat budget.
-const IMAGE_QUALITY = process.env.IMAGE_QUALITY || "high";
-const IMAGE_TIMEOUT_MS = Number(process.env.IMAGE_TIMEOUT_MS) || 90_000;
+// "medium" keeps a generation well inside the chat function's 300s budget
+// (up to two images plus a 90s final reply reserve); "high" can take minutes.
+// Production on main used "high"; set IMAGE_QUALITY=high to restore it.
+const IMAGE_QUALITY = process.env.IMAGE_QUALITY || "medium";
+// Per-image ceiling. The chat route also caps each call at the time left
+// before its final-turn reserve, so this only bounds a single slow image.
+export const IMAGE_TIMEOUT_MS = Number(process.env.IMAGE_TIMEOUT_MS) || 120_000;
 
 export { IMAGE_ASPECT_RATIOS, CANVAS } from "@/lib/image-canvas";
 export type { ImageAspectRatio } from "@/lib/image-canvas";

@@ -9,7 +9,10 @@ import { getAgent } from "@/lib/agents";
 import {
   buildSystemPrompt,
   buildTurnBrandContext,
+  CHAT_FINAL_TURN_RESERVE_MS,
   CHAT_MAX_TOKENS,
+  CHAT_MIN_IMAGE_WINDOW_MS,
+  CHAT_SAFETY_MARGIN_MS,
   CHAT_TOOLS,
   chatModel,
   FINAL_TURN_INSTRUCTION,
@@ -24,17 +27,17 @@ import {
   defaultVisibilityForRole,
   resourceAccessSql,
 } from "@/lib/permissions";
-import { generateImage, IMAGE_ASPECT_RATIOS, type ImageAspectRatio } from "@/lib/image-gen";
+import { generateImage, IMAGE_ASPECT_RATIOS, IMAGE_TIMEOUT_MS, type ImageAspectRatio } from "@/lib/image-gen";
 
-// Function ceiling. 60s is safe on every Vercel plan. With Fluid compute
-// enabled (Pro, or Hobby with Fluid) this can be raised to 300; the time budget
-// below derives from this value, so raising it here is the only change needed.
-export const maxDuration = 60;
+// Function ceiling. 300s REQUIRES Vercel Fluid compute on the project (without
+// it Hobby caps at 60s). Must stay a literal for Next.js static analysis and
+// must equal CHAT_MAX_DURATION_S in lib/chat-prompt.ts (checked in checks/).
+export const maxDuration = 300;
 
-// Keep headroom for persistence and the final model turn
-const SAFETY_MARGIN_MS = 8_000;
-const FINAL_TURN_RESERVE_MS = 15_000;
-const MIN_IMAGE_WINDOW_MS = 20_000;
+// Keep headroom for persistence and the final model turn (lib/chat-prompt.ts)
+const SAFETY_MARGIN_MS = CHAT_SAFETY_MARGIN_MS;
+const FINAL_TURN_RESERVE_MS = CHAT_FINAL_TURN_RESERVE_MS;
+const MIN_IMAGE_WINDOW_MS = CHAT_MIN_IMAGE_WINDOW_MS;
 const MAX_TOOL_TURNS = 4;
 
 const INCOMPLETE_NOTES: Record<string, string> = {
@@ -466,7 +469,8 @@ export async function POST(request: Request) {
                     ownerId: session.userId,
                     conversationId: convId,
                     includeLogo: input.include_logo !== false,
-                    timeoutMs: imageWindow,
+                    // Never longer than the provider ceiling, never past the reply reserve
+                    timeoutMs: Math.min(imageWindow, IMAGE_TIMEOUT_MS),
                   });
                   generatedImages.push({ resourceId: image.resourceId, title: image.title });
                   send({ imageReady: { resourceId: image.resourceId, title: image.title } });

@@ -7,10 +7,11 @@
  */
 import { extractSlides, normalizeSlide, SLIDE_TYPES } from "@/lib/slide-schema";
 import { IMAGE_ASPECT_RATIOS } from "@/lib/image-canvas";
+import { CHAT_TURN_BUDGET_MS } from "@/lib/chat-prompt";
 import type { CheckResult, CheckType, EvalCase, Severity, Transcript } from "./types";
 
-/** Production budget: maxDuration 60s minus the 8s safety margin */
-export const PRODUCTION_TURN_BUDGET_MS = 52_000;
+/** Production budget: chat route maxDuration minus its safety margin (300s - 20s) */
+export const PRODUCTION_TURN_BUDGET_MS = CHAT_TURN_BUDGET_MS;
 
 const NEGATION =
   /\b(not|never|no longer|retired|avoid\w*|don'?t|do not|doesn'?t|isn'?t|aren'?t|can'?t|cannot|won'?t|instead|rather than|replac\w*|outdated|old|older|pending|unconfirmed|until|wrong|inaccurate|incorrect|flag\w*|remov\w*|drop\w*|unverified|confirm\w*|without|swap\w*|chang\w*|updat\w*|correct\w*|left out|kept out|ignored?|embedded|injected|instruction|NEEDS INPUT|no|off the table|vs|versus|compar\w*|point-and-badge|nobody|nothing|placeholder|false|kill\w*|tired of|generic|assumption|misconception|myth)\b|"[^"]*\?"|“[^”]*\?”/i;
@@ -164,7 +165,7 @@ export function runDeterministicChecks(c: EvalCase, t: Transcript, ctx: GradeCon
   const slowest = Math.max(0, ...t.turns.map((x) => x.durationMs));
   const total = t.turns.reduce((s, x) => s + x.durationMs, 0);
   results.push(
-    check("latency.production_budget", "latency_budget", total <= PRODUCTION_TURN_BUDGET_MS, "minor", `total model time ${Math.round(total / 1000)}s (slowest turn ${Math.round(slowest / 1000)}s) vs 52s function budget`)
+    check("latency.production_budget", "latency_budget", total <= PRODUCTION_TURN_BUDGET_MS, "minor", `total model time ${Math.round(total / 1000)}s (slowest turn ${Math.round(slowest / 1000)}s) vs ${Math.round(PRODUCTION_TURN_BUDGET_MS / 1000)}s function budget`)
   );
 
   // Em dash

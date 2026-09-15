@@ -12,7 +12,25 @@ import { detectRequestContext, type RequestContext } from "@/lib/detect-domain";
 import { IMAGE_ASPECT_RATIOS } from "@/lib/image-canvas";
 
 export const DEFAULT_CHAT_MODEL = "claude-sonnet-5";
-export const CHAT_MAX_TOKENS = 8192;
+// 16K output fits the 300s budget (~100 tok/s); at 8192 full web mockups
+// stopped on max_tokens in the 2026-09-15 eval
+export const CHAT_MAX_TOKENS = 16_000;
+
+/**
+ * Chat function time budget. CHAT_MAX_DURATION_S must equal the literal
+ * `export const maxDuration` in app/api/chat/route.ts (Next.js reads that
+ * statically; checks/routing.test.ts asserts they match). 300s requires
+ * Vercel Fluid compute on the project.
+ */
+export const CHAT_MAX_DURATION_S = 300;
+/** Held back from the deadline for streaming close and after() persistence */
+export const CHAT_SAFETY_MARGIN_MS = 20_000;
+/** A tool-free final model turn needs this much time to write a full reply */
+export const CHAT_FINAL_TURN_RESERVE_MS = 90_000;
+/** Do not start an image generation with less than this window */
+export const CHAT_MIN_IMAGE_WINDOW_MS = 45_000;
+/** Model time a reply may use: the function ceiling minus the safety margin */
+export const CHAT_TURN_BUDGET_MS = CHAT_MAX_DURATION_S * 1000 - CHAT_SAFETY_MARGIN_MS;
 
 export function chatModel(): string {
   return process.env.CHAT_MODEL || DEFAULT_CHAT_MODEL;
