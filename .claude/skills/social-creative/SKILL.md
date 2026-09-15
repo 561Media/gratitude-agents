@@ -1,6 +1,6 @@
 ---
 name: social-creative
-description: Create platform-specific social media graphics with Gratitude.com's dark glow aesthetic: Instagram posts, stories, LinkedIn images, carousels, ad creatives
+description: "Create platform-specific social media graphics with Gratitude.com's dark glow aesthetic: Instagram posts, stories, LinkedIn images, carousels, ad creatives"
 argument-hint: "[platform + post type + content/copy to visualize]"
 ---
 
