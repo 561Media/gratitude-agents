@@ -86,7 +86,8 @@ if (!verifyOnly) {
     let blob;
     try {
       blob = await put(fileName, bytes, {
-        access: "public",
+        // Private store (phase0): served only through the authorized download route
+        access: "private",
         addRandomSuffix: true,
         contentType: f.mimeType,
       });

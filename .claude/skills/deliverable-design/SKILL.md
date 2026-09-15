@@ -1,133 +1,107 @@
 ---
 name: deliverable-design
-description: Create multi-page branded PDFs — impact reports, sponsor kits, partner decks, case studies, lead magnet designs
+description: Create branded decks, one-pagers, impact reports, funder kits, partner decks, case studies, and lead magnet documents
 argument-hint: "[deliverable type + content to design]"
 ---
 
 # Deliverable Design Skill
 
 ## Purpose
-Create professional, multi-page branded PDF documents for Gratitude.com. Impact
-reports, sponsor kits, partner decks, case studies, lead magnets, and any
-document that needs to look polished and on-brand.
+Create professional, on-brand Gratitude.com deliverables: decks, one-pagers,
+impact reports, funder kits, partner decks, case studies, and lead magnets.
 
-## Load Context
-Read ALL of the following before creating any document:
-- `.claude/brand-memory.md`
-- `brand-kit/visual-system.json` (colors, gradients, shadows, radii)
-- `brand-kit/voice-core.md` (for any text creation)
-- `design-kit/template-registry.yaml` (document templates)
-- `design-kit/typography-guide.md` (font rules and scale)
-- `design-kit/illustration-style.md` (art direction)
-- `design-kit/platform-specs.yaml` (PDF dimensions: letter 612x792pt)
+## Context
+Brand memory, the visual system, voice, positioning, messaging framework,
+terminology, typography guide, and template registry are already loaded above.
+Investor facts are loaded when the request is for investors.
+
+## How This Portal Produces Deliverables
+You cannot save files or look at rendered pages. You write the content in a
+structure the portal renders with the brand system automatically:
+- **Decks, slides, one-pager decks:** one JSON code block of slides (see Presentation Output). The user downloads a branded PowerPoint or a PDF with one 16:9 page per slide. Black background, Anton titles, Inter body, three-stop gradient accents, logo, and page numbers are applied for you.
+- **Documents (reports, kits, case studies, lead magnets, one-page documents):** clean Markdown. The user downloads a branded PDF (black pages, Anton headings, Inter body, gradient header, logo footer) or a Word document. Use `#` for the document title, `##` for sections, `###` for subsections, real bullet and numbered lists, and Markdown tables for data.
+- **Imagery:** generate supporting images with the image tool when the user wants them.
+
+## Locked Language (Activate + Fund)
+- Activate: a person chooses an available pre-funded act. It costs them nothing at the moment. Activate is the dominant action.
+- Fund: creates capacity for future acts, once or recurring. Keep it clearly distinct from Activate.
+- Never "donate" or "donation" for either action.
+- Sponsors appear only as optional attribution ("Made possible by [Sponsor]") or as one funding type. Never "Companies sponsor, people activate." Never the three-sided sponsor model.
+- Express is NEXT and Facilitate is FUTURE. Never present them as available now.
+- Pricing, tiers, ROI, metrics, and results come ONLY from what the user supplies or the loaded brand kit. Otherwise write [NEEDS INPUT].
+- No em dashes.
 
 ## Process
 
-### Step 1: Identify the Document Type
-Determine from the user's input:
-1. **Type**: Impact report, sponsor kit, partner deck, case study, lead magnet PDF, one-pager
-2. **Page count**: Estimate based on content volume
-3. **Content source**: User-provided text, output from another skill, or to be written
+### Step 1: Identify the Deliverable
+1. **Type:** deck, one-pager, impact report, funder kit, partner deck, case study, lead magnet
+2. **Format:** slides (JSON) or document (Markdown). Decks and presentations are always slides.
+3. **Content source:** user-provided text, earlier output in this conversation, or to be written
 
-If the user ran `/lead-magnet` or `/direct-response-copy` first, use that content.
+### Step 2: Structure
 
-### Step 2: Document Structure
+**Pitch or Platform Overview Deck (8-12 slides)**
+1. Title: category line and "Gratitude, delivered."
+2. The problem: intention with nowhere to go
+3. The mechanism: Pre-fund, Activate, Deliver, Verify, Show Impact, Refill
+4. Activate and Fund (two-column): Activate is dominant, Fund secondary
+5. What participants see (verified result, not a receipt)
+6. What funders see (the funder result loop)
+7. Stats: supplied numbers only, otherwise [NEEDS INPUT]
+8. Where sponsoring organizations fit (a funding type, optional attribution)
+9. Roadmap: NOW Activate + Fund, NEXT Express, FUTURE Facilitate
+10. Closing: one clear ask
 
-**Impact Report (4-8 pages)**
-1. Cover page: Report title, period, Gratitude logo, glow design
-2. Executive summary / key metrics at a glance
-3. Activation data (detailed metrics, charts)
-4. Impact stories (2-3 featured activations)
-5. Sponsor acknowledgment
-6. Next period goals + contact
+**Investor Deck:** follow the loaded investor facts exactly. Never state entity status, raise terms, or traction beyond them.
 
-**Sponsor Kit (5-10 pages)**
-1. Cover page: "Sponsor Kit", Gratitude logo, tagline
-2. Platform overview: How Gratitude.com works (3-sided model)
-3. Why sponsor: Benefits, ROI, employee engagement
-4. Sponsorship tiers and options
-5. Activation examples and case studies
-6. Impact metrics and reporting
-7. Next steps + contact info
+**Impact Report (document)**
+1. Title and period
+2. Summary and key metrics (table)
+3. Activation data
+4. Verified impact stories (2-3)
+5. Funder acknowledgment (and optional "Made possible by [Sponsor]" attribution)
+6. Next period goals and contact
 
-**Partner Deck (4-6 pages)**
-1. Cover page: "Partner Program", Gratitude logo
-2. Partnership model: How nonprofits benefit
-3. Activation flow: How it works for partners
-4. Impact potential: Projected outcomes
-5. Onboarding process
-6. Next steps + contact
+**Funder Kit (document or deck)**
+1. What Gratitude.com is
+2. How funding works: capacity for future acts, once or recurring
+3. What funders see after activation
+4. Funding options: only supplied terms, otherwise [NEEDS INPUT]
+5. Sponsored capacity for organizations (optional)
+6. Next steps and contact
 
-**Case Study (3-5 pages)**
-1. Cover page: Sponsor/partner name, result headline, Gratitude logo
-2. The challenge (half page) + the approach (half page)
-3. The activation (1-2 pages with detail)
-4. Results page: Stat callouts, before/after, key metrics
-5. CTA: "Sponsor impact like this" + contact info
+**Partner Deck**
+1. Title
+2. How pre-funded capacity reaches partners
+3. Delivery and verification (privacy and dignity protected)
+4. What participants and funders see
+5. Onboarding
+6. Next steps
 
-**Lead Magnet PDF (5-12 pages)**
-1. Cover page: Title, subtitle, Gratitude logo
-2. Introduction (1 page)
-3. Content pages (3-8 pages)
-4. Summary / action items (1 page)
-5. CTA page: Next step + Gratitude.com info
+**Case Study (document)**
+1. Result headline
+2. The situation and the approach
+3. The activation and delivery
+4. Results (table or stats), supplied only
+5. CTA
 
-### Step 3: Design the Document
+**One-Pager:** a single `#` title, 3-4 short `##` sections, one table or stat list, one CTA. Keep it under 350 words.
 
-**BRAND RULES (non-negotiable):**
-- Colors: Brand palette only from `brand-kit/visual-system.json`. Black backgrounds, pink/coral/orange accents.
-- Fonts: Anton for headings (ALWAYS uppercase), Inter for body. From `canvas-fonts/`.
-- Logo: Gratitude logo on cover page and in footer of interior pages.
-- Page size: US Letter (8.5 x 11 inches / 612 x 792 points).
+### Step 3: Write for the Layout
+- Slides: one idea per slide, at most 6 bullets, bullets under 18 words. Put a supporting sentence in `body` when it matters; body and bullets are both kept.
+- Stats: short values ("40%", "[NEEDS INPUT]"), labels under 8 words.
+- Quotes: attribution is a name only, no dash.
+- Documents: headings every few paragraphs, paragraphs under 5 sentences, tables for any comparison.
 
-**COVER PAGE DESIGN:**
-- Full visual impact. This is the first impression.
-- Black background with pink/orange glow effects.
-- Title in Anton, UPPERCASE, large (36-48pt).
-- Subtitle in Inter Regular (16-20pt), white/60 opacity.
-- Gratitude logo prominent (bottom or top of page).
-- Date and context in Inter, white/40 opacity.
-- Gradient accent line or glow orb for visual energy.
-
-**INTERIOR PAGE DESIGN:**
-- Margins: 1 inch (72pt) on all sides. 0.75 inch acceptable for data-heavy pages.
-- Header: Thin gradient accent line across top. Section label (Inter, 10pt, uppercase, pink #FE3184).
-- Footer: Page number (Inter, 10pt, centered or right). Optional: Gratitude logo small, left.
-- Body text: Inter Regular, 11-12pt, 1.6 line height.
-- Section headers: Anton, 24-32pt, UPPERCASE, white.
-- Subsection headers: Inter SemiBold, 16-18pt, white/80.
-- Stat callouts: Anton, 36-48pt, UPPERCASE. Pink or gradient text.
-- Pull quotes: Inter, 20pt, italic, white/70. Thin pink left border.
-
-**DATA & STAT ELEMENTS:**
-- Stat boxes: Dark gradient background (#1a1a1a→#0d0d0d), rounded corners (8px). Large number in pink/gradient.
-- Charts: Pink, coral, orange color coding. Clean gridlines on dark background.
-- Tables: Alternating dark rows. Gradient header row with white text.
-
-**CTA PAGES:**
-- Black background with glow effects.
-- Clear headline in Anton, UPPERCASE.
-- Contact info: email, website.
-- Gradient CTA button element.
-- Gratitude logo prominent.
-
-### Step 4: Output
-- Save to `output/` directory as .pdf.
-- Name files descriptively: `impact-report-q1-2026.pdf`, `sponsor-kit-feb-2026.pdf`
-- Multi-page documents bundled as a single PDF.
-
-### Step 5: Quality Check
+### Step 4: Quality Check
 Before delivering, verify:
-- [ ] Cover page is visually impactful with glow design
-- [ ] All pages use consistent header/footer treatment
-- [ ] Brand colors only (black bg, pink/coral/orange accents — NO navy)
-- [ ] Fonts are Anton (UPPERCASE headings) + Inter (body) only
-- [ ] Margins are consistent
-- [ ] No orphan lines or awkward page breaks
-- [ ] Stat callouts are properly sized and styled
-- [ ] Logo present on cover and footers
-- [ ] Professional enough to send to a Fortune 500 CSR director
+- [ ] Right format: slides for decks, Markdown for documents
+- [ ] Heading hierarchy is clear and titles are short
+- [ ] Every number, price, and result is supplied or marked [NEEDS INPUT]
+- [ ] Locked Activate + Fund language; no three-sided sponsor model
+- [ ] No em dashes
+- [ ] Every slide has speaker notes
 
 ## Chain From
-Works best when fed content from `/lead-magnet`, `/direct-response-copy`,
-or `/gratitude-content-strategy`.
+Works best when fed content from lead-magnet, direct-response-copy, or
+gratitude-content-strategy work earlier in the conversation.

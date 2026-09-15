@@ -5,6 +5,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 import { toast } from "./Toaster";
+import { extractSlides } from "@/lib/slide-schema";
+
+type ExportFormat = "md" | "docx" | "pdf" | "pptx" | "csv" | "xlsx";
 
 interface ChatMessageProps {
   role: "user" | "assistant";
@@ -56,14 +59,20 @@ function DownloadButton({
 }: {
   content: string;
   title: string;
-  format: "md" | "doc" | "pdf" | "pptx" | "csv" | "xlsx";
+  format: ExportFormat;
 }) {
   async function handleDownload() {
-    const res = await fetch("/api/exports", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content, title, format }),
-    });
+    let res: Response;
+    try {
+      res = await fetch("/api/exports", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content, title, format }),
+      });
+    } catch {
+      toast(`${format.toUpperCase()} export failed. Check your connection and try again.`);
+      return;
+    }
 
     if (!res.ok) {
       const errBody = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -113,7 +122,7 @@ function SaveButton({
     setSaving(true);
 
     try {
-      await fetch("/api/resources", {
+      const res = await fetch("/api/resources", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -128,6 +137,9 @@ function SaveButton({
           tags: ["agent-output"],
         }),
       });
+      toast(res.ok ? "Saved to your files." : "Save failed. Please try again.");
+    } catch {
+      toast("Save failed. Check your connection and try again.");
     } finally {
       setSaving(false);
     }
@@ -148,16 +160,8 @@ function SaveButton({
 type ContentType = "document" | "spreadsheet" | "presentation";
 
 function detectContentType(content: string): ContentType {
-  // Check for slide JSON (presentation)
-  const jsonMatch = content.match(/```(?:json)?\s*\n(\[[\s\S]*?\])\s*\n```/);
-  if (jsonMatch) {
-    try {
-      const parsed = JSON.parse(jsonMatch[1]);
-      if (Array.isArray(parsed) && parsed.length > 0 && parsed[0].type && ["title", "content", "two-column", "quote", "stats", "closing"].includes(parsed[0].type)) {
-        return "presentation";
-      }
-    } catch { /* not JSON */ }
-  }
+  // Slide JSON (presentation), every slide validated
+  if (extractSlides(content)) return "presentation";
 
   // Check for CSV data
   const csvMatch = content.match(/```(?:csv)?\s*\n([\s\S]*?)\n```/);
@@ -185,7 +189,7 @@ function MessageExportButtons({
   conversationId?: string | null;
 }) {
   const type = detectContentType(content);
-  const title = `${agentName} Output`;
+  const title = type === "presentation" ? extractSlides(content)?.title || `${agentName} Presentation` : `${agentName} Output`;
 
   if (type === "presentation") {
     return (
@@ -211,7 +215,7 @@ function MessageExportButtons({
   return (
     <>
       <DownloadButton content={content} title={title} format="md" />
-      <DownloadButton content={content} title={title} format="doc" />
+      <DownloadButton content={content} title={title} format="docx" />
       <DownloadButton content={content} title={title} format="pdf" />
       <SaveButton content={content} title={title} conversationId={conversationId} />
     </>

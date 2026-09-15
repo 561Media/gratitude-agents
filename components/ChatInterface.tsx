@@ -5,6 +5,8 @@ import { PortalUploadError, uploadFileToPortal } from "@/lib/client-upload";
 import ChatMessage from "./ChatMessage";
 import GratitudeMark from "./GratitudeMark";
 import { toast } from "./Toaster";
+import { extractSlides } from "@/lib/slide-schema";
+import { SseParser } from "@/lib/sse";
 
 export interface ChatAttachment {
   resourceId: string;
@@ -63,9 +65,9 @@ const starterTasks: StarterTask[] = [
     ),
   },
   {
-    label: "Sponsor pitch deck",
-    hint: "Slides you can export straight to PowerPoint",
-    prompt: "Create a sponsor pitch deck",
+    label: "Pitch deck",
+    hint: "Slides you can export to PowerPoint or PDF",
+    prompt: "Create a pitch deck for prospective funders",
     icon: (
       <>
         <line x1="6" y1="20" x2="6" y2="14" />
@@ -134,36 +136,44 @@ interface ChatInterfaceProps {
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
 }
 
-async function downloadConversation(
-  messages: Message[],
-  format: "md" | "doc" | "pdf" | "pptx" | "csv" | "xlsx"
-) {
-  // For PPTX/CSV/XLSX, use the last assistant message as content
-  const lastAssistant = [...messages].reverse().find((m) => m.role === "assistant");
-  const content =
-    (format === "pptx" || format === "csv" || format === "xlsx") && lastAssistant
-      ? lastAssistant.content
-      : messages
-          .map((m) =>
-            m.role === "user"
-              ? `## You\n\n${m.content}`
-              : `## Gratitude\n\n${m.content}`
-          )
-          .join("\n\n---\n\n");
+type ExportFormat = "md" | "docx" | "pdf" | "pptx" | "csv" | "xlsx";
 
-  const title = "Conversation with Gratitude";
-  const res = await fetch("/api/exports", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      title,
-      content:
-        format === "pptx" || format === "csv" || format === "xlsx"
-          ? content
-          : `_Gratitude.com -- ${new Date().toLocaleDateString()}_\n\n---\n\n${content}`,
-      format,
-    }),
-  });
+async function downloadConversation(messages: Message[], format: ExportFormat) {
+  const assistants = messages.filter((m) => m.role === "assistant" && m.content);
+  // Decks export the most recent assistant message that actually CONTAINS a
+  // deck, so a later "looks good" reply can never replace the slides
+  const latestDeck = [...assistants].reverse().find((m) => extractSlides(m.content));
+  const lastAssistant = assistants[assistants.length - 1];
+
+  let title = "Conversation transcript";
+  let content: string;
+
+  if ((format === "pptx" || format === "pdf") && latestDeck) {
+    content = latestDeck.content;
+    title = extractSlides(latestDeck.content)?.title || "Gratitude Presentation";
+  } else if ((format === "csv" || format === "xlsx") && lastAssistant) {
+    content = lastAssistant.content;
+    title = "Gratitude Export";
+  } else {
+    // Explicitly labeled transcript export
+    content =
+      `# Conversation transcript\n\n` +
+      messages
+        .map((m) => (m.role === "user" ? `## You\n\n${m.content}` : `## Gratitude\n\n${m.content}`))
+        .join("\n\n---\n\n");
+  }
+
+  let res: Response;
+  try {
+    res = await fetch("/api/exports", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content, format }),
+    });
+  } catch {
+    toast(`${format.toUpperCase()} export failed. Check your connection and try again.`);
+    return;
+  }
 
   if (!res.ok) {
     const errBody = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -195,16 +205,8 @@ function detectConversationContentType(messages: Message[]): ConversationContent
   for (const msg of assistantMessages) {
     const c = msg.content;
 
-    // Check for slide JSON
-    const jsonMatch = c.match(/```(?:json)?\s*\n(\[[\s\S]*?\])\s*\n```/);
-    if (jsonMatch) {
-      try {
-        const parsed = JSON.parse(jsonMatch[1]);
-        if (Array.isArray(parsed) && parsed[0]?.type && ["title", "content", "two-column", "quote", "stats", "closing"].includes(parsed[0].type)) {
-          hasPresentation = true;
-        }
-      } catch { /* not slide JSON */ }
-    }
+    // Check for slide JSON (every slide validated)
+    if (extractSlides(c)) hasPresentation = true;
 
     // Check for CSV
     const csvMatch = c.match(/```(?:csv)?\s*\n[\s\S]*?\n```/);
@@ -246,11 +248,10 @@ function HeaderExportButtons({
   downloadConversation,
 }: {
   messages: Message[];
-  downloadConversation: (msgs: Message[], fmt: "md" | "doc" | "pdf" | "pptx" | "csv" | "xlsx") => Promise<void>;
+  downloadConversation: (msgs: Message[], fmt: ExportFormat) => Promise<void>;
 }) {
   const type = detectConversationContentType(messages);
 
-  type ExportFormat = "md" | "doc" | "pdf" | "pptx" | "csv" | "xlsx";
   const btn = (label: string, fmt: ExportFormat, accent?: boolean) => (
     <HeaderExportButton
       key={fmt}
@@ -274,7 +275,7 @@ function HeaderExportButtons({
         <>{btn("Excel", "xlsx", true)}{btn("CSV", "csv")}</>
       )}
       {type === "document" && (
-        <>{btn("MD", "md")}{btn("DOC", "doc")}{btn("PDF", "pdf")}</>
+        <>{btn("MD", "md")}{btn("DOCX", "docx")}{btn("PDF", "pdf")}</>
       )}
       {type === "mixed" && (
         <>{btn("PPTX", "pptx", true)}{btn("Excel", "xlsx", true)}{btn("PDF", "pdf")}{btn("MD", "md")}</>
@@ -437,72 +438,90 @@ export default function ChatInterface({
       }
 
       const reader = res.body?.getReader();
-      const decoder = new TextDecoder();
-
       if (!reader) throw new Error("No reader");
 
-      let done = false;
-      while (!done) {
-        const { value, done: streamDone } = await reader.read();
-        done = streamDone;
-        if (value) {
-          const chunk = decoder.decode(value);
-          const lines = chunk.split("\n");
-          for (const line of lines) {
-            if (line.startsWith("data: ")) {
-              const data = line.slice(6);
-              if (data === "[DONE]") continue;
-              try {
-                const parsed = JSON.parse(data);
-                if (parsed.searching) {
-                  setSearching(true);
-                  setSearchQuery("");
-                }
-                if (parsed.searchQuery) {
-                  setSearchQuery(parsed.searchQuery);
-                }
-                if (parsed.generatingImage) {
-                  setGeneratingImage(true);
-                }
-                if (parsed.text) {
-                  setSearching(false);
-                  setSearchQuery("");
-                  setGeneratingImage(false);
-                  setMessages((prev) => {
-                    const updated = [...prev];
-                    const last = updated[updated.length - 1];
-                    if (last?.role === "assistant") {
-                      updated[updated.length - 1] = {
-                        ...last,
-                        content: last.content + parsed.text,
-                      };
-                    }
-                    return updated;
-                  });
-                }
-                if (parsed.citations) {
-                  // Citations are appended to the saved message server-side
-                  // as markdown links, so they'll render naturally
-                }
-                if (parsed.conversationId && !conversationId) {
-                  onConversationCreated(parsed.conversationId);
-                }
-              } catch {
-                // skip parse errors
-              }
-            }
+      const appendText = (text: string) =>
+        setMessages((prev) => {
+          const updated = [...prev];
+          const last = updated[updated.length - 1];
+          if (last?.role === "assistant") {
+            updated[updated.length - 1] = { ...last, content: last.content + text };
           }
+          return updated;
+        });
+
+      let sawDone = false;
+      let sawIncomplete = false;
+      let createdNotified = false;
+
+      const handleEvent = (data: string) => {
+        if (data === "[DONE]") {
+          sawDone = true;
+          return;
         }
+        let parsed: Record<string, unknown>;
+        try {
+          parsed = JSON.parse(data);
+        } catch {
+          console.error("Unparseable stream event", data.slice(0, 200));
+          return;
+        }
+        if (parsed.searching) {
+          setSearching(true);
+          setSearchQuery("");
+        }
+        if (typeof parsed.searchQuery === "string") setSearchQuery(parsed.searchQuery);
+        if (parsed.generatingImage) setGeneratingImage(true);
+        if (parsed.imageReady) setGeneratingImage(false);
+        if (typeof parsed.imageError === "string") {
+          setGeneratingImage(false);
+          toast(`Image issue: ${parsed.imageError}`);
+        }
+        if (typeof parsed.text === "string") {
+          setSearching(false);
+          setSearchQuery("");
+          setGeneratingImage(false);
+          appendText(parsed.text);
+        }
+        if (parsed.incomplete) {
+          sawIncomplete = true;
+          toast("This response did not finish. Ask Gratitude to continue.");
+        }
+        if (typeof parsed.error === "string") {
+          toast(parsed.error);
+        }
+        if (typeof parsed.conversationId === "string" && !conversationId && !createdNotified) {
+          createdNotified = true;
+          onConversationCreated(parsed.conversationId);
+        }
+      };
+
+      // Persistent buffer: events split across network chunks (and multibyte
+      // characters split across chunks) are reassembled before parsing
+      const parser = new SseParser();
+      while (true) {
+        const { value, done } = await reader.read();
+        if (value) parser.push(value).forEach(handleEvent);
+        if (done) break;
+      }
+      parser.flush().forEach(handleEvent);
+
+      if (!sawDone && !sawIncomplete) {
+        // Connection dropped before the server finished: never look complete
+        appendText("\n\n_The connection dropped before this response finished. Ask Gratitude to continue._");
+        toast("The response was interrupted before it finished.");
       }
     } catch (err) {
       console.error("Stream error:", err);
       setMessages((prev) => {
         const updated = [...prev];
         const last = updated[updated.length - 1];
-        if (last.role === "assistant" && !last.content) {
+        if (last?.role === "assistant") {
           updated[updated.length - 1] = {
             ...last,
-            content: "Sorry, something went wrong. Please try again.",
+            content: last.content
+              ? `${last.content}\n\n_This response was interrupted before it finished. Ask Gratitude to continue._`
+              : "Sorry, something went wrong. Please try again.",
           };
         }
         return updated;
